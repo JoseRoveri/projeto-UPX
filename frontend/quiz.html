@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Quiz | EcoEnergia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="pagina-quiz">
+
+
+    <!-- ========================================
+         CABEÇALHO
+    ======================================== -->
+
+    <header class="quiz-header">
+
+        <a
+            href="index.html"
+            class="quiz-logo"
+        >
+            💧 EcoEnergia
+        </a>
+
+
+        <nav class="quiz-nav">
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="teste.html">
+                Teste de nível
+            </a>
+
+            <a
+                href="quiz.html"
+                class="ativo"
+            >
+                🎮 Quiz
+            </a>
+
+            <a href="ranking.html">
+                🏆 Ranking
+            </a>
+
+        </nav>
+
+
+        <div class="quiz-usuario">
+
+            <span id="nome-usuario">
+                Olá, visitante!
+            </span>
+
+            <a
+                href="login.html"
+                id="btn-sair"
+            >
+                Sair
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <main class="quiz-main">
+
+
+        <!-- ========================================
+             INTRODUÇÃO DO QUIZ
+        ======================================== -->
+
+        <section
+            class="quiz-introducao"
+            id="quiz-introducao"
+        >
+
+            <span class="quiz-tag">
+                🎮 DESAFIO ECOENERGIA
+            </span>
+
+
+            <h1>
+                Quiz Água & Energia
+            </h1>
+
+
+            <p>
+
+                Responda perguntas sobre sustentabilidade,
+
+                economia de água e uso consciente de energia.
+
+            </p>
+
+
+
+            <div class="quiz-info-cards">
+
+
+                <div class="quiz-info-card">
+
+                    <span>
+                        ❓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            10 perguntas
+                        </strong>
+
+                        <small>
+                            Complete todas
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="quiz-info-card">
+
+                    <span>
+                        ⭐
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Até 100 XP
+                        </strong>
+
+                        <small>
+                            10 XP por acerto
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="quiz-info-card">
+
+                    <span>
+                        🏆
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Suba no ranking
+                        </strong>
+
+                        <small>
+                            Quanto mais acertar, melhor
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="quiz-aviso">
+
+                <span>
+                    💡
+                </span>
+
+                <p>
+
+                    O XP será contabilizado somente quando
+
+                    você concluir todas as perguntas.
+
+                </p>
+
+            </div>
+
+
+
+            <button
+                type="button"
+                id="btn-iniciar-quiz"
+                class="btn-quiz-principal"
+            >
+
+                Começar desafio 🚀
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ========================================
+             ÁREA DO QUIZ
+        ======================================== -->
+
+        <section
+            class="quiz-area escondido"
+            id="quiz-area"
+        >
+
+
+            <!-- ========================================
+                 TOPO
+            ======================================== -->
+
+            <div class="quiz-topo">
+
+
+                <div>
+
+                    <span id="quiz-contador">
+
+                        Pergunta 1 de 10
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="quiz-xp-atual">
+
+                    <span>
+                        ⭐
+                    </span>
+
+                    <strong id="quiz-xp">
+
+                        0 XP
+
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ========================================
+                 BARRA DE PROGRESSO
+            ======================================== -->
+
+            <div class="quiz-barra">
+
+                <div
+                    class="quiz-barra-preenchida"
+                    id="quiz-progresso"
+                ></div>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 CATEGORIA
+            ======================================== -->
+
+            <span
+                class="quiz-categoria"
+                id="quiz-categoria"
+            >
+
+                💧 ECONOMIA DE ÁGUA
+
+            </span>
+
+
+
+            <!-- ========================================
+                 PERGUNTA
+            ======================================== -->
+
+            <h2
+                class="quiz-pergunta"
+                id="quiz-pergunta"
+            >
+
+                Pergunta aparecerá aqui.
+
+            </h2>
+
+
+
+            <!-- ========================================
+                 ALTERNATIVAS
+            ======================================== -->
+
+            <div
+                class="quiz-alternativas"
+                id="quiz-alternativas"
+            >
+
+                <!--
+                    O JavaScript vai criar
+                    as alternativas aqui
+                -->
+
+            </div>
+
+
+
+            <!-- ========================================
+                 FEEDBACK
+            ======================================== -->
+
+            <div
+                class="quiz-feedback escondido"
+                id="quiz-feedback"
+            >
+
+                <span
+                    class="quiz-feedback-icone"
+                    id="quiz-feedback-icone"
+                >
+                    🎉
+                </span>
+
+
+                <div>
+
+                    <strong
+                        id="quiz-feedback-titulo"
+                    >
+
+                        Muito bem!
+
+                    </strong>
+
+
+                    <p
+                        id="quiz-feedback-texto"
+                    >
+
+                        Resposta correta.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 BOTÃO PRÓXIMA
+            ======================================== -->
+
+            <div class="quiz-acoes">
+
+                <button
+                    type="button"
+                    id="btn-proxima-quiz"
+                    class="btn-proxima-quiz"
+                    disabled
+                >
+
+                    Próxima pergunta →
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ========================================
+             RESULTADO
+        ======================================== -->
+
+        <section
+            class="quiz-resultado escondido"
+            id="quiz-resultado"
+        >
+
+
+            <div
+                class="quiz-resultado-emoji"
+                id="quiz-resultado-emoji"
+            >
+
+                🏆
+
+            </div>
+
+
+
+            <span class="quiz-tag">
+
+                DESAFIO CONCLUÍDO
+
+            </span>
+
+
+
+            <h1>
+
+                Quiz finalizado!
+
+            </h1>
+
+
+
+            <p>
+
+                Veja como você se saiu.
+
+            </p>
+
+
+
+            <!-- ========================================
+                 ESTATÍSTICAS
+            ======================================== -->
+
+            <div class="quiz-resultado-cards">
+
+
+                <div class="quiz-resultado-card">
+
+                    <span>
+                        ✅
+                    </span>
+
+                    <small>
+                        Acertos
+                    </small>
+
+                    <strong id="quiz-total-acertos">
+
+                        0
+
+                    </strong>
+
+                </div>
+
+
+
+                <div class="quiz-resultado-card">
+
+                    <span>
+                        ❌
+                    </span>
+
+                    <small>
+                        Erros
+                    </small>
+
+                    <strong id="quiz-total-erros">
+
+                        0
+
+                    </strong>
+
+                </div>
+
+
+
+                <div class="quiz-resultado-card destaque">
+
+                    <span>
+                        ⭐
+                    </span>
+
+                    <small>
+                        XP ganho
+                    </small>
+
+                    <strong id="quiz-xp-ganho">
+
+                        +0 XP
+
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ========================================
+                 MENSAGEM FINAL
+            ======================================== -->
+
+            <div class="quiz-mensagem-final">
+
+                <h2 id="quiz-mensagem-titulo">
+
+                    Muito bem!
+
+                </h2>
+
+
+                <p id="quiz-mensagem-texto">
+
+                    Continue aprendendo para melhorar
+
+                    cada vez mais sua pontuação.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 BOTÕES
+            ======================================== -->
+
+            <div class="quiz-resultado-acoes">
+
+
+                <button
+                    type="button"
+                    id="btn-refazer-quiz"
+                    class="btn-refazer-quiz"
+                >
+
+                    🔄 Refazer quiz
+
+                </button>
+
+
+
+                <a
+                    href="ranking.html"
+                    class="btn-ver-ranking"
+                >
+
+                    Ver ranking 🏆
+
+                </a>
+
+
+
+                <a
+                    href="index.html"
+                    class="btn-voltar-inicio"
+                >
+
+                    Voltar ao início
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================================
+         RODAPÉ
+    ======================================== -->
+
+    <footer>
+
+        <p>
+
+            © 2026 EcoEnergia •
+            Aprender também é cuidar do planeta 🌎
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- ========================================
+         SCRIPTS
+    ======================================== -->
+
+    <script src="script.js"></script>
+    <script src="quiz.js"></script>
+
+
+
+    <!-- ========================================
+         LOGOUT
+    ======================================== -->
+
+    <script>
+
+        const btnSair =
+            document.getElementById(
+                "btn-sair"
+            );
+
+
+        if (btnSair) {
+
+            btnSair.addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "ecoUsuario"
+                    );
+
+                    localStorage.removeItem(
+                        "ecoNivel"
+                    );
+
+                }
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Ranking | EcoEnergia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="pagina-ranking">
+
+
+    <main>
+
+
+        <!-- ========================================
+             CABEÇALHO
+        ======================================== -->
+
+        <header class="ranking-header">
+
+            <a
+                href="index.html"
+                class="ranking-logo"
+            >
+                💧 EcoEnergia
+            </a>
+
+
+            <nav class="ranking-nav">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="teste.html">
+                    Teste
+                </a>
+
+                <a href="quiz.html">
+                    Quiz
+                </a>
+
+                <a
+                    href="ranking.html"
+                    class="ativo"
+                >
+                    🏆 Ranking
+                </a>
+
+            </nav>
+
+        </header>
+
+
+
+        <!-- ========================================
+             TÍTULO
+        ======================================== -->
+
+        <section class="ranking-intro">
+
+            <span class="ranking-tag">
+                🏆 RANKING ECOENERGIA
+            </span>
+
+            <h1>
+                Ranking EcoEnergia
+            </h1>
+
+            <p>
+                Complete atividades, ganhe XP e acompanhe sua evolução.
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================================
+             RESUMO DO USUÁRIO
+        ======================================== -->
+
+        <section class="ranking-resumo">
+
+
+            <!-- XP -->
+
+            <div class="ranking-card-resumo">
+
+                <span class="resumo-icone">
+                    ⭐
+                </span>
+
+                <div>
+
+                    <small>
+                        Seu XP
+                    </small>
+
+                    <strong id="meu-xp">
+                        0 XP
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- POSIÇÃO -->
+
+            <div class="ranking-card-resumo">
+
+                <span class="resumo-icone">
+                    🏆
+                </span>
+
+                <div>
+
+                    <small>
+                        Sua posição
+                    </small>
+
+                    <strong id="minha-posicao">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- JOGADORES -->
+
+            <div class="ranking-card-resumo">
+
+                <span class="resumo-icone">
+                    👥
+                </span>
+
+                <div>
+
+                    <small>
+                        Jogadores
+                    </small>
+
+                    <strong id="total-jogadores">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- STATUS -->
+
+            <div class="ranking-card-resumo">
+
+                <span class="resumo-icone">
+                    🟢
+                </span>
+
+                <div>
+
+                    <small>
+                        Ranking
+                    </small>
+
+                    <strong>
+                        Ao vivo
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ========================================
+             EVOLUÇÃO
+        ======================================== -->
+
+        <section class="liga-container">
+
+
+            <div class="liga-topo">
+
+
+                <div>
+
+                    <span class="liga-icone">
+                        📈
+                    </span>
+
+
+                    <div>
+
+                        <span class="liga-label">
+                            SUA EVOLUÇÃO
+                        </span>
+
+                        <h2>
+                            Progresso de XP
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="liga-contador">
+
+                    <span>
+                        🔄
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Última atualização
+                        </small>
+
+                        <strong id="ultima-atualizacao">
+                            Carregando...
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PROGRESSO -->
+
+            <div class="liga-progresso">
+
+
+                <div class="progresso-info">
+
+                    <span>
+                        🎯 Próximo marco
+                    </span>
+
+                    <strong id="xp-proxima-liga">
+                        100 XP
+                    </strong>
+
+                </div>
+
+
+
+                <div class="barra-progresso">
+
+                    <div
+                        class="barra-progresso-preenchida"
+                        id="barra-liga"
+                    ></div>
+
+                </div>
+
+
+
+                <small id="texto-progresso">
+
+                    Ganhe XP completando atividades.
+
+                </small>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ========================================
+             RANKING
+        ======================================== -->
+
+        <section class="ranking-lista-container">
+
+
+            <div class="ranking-lista-topo">
+
+
+                <div>
+
+                    <span class="ranking-lista-tag">
+                        🏆 CLASSIFICAÇÃO GERAL
+                    </span>
+
+                    <h2>
+                        Quem está no topo?
+                    </h2>
+
+                </div>
+
+
+
+                <span
+                    class="jogadores-count"
+                    id="jogadores-count"
+                >
+                    0 jogadores
+                </span>
+
+
+            </div>
+
+
+
+            <!-- LISTA -->
+
+            <div
+                class="ranking-lista"
+                id="ranking-lista"
+            >
+
+                <!-- JavaScript preenche -->
+
+            </div>
+
+
+
+            <!-- AVISO -->
+
+            <div class="ranking-aviso">
+
+                <span>
+                    ⚡
+                </span>
+
+                <div>
+
+                    <strong>
+                        Ganhe XP e suba no ranking!
+                    </strong>
+
+                    <p>
+                        A classificação é atualizada automaticamente
+                        conforme os jogadores ganham XP.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ========================================
+             AÇÃO
+        ======================================== -->
+
+        <section class="ranking-acao">
+
+            <h2>
+                Quer subir no ranking?
+            </h2>
+
+            <p>
+                Complete atividades e acumule XP.
+            </p>
+
+            <a
+                href="quiz.html"
+                class="btn-ranking"
+            >
+                Fazer uma atividade →
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================================
+         RODAPÉ
+    ======================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 EcoEnergia • Aprender também é cuidar do planeta 🌎
+        </p>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+    <script src="ranking.js"></script>
+
+
+</body>
+
+</html>

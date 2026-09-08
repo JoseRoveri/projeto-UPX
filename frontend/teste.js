@@ -3,6 +3,7 @@
    TESTE DE NÍVEL
 ========================================= */
 
+
 /* =========================================
    PERGUNTAS
 ========================================= */
@@ -182,7 +183,8 @@ const perguntas = [
     ===================================== */
 
     {
-        categoria: "🧠 TÉCNICO AVANÇADO • ENGENHARIA ENERGÉTICA",
+        categoria:
+            "🧠 TÉCNICO AVANÇADO • ENGENHARIA ENERGÉTICA",
 
         pergunta:
             "Em um sistema elétrico trifásico equilibrado, uma carga possui potência ativa de 15 kW, fator de potência 0,75 e tensão de linha de 380 V. Aproximadamente qual é a corrente de linha?",
@@ -203,7 +205,8 @@ const perguntas = [
     ===================================== */
 
     {
-        categoria: "🧠 TÉCNICO AVANÇADO • EFICIÊNCIA HÍDRICA",
+        categoria:
+            "🧠 TÉCNICO AVANÇADO • EFICIÊNCIA HÍDRICA",
 
         pergunta:
             "Em um sistema de bombeamento de água, mantendo vazão e características do fluido constantes, qual alteração tende a reduzir significativamente o consumo de energia quando o sistema permite controle adequado da rotação da bomba?",
@@ -228,54 +231,6 @@ const perguntas = [
 let perguntaAtual = 0;
 let acertos = 0;
 let respondeu = false;
-
-
-/* =========================================
-   XP DO RANKING
-========================================= */
-
-function obterXP() {
-    return Number(localStorage.getItem("ecoXP")) || 0;
-}
-
-
-function salvarXP(xp) {
-    localStorage.setItem("ecoXP", xp);
-}
-
-
-function adicionarXP(valor) {
-    const xpAtual = obterXP();
-    salvarXP(xpAtual + valor);
-}
-
-
-function calcularXP(pergunta) {
-
-    const categoria = pergunta.categoria.toUpperCase();
-
-    if (categoria.includes("MUITO FÁCIL")) {
-        return 10;
-    }
-
-    if (categoria.includes("MÉDIA")) {
-        return 20;
-    }
-
-    if (categoria.includes("DIFÍCIL")) {
-        return 30;
-    }
-
-    if (categoria.includes("IMPOSSÍVEL")) {
-        return 40;
-    }
-
-    if (categoria.includes("TÉCNICO AVANÇADO")) {
-        return 50;
-    }
-
-    return 10;
-}
 
 
 /* =========================================
@@ -326,20 +281,31 @@ const feedbackElemento =
    INICIAR TESTE
 ========================================= */
 
-btnIniciar.addEventListener("click", iniciarTeste);
+btnIniciar.addEventListener(
+    "click",
+    iniciarTeste
+);
 
 
 function iniciarTeste() {
 
     perguntaAtual = 0;
+
     acertos = 0;
+
     respondeu = false;
 
-    introducao.classList.add("escondido");
+    introducao.classList.add(
+        "escondido"
+    );
 
-    resultado.classList.add("escondido");
+    resultado.classList.add(
+        "escondido"
+    );
 
-    areaTeste.classList.remove("escondido");
+    areaTeste.classList.remove(
+        "escondido"
+    );
 
     mostrarPergunta();
 }
@@ -366,13 +332,19 @@ function mostrarPergunta() {
     /* Contador */
 
     contadorAcertosElemento.textContent =
-        `${acertos} ${acertos === 1 ? "acerto" : "acertos"}`;
+        `${acertos} ${acertos === 1
+            ? "acerto"
+            : "acertos"
+        }`;
 
 
     /* Barra de progresso */
 
     const progresso =
-        (perguntaAtual / perguntas.length) * 100;
+        (
+            perguntaAtual /
+            perguntas.length
+        ) * 100;
 
     progressoElemento.style.width =
         `${progresso}%`;
@@ -392,19 +364,25 @@ function mostrarPergunta() {
 
     /* Limpar alternativas */
 
-    alternativasElemento.innerHTML = "";
+    alternativasElemento.innerHTML =
+        "";
 
 
     /* Esconder feedback */
 
-    feedbackElemento.classList.add("escondido");
+    feedbackElemento.classList.add(
+        "escondido"
+    );
 
-    feedbackElemento.innerHTML = "";
+    feedbackElemento.innerHTML =
+        "";
 
 
     /* Esconder botão */
 
-    btnProxima.classList.add("escondido");
+    btnProxima.classList.add(
+        "escondido"
+    );
 
 
     /* Criar alternativas */
@@ -413,13 +391,19 @@ function mostrarPergunta() {
         (alternativa, indice) => {
 
             const botao =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
-            botao.classList.add("alternativa");
+            botao.classList.add(
+                "alternativa"
+            );
 
             botao.innerHTML = `
                 <span class="letra-alternativa">
-                    ${String.fromCharCode(65 + indice)}
+                    ${String.fromCharCode(
+                        65 + indice
+                    )}
                 </span>
 
                 <span>
@@ -427,14 +411,16 @@ function mostrarPergunta() {
                 </span>
             `;
 
-
             botao.addEventListener(
                 "click",
-                () => selecionarResposta(indice)
+                () =>
+                    selecionarResposta(
+                        indice
+                    )
             );
 
-
-            alternativasElemento.appendChild(botao);
+            alternativasElemento
+                .appendChild(botao);
         }
     );
 
@@ -442,7 +428,9 @@ function mostrarPergunta() {
     /* Animação */
 
     const perguntaContainer =
-        document.getElementById("pergunta-container");
+        document.getElementById(
+            "pergunta-container"
+        );
 
     if (perguntaContainer) {
 
@@ -463,7 +451,9 @@ function mostrarPergunta() {
    SELECIONAR RESPOSTA
 ========================================= */
 
-function selecionarResposta(indiceEscolhido) {
+function selecionarResposta(
+    indiceEscolhido
+) {
 
     if (respondeu) {
         return;
@@ -477,12 +467,15 @@ function selecionarResposta(indiceEscolhido) {
 
 
     const botoes =
-        document.querySelectorAll(".alternativa");
+        document.querySelectorAll(
+            ".alternativa"
+        );
 
 
     /* Desabilitar todos */
 
     botoes.forEach(botao => {
+
         botao.disabled = true;
     });
 
@@ -495,37 +488,35 @@ function selecionarResposta(indiceEscolhido) {
 
     /* Verificar resposta */
 
-    if (indiceEscolhido === respostaCorreta) {
+    if (
+        indiceEscolhido ===
+        respostaCorreta
+    ) {
 
         acertos++;
 
-
-        /* ================================
-           GANHAR XP
-        ================================ */
-
-        const xpGanho =
-            calcularXP(pergunta);
-
-        adicionarXP(xpGanho);
-
-
         botoes[indiceEscolhido]
-            .classList.add("correta");
+            .classList.add(
+                "correta"
+            );
 
 
         mostrarFeedback(
             true,
-            `🎉 Muito bem! Você acertou! +${xpGanho} XP`
+            "🎉 Muito bem! Você acertou!"
         );
 
     } else {
 
         botoes[indiceEscolhido]
-            .classList.add("incorreta");
+            .classList.add(
+                "incorreta"
+            );
 
         botoes[respostaCorreta]
-            .classList.add("correta");
+            .classList.add(
+                "correta"
+            );
 
 
         mostrarFeedback(
@@ -538,17 +529,25 @@ function selecionarResposta(indiceEscolhido) {
     /* Atualizar contador */
 
     contadorAcertosElemento.textContent =
-        `${acertos} ${acertos === 1 ? "acerto" : "acertos"}`;
+        `${acertos} ${acertos === 1
+            ? "acerto"
+            : "acertos"
+        }`;
 
 
     /* Mostrar botão */
 
-    btnProxima.classList.remove("escondido");
+    btnProxima.classList.remove(
+        "escondido"
+    );
 
 
     /* Última pergunta */
 
-    if (perguntaAtual === perguntas.length - 1) {
+    if (
+        perguntaAtual ===
+        perguntas.length - 1
+    ) {
 
         btnProxima.textContent =
             "Ver meu resultado 🏆";
@@ -560,9 +559,14 @@ function selecionarResposta(indiceEscolhido) {
    FEEDBACK
 ========================================= */
 
-function mostrarFeedback(acertou, mensagem) {
+function mostrarFeedback(
+    acertou,
+    mensagem
+) {
 
-    feedbackElemento.classList.remove("escondido");
+    feedbackElemento.classList.remove(
+        "escondido"
+    );
 
 
     feedbackElemento.className =
@@ -593,7 +597,10 @@ function proximaPergunta() {
 
     /* Ainda existem perguntas */
 
-    if (perguntaAtual < perguntas.length) {
+    if (
+        perguntaAtual <
+        perguntas.length
+    ) {
 
         mostrarPergunta();
 
@@ -613,9 +620,13 @@ function proximaPergunta() {
 
 function finalizarTeste() {
 
-    areaTeste.classList.add("escondido");
+    areaTeste.classList.add(
+        "escondido"
+    );
 
-    resultado.classList.remove("escondido");
+    resultado.classList.remove(
+        "escondido"
+    );
 
 
     /* Barra completa */
@@ -626,12 +637,18 @@ function finalizarTeste() {
 
     /* Mostrar pontuação */
 
-    document.getElementById("pontuacao")
+    document
+        .getElementById(
+            "pontuacao"
+        )
         .textContent =
         acertos;
 
 
-    document.getElementById("texto-acertos")
+    document
+        .getElementById(
+            "texto-acertos"
+        )
         .textContent =
         `Você acertou ${acertos} de ${perguntas.length} perguntas.`;
 
@@ -644,24 +661,36 @@ function finalizarTeste() {
 
     /* Mostrar nível */
 
-    document.getElementById("nivel-icone")
+    document
+        .getElementById(
+            "nivel-icone"
+        )
         .textContent =
         nivel.icone;
 
 
-    document.getElementById("nivel-nome")
+    document
+        .getElementById(
+            "nivel-nome"
+        )
         .textContent =
         nivel.nome;
 
 
-    document.getElementById("nivel-descricao")
+    document
+        .getElementById(
+            "nivel-descricao"
+        )
         .textContent =
         nivel.descricao;
 
 
     /* Emoji */
 
-    document.getElementById("resultado-emoji")
+    document
+        .getElementById(
+            "resultado-emoji"
+        )
         .textContent =
         nivel.emoji;
 
@@ -670,25 +699,35 @@ function finalizarTeste() {
 
     const dadosNivel = {
 
-        nivel: nivel.nome,
+        nivel:
+            nivel.nome,
 
-        icone: nivel.icone,
+        icone:
+            nivel.icone,
 
-        acertos: acertos,
+        acertos:
+            acertos,
 
-        total: perguntas.length
+        total:
+            perguntas.length
     };
 
 
     localStorage.setItem(
         "ecoNivel",
-        JSON.stringify(dadosNivel)
+        JSON.stringify(
+            dadosNivel
+        )
     );
 
 
     /* Confetes */
 
-    if (typeof comemorar === "function") {
+    if (
+        typeof comemorar ===
+        "function"
+    ) {
+
         comemorar();
     }
 }
@@ -704,11 +743,14 @@ function descobrirNivel(pontos) {
 
         return {
 
-            nome: "Iniciante",
+            nome:
+                "Iniciante",
 
-            icone: "🌱",
+            icone:
+                "🌱",
 
-            emoji: "🌱",
+            emoji:
+                "🌱",
 
             descricao:
                 "Você está começando sua jornada! Continue aprendendo e descubra novas formas de cuidar da água e da energia."
@@ -720,11 +762,14 @@ function descobrirNivel(pontos) {
 
         return {
 
-            nome: "Explorador",
+            nome:
+                "Explorador",
 
-            icone: "💧",
+            icone:
+                "💧",
 
-            emoji: "💧",
+            emoji:
+                "💧",
 
             descricao:
                 "Você já conhece alguns conceitos importantes. Agora é hora de explorar ainda mais o mundo da sustentabilidade!"
@@ -736,11 +781,14 @@ function descobrirNivel(pontos) {
 
         return {
 
-            nome: "Intermediário",
+            nome:
+                "Intermediário",
 
-            icone: "⚡",
+            icone:
+                "⚡",
 
-            emoji: "⚡",
+            emoji:
+                "⚡",
 
             descricao:
                 "Muito bom! Você possui uma boa base sobre economia de água e energia. Continue praticando!"
@@ -752,11 +800,14 @@ function descobrirNivel(pontos) {
 
         return {
 
-            nome: "Avançado",
+            nome:
+                "Avançado",
 
-            icone: "🌿",
+            icone:
+                "🌿",
 
-            emoji: "🌿",
+            emoji:
+                "🌿",
 
             descricao:
                 "Excelente! Você já possui bastante conhecimento sobre sustentabilidade e consumo consciente."
@@ -766,11 +817,14 @@ function descobrirNivel(pontos) {
 
     return {
 
-        nome: "Especialista",
+        nome:
+            "Especialista",
 
-        icone: "🌎",
+        icone:
+            "🌎",
 
-        emoji: "🏆",
+        emoji:
+            "🏆",
 
         descricao:
             "Incrível! Você domina os principais conceitos de economia de água e energia. Agora pode encarar desafios ainda maiores!"
@@ -797,13 +851,19 @@ function refazerTeste() {
     respondeu = false;
 
 
-    resultado.classList.add("escondido");
+    resultado.classList.add(
+        "escondido"
+    );
 
-    introducao.classList.remove("escondido");
+    introducao.classList.remove(
+        "escondido"
+    );
 
-    areaTeste.classList.add("escondido");
+    areaTeste.classList.add(
+        "escondido"
+    );
 
 
-    /* O XP continua salvo.
-       Ele não é apagado ao refazer o teste. */
+    btnProxima.textContent =
+        "Próxima pergunta →";
 }

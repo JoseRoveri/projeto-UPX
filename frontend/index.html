@@ -5,8 +5,7 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
 
@@ -26,7 +25,9 @@
 
         <div>
 
-            <span>💧</span>
+            <span>
+                💧
+            </span>
 
             <h1>
                 EcoEnergia
@@ -49,7 +50,6 @@
                 Quiz
             </a>
 
-            <!-- NOVO -->
             <a href="ranking.html" class="link-ranking">
                 🏆 Ranking
             </a>
@@ -60,14 +60,17 @@
 
         </nav>
 
+        <div class="header-usuario">
 
-        <div>
+            <span id="sequencia-usuario" class="sequencia-usuario" title="Sequência diária">
+                🔥 0
+            </span>
 
-            <span>
+            <span id="nome-usuario">
                 Olá, visitante!
             </span>
 
-            <a href="login.html">
+            <a href="login.html" id="btn-sair">
                 Sair
             </a>
 
@@ -92,6 +95,7 @@
                     🌱 Educação + Sustentabilidade
                 </span>
 
+
                 <h2>
 
                     Aprender a cuidar do planeta
@@ -99,6 +103,7 @@
                     pode ser divertido!
 
                 </h2>
+
 
                 <p>
 
@@ -111,6 +116,7 @@
                     economia de água e energia.
 
                 </p>
+
 
                 <p>
 
@@ -143,13 +149,21 @@
             </div>
 
 
+
             <div>
 
-                <span>💧</span>
+                <span>
+                    💧
+                </span>
 
-                <span>⚡</span>
+                <span>
+                    ⚡
+                </span>
 
-                <span>🌱</span>
+                <span>
+                    🌱
+                </span>
+
 
                 <p>
 
@@ -175,9 +189,11 @@
                 Como funciona?
             </h2>
 
+
             <p>
                 Uma maneira simples e divertida de aprender.
             </p>
+
 
 
             <article>
@@ -203,6 +219,7 @@
             </article>
 
 
+
             <article>
 
                 <span>
@@ -224,6 +241,7 @@
             </article>
 
 
+
             <article>
 
                 <span>
@@ -236,9 +254,9 @@
 
                 <p>
 
-                    Acumule pontos, acompanhe seu progresso
+                    Acumule XP, acompanhe seu progresso
 
-                    e tente melhorar sua pontuação.
+                    e tente subir cada vez mais no ranking.
 
                 </p>
 
@@ -258,6 +276,7 @@
                 🧠 TESTE DE NÍVEL
             </span>
 
+
             <h2>
 
                 Quanto você sabe sobre
@@ -266,6 +285,7 @@
 
             </h2>
 
+
             <p>
 
                 Antes de começar, você pode realizar um pequeno
@@ -273,6 +293,7 @@
                 teste para descobrirmos seu nível de conhecimento.
 
             </p>
+
 
 
             <div>
@@ -303,8 +324,7 @@
                 </ul>
 
 
-                <a href="teste.html"
-                   class="btn-teste-principal">
+                <a href="teste.html" class="btn-teste-principal">
 
                     Começar teste de nível 🚀
 
@@ -326,9 +346,11 @@
                 🎮 HORA DO QUIZ
             </span>
 
+
             <h2>
                 Quer começar agora?
             </h2>
+
 
             <p>
 
@@ -337,6 +359,7 @@
                 Sem problema!
 
             </p>
+
 
             <p>
 
@@ -347,28 +370,30 @@
             </p>
 
 
+
             <div>
 
                 <span>
                     💡
                 </span>
 
+
                 <h3>
                     Prepare-se para o desafio!
                 </h3>
+
 
                 <p>
 
                     Responda às perguntas corretamente,
 
-                    acumule pontos e descubra quanto você
+                    ganhe XP e suba no ranking enquanto
 
-                    consegue aprender.
+                    aprende sobre água e energia.
 
                 </p>
 
-
-                <button type="button">
+                <button type="button" id="btn-comecar-quiz" onclick="window.location.href='quiz.html'">
 
                     Começar quiz
 
@@ -384,8 +409,7 @@
              RANKING
         =============================== -->
 
-        <section id="ranking"
-                 class="secao-ranking-principal">
+        <section id="ranking" class="secao-ranking-principal">
 
 
             <div class="ranking-principal-conteudo">
@@ -409,13 +433,14 @@
 
                 <p>
 
-                    Complete testes, responda quizzes,
+                    Complete atividades, responda quizzes,
 
                     acumule XP e dispute posições com
 
                     outros participantes.
 
                 </p>
+
 
 
                 <div class="ranking-principal-estatisticas">
@@ -438,21 +463,23 @@
                     </div>
 
 
+
                     <div>
 
                         <span>
-                            🔥
+                            📈
                         </span>
 
                         <strong>
-                            Mantenha sua sequência
+                            Evolua
                         </strong>
 
                         <small>
-                            Estude todos os dias
+                            Aumente sua pontuação
                         </small>
 
                     </div>
+
 
 
                     <div>
@@ -462,11 +489,11 @@
                         </span>
 
                         <strong>
-                            Suba de liga
+                            Suba no ranking
                         </strong>
 
                         <small>
-                            Chegue ao topo
+                            Dispute posições
                         </small>
 
                     </div>
@@ -475,8 +502,8 @@
                 </div>
 
 
-                <a href="ranking.html"
-                   class="btn-ranking-principal">
+
+                <a href="ranking.html" class="btn-ranking-principal">
 
                     Ver ranking 🏆
 
@@ -484,6 +511,7 @@
 
 
             </div>
+
 
 
             <div class="ranking-principal-visual">
@@ -496,60 +524,19 @@
                 </div>
 
 
-                <div class="ranking-mini-card">
+                <div id="mini-ranking">
 
-                    <span>
-                        🥇
-                    </span>
-
-                    <strong>
-                        Ana
-                    </strong>
-
-                    <b>
-                        1.240 XP
-                    </b>
+                    <!--
+                        O ranking real será
+                        carregado pelo JavaScript
+                    -->
 
                 </div>
 
 
-                <div class="ranking-mini-card">
+                <p class="ranking-mini-legenda" id="mini-ranking-posicao">
 
-                    <span>
-                        🥈
-                    </span>
-
-                    <strong>
-                        Pedro
-                    </strong>
-
-                    <b>
-                        1.180 XP
-                    </b>
-
-                </div>
-
-
-                <div class="ranking-mini-card ranking-mini-voce">
-
-                    <span>
-                        👤
-                    </span>
-
-                    <strong>
-                        Você
-                    </strong>
-
-                    <b>
-                        850 XP
-                    </b>
-
-                </div>
-
-
-                <p class="ranking-mini-legenda">
-
-                    🔥 Você está em 4º lugar!
+                    Carregando sua posição...
 
                 </p>
 
@@ -571,6 +558,7 @@
                 Sobre o EcoEnergia
             </h2>
 
+
             <p>
 
                 O EcoEnergia foi desenvolvido como um projeto
@@ -582,6 +570,7 @@
                 interativa.
 
             </p>
+
 
             <p>
 
@@ -596,6 +585,7 @@
             </p>
 
         </section>
+
 
     </main>
 
@@ -613,7 +603,9 @@
 
             <div>
 
-                <span>💧</span>
+                <span>
+                    💧
+                </span>
 
                 <h2>
                     EcoEnergia
@@ -648,8 +640,6 @@
                     Quiz
                 </a>
 
-                <!-- NOVO -->
-
                 <a href="ranking.html">
                     🏆 Ranking
                 </a>
@@ -667,6 +657,7 @@
                 <h3>
                     Para educadores
                 </h3>
+
 
                 <a href="#">
                     Guia para professores
@@ -689,6 +680,7 @@
                 <h3>
                     EcoEnergia
                 </h3>
+
 
                 <p>
 
@@ -722,10 +714,48 @@
             </p>
 
         </div>
+
+
     </footer>
 
 
+
     <script src="script.js"></script>
+
+
+    <!-- ==============================
+         LOGOUT
+    =============================== -->
+
+    <script>
+
+        const btnSair =
+            document.getElementById(
+                "btn-sair"
+            );
+
+
+        if (btnSair) {
+
+            btnSair.addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "ecoUsuario"
+                    );
+
+                    localStorage.removeItem(
+                        "ecoNivel"
+                    );
+
+                }
+            );
+
+        }
+
+    </script>
+
 
 </body>
 
