@@ -402,8 +402,8 @@ function mostrarPergunta() {
             botao.innerHTML = `
                 <span class="letra-alternativa">
                     ${String.fromCharCode(
-                        65 + indice
-                    )}
+                65 + indice
+            )}
                 </span>
 
                 <span>

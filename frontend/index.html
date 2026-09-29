@@ -22,60 +22,50 @@
     =============================== -->
 
     <header>
-
         <div>
-
-            <span>
-                💧
-            </span>
-
-            <h1>
-                EcoEnergia
-            </h1>
-
+            <span>💧</span>
+            <h1>EcoEnergia</h1>
         </div>
 
-
-        <nav>
-
-            <a href="#inicio">
-                Início
-            </a>
-
-            <a href="#teste">
-                Teste de nível
-            </a>
-
-            <a href="#quiz">
-                Quiz
-            </a>
-
+        <nav aria-label="Navegação principal">
+            <a href="#inicio">Início</a>
+            <a href="#teste">Teste de nível</a>
+            <a href="#quiz">Quiz</a>
             <a href="ranking.html" class="link-ranking">
                 🏆 Ranking
             </a>
-
-            <a href="#sobre">
-                Sobre
-            </a>
-
+            <a href="#sobre">Sobre</a>
         </nav>
 
         <div class="header-usuario">
 
-            <span id="sequencia-usuario" class="sequencia-usuario" title="Sequência diária">
-                🔥 0
-            </span>
+            <!-- Aparece para quem está visitando o site. -->
+            <div id="header-visitante">
+                <a href="login.html" class="botao-acesso">
+                    Fazer login
+                </a>
 
-            <span id="nome-usuario">
-                Olá, visitante!
-            </span>
+                <a href="cadastro.html" class="botao-acesso botao-criar-conta">
+                    Criar conta
+                </a>
+            </div>
 
-            <a href="login.html" id="btn-sair">
-                Sair
-            </a>
+            <!-- Aparece quando a sessão de login é confirmada. -->
+            <div id="header-logado" hidden>
+                <span id="sequencia-usuario" class="sequencia-usuario" title="Sequência diária">
+                    🔥 0
+                </span>
+
+                <span id="nome-usuario">
+                    Olá!
+                </span>
+
+                <a href="index.html" id="btn-sair">
+                    Sair
+                </a>
+            </div>
 
         </div>
-
     </header>
 
 
@@ -107,7 +97,7 @@
 
                 <p>
 
-                    O EcoEnergia é uma plataforma educativa criada
+                    O AquaWaze é uma plataforma educativa criada
 
                     para ajudar pais e professores a ensinarem
 
@@ -393,10 +383,8 @@
 
                 </p>
 
-                <button type="button" id="btn-comecar-quiz" onclick="window.location.href='quiz.html'">
-
+                <button type="button" id="btn-comecar-quiz" onclick="window.location.href='dificuldade.html'">
                     Começar quiz
-
                 </button>
 
             </div>
@@ -728,34 +716,41 @@
     =============================== -->
 
     <script>
-
-        const btnSair =
-            document.getElementById(
-                "btn-sair"
-            );
-
+        const btnSair = document.getElementById("btn-sair");
 
         if (btnSair) {
+            btnSair.addEventListener("click", async function (evento) {
+                // Aguarda o logout antes de mudar de página.
+                evento.preventDefault();
 
-            btnSair.addEventListener(
-                "click",
-                function () {
-
-                    localStorage.removeItem(
-                        "ecoUsuario"
+                try {
+                    const resposta = await fetch(
+                        "http://127.0.0.1:3000/api/logout",
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
                     );
 
-                    localStorage.removeItem(
-                        "ecoNivel"
-                    );
+                    const dados = await resposta.json();
 
+                    if (!resposta.ok) {
+                        alert(dados.mensagem || "Não foi possível sair.");
+                        return;
+                    }
+
+                    // Limpa os dados usados pela interface.
+                    localStorage.removeItem("ecoUsuario");
+                    localStorage.removeItem("ecoNivel");
+
+                    window.location.href = "index.html";
+                } catch (erro) {
+                    console.error("Erro ao fazer logout:", erro);
+                    alert("Não foi possível concluir a saída. Tente novamente.");
                 }
-            );
-
+            });
         }
-
     </script>
-
 
 </body>
 

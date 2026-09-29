@@ -1,0 +1,278 @@
+/* Complemento da trilha.
+   Este arquivo deve ser carregado depois de style.css. */
+
+body.pagina-trilha {
+    justify-content: flex-start;
+    line-height: 1.5;
+}
+
+body.pagina-trilha .pagina {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+body.pagina-trilha [hidden] {
+    display: none !important;
+}
+
+body.pagina-trilha a:focus-visible,
+body.pagina-trilha button:focus-visible,
+body.pagina-trilha summary:focus-visible {
+    outline: 3px solid var(--azul-escuro);
+    outline-offset: 4px;
+}
+
+/* Ajustes dos componentes que já existem no style.css. */
+
+body.pagina-trilha .dificuldade-nav a {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 44px;
+    font-size: 0.9rem;
+}
+
+body.pagina-trilha .dificuldade-intro p {
+    font-size: 1rem;
+}
+
+body.pagina-trilha .dificuldade-tag {
+    font-size: 0.85rem;
+}
+
+/* Resumo e mensagens da trilha. */
+
+body.pagina-trilha .resumo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 20px;
+    list-style: none;
+}
+
+body.pagina-trilha .resumo li {
+    padding: 7px 14px;
+
+    border: 2px solid var(--borda);
+    border-radius: 999px;
+
+    background: var(--branco);
+    font-weight: 700;
+}
+
+body.pagina-trilha .aviso {
+    width: min(1100px, 100%);
+    margin: 0 auto 20px;
+}
+
+body.pagina-trilha .aviso p {
+    margin-bottom: 12px;
+}
+
+/* Módulos. */
+
+body.pagina-trilha .modulos {
+    display: grid;
+    gap: 20px;
+
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+body.pagina-trilha .modulo {
+    min-width: 0;
+
+    border: 3px solid var(--azul-escuro);
+    border-radius: 24px;
+
+    background: var(--branco);
+    box-shadow: 4px 5px 0 var(--borda);
+}
+
+body.pagina-trilha .modulo summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 20px;
+    border-radius: 20px;
+
+    list-style: none;
+    cursor: pointer;
+}
+
+body.pagina-trilha .modulo summary::-webkit-details-marker {
+    display: none;
+}
+
+body.pagina-trilha .modulo summary:hover {
+    background: var(--fundo);
+}
+
+body.pagina-trilha .modulo[open] summary {
+    border-bottom: 2px solid var(--borda);
+}
+
+body.pagina-trilha .selo {
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 48px;
+    height: 48px;
+
+    border: 2px solid var(--azul-escuro);
+    border-radius: 15px;
+
+    background: var(--amarelo);
+
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+body.pagina-trilha .titulo-modulo {
+    flex: 1;
+    min-width: 0;
+}
+
+body.pagina-trilha .titulo-modulo small {
+    display: block;
+    font-weight: 600;
+}
+
+body.pagina-trilha .titulo-modulo strong {
+    display: block;
+    font-size: 1.15rem;
+    line-height: 1.4;
+}
+
+body.pagina-trilha .seta {
+    font-size: 1.5rem;
+}
+
+body.pagina-trilha .modulo[open] .seta {
+    transform: rotate(180deg);
+}
+
+body.pagina-trilha .descricao-modulo {
+    margin: 20px 24px 0;
+}
+
+/* Blocos e linha que liga as etapas. */
+
+body.pagina-trilha .blocos {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+
+    padding: 28px 22px 48px;
+    list-style: none;
+}
+
+body.pagina-trilha .blocos::before {
+    content: "";
+    position: absolute;
+
+    top: 69px;
+    left: 10%;
+    right: 10%;
+
+    border-top: 5px dashed var(--borda);
+}
+
+body.pagina-trilha .bloco {
+    position: relative;
+    min-width: 0;
+    text-align: center;
+}
+
+body.pagina-trilha .bloco:nth-child(even) {
+    transform: translateY(20px);
+}
+
+body.pagina-trilha .bolha {
+    display: grid;
+    place-items: center;
+
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 18px;
+
+    border: 3px solid var(--azul-escuro);
+    border-radius: 50%;
+
+    background: var(--amarelo);
+    box-shadow: 0 6px 0 var(--azul-escuro);
+
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+body.pagina-trilha .bloco:nth-child(even) .bolha {
+    background: var(--turquesa);
+}
+
+body.pagina-trilha .nome-bloco {
+    display: block;
+    overflow-wrap: anywhere;
+}
+
+body.pagina-trilha .quantidade {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.9rem;
+}
+
+/* Blocos na vertical em telas menores. */
+
+@media (max-width: 700px) {
+    body.pagina-trilha .blocos {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 26px 22px;
+    }
+
+    body.pagina-trilha .blocos::before {
+        top: 30px;
+        bottom: 30px;
+        left: 59px;
+        right: auto;
+
+        border-top: 0;
+        border-left: 5px dashed var(--borda);
+    }
+
+    body.pagina-trilha .bloco {
+        display: grid;
+        grid-template-columns: 78px minmax(0, 1fr);
+        align-items: center;
+        gap: 18px;
+
+        text-align: left;
+    }
+
+    body.pagina-trilha .bloco:nth-child(even) {
+        transform: none;
+    }
+
+    body.pagina-trilha .bolha {
+        width: 78px;
+        height: 78px;
+        margin: 0;
+    }
+
+    body.pagina-trilha .modulo summary {
+        gap: 12px;
+        padding: 16px;
+    }
+
+    body.pagina-trilha .titulo-modulo strong {
+        font-size: 1.05rem;
+    }
+}

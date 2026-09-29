@@ -373,8 +373,8 @@
                     <div class="avatar-ranking">
 
                         ${escolherAvatar(
-                            jogador
-                        )}
+                    jogador
+                )}
 
                     </div>
 
@@ -385,22 +385,20 @@
 
                             ${jogador.nome}
 
-                            ${
-                                usuarioAtual
-                                    ? " 👈"
-                                    : ""
-                            }
+                            ${usuarioAtual
+                        ? " 👈"
+                        : ""
+                    }
 
                         </strong>
 
 
                         <small>
 
-                            ${
-                                usuarioAtual
-                                    ? "Você"
-                                    : "EcoEnergia"
-                            }
+                            ${usuarioAtual
+                        ? "Você"
+                        : "EcoEnergia"
+                    }
 
                         </small>
 
@@ -505,7 +503,7 @@
 
         const usuario =
             jogadoresRanking[
-                indiceUsuario
+            indiceUsuario
             ];
 
 

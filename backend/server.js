@@ -1,1328 +1,191 @@
-// ========================================
-// IMPORTAÇÕES
-// ========================================
-
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
 
-require("dotenv").config();
+const banco = require("./database");
+const fazerLogin = require("./login");
+const autenticar = require("./autenticar");
+const fazerLogout = require("./logout");
+const listarRanking = require("./ranking");
+const concluirAtividade = require("./concluir-atividade");
 
-const pool = require("./database");
+// Carrega os dados das 200 perguntas da nova trilha.
+const trilhaFacil = require("./trilha-facil");
+
+// Acrescentaremos as outras dificuldades quando estiverem prontas.
+const trilhasDisponiveis = [trilhaFacil];
 
 const app = express();
 
+app.use(cors({
+    origin: "http://127.0.0.1:5500",
+    credentials: true
+}));
 
-// ========================================
-// CONFIGURAÇÕES
-// ========================================
-
-app.use(cors());
 app.use(express.json());
 
-
-// ========================================
-// ATIVIDADES DO ECOENERGIA
-// ========================================
-
-// O frontend NÃO escolhe quanto XP recebe.
-// O backend calcula de acordo com a atividade.
-
-const atividades = {
-
-    quiz_agua_energia_01: {
-        nome: "Quiz Água & Energia",
-        totalPerguntas: 10,
-        xpPorAcerto: 10
-    }
-
-};
-
-
-// ========================================
-// FUNÇÃO AUXILIAR
-// VERIFICAR SE A SEQUÊNCIA EXPIROU
-// ========================================
-
-// Regra:
-//
-// Se a última atividade foi há MAIS de 24 horas,
-// a sequência volta para 0.
-//
-// Exemplo:
-//
-// Segunda 15:00 -> atividade
-// Terça 15:01 -> já passaram 24h
-// sequência = 0
-
-async function verificarSequenciaExpirada(
-    usuarioId,
-    cliente = pool
-) {
-
-    const resultado =
-        await cliente.query(
-            `
-            UPDATE usuarios
-
-            SET sequencia = 0
-
-            WHERE
-                id = $1
-
-                AND ultima_atividade
-                    IS NOT NULL
-
-                AND ultima_atividade <
-                    NOW() - INTERVAL '24 hours'
-
-                AND sequencia <> 0
-
-            RETURNING
-                id,
-                nome,
-                email,
-                tipo,
-                xp,
-                nivel,
-                sequencia,
-                liga,
-                ultima_atividade
-            `,
-            [
-                usuarioId
-            ]
-        );
-
-
-    // Se atualizou, a sequência expirou.
-    if (resultado.rows.length > 0) {
-
-        return resultado.rows[0];
-
-    }
-
-
-    // Caso contrário, apenas busca
-    // os dados atuais do usuário.
-
-    const usuario =
-        await cliente.query(
-            `
-            SELECT
-                id,
-                nome,
-                email,
-                tipo,
-                xp,
-                nivel,
-                sequencia,
-                liga,
-                ultima_atividade
-
-            FROM usuarios
-
-            WHERE id = $1
-            `,
-            [
-                usuarioId
-            ]
-        );
-
-
-    if (usuario.rows.length === 0) {
-        return null;
-    }
-
-
-    return usuario.rows[0];
-
-}
-
-
-// ========================================
-// ROTA PRINCIPAL
-// ========================================
+// Permite acessar os cookies em req.cookies.
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
-
     res.json({
-        mensagem:
-            "EcoEnergia API funcionando!"
+        mensagem: "Servidor EcoEnergia funcionando!"
     });
-
 });
 
+app.get("/teste-banco", async (req, res) => {
+    try {
+        const resultado = await banco.query(`
+            SELECT COUNT(*) AS total
+            FROM public.usuarios
+        `);
 
-// ========================================
-// TESTE DO BANCO
-// ========================================
+        res.json({
+            mensagem: "Conexão com PostgreSQL funcionando!",
+            usuariosCadastrados: Number(resultado.rows[0].total)
+        });
+    } catch (erro) {
+        console.error("Erro ao consultar o banco:", erro.message);
 
-app.get(
-    "/teste-banco",
-    async (req, res) => {
+        res.status(500).json({
+            mensagem: "Não foi possível consultar o banco."
+        });
+    }
+});
 
-        try {
+app.post("/api/cadastro", async (req, res) => {
+    try {
+        const { nome, email, senha, tipo } = req.body || {};
 
-            const resultado =
-                await pool.query(
-                    "SELECT NOW() AS agora"
-                );
-
-
-            res.json({
-
-                mensagem:
-                    "Banco conectado!",
-
-                horarioBanco:
-                    resultado.rows[0].agora
-
+        if (
+            typeof nome !== "string" || !nome.trim() ||
+            typeof email !== "string" || !email.trim() ||
+            typeof senha !== "string" || !senha.trim() ||
+            !["aluno", "professor", "responsavel"].includes(tipo)
+        ) {
+            return res.status(400).json({
+                mensagem: "Preencha todos os campos corretamente."
             });
-
-        } catch (erro) {
-
-            console.error(
-                "Erro no banco:",
-                erro
-            );
-
-
-            res.status(500).json({
-                mensagem:
-                    "Erro ao conectar no banco."
-            });
-
         }
 
-    }
-);
+        const nomeLimpo = nome.trim();
+        const emailLimpo = email.trim().toLowerCase();
 
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailLimpo)) {
+            return res.status(400).json({
+                mensagem: "Digite um e-mail válido."
+            });
+        }
 
-// ========================================
-// CADASTRO
-// ========================================
+        if (senha.length < 8) {
+            return res.status(400).json({
+                mensagem: "A senha precisa ter pelo menos 8 caracteres."
+            });
+        }
 
-app.post(
-    "/api/cadastro",
-    async (req, res) => {
+        if (Buffer.byteLength(senha, "utf8") > 72) {
+            return res.status(400).json({
+                mensagem: "Senha muito longa. Use uma senha mais curta."
+            });
+        }
 
-        try {
+        const senhaHash = await bcrypt.hash(senha, 10);
 
-            const {
+        await banco.query(`
+            INSERT INTO public.usuarios (
                 nome,
                 email,
-                senha,
+                senha_hash,
                 tipo
-            } = req.body;
-
-
-            if (
-                !nome ||
-                !email ||
-                !senha ||
-                !tipo
-            ) {
-
-                return res
-                    .status(400)
-                    .json({
-
-                        mensagem:
-                            "Preencha todos os campos."
-
-                    });
-
-            }
-
-
-            // ========================================
-            // VERIFICAR E-MAIL
-            // ========================================
-
-            const usuarioExistente =
-                await pool.query(
-                    `
-                    SELECT id
-                    FROM usuarios
-                    WHERE email = $1
-                    `,
-                    [
-                        email
-                    ]
-                );
-
-
-            if (
-                usuarioExistente.rows.length > 0
-            ) {
-
-                return res
-                    .status(409)
-                    .json({
-
-                        mensagem:
-                            "Este e-mail já está cadastrado."
-
-                    });
-
-            }
-
-
-            // ========================================
-            // CRIPTOGRAFAR SENHA
-            // ========================================
-
-            const senhaHash =
-                await bcrypt.hash(
-                    senha,
-                    10
-                );
-
-
-            // ========================================
-            // CADASTRAR
-            // ========================================
-
-            const resultado =
-                await pool.query(
-                    `
-                    INSERT INTO usuarios
-                    (
-                        nome,
-                        email,
-                        senha_hash,
-                        tipo
-                    )
-
-                    VALUES
-                    ($1, $2, $3, $4)
-
-                    RETURNING
-                        id,
-                        nome,
-                        email,
-                        tipo,
-                        xp,
-                        nivel,
-                        sequencia,
-                        liga,
-                        ultima_atividade,
-                        criado_em
-                    `,
-                    [
-                        nome,
-                        email,
-                        senhaHash,
-                        tipo
-                    ]
-                );
-
-
-            res
-                .status(201)
-                .json({
-
-                    mensagem:
-                        "Cadastro realizado com sucesso!",
-
-                    usuario:
-                        resultado.rows[0]
-
-                });
-
-        } catch (erro) {
-
-            console.error(
-                "Erro no cadastro:",
-                erro
-            );
-
-
-            res
-                .status(500)
-                .json({
-
-                    mensagem:
-                        "Erro interno ao realizar cadastro."
-
-                });
-
-        }
-
-    }
-);
-
-
-// ========================================
-// LOGIN
-// ========================================
-
-app.post(
-    "/api/login",
-    async (req, res) => {
-
-        try {
-
-            const {
-                email,
-                senha
-            } = req.body;
-
-
-            if (
-                !email ||
-                !senha
-            ) {
-
-                return res
-                    .status(400)
-                    .json({
-
-                        mensagem:
-                            "Preencha o e-mail e a senha."
-
-                    });
-
-            }
-
-
-            // ========================================
-            // BUSCAR USUÁRIO
-            // ========================================
-
-            const resultado =
-                await pool.query(
-                    `
-                    SELECT *
-                    FROM usuarios
-                    WHERE email = $1
-                    `,
-                    [
-                        email
-                    ]
-                );
-
-
-            if (
-                resultado.rows.length === 0
-            ) {
-
-                return res
-                    .status(401)
-                    .json({
-
-                        mensagem:
-                            "E-mail ou senha incorretos."
-
-                    });
-
-            }
-
-
-            const usuario =
-                resultado.rows[0];
-
-
-            // ========================================
-            // VERIFICAR SENHA
-            // ========================================
-
-            const senhaCorreta =
-                await bcrypt.compare(
-                    senha,
-                    usuario.senha_hash
-                );
-
-
-            if (!senhaCorreta) {
-
-                return res
-                    .status(401)
-                    .json({
-
-                        mensagem:
-                            "E-mail ou senha incorretos."
-
-                    });
-
-            }
-
-
-            // ========================================
-            // VERIFICAR SE SEQUÊNCIA EXPIROU
-            // ========================================
-
-            const usuarioAtualizado =
-                await verificarSequenciaExpirada(
-                    usuario.id
-                );
-
-
-            // ========================================
-            // LOGIN CORRETO
-            // ========================================
-
-            res.json({
-
-                mensagem:
-                    "Login realizado com sucesso!",
-
-                usuario: {
-
-                    id:
-                        usuarioAtualizado.id,
-
-                    nome:
-                        usuarioAtualizado.nome,
-
-                    email:
-                        usuarioAtualizado.email,
-
-                    tipo:
-                        usuarioAtualizado.tipo,
-
-                    xp:
-                        usuarioAtualizado.xp,
-
-                    nivel:
-                        usuarioAtualizado.nivel,
-
-                    sequencia:
-                        usuarioAtualizado.sequencia,
-
-                    ultimaAtividade:
-                        usuarioAtualizado.ultima_atividade,
-
-                    liga:
-                        usuarioAtualizado.liga
-
-                }
-
+            )
+            VALUES ($1, $2, $3, $4)
+        `, [nomeLimpo, emailLimpo, senhaHash, tipo]);
+
+        res.status(201).json({
+            mensagem: "Cadastro realizado com sucesso!"
+        });
+    } catch (erro) {
+        if (
+            erro.code === "23505" &&
+            erro.constraint === "usuarios_email_unico"
+        ) {
+            return res.status(409).json({
+                mensagem: "Este e-mail já está cadastrado."
             });
-
-        } catch (erro) {
-
-            console.error(
-                "Erro no login:",
-                erro
-            );
-
-
-            res
-                .status(500)
-                .json({
-
-                    mensagem:
-                        "Erro interno ao realizar login."
-
-                });
-
         }
 
+        console.error("Erro ao cadastrar:", erro.message);
+
+        res.status(500).json({
+            mensagem: "Não foi possível realizar o cadastro."
+        });
     }
-);
+});
 
+app.post("/api/login", fazerLogin);
+app.post("/api/logout", fazerLogout);
 
-// ========================================
-// STATUS DO USUÁRIO
-// ========================================
+app.get("/api/me", autenticar, (req, res) => {
+    res.json({
+        usuario: req.usuario
+    });
+});
 
-// Essa rota será usada pelo frontend
-// quando a página principal abrir.
-//
-// Assim o site pode descobrir se
-// passaram 24 horas e mostrar:
-//
-// 🔥 0
+app.get("/api/ranking", listarRanking);
 
-app.get(
-    "/api/usuario/:id/status",
-    async (req, res) => {
+// Consulta pública: visitantes também podem ver a estrutura da trilha.
+app.get("/api/trilhas/:nivel", (req, res) => {
+    res.set("Cache-Control", "no-store");
 
-        try {
-
-            const usuarioId =
-                req.params.id;
-
-
-            const usuario =
-                await verificarSequenciaExpirada(
-                    usuarioId
-                );
-
-
-            if (!usuario) {
-
-                return res
-                    .status(404)
-                    .json({
-
-                        mensagem:
-                            "Usuário não encontrado."
-
-                    });
-
-            }
-
-
-            res.json({
-
-                usuario: {
-
-                    id:
-                        usuario.id,
-
-                    nome:
-                        usuario.nome,
-
-                    email:
-                        usuario.email,
-
-                    tipo:
-                        usuario.tipo,
-
-                    xp:
-                        usuario.xp,
-
-                    nivel:
-                        usuario.nivel,
-
-                    sequencia:
-                        usuario.sequencia,
-
-                    ultimaAtividade:
-                        usuario.ultima_atividade,
-
-                    liga:
-                        usuario.liga
-
-                }
-
-            });
-
-        } catch (erro) {
-
-            console.error(
-                "Erro ao buscar status:",
-                erro
-            );
-
-
-            res
-                .status(500)
-                .json({
-
-                    mensagem:
-                        "Erro ao carregar usuário."
-
-                });
-
-        }
-
-    }
-);
-
-
-// ========================================
-// RANKING
-// ========================================
-
-app.get(
-    "/api/ranking",
-    async (req, res) => {
-
-        try {
-
-            // Aqui calculamos a sequência
-            // considerando a regra das 24h.
-
-            const resultado =
-                await pool.query(
-                    `
-                    SELECT
-
-                        id,
-
-                        nome,
-
-                        xp,
-
-                        tipo,
-
-                        CASE
-
-                            WHEN
-                                ultima_atividade
-                                IS NOT NULL
-
-                                AND ultima_atividade <
-                                    NOW()
-                                    - INTERVAL '24 hours'
-
-                            THEN 0
-
-                            ELSE sequencia
-
-                        END AS sequencia
-
-                    FROM usuarios
-
-                    ORDER BY
-                        xp DESC,
-                        id ASC
-                    `
-                );
-
-
-            res.json({
-                jogadores:
-                    resultado.rows
-            });
-
-        } catch (erro) {
-
-            console.error(
-                "Erro ao buscar ranking:",
-                erro
-            );
-
-
-            res
-                .status(500)
-                .json({
-
-                    mensagem:
-                        "Erro ao carregar ranking."
-
-                });
-
-        }
-
-    }
-);
-
-
-// ========================================
-// CONCLUIR ATIVIDADE
-// ========================================
-
-app.post(
-    "/api/atividade/concluir",
-    async (req, res) => {
-
-        const cliente =
-            await pool.connect();
-
-
-        try {
-
-            const {
-                usuarioId,
-                atividadeId,
-                acertos
-            } = req.body;
-
-
-            // ========================================
-            // VALIDAR CAMPOS
-            // ========================================
-
-            if (
-                !usuarioId ||
-                !atividadeId ||
-                acertos === undefined
-            ) {
-
-                return res
-                    .status(400)
-                    .json({
-
-                        mensagem:
-                            "Usuário, atividade e acertos são obrigatórios."
-
-                    });
-
-            }
-
-
-            // ========================================
-            // VERIFICAR ATIVIDADE
-            // ========================================
-
-            const atividade =
-                atividades[
-                    atividadeId
-                ];
-
-
-            if (!atividade) {
-
-                return res
-                    .status(400)
-                    .json({
-
-                        mensagem:
-                            "Atividade inválida."
-
-                    });
-
-            }
-
-
-            // ========================================
-            // VALIDAR ACERTOS
-            // ========================================
-
-            const numeroAcertos =
-                Number(
-                    acertos
-                );
-
-
-            if (
-                !Number.isInteger(
-                    numeroAcertos
-                ) ||
-
-                numeroAcertos < 0 ||
-
-                numeroAcertos >
-                    atividade.totalPerguntas
-            ) {
-
-                return res
-                    .status(400)
-                    .json({
-
-                        mensagem:
-                            "Quantidade de acertos inválida."
-
-                    });
-
-            }
-
-
-            // ========================================
-            // INICIAR TRANSAÇÃO
-            // ========================================
-
-            await cliente.query(
-                "BEGIN"
-            );
-
-
-            // ========================================
-            // BUSCAR USUÁRIO
-            // ========================================
-
-            const resultadoUsuario =
-                await cliente.query(
-                    `
-                    SELECT
-                        id,
-                        nome,
-                        xp,
-                        sequencia,
-                        ultima_atividade
-
-                    FROM usuarios
-
-                    WHERE id = $1
-
-                    FOR UPDATE
-                    `,
-                    [
-                        usuarioId
-                    ]
-                );
-
-
-            if (
-                resultadoUsuario.rows.length ===
-                0
-            ) {
-
-                await cliente.query(
-                    "ROLLBACK"
-                );
-
-
-                return res
-                    .status(404)
-                    .json({
-
-                        mensagem:
-                            "Usuário não encontrado."
-
-                    });
-
-            }
-
-
-            // ========================================
-            // VERIFICAR SE JÁ GANHOU XP
-            // ========================================
-
-            const conclusaoExistente =
-                await cliente.query(
-                    `
-                    SELECT
-                        id,
-                        xp_recebido,
-                        concluido_em
-
-                    FROM atividades_concluidas
-
-                    WHERE
-                        usuario_id = $1
-                        AND atividade_id = $2
-                    `,
-                    [
-                        usuarioId,
-                        atividadeId
-                    ]
-                );
-
-
-            const primeiraConclusao =
-                conclusaoExistente
-                    .rows
-                    .length === 0;
-
-
-            // ========================================
-            // CALCULAR XP
-            // ========================================
-
-            let xpGanho = 0;
-
-
-            if (primeiraConclusao) {
-
-                xpGanho =
-                    numeroAcertos *
-                    atividade.xpPorAcerto;
-
-            }
-
-
-            // ========================================
-            // ATUALIZAR XP + SEQUÊNCIA
-            // ========================================
-            //
-            // REGRA DAS 24 HORAS:
-            //
-            // Nunca fez atividade:
-            // 🔥 1
-            //
-            // Passaram mais de 24h:
-            // 🔥 começa novamente em 1
-            //
-            // Fez outra atividade no mesmo dia:
-            // mantém a sequência
-            //
-            // Fez em outro dia,
-            // mas ainda dentro das 24h:
-            // 🔥 +1
-            //
-            // ultima_atividade passa a guardar
-            // data E hora exatas.
-            // ========================================
-
-            const usuarioAtualizado =
-                await cliente.query(
-                    `
-                    UPDATE usuarios
-
-                    SET
-
-                        xp =
-                            xp + $1,
-
-                        sequencia =
-
-                            CASE
-
-                                -- Primeira atividade
-                                WHEN
-                                    ultima_atividade
-                                    IS NULL
-
-                                THEN 1
-
-
-                                -- Passaram mais de 24h
-                                WHEN
-                                    ultima_atividade <
-                                    NOW()
-                                    - INTERVAL '24 hours'
-
-                                THEN 1
-
-
-                                -- Já fez atividade
-                                -- no mesmo dia
-                                WHEN
-                                    (
-                                        ultima_atividade
-                                        AT TIME ZONE
-                                        'America/Sao_Paulo'
-                                    )::date
-
-                                    =
-
-                                    (
-                                        NOW()
-                                        AT TIME ZONE
-                                        'America/Sao_Paulo'
-                                    )::date
-
-                                THEN
-                                    GREATEST(
-                                        sequencia,
-                                        1
-                                    )
-
-
-                                -- Outro dia,
-                                -- mas dentro de 24h
-                                ELSE
-                                    GREATEST(
-                                        sequencia,
-                                        0
-                                    ) + 1
-
-                            END,
-
-                        ultima_atividade =
-                            NOW()
-
-                    WHERE id = $2
-
-                    RETURNING
-                        id,
-                        nome,
-                        xp,
-                        sequencia,
-                        ultima_atividade
-                    `,
-                    [
-                        xpGanho,
-                        usuarioId
-                    ]
-                );
-
-
-            // ========================================
-            // REGISTRAR PRIMEIRA CONCLUSÃO
-            // ========================================
-
-            if (primeiraConclusao) {
-
-                await cliente.query(
-                    `
-                    INSERT INTO
-                        atividades_concluidas
-                    (
-                        usuario_id,
-                        atividade_id,
-                        xp_recebido
-                    )
-
-                    VALUES
-                    ($1, $2, $3)
-                    `,
-                    [
-                        usuarioId,
-                        atividadeId,
-                        xpGanho
-                    ]
-                );
-
-            }
-
-
-            // ========================================
-            // FINALIZAR TRANSAÇÃO
-            // ========================================
-
-            await cliente.query(
-                "COMMIT"
-            );
-
-
-            const usuario =
-                usuarioAtualizado
-                    .rows[0];
-
-
-            // ========================================
-            // RESPOSTA
-            // ========================================
-
-            res.json({
-
-                mensagem:
-
-                    primeiraConclusao
-
-                        ? "Atividade concluída! XP recebido."
-
-                        : "Atividade concluída novamente. O XP desta atividade já foi recebido.",
-
-
-                primeiraConclusao:
-                    primeiraConclusao,
-
-
-                xpGanho:
-                    xpGanho,
-
-
-                xpTotal:
-                    usuario.xp,
-
-
-                sequencia:
-                    usuario.sequencia,
-
-
-                ultimaAtividade:
-                    usuario.ultima_atividade,
-
-
-                usuario:
-                    usuario
-
-            });
-
-        } catch (erro) {
-
-            try {
-
-                await cliente.query(
-                    "ROLLBACK"
-                );
-
-            } catch (
-                erroRollback
-            ) {
-
-                console.error(
-                    "Erro no rollback:",
-                    erroRollback
-                );
-
-            }
-
-
-            console.error(
-                "Erro ao concluir atividade:",
-                erro
-            );
-
-
-            res
-                .status(500)
-                .json({
-
-                    mensagem:
-                        "Erro ao concluir atividade."
-
-                });
-
-        } finally {
-
-            cliente.release();
-
-        }
-
-    }
-);
-
-
-// ========================================
-// ROTA ANTIGA DE XP
-// ========================================
-//
-// Ainda vamos manter temporariamente.
-//
-// O quiz novo já NÃO usa essa rota.
-// Depois podemos remover completamente.
-// ========================================
-
-app.post(
-    "/api/xp",
-    async (req, res) => {
-
-        try {
-
-            const {
-                usuarioId,
-                xpGanho
-            } = req.body;
-
-
-            if (
-                !usuarioId ||
-                !xpGanho
-            ) {
-
-                return res
-                    .status(400)
-                    .json({
-
-                        mensagem:
-                            "Usuário e XP são obrigatórios."
-
-                    });
-
-            }
-
-
-            const xp =
-                Number(
-                    xpGanho
-                );
-
-
-            if (
-                !Number.isInteger(xp) ||
-                xp <= 0 ||
-                xp > 500
-            ) {
-
-                return res
-                    .status(400)
-                    .json({
-
-                        mensagem:
-                            "Quantidade de XP inválida."
-
-                    });
-
-            }
-
-
-            const resultado =
-                await pool.query(
-                    `
-                    UPDATE usuarios
-
-                    SET xp =
-                        xp + $1
-
-                    WHERE id = $2
-
-                    RETURNING
-                        id,
-                        nome,
-                        xp,
-                        sequencia,
-                        ultima_atividade
-                    `,
-                    [
-                        xp,
-                        usuarioId
-                    ]
-                );
-
-
-            if (
-                resultado.rows.length === 0
-            ) {
-
-                return res
-                    .status(404)
-                    .json({
-
-                        mensagem:
-                            "Usuário não encontrado."
-
-                    });
-
-            }
-
-
-            res.json({
-
-                mensagem:
-                    "XP adicionado com sucesso!",
-
-                usuario:
-                    resultado.rows[0]
-
-            });
-
-        } catch (erro) {
-
-            console.error(
-                "Erro ao adicionar XP:",
-                erro
-            );
-
-
-            res
-                .status(500)
-                .json({
-
-                    mensagem:
-                        "Erro ao adicionar XP."
-
-                });
-
-        }
-
-    }
-);
-
-
-// ========================================
-// SERVIDOR
-// ========================================
-
-const PORT = 3000;
-
-
-console.log(
-    "ECOENERGIA - SEQUENCIA 24 HORAS"
-);
-
-
-const servidor =
-    app.listen(
-        PORT,
-        () => {
-
-            console.log(
-                `Servidor rodando em http://localhost:${PORT}`
-            );
-
-        }
+    const trilha = trilhasDisponiveis.find(
+        item => item.nivel === req.params.nivel
     );
 
-
-servidor.on(
-    "error",
-    (erro) => {
-
-        console.error(
-            "ERRO DO SERVIDOR:",
-            erro
-        );
-
+    if (!trilha) {
+        return res.status(404).json({
+            mensagem: "Esta dificuldade ainda não possui uma trilha disponível."
+        });
     }
-);
 
+    // Seleciona os dados necessários para montar a tela dos módulos.
+    const modulos = trilha.modulos.map(modulo => ({
+        id: modulo.id,
+        nome: modulo.nome,
+        ordem: modulo.ordem,
+        introducao: modulo.introducao,
+        blocos: modulo.blocos.map(bloco => ({
+            atividadeId: bloco.atividadeId,
+            nome: bloco.nome,
+            ordem: bloco.ordem,
+            totalPerguntas: bloco.perguntas.length,
+            xpMaximo: bloco.perguntas.length * trilha.xpPorAcerto
+        }))
+    }));
 
-servidor.on(
-    "close",
-    () => {
+    // Reúne os blocos dos módulos para calcular os totais.
+    const blocos = modulos.flatMap(modulo => modulo.blocos);
 
-        console.log(
-            "ATENCAO: O SERVIDOR FOI FECHADO!"
-        );
+    const totalPerguntas = blocos.reduce(
+        (total, bloco) => total + bloco.totalPerguntas,
+        0
+    );
 
-    }
-);
+    res.json({
+        nivel: trilha.nivel,
+        nome: trilha.nome,
+        emoji: trilha.emoji,
+        versao: trilha.versao,
+        xpPorAcerto: trilha.xpPorAcerto,
+        totalModulos: modulos.length,
+        totalBlocos: blocos.length,
+        totalPerguntas,
+        modulos
+    });
+});
+
+app.post("/api/atividade/concluir", autenticar, concluirAtividade);
+
+app.listen(3000, "127.0.0.1", () => {
+    console.log("Servidor rodando em http://127.0.0.1:3000");
+});

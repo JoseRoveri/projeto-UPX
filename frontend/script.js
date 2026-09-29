@@ -412,20 +412,20 @@ if (formularioCadastro && cadastroSucesso) {
 const formularioLogin = document.querySelector("#form-login");
 
 if (formularioLogin) {
-
     formularioLogin.addEventListener("submit", async function (evento) {
-
+        // Impede o formulário de recarregar a página.
         evento.preventDefault();
 
         const email = document.querySelector("#usuario").value.trim();
         const senha = document.querySelector("#senha").value;
 
         try {
-
+            // Envia os dados ao backend.
             const resposta = await fetch(
-                "http://localhost:3000/api/login",
+                "http://127.0.0.1:3000/api/login",
                 {
                     method: "POST",
+                    credentials: "include",
 
                     headers: {
                         "Content-Type": "application/json"
@@ -440,315 +440,230 @@ if (formularioLogin) {
 
             const dados = await resposta.json();
 
+            // Mostra a mensagem caso o backend recuse o login.
             if (!resposta.ok) {
-                alert(dados.mensagem);
+                alert(dados.mensagem || "Não foi possível entrar.");
                 return;
             }
 
-            // Guarda temporariamente os dados do usuário logado
+            // Guarda dados para exibir na interface.
+            // Isso não substitui a validação da sessão no backend.
             localStorage.setItem(
                 "ecoUsuario",
                 JSON.stringify(dados.usuario)
             );
 
-            // Vai para a página principal
+            // Abre a página principal.
             window.location.href = "index.html";
-
         } catch (erro) {
-
-            console.error(
-                "Erro ao realizar login:",
-                erro
-            );
-
-            alert(
-                "Não foi possível conectar ao servidor."
-            );
+            console.error("Erro ao realizar login:", erro);
+            alert("Não foi possível concluir o login.");
         }
     });
 }
 
+
 // ========================================
-// 15. MOSTRAR NOME DO USUÁRIO LOGADO
+// 15. CONSULTAR USUÁRIO LOGADO
 // ========================================
 
-const usuarioSalvo = localStorage.getItem("ecoUsuario");
 const nomeUsuario = document.querySelector("#nome-usuario");
+const sequenciaUsuario = document.querySelector("#sequencia-usuario");
 
-if (usuarioSalvo && nomeUsuario) {
+const headerVisitante = document.querySelector("#header-visitante");
+const headerLogado = document.querySelector("#header-logado");
 
-    const usuario = JSON.parse(usuarioSalvo);
-
-    // Pega somente o primeiro nome
-    const primeiroNome = usuario.nome.split(" ")[0];
-
-    nomeUsuario.textContent = `Olá, ${primeiroNome}!`;
-}
-
-// ========================================
-// SEQUÊNCIA DIÁRIA - 24 HORAS
-// ========================================
-
-const sequenciaUsuario =
-    document.getElementById(
-        "sequencia-usuario"
-    );
-
-
-async function atualizarSequenciaUsuario() {
-
-    const usuarioSalvo =
-        localStorage.getItem(
-            "ecoUsuario"
-        );
-
-
+async function carregarUsuarioAtual() {
+    // Executa nas páginas que possuem esses elementos.
     if (
-        !usuarioSalvo ||
-        !sequenciaUsuario
+        !nomeUsuario &&
+        !sequenciaUsuario &&
+        !headerVisitante &&
+        !headerLogado
     ) {
         return;
     }
 
-
-    const usuario =
-        JSON.parse(
-            usuarioSalvo
-        );
-
+    let usuario = null;
 
     try {
+        const resposta = await fetch(
+            "http://127.0.0.1:3000/api/me",
+            {
+                credentials: "include",
+                cache: "no-store"
+            }
+        );
 
-        // ========================================
-        // CONSULTAR O BACKEND
-        // ========================================
+        // Se receber 401, continua como visitante.
+        if (resposta.status !== 401) {
+            if (!resposta.ok) {
+                throw new Error("Não foi possível consultar a sessão.");
+            }
 
-        const resposta =
-            await fetch(
-                `http://localhost:3000/api/usuario/${usuario.id}/status`
-            );
+            const dados = await resposta.json();
 
+            if (
+                !dados.usuario ||
+                typeof dados.usuario.nome !== "string"
+            ) {
+                throw new Error("Dados do usuário inválidos.");
+            }
 
-        const dados =
-            await resposta.json();
-
-
-        if (!resposta.ok) {
-
-            console.error(
-                "Erro ao atualizar sequência:",
-                dados.mensagem
-            );
-
-            // Se der algum problema no servidor,
-            // mostra pelo menos o valor salvo.
-
-            const sequenciaSalva =
-                Number(
-                    usuario.sequencia
-                ) || 0;
-
-
-            sequenciaUsuario.textContent =
-                `🔥 ${sequenciaSalva}`;
-
-            return;
+            usuario = dados.usuario;
         }
-
-
-        // ========================================
-        // DADOS ATUALIZADOS DO SERVIDOR
-        // ========================================
-
-        const usuarioAtualizado =
-            dados.usuario;
-
-
-        const sequencia =
-            Number(
-                usuarioAtualizado.sequencia
-            ) || 0;
-
-
-        // Atualiza visualmente
-        sequenciaUsuario.textContent =
-            `🔥 ${sequencia}`;
-
-
-        // ========================================
-        // ATUALIZAR LOCALSTORAGE
-        // ========================================
-
-        usuario.sequencia =
-            sequencia;
-
-
-        usuario.ultimaAtividade =
-            usuarioAtualizado.ultimaAtividade;
-
-
-        usuario.xp =
-            usuarioAtualizado.xp;
-
-
-        localStorage.setItem(
-            "ecoUsuario",
-            JSON.stringify(
-                usuario
-            )
-        );
-
-
-        console.log(
-            "Sequência atualizada:",
-            sequencia
-        );
-
-
     } catch (erro) {
-
-        console.error(
-            "Erro ao verificar sequência:",
-            erro
-        );
-
-
-        // ========================================
-        // FALLBACK
-        // ========================================
-
-        const sequenciaSalva =
-            Number(
-                usuario.sequencia
-            ) || 0;
-
-
-        sequenciaUsuario.textContent =
-            `🔥 ${sequenciaSalva}`;
-
+        console.error("Erro ao consultar usuário:", erro);
+        return;
     }
 
+    const estaLogado = usuario !== null;
+
+    // Esconde os botões de acesso quando há uma sessão válida.
+    if (headerVisitante) {
+        headerVisitante.hidden = estaLogado;
+    }
+
+    // Mostra nome, sequência e botão Sair.
+    if (headerLogado) {
+        headerLogado.hidden = !estaLogado;
+    }
+
+    if (nomeUsuario) {
+        if (estaLogado) {
+            const primeiroNome = usuario.nome.trim().split(/\s+/)[0];
+            nomeUsuario.textContent = `Olá, ${primeiroNome}!`;
+        } else {
+            nomeUsuario.textContent = "Olá, visitante!";
+        }
+    }
+
+    if (sequenciaUsuario) {
+        const sequencia = estaLogado
+            ? Number(usuario.sequencia) || 0
+            : 0;
+
+        sequenciaUsuario.textContent = `🔥 ${sequencia}`;
+    }
+
+    // Mantém a cópia local usada por outras partes da interface.
+    try {
+        if (estaLogado) {
+            localStorage.setItem(
+                "ecoUsuario",
+                JSON.stringify(usuario)
+            );
+        } else {
+            localStorage.removeItem("ecoUsuario");
+            localStorage.removeItem("ecoNivel");
+        }
+    } catch (erro) {
+        console.warn("Não foi possível atualizar os dados locais:", erro);
+    }
 }
 
+carregarUsuarioAtual();
 
-// Executa assim que a página carregar
-atualizarSequenciaUsuario();
 
 // ========================================
 // 16. MINI RANKING DA PÁGINA INICIAL
 // ========================================
 
 const miniRanking = document.querySelector("#mini-ranking");
-const miniRankingPosicao =
-    document.querySelector("#mini-ranking-posicao");
+const miniRankingPosicao = document.querySelector("#mini-ranking-posicao");
 
 if (miniRanking && miniRankingPosicao) {
-
     async function carregarMiniRanking() {
+        let jogadores = [];
+
+        miniRanking.textContent = "";
+        miniRankingPosicao.textContent = "Carregando ranking...";
 
         try {
-
+            // Busca a classificação no backend.
             const resposta = await fetch(
-                "http://localhost:3000/api/ranking"
+                "http://127.0.0.1:3000/api/ranking"
             );
-
-            const dados = await resposta.json();
 
             if (!resposta.ok) {
+                throw new Error("Não foi possível carregar o ranking.");
+            }
+
+            const dados = await resposta.json();
+            jogadores = dados.jogadores;
+
+            if (jogadores.length === 0) {
                 miniRankingPosicao.textContent =
-                    "Não foi possível carregar o ranking.";
+                    "Ainda não há jogadores cadastrados.";
                 return;
             }
 
-            const jogadores = dados.jogadores;
+            // Monta os cartões dos três primeiros colocados.
+            const medalhas = ["🥇", "🥈", "🥉"];
 
-            // Mostra somente os 3 primeiros
-            const top3 = jogadores.slice(0, 3);
+            jogadores.slice(0, 3).forEach((jogador, indice) => {
+                const card = document.createElement("div");
+                card.className = "ranking-mini-card";
 
-            miniRanking.innerHTML = "";
+                const medalha = document.createElement("span");
+                medalha.textContent = medalhas[indice];
 
-            top3.forEach((jogador, indice) => {
+                const nome = document.createElement("strong");
+                nome.textContent = jogador.nome;
 
-                let medalha = "";
+                const pontos = document.createElement("b");
+                pontos.textContent = `${jogador.xp} XP`;
 
-                if (indice === 0) {
-                    medalha = "🥇";
-                }
-                else if (indice === 1) {
-                    medalha = "🥈";
-                }
-                else if (indice === 2) {
-                    medalha = "🥉";
-                }
-
-                const card =
-                    document.createElement("div");
-
-                card.classList.add(
-                    "ranking-mini-card"
-                );
-
-                card.innerHTML = `
-                    <span>
-                        ${medalha}
-                    </span>
-
-                    <strong>
-                        ${jogador.nome}
-                    </strong>
-
-                    <b>
-                        ${jogador.xp} XP
-                    </b>
-                `;
-
+                card.append(medalha, nome, pontos);
                 miniRanking.appendChild(card);
             });
-
-            // Descobre a posição do usuário logado
-            const usuarioSalvo =
-                localStorage.getItem("ecoUsuario");
-
-            if (!usuarioSalvo) {
-
-                miniRankingPosicao.textContent =
-                    "Faça login para ver sua posição.";
-
-                return;
-            }
-
-            const usuario =
-                JSON.parse(usuarioSalvo);
-
-            const indiceUsuario =
-                jogadores.findIndex(
-                    jogador =>
-                        jogador.id === usuario.id
-                );
-
-            if (indiceUsuario === -1) {
-
-                miniRankingPosicao.textContent =
-                    "Sua posição ainda não foi encontrada.";
-
-                return;
-            }
-
-            const posicao =
-                indiceUsuario + 1;
+        } catch (erro) {
+            console.error("Erro ao carregar ranking:", erro);
 
             miniRankingPosicao.textContent =
-                `🔥 Você está em ${posicao}º lugar!`;
+                "Não foi possível carregar o ranking.";
+            return;
+        }
 
-        } catch (erro) {
-
-            console.error(
-                "Erro ao carregar mini ranking:",
-                erro
+        try {
+            // Confirma quem está conectado para mostrar sua posição.
+            const respostaSessao = await fetch(
+                "http://127.0.0.1:3000/api/me",
+                {
+                    credentials: "include"
+                }
             );
 
+            if (respostaSessao.status === 401) {
+                miniRankingPosicao.textContent =
+                    "Faça login para ver sua posição.";
+                return;
+            }
+
+            if (!respostaSessao.ok) {
+                throw new Error("Não foi possível consultar a sessão.");
+            }
+
+            const dadosSessao = await respostaSessao.json();
+            const usuario = dadosSessao.usuario;
+
+            const indiceUsuario = jogadores.findIndex(
+                jogador => jogador.id === usuario.id
+            );
+
+            if (indiceUsuario === -1) {
+                miniRankingPosicao.textContent =
+                    "Sua posição ainda não foi encontrada.";
+                return;
+            }
+
             miniRankingPosicao.textContent =
-                "Erro ao carregar ranking.";
+                `🔥 Você está em ${indiceUsuario + 1}º lugar!`;
+        } catch (erro) {
+            console.error("Erro ao consultar posição:", erro);
+
+            miniRankingPosicao.textContent =
+                "Não foi possível consultar sua posição.";
         }
     }
 

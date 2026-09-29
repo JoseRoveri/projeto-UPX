@@ -5,17 +5,11 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Quiz | EcoEnergia</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -29,10 +23,7 @@
 
     <header class="quiz-header">
 
-        <a
-            href="index.html"
-            class="quiz-logo"
-        >
+        <a href="index.html" class="quiz-logo">
             💧 EcoEnergia
         </a>
 
@@ -47,10 +38,7 @@
                 Teste de nível
             </a>
 
-            <a
-                href="quiz.html"
-                class="ativo"
-            >
+            <a href="dificuldade.html" class="ativo">
                 🎮 Quiz
             </a>
 
@@ -67,10 +55,7 @@
                 Olá, visitante!
             </span>
 
-            <a
-                href="login.html"
-                id="btn-sair"
-            >
+            <a href="login.html" id="btn-sair">
                 Sair
             </a>
 
@@ -80,136 +65,27 @@
 
 
 
+    <!-- ========================================
+         CONTEÚDO PRINCIPAL
+    ======================================== -->
+
     <main class="quiz-main">
 
 
         <!-- ========================================
-             INTRODUÇÃO DO QUIZ
+             COMPATIBILIDADE TEMPORÁRIA
+
+             Esta área NÃO aparece para o usuário.
+
+             Ela existe somente até adaptarmos
+             o quiz.js para iniciar automaticamente
+             através do nível escolhido.
         ======================================== -->
 
-        <section
-            class="quiz-introducao"
-            id="quiz-introducao"
-        >
+        <section class="quiz-introducao escondido" id="quiz-introducao" aria-hidden="true">
 
-            <span class="quiz-tag">
-                🎮 DESAFIO ECOENERGIA
-            </span>
-
-
-            <h1>
-                Quiz Água & Energia
-            </h1>
-
-
-            <p>
-
-                Responda perguntas sobre sustentabilidade,
-
-                economia de água e uso consciente de energia.
-
-            </p>
-
-
-
-            <div class="quiz-info-cards">
-
-
-                <div class="quiz-info-card">
-
-                    <span>
-                        ❓
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            10 perguntas
-                        </strong>
-
-                        <small>
-                            Complete todas
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="quiz-info-card">
-
-                    <span>
-                        ⭐
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Até 100 XP
-                        </strong>
-
-                        <small>
-                            10 XP por acerto
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="quiz-info-card">
-
-                    <span>
-                        🏆
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Suba no ranking
-                        </strong>
-
-                        <small>
-                            Quanto mais acertar, melhor
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="quiz-aviso">
-
-                <span>
-                    💡
-                </span>
-
-                <p>
-
-                    O XP será contabilizado somente quando
-
-                    você concluir todas as perguntas.
-
-                </p>
-
-            </div>
-
-
-
-            <button
-                type="button"
-                id="btn-iniciar-quiz"
-                class="btn-quiz-principal"
-            >
-
-                Começar desafio 🚀
-
+            <button type="button" id="btn-iniciar-quiz" class="btn-quiz-principal">
+                Iniciar
             </button>
 
         </section>
@@ -220,10 +96,35 @@
              ÁREA DO QUIZ
         ======================================== -->
 
-        <section
-            class="quiz-area escondido"
-            id="quiz-area"
-        >
+        <section class="quiz-area escondido" id="quiz-area">
+
+
+            <!-- ========================================
+                 NÍVEL ESCOLHIDO
+            ======================================== -->
+
+            <div class="quiz-nivel-cabecalho">
+
+                <div>
+
+                    <span class="quiz-nivel-tag" id="quiz-nivel-tag">
+                        🎯 DESAFIO
+                    </span>
+
+
+                    <strong class="quiz-nivel-nome" id="quiz-nivel-nome">
+                        Quiz Água & Energia
+                    </strong>
+
+                </div>
+
+
+                <a href="dificuldade.html" class="quiz-trocar-nivel">
+                    ← Trocar nível
+                </a>
+
+            </div>
+
 
 
             <!-- ========================================
@@ -270,10 +171,7 @@
 
             <div class="quiz-barra">
 
-                <div
-                    class="quiz-barra-preenchida"
-                    id="quiz-progresso"
-                ></div>
+                <div class="quiz-barra-preenchida" id="quiz-progresso"></div>
 
             </div>
 
@@ -283,10 +181,7 @@
                  CATEGORIA
             ======================================== -->
 
-            <span
-                class="quiz-categoria"
-                id="quiz-categoria"
-            >
+            <span class="quiz-categoria" id="quiz-categoria">
 
                 💧 ECONOMIA DE ÁGUA
 
@@ -298,10 +193,7 @@
                  PERGUNTA
             ======================================== -->
 
-            <h2
-                class="quiz-pergunta"
-                id="quiz-pergunta"
-            >
+            <h2 class="quiz-pergunta" id="quiz-pergunta">
 
                 Pergunta aparecerá aqui.
 
@@ -313,13 +205,10 @@
                  ALTERNATIVAS
             ======================================== -->
 
-            <div
-                class="quiz-alternativas"
-                id="quiz-alternativas"
-            >
+            <div class="quiz-alternativas" id="quiz-alternativas">
 
                 <!--
-                    O JavaScript vai criar
+                    O JavaScript cria
                     as alternativas aqui
                 -->
 
@@ -331,33 +220,23 @@
                  FEEDBACK
             ======================================== -->
 
-            <div
-                class="quiz-feedback escondido"
-                id="quiz-feedback"
-            >
+            <div class="quiz-feedback escondido" id="quiz-feedback">
 
-                <span
-                    class="quiz-feedback-icone"
-                    id="quiz-feedback-icone"
-                >
+                <span class="quiz-feedback-icone" id="quiz-feedback-icone">
                     🎉
                 </span>
 
 
                 <div>
 
-                    <strong
-                        id="quiz-feedback-titulo"
-                    >
+                    <strong id="quiz-feedback-titulo">
 
                         Muito bem!
 
                     </strong>
 
 
-                    <p
-                        id="quiz-feedback-texto"
-                    >
+                    <p id="quiz-feedback-texto">
 
                         Resposta correta.
 
@@ -375,12 +254,7 @@
 
             <div class="quiz-acoes">
 
-                <button
-                    type="button"
-                    id="btn-proxima-quiz"
-                    class="btn-proxima-quiz"
-                    disabled
-                >
+                <button type="button" id="btn-proxima-quiz" class="btn-proxima-quiz" disabled>
 
                     Próxima pergunta →
 
@@ -397,16 +271,10 @@
              RESULTADO
         ======================================== -->
 
-        <section
-            class="quiz-resultado escondido"
-            id="quiz-resultado"
-        >
+        <section class="quiz-resultado escondido" id="quiz-resultado">
 
 
-            <div
-                class="quiz-resultado-emoji"
-                id="quiz-resultado-emoji"
-            >
+            <div class="quiz-resultado-emoji" id="quiz-resultado-emoji">
 
                 🏆
 
@@ -430,6 +298,16 @@
 
 
 
+            <!-- NÍVEL REAL SERÁ INSERIDO PELO JS -->
+
+            <span class="quiz-resultado-nivel" id="quiz-resultado-nivel">
+
+                🎯 Desafio EcoEnergia
+
+            </span>
+
+
+
             <p>
 
                 Veja como você se saiu.
@@ -444,6 +322,8 @@
 
             <div class="quiz-resultado-cards">
 
+
+                <!-- ACERTOS -->
 
                 <div class="quiz-resultado-card">
 
@@ -465,6 +345,8 @@
 
 
 
+                <!-- ERROS -->
+
                 <div class="quiz-resultado-card">
 
                     <span>
@@ -484,6 +366,8 @@
                 </div>
 
 
+
+                <!-- XP -->
 
                 <div class="quiz-resultado-card destaque">
 
@@ -524,7 +408,6 @@
                 <p id="quiz-mensagem-texto">
 
                     Continue aprendendo para melhorar
-
                     cada vez mais sua pontuação.
 
                 </p>
@@ -534,17 +417,13 @@
 
 
             <!-- ========================================
-                 BOTÕES
+                 AÇÕES
             ======================================== -->
 
             <div class="quiz-resultado-acoes">
 
 
-                <button
-                    type="button"
-                    id="btn-refazer-quiz"
-                    class="btn-refazer-quiz"
-                >
+                <button type="button" id="btn-refazer-quiz" class="btn-refazer-quiz">
 
                     🔄 Refazer quiz
 
@@ -552,23 +431,17 @@
 
 
 
-                <a
-                    href="ranking.html"
-                    class="btn-ver-ranking"
-                >
+                <a href="dificuldade.html" class="btn-voltar-inicio">
 
-                    Ver ranking 🏆
+                    🎯 Escolher outro nível
 
                 </a>
 
 
 
-                <a
-                    href="index.html"
-                    class="btn-voltar-inicio"
-                >
+                <a href="ranking.html" class="btn-ver-ranking">
 
-                    Voltar ao início
+                    Ver ranking 🏆
 
                 </a>
 
@@ -605,7 +478,40 @@
     ======================================== -->
 
     <script src="script.js"></script>
+
     <script src="quiz.js"></script>
+
+
+
+    <!-- ========================================
+         AUTO-INICIAR TEMPORÁRIO
+
+         Removeremos quando o novo quiz.js
+         estiver pronto.
+    ======================================== -->
+
+    <script>
+
+        window.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const botaoInicioTemporario =
+                    document.getElementById(
+                        "btn-iniciar-quiz"
+                    );
+
+
+                if (botaoInicioTemporario) {
+
+                    botaoInicioTemporario.click();
+
+                }
+
+            }
+        );
+
+    </script>
 
 
 
@@ -614,32 +520,40 @@
     ======================================== -->
 
     <script>
-
-        const btnSair =
-            document.getElementById(
-                "btn-sair"
-            );
-
+        const btnSair = document.getElementById("btn-sair");
 
         if (btnSair) {
+            btnSair.addEventListener("click", async function (evento) {
+                // Aguarda o logout antes de mudar de página.
+                evento.preventDefault();
 
-            btnSair.addEventListener(
-                "click",
-                function () {
-
-                    localStorage.removeItem(
-                        "ecoUsuario"
+                try {
+                    const resposta = await fetch(
+                        "http://127.0.0.1:3000/api/logout",
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
                     );
 
-                    localStorage.removeItem(
-                        "ecoNivel"
-                    );
+                    const dados = await resposta.json();
 
+                    if (!resposta.ok) {
+                        alert(dados.mensagem || "Não foi possível sair.");
+                        return;
+                    }
+
+                    // Limpa os dados usados pela interface.
+                    localStorage.removeItem("ecoUsuario");
+                    localStorage.removeItem("ecoNivel");
+
+                    window.location.href = "login.html";
+                } catch (erro) {
+                    console.error("Erro ao fazer logout:", erro);
+                    alert("Não foi possível concluir a saída. Tente novamente.");
                 }
-            );
-
+            });
         }
-
     </script>
 
 
