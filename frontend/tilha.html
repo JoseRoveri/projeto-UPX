@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trilha de aprendizagem | EcoEnergia</title>
+
+    <!-- Primeiro, o CSS que já existe no seu projeto. -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Depois, os ajustes específicos da trilha. -->
+    <link rel="stylesheet" href="trilha.css">
+</head>
+
+<body class="pagina-dificuldade pagina-trilha">
+    <div class="pagina">
+        <header class="dificuldade-header">
+            <a class="dificuldade-logo" href="index.html">
+                💧 EcoEnergia
+            </a>
+
+            <nav class="dificuldade-nav" aria-label="Navegação da trilha">
+                <a href="dificuldade.html">
+                    ← Dificuldades
+                </a>
+            </nav>
+        </header>
+
+        <main class="dificuldade-main">
+            <section class="dificuldade-intro" aria-labelledby="titulo">
+                <span class="dificuldade-tag" id="dificuldade">
+                    Trilha de aprendizagem
+                </span>
+
+                <h1 id="titulo">Sua trilha de energia</h1>
+
+                <p>Pequenos blocos para aprender no seu ritmo.</p>
+
+                <ul class="resumo" id="resumo" aria-label="Estrutura da trilha" hidden></ul>
+            </section>
+
+            <div class="aviso">
+                <p id="estado" role="status" aria-live="polite">
+                    Carregando os módulos...
+                </p>
+
+                <button class="btn-dificuldade" id="tentar" type="button" hidden>
+                    Tentar novamente
+                </button>
+            </div>
+
+            <div class="modulos" id="modulos" aria-busy="true"></div>
+
+            <noscript>
+                <p>
+                    Ative o JavaScript do navegador para carregar os módulos.
+                </p>
+            </noscript>
+        </main>
+    </div>
+
+    <script src="trilha.js"></script>
+</body>
+
+</html>
