@@ -1967,12 +1967,11 @@ body:has(#form-cadastro)>main>aside>div {
 
    A Home possui simultaneamente:
    #inicio
-   #teste
    #quiz
    #ranking
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) {
+body:has(#inicio):has(#quiz):has(#ranking) {
     min-height: 100vh;
 
     padding: 0;
@@ -1995,7 +1994,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) {
    QUE EXISTE NO LOGIN
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main {
+body:has(#inicio):has(#quiz):has(#ranking)>main {
     width: 100%;
     min-height: auto;
 
@@ -2020,7 +2019,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main {
    3. HEADER DA HOME
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header {
+body:has(#inicio):has(#quiz):has(#ranking)>header {
     position: sticky;
 
     top: 0;
@@ -2056,7 +2055,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header {
    4. LOGO
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child {
+body:has(#inicio):has(#quiz):has(#ranking)>header>div:first-child {
     display: flex;
 
     align-items: center;
@@ -2065,7 +2064,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child>span {
+body:has(#inicio):has(#quiz):has(#ranking)>header>div:first-child>span {
     width: 43px;
     height: 43px;
 
@@ -2097,13 +2096,13 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child>sp
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child:hover>span {
+body:has(#inicio):has(#quiz):has(#ranking)>header>div:first-child:hover>span {
     transform:
         rotate(4deg) scale(1.06);
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child>h1 {
+body:has(#inicio):has(#quiz):has(#ranking)>header>div:first-child>h1 {
     color:
         var(--azul-escuro);
 
@@ -2122,7 +2121,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child>h1
    5. NAVEGAÇÃO
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav {
+body:has(#inicio):has(#quiz):has(#ranking)>header>nav {
     display: flex;
 
     align-items: center;
@@ -2133,7 +2132,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav>a {
+body:has(#inicio):has(#quiz):has(#ranking)>header>nav>a {
     position: relative;
 
     padding:
@@ -2157,7 +2156,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav>a {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav>a::after {
+body:has(#inicio):has(#quiz):has(#ranking)>header>nav>a::after {
     content: "";
 
     position: absolute;
@@ -2182,20 +2181,20 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav>a::after {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav>a:hover {
+body:has(#inicio):has(#quiz):has(#ranking)>header>nav>a:hover {
     transform:
         translateY(-2px);
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav>a:hover::after {
+body:has(#inicio):has(#quiz):has(#ranking)>header>nav>a:hover::after {
     width: 100%;
 }
 
 
 /* RANKING NO MENU */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header .link-ranking {
+body:has(#inicio):has(#quiz):has(#ranking)>header .link-ranking {
     padding:
         8px 13px;
 
@@ -2210,12 +2209,12 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header .link-ranking {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header .link-ranking::after {
+body:has(#inicio):has(#quiz):has(#ranking)>header .link-ranking::after {
     display: none;
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header .link-ranking:hover {
+body:has(#inicio):has(#quiz):has(#ranking)>header .link-ranking:hover {
     background:
         var(--amarelo);
 }
@@ -2225,7 +2224,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header .link-ranking:hove
    6. USUÁRIO / SEQUÊNCIA / SAIR
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .header-usuario {
+body:has(#inicio):has(#quiz):has(#ranking) .header-usuario {
     display: flex;
 
     align-items: center;
@@ -2237,7 +2236,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .header-usuario {
 
 /* FOGUINHO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .sequencia-usuario {
+body:has(#inicio):has(#quiz):has(#ranking) .sequencia-usuario {
     min-width: 52px;
     min-height: 38px;
 
@@ -2277,7 +2276,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .sequencia-usuario {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .sequencia-usuario:hover {
+body:has(#inicio):has(#quiz):has(#ranking) .sequencia-usuario:hover {
     transform:
         translateY(-2px) rotate(-2deg);
 }
@@ -2285,7 +2284,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .sequencia-usuario:hover 
 
 /* NOME */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #nome-usuario {
+body:has(#inicio):has(#quiz):has(#ranking) #nome-usuario {
     color:
         var(--azul-escuro);
 
@@ -2302,7 +2301,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #nome-usuario {
 
 /* SAIR */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-sair {
+body:has(#inicio):has(#quiz):has(#ranking) #btn-sair {
     min-height: 38px;
 
     padding:
@@ -2337,7 +2336,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-sair {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-sair:hover {
+body:has(#inicio):has(#quiz):has(#ranking) #btn-sair:hover {
     background:
         var(--amarelo);
 
@@ -2350,7 +2349,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-sair:hover {
    7. HERO — #INICIO
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio {
     position: relative;
 
     width: 100%;
@@ -2385,7 +2384,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio {
 
 /* FORMA TURQUESA DECORATIVA */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio::before {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio::before {
     content: "";
 
     position: absolute;
@@ -2410,7 +2409,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio::before {
 
 /* CURVA INFERIOR */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio::after {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio::after {
     content: "";
 
     position: absolute;
@@ -2436,7 +2435,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio::after {
    8. CONTEÚDO ESQUERDO DO HERO
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child {
     position: relative;
 
     z-index: 3;
@@ -2450,7 +2449,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child {
 
 /* TAG */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>span:first-child {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>span:first-child {
     width: fit-content;
 
     margin-bottom: 20px;
@@ -2487,7 +2486,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>s
 
 /* TÍTULO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>h2 {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>h2 {
     max-width: 670px;
 
     margin-bottom: 24px;
@@ -2511,7 +2510,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>h
 
 /* DESTAQUE AMARELO ABAIXO DO TÍTULO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>h2::after {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>h2::after {
     content: "";
 
     display: block;
@@ -2537,7 +2536,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>h
 
 /* TEXTOS */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>p {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>p {
     max-width: 610px;
 
     margin-bottom: 12px;
@@ -2556,7 +2555,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>p
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>p:nth-of-type(2) {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>p:nth-of-type(2) {
     opacity: 0.82;
 }
 
@@ -2565,7 +2564,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>p
    9. BOTÕES DO HERO
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>div {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>div {
     margin-top: 30px;
 
     display: flex;
@@ -2576,7 +2575,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>d
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>div>a {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>div>a {
     min-height: 54px;
 
     padding:
@@ -2614,7 +2613,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>d
 
 /* PRIMEIRO BOTÃO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>div>a:first-child {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>div>a:first-child {
     background:
         var(--amarelo);
 }
@@ -2622,13 +2621,13 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>d
 
 /* SEGUNDO BOTÃO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>div>a:last-child {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>div>a:last-child {
     background:
         var(--branco);
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>div>a:hover {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>div>a:hover {
     background:
         var(--turquesa);
 
@@ -2640,7 +2639,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>d
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>div>a:active {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>div>a:active {
     transform:
         translateY(2px);
 
@@ -2653,7 +2652,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>d
    10. CARD VISUAL DIREITO
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child {
     position: relative;
     z-index: 3;
 
@@ -2697,7 +2696,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child {
 
 /* CÍRCULO DE FUNDO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child::before {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child::before {
     content: "🌎";
 
     position: absolute;
@@ -2738,7 +2737,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child::b
    11. EMOJIS 💧 ⚡ 🌱
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>span {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>span {
     position: relative;
 
     z-index: 3;
@@ -2773,25 +2772,25 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>sp
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>span:nth-child(1) {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>span:nth-child(1) {
     transform:
         rotate(-7deg);
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>span:nth-child(2) {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>span:nth-child(2) {
     transform:
         translateY(-12px) rotate(4deg);
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>span:nth-child(3) {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>span:nth-child(3) {
     transform:
         rotate(7deg);
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>span:hover {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>span:hover {
     transform:
         translateY(-8px) rotate(0deg) scale(1.08);
 }
@@ -2801,7 +2800,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>sp
    12. FRASE DO CARD
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p {
+body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>p {
     position: relative;
     z-index: 3;
 
@@ -2907,7 +2906,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
 
 @media (max-width: 1100px) {
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header {
+    body:has(#inicio):has(#quiz):has(#ranking)>header {
         padding:
             12px 28px;
 
@@ -2915,18 +2914,18 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav {
+    body:has(#inicio):has(#quiz):has(#ranking)>header>nav {
         gap: 11px;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav>a {
+    body:has(#inicio):has(#quiz):has(#ranking)>header>nav>a {
         font-size:
             0.7rem;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #nome-usuario {
+    body:has(#inicio):has(#quiz):has(#ranking) #nome-usuario {
         display: none;
     }
 
@@ -2939,7 +2938,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
 
 @media (max-width: 850px) {
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header {
+    body:has(#inicio):has(#quiz):has(#ranking)>header {
         position: relative;
 
         grid-template-columns:
@@ -2956,13 +2955,13 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child {
+    body:has(#inicio):has(#quiz):has(#ranking)>header>div:first-child {
         grid-area:
             logo;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>nav {
+    body:has(#inicio):has(#quiz):has(#ranking)>header>nav {
         grid-area:
             nav;
 
@@ -2979,13 +2978,13 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .header-usuario {
+    body:has(#inicio):has(#quiz):has(#ranking) .header-usuario {
         grid-area:
             usuario;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio {
         min-height: auto;
 
         padding:
@@ -2998,13 +2997,13 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child {
         max-width:
             720px;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>h2 {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>h2 {
         font-size:
             clamp(3rem, 10vw, 5rem);
     }
@@ -3018,13 +3017,13 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
 
 @media (max-width: 560px) {
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header {
+    body:has(#inicio):has(#quiz):has(#ranking)>header {
         border-bottom-width:
             2px;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child>span {
+    body:has(#inicio):has(#quiz):has(#ranking)>header>div:first-child>span {
         width: 38px;
         height: 38px;
 
@@ -3032,13 +3031,13 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header>div:first-child>h1 {
+    body:has(#inicio):has(#quiz):has(#ranking)>header>div:first-child>h1 {
         font-size:
             1.25rem;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .sequencia-usuario {
+    body:has(#inicio):has(#quiz):has(#ranking) .sequencia-usuario {
         min-width: 46px;
         min-height: 35px;
 
@@ -3046,7 +3045,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-sair {
+    body:has(#inicio):has(#quiz):has(#ranking) #btn-sair {
         min-height: 35px;
 
         padding:
@@ -3057,7 +3056,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio {
         padding:
             55px 18px 100px;
 
@@ -3069,7 +3068,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>h2 {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>h2 {
         margin-bottom:
             20px;
 
@@ -3084,24 +3083,24 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>p {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>p {
         font-size:
             0.88rem;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>div {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>div {
         flex-direction:
             column;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child>div>a {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>div>a {
         width: 100%;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child {
         min-height:
             360px;
 
@@ -3119,7 +3118,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child::before {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child::before {
         width: 135px;
         height: 135px;
 
@@ -3127,7 +3126,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>span {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>span {
         width: 55px;
         height: 55px;
 
@@ -3139,7 +3138,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>p {
         font-size:
             0.9rem;
     }
@@ -3153,11 +3152,11 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
 
 @media (prefers-reduced-motion: reduce) {
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:first-child,
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child,
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child,
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child,
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child::before {
+    body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child::before {
         animation: none;
     }
 
@@ -3177,7 +3176,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #inicio>div:last-child>p 
    É A SEGUNDA SECTION DO MAIN
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2) {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2) {
     position: relative;
 
     width: 100%;
@@ -3199,7 +3198,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 /* TÍTULO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>h2 {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>h2 {
     grid-column:
         1 / -1;
 
@@ -3228,7 +3227,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 /* LINHA AMARELA */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>h2::after {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>h2::after {
     content: "";
 
     display: block;
@@ -3255,7 +3254,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 /* SUBTÍTULO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>p {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>p {
     grid-column:
         1 / -1;
 
@@ -3280,7 +3279,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
    2. CARDS "COMO FUNCIONA"
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article {
     position: relative;
 
     min-height:
@@ -3310,7 +3309,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:hover {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:hover {
     transform:
         translateY(-8px);
 
@@ -3321,19 +3320,19 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 /* CORES DIFERENTES */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(1) {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(1) {
     background:
         var(--amarelo-claro);
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(2) {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(2) {
     background:
         rgba(72, 228, 221, 0.23);
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(3) {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(3) {
     background:
         rgba(172, 230, 133, 0.38);
 }
@@ -3341,7 +3340,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 /* NÚMERO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article>span {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article>span {
     width: 61px;
     height: 61px;
 
@@ -3381,7 +3380,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 /* SEGUNDO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(2)>span {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(2)>span {
     background:
         var(--turquesa);
 
@@ -3392,7 +3391,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 /* TERCEIRO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(3)>span {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(3)>span {
     background:
         var(--verde-claro);
 }
@@ -3400,7 +3399,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 /* TÍTULO DOS CARDS */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article>h3 {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article>h3 {
     margin-bottom:
         12px;
 
@@ -3420,7 +3419,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 /* TEXTO DOS CARDS */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article>p {
+body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article>p {
     margin: 0;
 
     color:
@@ -3441,374 +3440,10 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)
 
 
 /* =========================================================
-   3. TESTE DE NÍVEL
-========================================================= */
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste {
-    position: relative;
-
-    width:
-        min(1180px, calc(100% - 50px));
-
-    margin:
-        35px auto 95px;
-
-    padding:
-        clamp(50px, 7vw, 80px);
-
-    overflow:
-        hidden;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius:
-        45px;
-
-    background:
-        var(--amarelo);
-
-    box-shadow:
-        12px 14px 0 rgba(46, 88, 129, 0.11);
-}
-
-
-/* CÍRCULO DECORATIVO */
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste::before {
-    content:
-        "🧠";
-
-    position:
-        absolute;
-
-    width:
-        150px;
-
-    height:
-        150px;
-
-    top:
-        35px;
-
-    right:
-        55px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius:
-        50%;
-
-    background:
-        var(--turquesa);
-
-    font-size:
-        4.6rem;
-
-    box-shadow:
-        6px 7px 0 rgba(46, 88, 129, 0.10);
-
-    transform:
-        rotate(5deg);
-}
-
-
-/* FORMA DECORATIVA */
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste::after {
-    content: "";
-
-    position:
-        absolute;
-
-    width:
-        300px;
-
-    height:
-        300px;
-
-    right:
-        -150px;
-
-    bottom:
-        -180px;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius:
-        50%;
-
-    background:
-        var(--verde-claro);
-}
-
-
-/* TAG */
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>span {
-    position:
-        relative;
-
-    z-index:
-        3;
-
-    width:
-        fit-content;
-
-    margin-bottom:
-        20px;
-
-    padding:
-        9px 15px;
-
-    display:
-        inline-flex;
-
-    border:
-        2px solid var(--azul-escuro);
-
-    border-radius:
-        999px;
-
-    background:
-        var(--branco);
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        0.72rem;
-
-    font-weight:
-        950;
-
-    box-shadow:
-        3px 4px 0 rgba(46, 88, 129, 0.10);
-}
-
-
-/* TÍTULO */
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>h2 {
-    position:
-        relative;
-
-    z-index:
-        3;
-
-    max-width:
-        700px;
-
-    margin-bottom:
-        18px;
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        clamp(2.5rem, 5vw, 4.5rem);
-
-    font-weight:
-        950;
-
-    line-height:
-        0.98;
-
-    letter-spacing:
-        -3px;
-}
-
-
-/* TEXTO PRINCIPAL */
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>p {
-    position:
-        relative;
-
-    z-index:
-        3;
-
-    max-width:
-        650px;
-
-    margin-bottom:
-        30px;
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        0.94rem;
-
-    font-weight:
-        650;
-
-    line-height:
-        1.7;
-}
-
-
-/* =========================================================
-   4. CARD INTERNO DO TESTE
-========================================================= */
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>div {
-    position:
-        relative;
-
-    z-index:
-        3;
-
-    width:
-        min(660px, 100%);
-
-    padding:
-        28px 30px;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius:
-        27px;
-
-    background:
-        var(--amarelo-claro);
-
-    box-shadow:
-        6px 7px 0 rgba(46, 88, 129, 0.10);
-}
-
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>div>h3 {
-    margin-bottom:
-        15px;
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        1.15rem;
-
-    font-weight:
-        950;
-}
-
-
-/* LISTA */
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>div>ul {
-    margin-bottom:
-        24px;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap:
-        10px 18px;
-
-    list-style:
-        none;
-}
-
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>div>ul>li {
-    padding:
-        9px 11px;
-
-    border-radius:
-        12px;
-
-    background:
-        rgba(255, 255, 255, 0.55);
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        0.78rem;
-
-    font-weight:
-        750;
-}
-
-
-/* BOTÃO */
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .btn-teste-principal {
-    min-height:
-        52px;
-
-    padding:
-        0 24px;
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius:
-        999px;
-
-    background:
-        var(--turquesa);
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        0.8rem;
-
-    font-weight:
-        950;
-
-    box-shadow:
-        0 6px 0 rgba(46, 88, 129, 0.13);
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .btn-teste-principal:hover {
-    background:
-        var(--verde-claro);
-
-    transform:
-        translateY(-4px);
-
-    box-shadow:
-        0 10px 0 rgba(46, 88, 129, 0.10);
-}
-
-
-/* =========================================================
    5. QUIZ
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz {
     position:
         relative;
 
@@ -3848,7 +3483,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz {
 
 /* DECORAÇÃO ESQUERDA */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz::before {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz::before {
     content:
         "⚡";
 
@@ -3895,7 +3530,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz::before {
 
 /* DECORAÇÃO DIREITA */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz::after {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz::after {
     content: "";
 
     position:
@@ -3928,9 +3563,9 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz::after {
    6. TEXTOS DO QUIZ
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>span,
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>h2,
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>p {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>span,
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>h2,
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>p {
     position:
         relative;
 
@@ -3944,7 +3579,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>p {
 
 /* TAG */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>span {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>span {
     width:
         fit-content;
 
@@ -3979,7 +3614,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>span {
 
 /* TÍTULO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>h2 {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>h2 {
     align-self:
         end;
 
@@ -4008,7 +3643,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>h2 {
 
 /* PARÁGRAFOS */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>p {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>p {
     max-width:
         550px;
 
@@ -4026,7 +3661,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>p {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>p:first-of-type {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>p:first-of-type {
     margin-bottom:
         -25px;
 
@@ -4039,7 +3674,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>p:first-of-type {
    7. CARD "PREPARE-SE"
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>div {
     position:
         relative;
 
@@ -4092,7 +3727,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div {
 
 /* LÂMPADA */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div>span {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>div>span {
     width:
         100px;
 
@@ -4136,7 +3771,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div>span {
 
 /* TÍTULO DO CARD */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div>h3 {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>div>h3 {
     margin-bottom:
         14px;
 
@@ -4159,7 +3794,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div>h3 {
 
 /* TEXTO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div>p {
+body:has(#inicio):has(#quiz):has(#ranking) #quiz>div>p {
     max-width:
         360px;
 
@@ -4184,7 +3819,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div>p {
    8. BOTÃO COMEÇAR QUIZ
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz {
+body:has(#inicio):has(#quiz):has(#ranking) #btn-comecar-quiz {
     min-width:
         210px;
 
@@ -4225,7 +3860,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:hover {
+body:has(#inicio):has(#quiz):has(#ranking) #btn-comecar-quiz:hover {
     background:
         var(--verde-claro);
 
@@ -4237,7 +3872,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:hover {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active {
+body:has(#inicio):has(#quiz):has(#ranking) #btn-comecar-quiz:active {
     transform:
         translateY(2px);
 
@@ -4274,7 +3909,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
 
     /* COMO FUNCIONA */
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2) {
+    body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2) {
         padding:
             85px 30px 90px;
 
@@ -4283,50 +3918,15 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article {
+    body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article {
         min-height:
             auto;
     }
 
 
-    /* TESTE */
-
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste {
-        padding:
-            55px 40px 60px;
-    }
-
-
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste::before {
-        width:
-            110px;
-
-        height:
-            110px;
-
-        top:
-            30px;
-
-        right:
-            30px;
-
-        font-size:
-            3.4rem;
-    }
-
-
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>h2 {
-        max-width:
-            550px;
-
-        padding-right:
-            70px;
-    }
-
-
     /* QUIZ */
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz {
         min-height:
             auto;
 
@@ -4347,25 +3947,25 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>span {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz>span {
         margin-bottom:
             5px;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>h2 {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz>h2 {
         margin:
             0;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>p:first-of-type {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz>p:first-of-type {
         margin-bottom:
             -8px;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz>div {
         width:
             min(560px, 100%);
 
@@ -4387,7 +3987,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
 
     /* COMO FUNCIONA */
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2) {
+    body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2) {
         padding:
             70px 18px 75px;
 
@@ -4396,7 +3996,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>h2 {
+    body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>h2 {
         font-size:
             2.6rem;
 
@@ -4405,7 +4005,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>main>section:nth-child(2)>article {
+    body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article {
         padding:
             25px 22px;
 
@@ -4420,92 +4020,9 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
     }
 
 
-    /* TESTE */
-
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste {
-        width:
-            calc(100% - 24px);
-
-        margin:
-            20px auto 70px;
-
-        padding:
-            35px 20px 40px;
-
-        border-width:
-            3px;
-
-        border-radius:
-            30px;
-
-        box-shadow:
-            7px 8px 0 rgba(46, 88, 129, 0.10);
-    }
-
-
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste::before {
-        position:
-            relative;
-
-        width:
-            82px;
-
-        height:
-            82px;
-
-        top:
-            auto;
-
-        right:
-            auto;
-
-        margin:
-            0 0 20px auto;
-
-        font-size:
-            2.5rem;
-
-        border-width:
-            3px;
-    }
-
-
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>h2 {
-        padding-right:
-            0;
-
-        font-size:
-            2.55rem;
-
-        letter-spacing:
-            -1.8px;
-    }
-
-
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>div {
-        padding:
-            23px 18px;
-    }
-
-
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #teste>div>ul {
-        grid-template-columns:
-            1fr;
-    }
-
-
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .btn-teste-principal {
-        width:
-            100%;
-
-        text-align:
-            center;
-    }
-
-
     /* QUIZ */
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz {
         padding:
             65px 18px 80px;
 
@@ -4517,7 +4034,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>h2 {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz>h2 {
         font-size:
             2.8rem;
 
@@ -4526,13 +4043,13 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>p {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz>p {
         font-size:
             0.87rem;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz>div {
         padding:
             35px 20px;
 
@@ -4550,7 +4067,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div>span {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz>div>span {
         width:
             82px;
 
@@ -4562,7 +4079,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz {
+    body:has(#inicio):has(#quiz):has(#ranking) #btn-comecar-quiz {
         width:
             100%;
     }
@@ -4576,7 +4093,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
 
 @media (prefers-reduced-motion: reduce) {
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #quiz>div>span {
+    body:has(#inicio):has(#quiz):has(#ranking) #quiz>div>span {
         animation:
             none;
     }
@@ -4596,7 +4113,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #btn-comecar-quiz:active 
    1. RANKING PRINCIPAL
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #ranking {
+body:has(#inicio):has(#quiz):has(#ranking) #ranking {
     position: relative;
 
     width:
@@ -4638,7 +4155,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #ranking {
 
 /* DECORAÇÃO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #ranking::before {
+body:has(#inicio):has(#quiz):has(#ranking) #ranking::before {
     content: "";
 
     position: absolute;
@@ -4659,7 +4176,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #ranking::before {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #ranking::after {
+body:has(#inicio):has(#quiz):has(#ranking) #ranking::after {
     content: "⭐";
 
     position: absolute;
@@ -4681,7 +4198,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #ranking::after {
    2. CONTEÚDO ESQUERDO DO RANKING
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo {
     position: relative;
 
     z-index: 3;
@@ -4690,7 +4207,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteu
 
 /* TAG */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-tag {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-tag {
     width: fit-content;
 
     margin-bottom: 20px;
@@ -4725,7 +4242,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-tag {
 
 /* TÍTULO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2 {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2 {
     max-width: 650px;
 
     margin-bottom: 20px;
@@ -4746,7 +4263,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteu
 
 /* LINHA DE DESTAQUE */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2::after {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2::after {
     content: "";
 
     display: block;
@@ -4772,7 +4289,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteu
 
 /* TEXTO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo>p {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo>p {
     max-width: 600px;
 
     margin-bottom: 30px;
@@ -4792,7 +4309,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteu
    3. ESTATÍSTICAS DO RANKING
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estatisticas {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas {
     margin-bottom: 30px;
 
     display: grid;
@@ -4804,7 +4321,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estati
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div {
     min-height: 130px;
 
     padding:
@@ -4835,7 +4352,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estati
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div:hover {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div:hover {
     background:
         var(--branco);
 
@@ -4844,12 +4361,12 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estati
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div>span {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div>span {
     font-size: 1.7rem;
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div>strong {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div>strong {
     color:
         var(--azul-escuro);
 
@@ -4859,7 +4376,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estati
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div>small {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div>small {
     color:
         var(--texto-suave);
 
@@ -4873,7 +4390,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estati
    4. BOTÃO VER RANKING
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .btn-ranking-principal {
+body:has(#inicio):has(#quiz):has(#ranking) .btn-ranking-principal {
     min-height: 54px;
 
     padding:
@@ -4910,7 +4427,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .btn-ranking-principal {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .btn-ranking-principal:hover {
+body:has(#inicio):has(#quiz):has(#ranking) .btn-ranking-principal:hover {
     background:
         var(--turquesa);
 
@@ -4926,7 +4443,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .btn-ranking-principal:ho
    5. ÁREA VISUAL DO RANKING
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-visual {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-visual {
     position: relative;
 
     z-index: 3;
@@ -4966,7 +4483,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-visual
    6. TROFÉU
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-trofeu {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-trofeu {
     width: 100px;
     height: 100px;
 
@@ -5002,7 +4519,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-trofeu {
    7. MINI RANKING REAL
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking {
+body:has(#inicio):has(#quiz):has(#ranking) #mini-ranking {
     width: 100%;
 
     display: flex;
@@ -5018,7 +4535,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking {
    Esses DIVs são criados pelo JavaScript.
 */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div {
+body:has(#inicio):has(#quiz):has(#ranking) #mini-ranking>div {
     width: 100%;
 
     min-height: 55px;
@@ -5053,7 +4570,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div:hover {
+body:has(#inicio):has(#quiz):has(#ranking) #mini-ranking>div:hover {
     border-color:
         var(--azul-escuro);
 
@@ -5064,7 +4581,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div:hover {
 
 /* 1º */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div:nth-child(1) {
+body:has(#inicio):has(#quiz):has(#ranking) #mini-ranking>div:nth-child(1) {
     border-color:
         var(--azul-escuro);
 
@@ -5075,7 +4592,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div:nth-chi
 
 /* 2º */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div:nth-child(2) {
+body:has(#inicio):has(#quiz):has(#ranking) #mini-ranking>div:nth-child(2) {
     background:
         rgba(72, 228, 221, 0.22);
 }
@@ -5083,7 +4600,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div:nth-chi
 
 /* 3º */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div:nth-child(3) {
+body:has(#inicio):has(#quiz):has(#ranking) #mini-ranking>div:nth-child(3) {
     background:
         rgba(172, 230, 133, 0.35);
 }
@@ -5091,7 +4608,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking>div:nth-chi
 
 /* QUALQUER SPAN CRIADO PELO JS */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking span {
+body:has(#inicio):has(#quiz):has(#ranking) #mini-ranking span {
     color:
         var(--azul-escuro);
 }
@@ -5099,7 +4616,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking span {
 
 /* QUALQUER STRONG CRIADO PELO JS */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking strong {
+body:has(#inicio):has(#quiz):has(#ranking) #mini-ranking strong {
     color:
         var(--azul-escuro);
 
@@ -5111,7 +4628,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #mini-ranking strong {
    8. POSIÇÃO DO USUÁRIO
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-mini-legenda {
+body:has(#inicio):has(#quiz):has(#ranking) .ranking-mini-legenda {
     width: 100%;
 
     margin-top: auto;
@@ -5133,7 +4650,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-mini-legenda {
    9. SOBRE O ECOENERGIA
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre {
+body:has(#inicio):has(#quiz):has(#ranking) #sobre {
     position: relative;
 
     width:
@@ -5164,7 +4681,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre {
 
 /* FOLHA DECORATIVA */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre::before {
+body:has(#inicio):has(#quiz):has(#ranking) #sobre::before {
     content: "🌱";
 
     position: absolute;
@@ -5197,7 +4714,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre::before {
 
 /* GOTINHA DECORATIVA */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre::after {
+body:has(#inicio):has(#quiz):has(#ranking) #sobre::after {
     content: "💧";
 
     position: absolute;
@@ -5230,7 +4747,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre::after {
 
 /* TÍTULO */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre>h2 {
+body:has(#inicio):has(#quiz):has(#ranking) #sobre>h2 {
     position: relative;
 
     z-index: 2;
@@ -5249,7 +4766,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre>h2 {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre>h2::after {
+body:has(#inicio):has(#quiz):has(#ranking) #sobre>h2::after {
     content: "";
 
     display: block;
@@ -5273,7 +4790,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre>h2::after {
 
 /* TEXTOS */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre>p {
+body:has(#inicio):has(#quiz):has(#ranking) #sobre>p {
     position: relative;
 
     z-index: 2;
@@ -5298,7 +4815,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre>p {
    10. FOOTER
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer {
+body:has(#inicio):has(#quiz):has(#ranking)>footer {
     position: relative;
 
     width: 100%;
@@ -5321,7 +4838,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer {
 
 /* FAIXA DECORATIVA */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer::before {
+body:has(#inicio):has(#quiz):has(#ranking)>footer::before {
     content: "";
 
     position: absolute;
@@ -5347,7 +4864,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer::before {
    11. GRID DO FOOTER
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child {
+body:has(#inicio):has(#quiz):has(#ranking)>footer>div:first-child {
     position: relative;
 
     z-index: 2;
@@ -5371,7 +4888,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child {
    12. MARCA NO FOOTER
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child>div:first-child>span {
+body:has(#inicio):has(#quiz):has(#ranking)>footer>div:first-child>div:first-child>span {
     width: 52px;
     height: 52px;
 
@@ -5394,7 +4911,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child>di
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child>div:first-child>h2 {
+body:has(#inicio):has(#quiz):has(#ranking)>footer>div:first-child>div:first-child>h2 {
     margin-bottom: 10px;
 
     color:
@@ -5410,7 +4927,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child>di
    13. TÍTULOS DO FOOTER
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer h3 {
+body:has(#inicio):has(#quiz):has(#ranking)>footer h3 {
     margin-bottom: 17px;
 
     color:
@@ -5430,7 +4947,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer h3 {
    14. TEXTOS DO FOOTER
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer p {
+body:has(#inicio):has(#quiz):has(#ranking)>footer p {
     color:
         rgba(255, 255, 255, 0.72);
 
@@ -5446,7 +4963,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer p {
    15. LINKS DO FOOTER
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child>div {
+body:has(#inicio):has(#quiz):has(#ranking)>footer>div:first-child>div {
     display: flex;
 
     flex-direction: column;
@@ -5455,7 +4972,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child>di
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer a {
+body:has(#inicio):has(#quiz):has(#ranking)>footer a {
     margin-bottom: 9px;
 
     color:
@@ -5471,7 +4988,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer a {
 }
 
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer a:hover {
+body:has(#inicio):has(#quiz):has(#ranking)>footer a:hover {
     color:
         var(--amarelo);
 
@@ -5484,7 +5001,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer a:hover {
    16. PARTE INFERIOR DO FOOTER
 ========================================================= */
 
-body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
+body:has(#inicio):has(#quiz):has(#ranking)>footer>div:last-child {
     position: relative;
 
     z-index: 2;
@@ -5552,7 +5069,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
 
 @media (max-width: 900px) {
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #ranking {
+    body:has(#inicio):has(#quiz):has(#ranking) #ranking {
         padding:
             55px 40px;
 
@@ -5563,31 +5080,31 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo {
         text-align: center;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-tag {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-tag {
         margin-left: auto;
         margin-right: auto;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2,
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo>p {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2,
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo>p {
         margin-left: auto;
         margin-right: auto;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2::after {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2::after {
         margin-left: auto;
         margin-right: auto;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child {
+    body:has(#inicio):has(#quiz):has(#ranking)>footer>div:first-child {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
 
@@ -5605,7 +5122,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
 
     /* RANKING */
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #ranking {
+    body:has(#inicio):has(#quiz):has(#ranking) #ranking {
         width:
             calc(100% - 24px);
 
@@ -5626,29 +5143,29 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2 {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2 {
         font-size: 2.7rem;
 
         letter-spacing: -2px;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estatisticas {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas {
         grid-template-columns: 1fr;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div {
         min-height: 100px;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .btn-ranking-principal {
+    body:has(#inicio):has(#quiz):has(#ranking) .btn-ranking-principal {
         width: 100%;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-visual {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-visual {
         min-height: 390px;
 
         padding:
@@ -5667,7 +5184,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
 
     /* SOBRE */
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre {
+    body:has(#inicio):has(#quiz):has(#ranking) #sobre {
         width:
             calc(100% - 24px);
 
@@ -5685,17 +5202,17 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre>h2 {
+    body:has(#inicio):has(#quiz):has(#ranking) #sobre>h2 {
         font-size: 2.5rem;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre>p {
+    body:has(#inicio):has(#quiz):has(#ranking) #sobre>p {
         font-size: 0.84rem;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre::before {
+    body:has(#inicio):has(#quiz):has(#ranking) #sobre::before {
         width: 67px;
         height: 67px;
 
@@ -5703,7 +5220,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre::after {
+    body:has(#inicio):has(#quiz):has(#ranking) #sobre::after {
         width: 62px;
         height: 62px;
 
@@ -5713,20 +5230,20 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
 
     /* FOOTER */
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer {
+    body:has(#inicio):has(#quiz):has(#ranking)>footer {
         padding:
             70px 20px 22px;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:first-child {
+    body:has(#inicio):has(#quiz):has(#ranking)>footer>div:first-child {
         grid-template-columns: 1fr;
 
         gap: 35px;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
+    body:has(#inicio):has(#quiz):has(#ranking)>footer>div:last-child {
         margin-top: 35px;
 
         flex-direction: column;
@@ -5743,12 +5260,12 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
 
 @media (max-width: 390px) {
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2 {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo>h2 {
         font-size: 2.35rem;
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-trofeu {
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-trofeu {
         width: 85px;
         height: 85px;
 
@@ -5756,7 +5273,7 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
     }
 
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #sobre>h2 {
+    body:has(#inicio):has(#quiz):has(#ranking) #sobre>h2 {
         font-size: 2.15rem;
     }
 
@@ -5769,2491 +5286,14 @@ body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>footer>div:last-child {
 
 @media (prefers-reduced-motion: reduce) {
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .ranking-trofeu,
+    body:has(#inicio):has(#quiz):has(#ranking) .ranking-trofeu,
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) #ranking::after {
+    body:has(#inicio):has(#quiz):has(#ranking) #ranking::after {
         animation: none;
     }
 
 }
 
-/* =========================================================
-   =========================================================
-   ECOENERGIA — TESTE DE NÍVEL
-   BLOCO 1
-   HEADER + INTRODUÇÃO
-   =========================================================
-   ========================================================= */
-
-
-/* =========================================================
-   1. PÁGINA
-========================================================= */
-
-body.pagina-teste {
-    min-height: 100vh;
-
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    background:
-        linear-gradient(135deg,
-            #F7FFF3 0%,
-            #E9FFD9 100%);
-
-    color:
-        var(--azul-escuro);
-
-    overflow-x: hidden;
-}
-
-
-/* =========================================================
-   2. HEADER
-========================================================= */
-
-body.pagina-teste .teste-header {
-    position: relative;
-    z-index: 100;
-
-    width: 100%;
-    min-height: 76px;
-
-    padding:
-        12px clamp(22px, 6vw, 90px);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 25px;
-
-    border-bottom:
-        3px solid var(--azul-escuro);
-
-    background:
-        var(--turquesa);
-
-    box-shadow:
-        0 6px 0 rgba(46, 88, 129, 0.07);
-}
-
-
-/* =========================================================
-   3. LOGO
-========================================================= */
-
-body.pagina-teste .teste-header .logo {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    color:
-        var(--azul-escuro);
-
-    font-size: 1.4rem;
-
-    font-weight: 950;
-
-    letter-spacing: -0.8px;
-
-    transition:
-        transform 0.2s ease;
-}
-
-
-body.pagina-teste .teste-header .logo::first-letter {
-    font-size: 1.5rem;
-}
-
-
-body.pagina-teste .teste-header .logo:hover {
-    transform:
-        translateY(-2px);
-}
-
-
-body.pagina-teste .teste-header .logo span {
-    color:
-        var(--azul-escuro);
-}
-
-
-/* =========================================================
-   4. BOTÃO VOLTAR
-========================================================= */
-
-body.pagina-teste .voltar-inicio {
-    min-height: 42px;
-
-    padding:
-        0 18px;
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        2px solid var(--azul-escuro);
-
-    border-radius:
-        999px;
-
-    background:
-        var(--branco);
-
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.76rem;
-
-    font-weight: 900;
-
-    box-shadow:
-        3px 4px 0 rgba(46, 88, 129, 0.10);
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-body.pagina-teste .voltar-inicio:hover {
-    background:
-        var(--amarelo);
-
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        4px 6px 0 rgba(46, 88, 129, 0.09);
-}
-
-
-/* =========================================================
-   5. CONTAINER PRINCIPAL
-========================================================= */
-
-body.pagina-teste .teste-container {
-    position: relative;
-
-    width: 100%;
-    min-height:
-        calc(100vh - 76px);
-
-    flex: 1;
-
-    margin: 0;
-    padding:
-        70px 25px 100px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
-    background: transparent;
-
-    border: 0;
-    border-radius: 0;
-
-    box-shadow: none;
-}
-
-
-/* BOLHA TURQUESA */
-
-body.pagina-teste .teste-container::before {
-    content: "";
-
-    position: absolute;
-
-    width: 380px;
-    height: 380px;
-
-    top: -190px;
-    right: -150px;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius: 50%;
-
-    background:
-        var(--turquesa);
-
-    opacity: 0.65;
-}
-
-
-/* BOLHA AMARELA */
-
-body.pagina-teste .teste-container::after {
-    content: "";
-
-    position: absolute;
-
-    width: 290px;
-    height: 290px;
-
-    left: -160px;
-    bottom: -140px;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius: 50%;
-
-    background:
-        var(--amarelo);
-
-    opacity: 0.75;
-}
-
-
-/* =========================================================
-   6. INTRODUÇÃO
-========================================================= */
-
-body.pagina-teste .teste-intro {
-    position: relative;
-    z-index: 5;
-
-    width:
-        min(920px, 100%);
-
-    margin: 0 auto;
-
-    padding:
-        clamp(45px, 7vw, 75px);
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    text-align: center;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius: 48px;
-
-    background:
-        var(--amarelo-claro);
-
-    box-shadow:
-        12px 14px 0 rgba(46, 88, 129, 0.11);
-
-    animation:
-        entradaTeste 0.6s ease both;
-}
-
-
-/* DECORAÇÃO INTERNA */
-
-body.pagina-teste .teste-intro::before {
-    content: "💧";
-
-    position: absolute;
-
-    width: 72px;
-    height: 72px;
-
-    top: 35px;
-    left: 40px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 22px;
-
-    background:
-        var(--turquesa);
-
-    font-size: 2rem;
-
-    transform:
-        rotate(-10deg);
-
-    box-shadow:
-        4px 5px 0 rgba(46, 88, 129, 0.09);
-}
-
-
-body.pagina-teste .teste-intro::after {
-    content: "⚡";
-
-    position: absolute;
-
-    width: 68px;
-    height: 68px;
-
-    right: 40px;
-    bottom: 35px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 50%;
-
-    background:
-        var(--verde-claro);
-
-    font-size: 1.9rem;
-
-    transform:
-        rotate(9deg);
-}
-
-
-/* =========================================================
-   7. ÍCONE DO CÉREBRO
-========================================================= */
-
-body.pagina-teste .teste-icone {
-    position: relative;
-    z-index: 3;
-
-    width: 125px;
-    height: 125px;
-
-    margin-bottom: 25px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius: 38px;
-
-    background:
-        var(--turquesa);
-
-    font-size: 4rem;
-
-    box-shadow:
-        7px 8px 0 rgba(46, 88, 129, 0.11);
-
-    transform:
-        rotate(-4deg);
-
-    animation:
-        cerebroFlutuar 4s ease-in-out infinite;
-}
-
-
-/* =========================================================
-   8. TAG
-========================================================= */
-
-body.pagina-teste .teste-tag {
-    position: relative;
-    z-index: 3;
-
-    width: fit-content;
-
-    margin-bottom: 17px;
-
-    padding:
-        9px 16px;
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        2px solid var(--azul-escuro);
-
-    border-radius:
-        999px;
-
-    background:
-        var(--amarelo);
-
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.72rem;
-
-    font-weight: 950;
-
-    box-shadow:
-        3px 4px 0 rgba(46, 88, 129, 0.09);
-}
-
-
-/* =========================================================
-   9. TÍTULO
-========================================================= */
-
-body.pagina-teste .teste-intro>h1 {
-    position: relative;
-    z-index: 3;
-
-    max-width: 750px;
-
-    margin-bottom: 20px;
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        clamp(2.8rem, 6vw, 5rem);
-
-    font-weight: 950;
-
-    line-height: 0.96;
-
-    letter-spacing: -3px;
-}
-
-
-body.pagina-teste .teste-intro>h1>span {
-    display: block;
-
-    color:
-        var(--turquesa-escuro);
-}
-
-
-/* RISQUINHO AMARELO/AZUL */
-
-body.pagina-teste .teste-intro>h1::after {
-    content: "";
-
-    display: block;
-
-    width: 130px;
-    height: 11px;
-
-    margin:
-        18px auto 0;
-
-    border:
-        2px solid var(--azul-escuro);
-
-    border-radius:
-        999px;
-
-    background:
-        var(--amarelo);
-
-    transform:
-        rotate(-2deg);
-}
-
-
-/* =========================================================
-   10. TEXTO DA INTRODUÇÃO
-========================================================= */
-
-body.pagina-teste .teste-intro>p {
-    position: relative;
-    z-index: 3;
-
-    max-width: 650px;
-
-    margin-bottom: 32px;
-
-    color:
-        var(--texto-suave);
-
-    font-size:
-        0.95rem;
-
-    font-weight: 650;
-
-    line-height: 1.75;
-}
-
-
-/* =========================================================
-   11. REGRAS
-========================================================= */
-
-body.pagina-teste .regras-teste {
-    position: relative;
-    z-index: 3;
-
-    width: 100%;
-
-    margin-bottom: 35px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 13px;
-}
-
-
-/* CARD */
-
-body.pagina-teste .regra {
-    min-height: 125px;
-
-    padding:
-        17px 14px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 10px;
-
-    border:
-        2px solid var(--azul-escuro);
-
-    border-radius: 22px;
-
-    background:
-        var(--branco);
-
-    box-shadow:
-        4px 5px 0 rgba(46, 88, 129, 0.08);
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-}
-
-
-body.pagina-teste .regra:nth-child(1) {
-    background:
-        rgba(72, 228, 221, 0.22);
-}
-
-
-body.pagina-teste .regra:nth-child(2) {
-    background:
-        rgba(255, 233, 32, 0.24);
-}
-
-
-body.pagina-teste .regra:nth-child(3) {
-    background:
-        rgba(172, 230, 133, 0.34);
-}
-
-
-body.pagina-teste .regra:hover {
-    transform:
-        translateY(-5px);
-}
-
-
-/* EMOJI */
-
-body.pagina-teste .regra>span {
-    font-size: 1.8rem;
-}
-
-
-/* TEXTO INTERNO */
-
-body.pagina-teste .regra>div {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-}
-
-
-body.pagina-teste .regra strong {
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.79rem;
-
-    font-weight: 950;
-}
-
-
-body.pagina-teste .regra small {
-    color:
-        var(--texto-suave);
-
-    font-size: 0.65rem;
-
-    font-weight: 650;
-
-    line-height: 1.4;
-}
-
-
-/* =========================================================
-   12. BOTÃO COMEÇAR
-========================================================= */
-
-body.pagina-teste #btn-iniciar-teste {
-    position: relative;
-    z-index: 4;
-
-    min-width: 235px;
-    min-height: 57px;
-
-    padding:
-        0 30px;
-
-    cursor: pointer;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius:
-        999px;
-
-    background:
-        var(--amarelo);
-
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.84rem;
-
-    font-weight: 950;
-
-    box-shadow:
-        0 7px 0 rgba(46, 88, 129, 0.14);
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-body.pagina-teste #btn-iniciar-teste:hover {
-    background:
-        var(--turquesa);
-
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 11px 0 rgba(46, 88, 129, 0.10);
-}
-
-
-body.pagina-teste #btn-iniciar-teste:active {
-    transform:
-        translateY(2px);
-
-    box-shadow:
-        0 3px 0 rgba(46, 88, 129, 0.12);
-}
-
-
-/* =========================================================
-   13. FOOTER DO TESTE
-========================================================= */
-
-body.pagina-teste .teste-footer {
-    width: 100%;
-
-    padding:
-        25px 30px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    border-top:
-        3px solid var(--azul-escuro);
-
-    background:
-        var(--azul-escuro);
-
-    color:
-        var(--branco);
-}
-
-
-body.pagina-teste .teste-footer p {
-    color:
-        var(--branco);
-
-    font-size: 0.76rem;
-
-    font-weight: 750;
-}
-
-
-body.pagina-teste .teste-footer span {
-    color:
-        rgba(255, 255, 255, 0.70);
-
-    font-size: 0.7rem;
-
-    font-weight: 650;
-}
-
-
-/* =========================================================
-   14. ESCONDIDO
-   NÃO REMOVER — TESTE.JS USA ESSA CLASSE
-========================================================= */
-
-body.pagina-teste .escondido {
-    display: none !important;
-}
-
-
-/* =========================================================
-   15. ANIMAÇÕES
-========================================================= */
-
-@keyframes entradaTeste {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px) scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0) scale(1);
-    }
-
-}
-
-
-@keyframes cerebroFlutuar {
-
-    0%,
-    100% {
-        transform:
-            translateY(0) rotate(-4deg);
-    }
-
-    50% {
-        transform:
-            translateY(-9px) rotate(4deg);
-    }
-
-}
-
-
-/* =========================================================
-   16. TABLET
-========================================================= */
-
-@media (max-width: 760px) {
-
-    body.pagina-teste .teste-container {
-        padding:
-            50px 20px 75px;
-    }
-
-
-    body.pagina-teste .teste-intro {
-        padding:
-            45px 28px;
-
-        border-radius: 36px;
-    }
-
-
-    body.pagina-teste .teste-intro::before {
-        width: 58px;
-        height: 58px;
-
-        top: 25px;
-        left: 25px;
-
-        font-size: 1.5rem;
-    }
-
-
-    body.pagina-teste .teste-intro::after {
-        width: 58px;
-        height: 58px;
-
-        right: 25px;
-        bottom: 25px;
-
-        font-size: 1.5rem;
-    }
-
-
-    body.pagina-teste .regras-teste {
-        grid-template-columns: 1fr;
-    }
-
-
-    body.pagina-teste .regra {
-        min-height: 95px;
-
-        flex-direction: row;
-
-        justify-content: flex-start;
-
-        text-align: left;
-
-        padding:
-            16px 20px;
-    }
-
-}
-
-
-/* =========================================================
-   17. CELULAR
-========================================================= */
-
-@media (max-width: 520px) {
-
-    body.pagina-teste .teste-header {
-        min-height: 67px;
-
-        padding:
-            10px 15px;
-
-        border-bottom-width: 2px;
-    }
-
-
-    body.pagina-teste .teste-header .logo {
-        font-size: 1.12rem;
-    }
-
-
-    body.pagina-teste .voltar-inicio {
-        min-height: 37px;
-
-        padding:
-            0 13px;
-
-        font-size: 0.68rem;
-    }
-
-
-    body.pagina-teste .teste-container {
-        min-height:
-            calc(100vh - 67px);
-
-        padding:
-            35px 12px 60px;
-    }
-
-
-    body.pagina-teste .teste-intro {
-        padding:
-            35px 17px;
-
-        border-width: 3px;
-
-        border-radius: 29px;
-
-        box-shadow:
-            7px 8px 0 rgba(46, 88, 129, 0.10);
-    }
-
-
-    body.pagina-teste .teste-intro::before,
-    body.pagina-teste .teste-intro::after {
-        display: none;
-    }
-
-
-    body.pagina-teste .teste-icone {
-        width: 95px;
-        height: 95px;
-
-        margin-bottom: 22px;
-
-        border-width: 3px;
-
-        border-radius: 29px;
-
-        font-size: 3rem;
-
-        box-shadow:
-            5px 6px 0 rgba(46, 88, 129, 0.10);
-    }
-
-
-    body.pagina-teste .teste-intro>h1 {
-        font-size:
-            clamp(2.5rem, 13vw, 3.5rem);
-
-        line-height: 0.98;
-
-        letter-spacing: -2px;
-    }
-
-
-    body.pagina-teste .teste-intro>p {
-        font-size: 0.85rem;
-    }
-
-
-    body.pagina-teste #btn-iniciar-teste {
-        width: 100%;
-
-        min-width: 0;
-    }
-
-
-    body.pagina-teste .teste-footer {
-        padding:
-            22px 18px;
-
-        flex-direction: column;
-
-        text-align: center;
-
-        border-top-width: 2px;
-    }
-
-}
-
-
-/* =========================================================
-   18. MOVIMENTO REDUZIDO
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    body.pagina-teste .teste-intro,
-
-    body.pagina-teste .teste-icone {
-        animation: none;
-    }
-}
-
-/* =========================================================
-   AJUSTE FINAL — TESTE DE NÍVEL NO PC / NOTEBOOK
-   MAIS CENTRALIZADO + COMPACTO + LEGÍVEL
-========================================================= */
-
-@media (min-width: 761px) {
-
-    /* CENTRALIZA O CARD NA ÁREA DA TELA */
-
-    body.pagina-teste .teste-container {
-        min-height:
-            calc(100vh - 76px);
-
-        padding:
-            28px 25px 45px;
-
-        align-items: center;
-        justify-content: center;
-    }
-
-
-    /* CARD PRINCIPAL */
-
-    body.pagina-teste .teste-intro {
-        width:
-            min(920px, 100%);
-
-        padding:
-            30px 50px 34px;
-
-        border-radius: 40px;
-
-        box-shadow:
-            10px 11px 0 rgba(46, 88, 129, 0.11);
-    }
-
-
-    /* CÉREBRO — MENOR PARA LIBERAR ESPAÇO */
-
-    body.pagina-teste .teste-icone {
-        width: 82px;
-        height: 82px;
-
-        margin-bottom: 13px;
-
-        border-width: 3px;
-
-        border-radius: 26px;
-
-        font-size: 2.7rem;
-
-        box-shadow:
-            5px 6px 0 rgba(46, 88, 129, 0.10);
-    }
-
-
-    /* DECORAÇÕES LATERAIS */
-
-    body.pagina-teste .teste-intro::before {
-        width: 55px;
-        height: 55px;
-
-        top: 27px;
-        left: 30px;
-
-        font-size: 1.5rem;
-    }
-
-
-    body.pagina-teste .teste-intro::after {
-        width: 55px;
-        height: 55px;
-
-        right: 30px;
-        bottom: 27px;
-
-        font-size: 1.5rem;
-    }
-
-
-    /* TAG */
-
-    body.pagina-teste .teste-tag {
-        margin-bottom: 9px;
-
-        padding:
-            6px 13px;
-
-        font-size: 0.68rem;
-    }
-
-
-    /* TÍTULO */
-
-    body.pagina-teste .teste-intro>h1 {
-        max-width: 760px;
-
-        margin-bottom: 10px;
-
-        font-size:
-            clamp(2.6rem, 4vw, 3.7rem);
-
-        line-height: 1;
-
-        letter-spacing: -2.5px;
-    }
-
-
-    body.pagina-teste .teste-intro>h1::after {
-        width: 100px;
-        height: 8px;
-
-        margin:
-            9px auto 0;
-    }
-
-
-    /* EXPLICAÇÃO — MANTÉM LEGIBILIDADE */
-
-    body.pagina-teste .teste-intro>p {
-        max-width: 700px;
-
-        margin-bottom: 17px;
-
-        font-size: 0.88rem;
-
-        font-weight: 700;
-
-        line-height: 1.5;
-    }
-
-
-    /* CARDS DAS REGRAS */
-
-    body.pagina-teste .regras-teste {
-        margin-bottom: 18px;
-
-        gap: 11px;
-    }
-
-
-    body.pagina-teste .regra {
-        min-height: 88px;
-
-        padding:
-            12px 14px;
-
-        gap: 7px;
-    }
-
-
-    body.pagina-teste .regra>span {
-        font-size: 1.6rem;
-    }
-
-
-    body.pagina-teste .regra strong {
-        font-size: 0.78rem;
-    }
-
-
-    body.pagina-teste .regra small {
-        font-size: 0.66rem;
-
-        line-height: 1.35;
-    }
-
-
-    /* BOTÃO PRINCIPAL */
-
-    body.pagina-teste #btn-iniciar-teste {
-        min-width: 245px;
-        min-height: 50px;
-
-        padding:
-            0 28px;
-
-        font-size: 0.82rem;
-    }
-
-}
-
-
-/* =========================================================
-   NOTEBOOKS COM MENOS ALTURA — EX.: 1366x768
-========================================================= */
-
-@media (min-width: 761px) and (max-height: 800px) {
-
-    body.pagina-teste .teste-container {
-        padding:
-            18px 25px 30px;
-
-        align-items: center;
-    }
-
-
-    body.pagina-teste .teste-intro {
-        padding:
-            22px 45px 25px;
-
-        border-radius: 35px;
-    }
-
-
-    body.pagina-teste .teste-icone {
-        width: 68px;
-        height: 68px;
-
-        margin-bottom: 8px;
-
-        border-radius: 22px;
-
-        font-size: 2.2rem;
-    }
-
-
-    body.pagina-teste .teste-tag {
-        margin-bottom: 7px;
-    }
-
-
-    body.pagina-teste .teste-intro>h1 {
-        margin-bottom: 7px;
-
-        font-size:
-            clamp(2.4rem, 3.5vw, 3.2rem);
-    }
-
-
-    body.pagina-teste .teste-intro>h1::after {
-        margin-top: 7px;
-    }
-
-
-    body.pagina-teste .teste-intro>p {
-        margin-bottom: 12px;
-
-        font-size: 0.84rem;
-
-        line-height: 1.45;
-    }
-
-
-    body.pagina-teste .regras-teste {
-        margin-bottom: 13px;
-
-        gap: 9px;
-    }
-
-
-    body.pagina-teste .regra {
-        min-height: 76px;
-
-        padding:
-            9px 12px;
-    }
-
-
-    body.pagina-teste #btn-iniciar-teste {
-        min-height: 47px;
-    }
-
-}
-
-/* =========================================================
-   =========================================================
-   ECOENERGIA — TESTE DE NÍVEL
-   BLOCO 2
-   PERGUNTAS + RESULTADO
-   =========================================================
-   ========================================================= */
-
-
-/* =========================================================
-   1. ÁREA DO TESTE
-========================================================= */
-
-body.pagina-teste .area-teste {
-    position: relative;
-    z-index: 5;
-
-    width: min(900px, 100%);
-
-    margin: 0 auto;
-
-    padding: 0;
-
-    background: transparent;
-
-    animation:
-        perguntaEntrando 0.45s ease both;
-}
-
-
-/* =========================================================
-   2. STATUS / PROGRESSO
-========================================================= */
-
-body.pagina-teste .teste-status {
-    width: 100%;
-
-    margin-bottom: 22px;
-
-    padding: 20px 24px;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 25px;
-
-    background:
-        var(--branco);
-
-    box-shadow:
-        6px 7px 0 rgba(46, 88, 129, 0.09);
-}
-
-
-body.pagina-teste .status-texto {
-    margin-bottom: 14px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-}
-
-
-body.pagina-teste #numero-pergunta {
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.8rem;
-
-    font-weight: 950;
-}
-
-
-body.pagina-teste #contador-acertos {
-    padding: 7px 12px;
-
-    border:
-        2px solid var(--azul-escuro);
-
-    border-radius: 999px;
-
-    background:
-        var(--amarelo);
-
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.7rem;
-
-    font-weight: 950;
-}
-
-
-/* =========================================================
-   3. BARRA DE PROGRESSO
-========================================================= */
-
-body.pagina-teste .barra-progresso {
-    width: 100%;
-    height: 18px;
-
-    overflow: hidden;
-
-    border:
-        2px solid var(--azul-escuro);
-
-    border-radius: 999px;
-
-    background:
-        #E8F2E5;
-}
-
-
-body.pagina-teste .progresso-preenchido {
-    width: 0;
-    height: 100%;
-
-    border-radius: 999px;
-
-    background:
-        linear-gradient(90deg,
-            var(--turquesa),
-            var(--verde-claro));
-
-    transition:
-        width 0.45s ease;
-}
-
-
-/* =========================================================
-   4. CARD DA PERGUNTA
-========================================================= */
-
-body.pagina-teste .pergunta-container {
-    position: relative;
-
-    width: 100%;
-
-    padding:
-        clamp(35px, 6vw, 60px);
-
-    overflow: hidden;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius: 42px;
-
-    background:
-        var(--amarelo-claro);
-
-    box-shadow:
-        11px 13px 0 rgba(46, 88, 129, 0.11);
-}
-
-
-/* BOLHA DECORATIVA */
-
-body.pagina-teste .pergunta-container::after {
-    content: "🌱";
-
-    position: absolute;
-
-    width: 90px;
-    height: 90px;
-
-    top: -25px;
-    right: -20px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 50%;
-
-    background:
-        var(--verde-claro);
-
-    font-size: 2.3rem;
-
-    transform:
-        rotate(12deg);
-}
-
-
-/* =========================================================
-   5. CATEGORIA
-========================================================= */
-
-body.pagina-teste .categoria-pergunta {
-    position: relative;
-    z-index: 2;
-
-    width: fit-content;
-
-    margin-bottom: 20px;
-
-    padding:
-        8px 14px;
-
-    display: inline-flex;
-
-    border:
-        2px solid var(--azul-escuro);
-
-    border-radius: 999px;
-
-    background:
-        var(--turquesa);
-
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.7rem;
-
-    font-weight: 950;
-
-    box-shadow:
-        3px 4px 0 rgba(46, 88, 129, 0.08);
-}
-
-
-/* =========================================================
-   6. PERGUNTA
-========================================================= */
-
-body.pagina-teste #pergunta {
-    position: relative;
-    z-index: 2;
-
-    max-width: 750px;
-
-    margin-bottom: 30px;
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        clamp(1.8rem, 4vw, 3rem);
-
-    font-weight: 950;
-
-    line-height: 1.12;
-
-    letter-spacing: -1.5px;
-}
-
-
-/* =========================================================
-   7. ALTERNATIVAS
-========================================================= */
-
-body.pagina-teste .alternativas {
-    position: relative;
-    z-index: 3;
-
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap: 13px;
-}
-
-
-/*
-   O teste.js cria os elementos dentro de #alternativas.
-   Estilizamos tanto button quanto elementos com classes
-   comuns para não alterar o JavaScript.
-*/
-
-body.pagina-teste #alternativas button,
-body.pagina-teste #alternativas .alternativa {
-    position: relative;
-
-    width: 100%;
-    min-height: 82px;
-
-    padding:
-        16px 18px;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 20px;
-
-    background:
-        var(--branco);
-
-    color:
-        var(--azul-escuro);
-
-    text-align: left;
-
-    font-family: inherit;
-
-    font-size: 0.82rem;
-
-    font-weight: 800;
-
-    line-height: 1.45;
-
-    box-shadow:
-        4px 5px 0 rgba(46, 88, 129, 0.08);
-
-    transition:
-        transform 0.18s ease,
-        background 0.18s ease,
-        box-shadow 0.18s ease;
-}
-
-
-body.pagina-teste #alternativas button:hover:not(:disabled),
-body.pagina-teste #alternativas .alternativa:hover {
-    background:
-        rgba(72, 228, 221, 0.25);
-
-    transform:
-        translateY(-4px);
-
-    box-shadow:
-        5px 8px 0 rgba(46, 88, 129, 0.08);
-}
-
-
-/* BOTÕES DESABILITADOS APÓS RESPONDER */
-
-body.pagina-teste #alternativas button:disabled {
-    cursor: default;
-}
-
-
-/* =========================================================
-   8. CLASSES DE ACERTO / ERRO
-
-   Incluímos nomes comuns usados pelo JS.
-========================================================= */
-
-body.pagina-teste #alternativas .correta,
-body.pagina-teste #alternativas .certo,
-body.pagina-teste #alternativas .alternativa-correta {
-    border-color:
-        var(--azul-escuro) !important;
-
-    background:
-        var(--verde-claro) !important;
-
-    color:
-        var(--azul-escuro) !important;
-}
-
-
-body.pagina-teste #alternativas .errada,
-body.pagina-teste #alternativas .erro,
-body.pagina-teste #alternativas .alternativa-errada {
-    border-color:
-        var(--azul-escuro) !important;
-
-    background:
-        #FFD7D2 !important;
-
-    color:
-        var(--azul-escuro) !important;
-}
-
-
-/* =========================================================
-   9. FEEDBACK
-========================================================= */
-
-body.pagina-teste .feedback {
-    position: relative;
-    z-index: 3;
-
-    width: 100%;
-
-    margin-top: 22px;
-
-    padding:
-        17px 20px;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 18px;
-
-    background:
-        var(--branco);
-
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.82rem;
-
-    font-weight: 750;
-
-    line-height: 1.55;
-
-    animation:
-        feedbackAparecer 0.3s ease both;
-}
-
-
-/* CASO O JS ADICIONE CLASSES */
-
-body.pagina-teste .feedback.correto,
-body.pagina-teste .feedback.certo {
-    background:
-        var(--verde-claro);
-}
-
-
-body.pagina-teste .feedback.errado,
-body.pagina-teste .feedback.erro {
-    background:
-        #FFD7D2;
-}
-
-
-/* =========================================================
-   10. BOTÃO PRÓXIMA
-========================================================= */
-
-body.pagina-teste .btn-proxima {
-    position: relative;
-    z-index: 3;
-
-    min-width: 210px;
-    min-height: 53px;
-
-    margin:
-        25px 0 0 auto;
-
-    padding:
-        0 25px;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 999px;
-
-    background:
-        var(--amarelo);
-
-    color:
-        var(--azul-escuro);
-
-    font-family: inherit;
-
-    font-size: 0.8rem;
-
-    font-weight: 950;
-
-    box-shadow:
-        0 6px 0 rgba(46, 88, 129, 0.13);
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-body.pagina-teste .btn-proxima:hover {
-    background:
-        var(--turquesa);
-
-    transform:
-        translateY(-4px);
-
-    box-shadow:
-        0 10px 0 rgba(46, 88, 129, 0.09);
-}
-
-
-/* =========================================================
-   11. RESULTADO
-========================================================= */
-
-body.pagina-teste .resultado-teste {
-    position: relative;
-    z-index: 5;
-
-    width:
-        min(820px, 100%);
-
-    margin: 0 auto;
-
-    padding:
-        clamp(40px, 7vw, 70px);
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    overflow: hidden;
-
-    text-align: center;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius: 48px;
-
-    background:
-        var(--amarelo-claro);
-
-    box-shadow:
-        12px 14px 0 rgba(46, 88, 129, 0.11);
-
-    animation:
-        resultadoEntrando 0.55s ease both;
-}
-
-
-/* DECORAÇÃO */
-
-body.pagina-teste .resultado-teste::before {
-    content: "⭐";
-
-    position: absolute;
-
-    top: 35px;
-    left: 40px;
-
-    font-size: 2.8rem;
-
-    transform:
-        rotate(-15deg);
-}
-
-
-body.pagina-teste .resultado-teste::after {
-    content: "🌱";
-
-    position: absolute;
-
-    right: 35px;
-    bottom: 30px;
-
-    font-size: 2.8rem;
-
-    transform:
-        rotate(12deg);
-}
-
-
-/* =========================================================
-   12. EMOJI DO RESULTADO
-========================================================= */
-
-body.pagina-teste .resultado-emoji {
-    position: relative;
-    z-index: 3;
-
-    width: 120px;
-    height: 120px;
-
-    margin-bottom: 22px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius: 38px;
-
-    background:
-        var(--turquesa);
-
-    font-size: 4rem;
-
-    box-shadow:
-        6px 7px 0 rgba(46, 88, 129, 0.10);
-
-    animation:
-        resultadoEmoji 3s ease-in-out infinite;
-}
-
-
-/* =========================================================
-   13. TAG DO RESULTADO
-========================================================= */
-
-body.pagina-teste .resultado-tag {
-    position: relative;
-    z-index: 3;
-
-    margin-bottom: 15px;
-
-    padding:
-        8px 15px;
-
-    border:
-        2px solid var(--azul-escuro);
-
-    border-radius: 999px;
-
-    background:
-        var(--amarelo);
-
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.7rem;
-
-    font-weight: 950;
-}
-
-
-/* =========================================================
-   14. TÍTULO RESULTADO
-========================================================= */
-
-body.pagina-teste .resultado-teste>h1 {
-    position: relative;
-    z-index: 3;
-
-    margin-bottom: 8px;
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        clamp(3rem, 7vw, 5rem);
-
-    font-weight: 950;
-
-    line-height: 1;
-
-    letter-spacing: -3px;
-}
-
-
-body.pagina-teste .resultado-subtitulo {
-    position: relative;
-    z-index: 3;
-
-    margin-bottom: 28px;
-
-    color:
-        var(--texto-suave);
-
-    font-size: 0.9rem;
-
-    font-weight: 650;
-}
-
-
-/* =========================================================
-   15. PONTUAÇÃO
-========================================================= */
-
-body.pagina-teste .pontuacao {
-    position: relative;
-    z-index: 3;
-
-    min-width: 200px;
-
-    margin-bottom: 12px;
-
-    padding:
-        20px 28px;
-
-    display: flex;
-
-    align-items: baseline;
-    justify-content: center;
-
-    border:
-        4px solid var(--azul-escuro);
-
-    border-radius: 30px;
-
-    background:
-        var(--amarelo);
-
-    box-shadow:
-        6px 7px 0 rgba(46, 88, 129, 0.10);
-
-    transform:
-        rotate(-2deg);
-}
-
-
-body.pagina-teste .pontuacao-numero {
-    color:
-        var(--azul-escuro);
-
-    font-size: 4.5rem;
-
-    font-weight: 950;
-
-    line-height: 0.9;
-}
-
-
-body.pagina-teste .pontuacao-total {
-    margin-left: 5px;
-
-    color:
-        var(--azul-escuro);
-
-    font-size: 1.5rem;
-
-    font-weight: 900;
-}
-
-
-body.pagina-teste .texto-acertos {
-    position: relative;
-    z-index: 3;
-
-    margin-bottom: 28px;
-
-    color:
-        var(--texto-suave);
-
-    font-size: 0.82rem;
-
-    font-weight: 750;
-}
-
-
-/* =========================================================
-   16. NÍVEL DO USUÁRIO
-========================================================= */
-
-body.pagina-teste .nivel-resultado {
-    position: relative;
-    z-index: 3;
-
-    width:
-        min(470px, 100%);
-
-    margin-bottom: 20px;
-
-    padding:
-        20px 25px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 18px;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 25px;
-
-    background:
-        var(--verde-claro);
-
-    box-shadow:
-        5px 6px 0 rgba(46, 88, 129, 0.09);
-}
-
-
-body.pagina-teste #nivel-icone {
-    width: 70px;
-    height: 70px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 20px;
-
-    background:
-        var(--branco);
-
-    font-size: 2.2rem;
-}
-
-
-body.pagina-teste .nivel-resultado>div {
-    text-align: left;
-}
-
-
-body.pagina-teste .nivel-resultado small {
-    color:
-        var(--azul-escuro);
-
-    font-size: 0.65rem;
-
-    font-weight: 950;
-
-    letter-spacing: 1px;
-}
-
-
-body.pagina-teste #nivel-nome {
-    margin-top: 3px;
-
-    color:
-        var(--azul-escuro);
-
-    font-size:
-        clamp(1.5rem, 4vw, 2.2rem);
-
-    font-weight: 950;
-
-    line-height: 1;
-}
-
-
-/* =========================================================
-   17. DESCRIÇÃO DO NÍVEL
-========================================================= */
-
-body.pagina-teste .nivel-descricao {
-    position: relative;
-    z-index: 3;
-
-    max-width: 600px;
-
-    margin-bottom: 30px;
-
-    color:
-        var(--texto-suave);
-
-    font-size: 0.85rem;
-
-    font-weight: 650;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   18. AÇÕES DO RESULTADO
-========================================================= */
-
-body.pagina-teste .acoes-resultado {
-    position: relative;
-    z-index: 3;
-
-    width: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 12px;
-}
-
-
-body.pagina-teste .btn-refazer,
-body.pagina-teste .btn-continuar {
-    min-height: 54px;
-
-    padding:
-        0 24px;
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    border:
-        3px solid var(--azul-escuro);
-
-    border-radius: 999px;
-
-    color:
-        var(--azul-escuro);
-
-    font-family: inherit;
-
-    font-size: 0.78rem;
-
-    font-weight: 950;
-
-    box-shadow:
-        0 6px 0 rgba(46, 88, 129, 0.12);
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-body.pagina-teste .btn-refazer {
-    background:
-        var(--branco);
-}
-
-
-body.pagina-teste .btn-continuar {
-    background:
-        var(--amarelo);
-}
-
-
-body.pagina-teste .btn-refazer:hover,
-body.pagina-teste .btn-continuar:hover {
-    background:
-        var(--turquesa);
-
-    transform:
-        translateY(-4px);
-
-    box-shadow:
-        0 10px 0 rgba(46, 88, 129, 0.09);
-}
-
-
-/* =========================================================
-   19. ANIMAÇÕES
-========================================================= */
-
-@keyframes perguntaEntrando {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-
-}
-
-
-@keyframes feedbackAparecer {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-
-}
-
-
-@keyframes resultadoEntrando {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px) scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0) scale(1);
-    }
-
-}
-
-
-@keyframes resultadoEmoji {
-
-    0%,
-    100% {
-        transform:
-            translateY(0) rotate(-3deg);
-    }
-
-    50% {
-        transform:
-            translateY(-8px) rotate(4deg);
-    }
-
-}
-
-
-/* =========================================================
-   20. TABLET
-========================================================= */
-
-@media (max-width: 700px) {
-
-    body.pagina-teste .alternativas {
-        grid-template-columns: 1fr;
-    }
-
-
-    body.pagina-teste .pergunta-container {
-        padding:
-            35px 25px;
-    }
-
-
-    body.pagina-teste .resultado-teste {
-        padding:
-            45px 25px;
-    }
-
-}
-
-
-/* =========================================================
-   21. CELULAR
-========================================================= */
-
-@media (max-width: 520px) {
-
-    body.pagina-teste .teste-status {
-        padding:
-            17px 15px;
-
-        border-width: 3px;
-
-        border-radius: 20px;
-
-        box-shadow:
-            4px 5px 0 rgba(46, 88, 129, 0.08);
-    }
-
-
-    body.pagina-teste .status-texto {
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-
-    body.pagina-teste .barra-progresso {
-        height: 15px;
-    }
-
-
-    body.pagina-teste .pergunta-container {
-        padding:
-            30px 16px;
-
-        border-width: 3px;
-
-        border-radius: 28px;
-
-        box-shadow:
-            7px 8px 0 rgba(46, 88, 129, 0.10);
-    }
-
-
-    body.pagina-teste .pergunta-container::after {
-        width: 65px;
-        height: 65px;
-
-        font-size: 1.7rem;
-    }
-
-
-    body.pagina-teste #pergunta {
-        padding-right: 15px;
-
-        font-size: 1.75rem;
-    }
-
-
-    body.pagina-teste #alternativas button,
-    body.pagina-teste #alternativas .alternativa {
-        min-height: 72px;
-
-        padding:
-            14px;
-
-        border-radius: 17px;
-
-        font-size: 0.77rem;
-    }
-
-
-    body.pagina-teste .btn-proxima {
-        width: 100%;
-
-        min-width: 0;
-    }
-
-
-    /* RESULTADO */
-
-    body.pagina-teste .resultado-teste {
-        padding:
-            35px 16px;
-
-        border-width: 3px;
-
-        border-radius: 29px;
-
-        box-shadow:
-            7px 8px 0 rgba(46, 88, 129, 0.10);
-    }
-
-
-    body.pagina-teste .resultado-teste::before,
-    body.pagina-teste .resultado-teste::after {
-        display: none;
-    }
-
-
-    body.pagina-teste .resultado-emoji {
-        width: 95px;
-        height: 95px;
-
-        font-size: 3rem;
-
-        border-width: 3px;
-
-        border-radius: 29px;
-    }
-
-
-    body.pagina-teste .resultado-teste>h1 {
-        font-size: 3rem;
-    }
-
-
-    body.pagina-teste .pontuacao {
-        min-width: 170px;
-
-        padding:
-            17px 22px;
-
-        border-width: 3px;
-    }
-
-
-    body.pagina-teste .pontuacao-numero {
-        font-size: 3.7rem;
-    }
-
-
-    body.pagina-teste .nivel-resultado {
-        padding:
-            17px;
-
-        justify-content: flex-start;
-    }
-
-
-    body.pagina-teste #nivel-icone {
-        width: 60px;
-        height: 60px;
-
-        font-size: 1.8rem;
-    }
-
-
-    body.pagina-teste .acoes-resultado {
-        flex-direction: column;
-    }
-
-
-    body.pagina-teste .btn-refazer,
-    body.pagina-teste .btn-continuar {
-        width: 100%;
-    }
-
-}
-
-
-/* =========================================================
-   22. MOVIMENTO REDUZIDO
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    body.pagina-teste .area-teste,
-
-    body.pagina-teste .resultado-teste,
-
-    body.pagina-teste .resultado-emoji,
-
-    body.pagina-teste .feedback {
-        animation: none;
-    }
-
-}
 
 /* =========================================================
    =========================================================
@@ -14441,7 +11481,7 @@ body.pagina-quiz #quiz-resultado {
 
 /* Organização do cabeçalho no celular. */
 @media (max-width: 560px) {
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking)>header {
+    body:has(#inicio):has(#quiz):has(#ranking)>header {
         grid-template-columns: minmax(0, 1fr);
         grid-template-areas:
             "logo"
@@ -14451,7 +11491,7 @@ body.pagina-quiz #quiz-resultado {
         row-gap: 12px;
     }
 
-    body:has(#inicio):has(#teste):has(#quiz):has(#ranking) .header-usuario {
+    body:has(#inicio):has(#quiz):has(#ranking) .header-usuario {
         justify-content: center;
     }
 
@@ -14472,3 +11512,517 @@ body.pagina-quiz #quiz-resultado {
     }
 }
 
+/* =====================================================
+   QUIZ DOS BLOCOS — LAYOUT E CONTROLES
+===================================================== */
+
+body.pagina-quiz.quiz-em-trilha .quiz-main {
+    width: 100%;
+    max-width: none;
+
+    min-height: calc(100vh - 76px);
+    min-height: calc(100dvh - 76px);
+
+    margin: 0;
+    padding: 20px clamp(14px, 2vw, 32px) 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+    justify-content: flex-start;
+
+    gap: 18px;
+}
+
+/* Barra acima do quiz. */
+
+body.quiz-em-trilha .trilha-quiz-barra {
+    position: relative;
+    z-index: 5;
+
+    width: 100%;
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin: 0;
+}
+
+body.quiz-em-trilha .trilha-quiz-aviso {
+    flex: 1;
+    min-width: 180px;
+
+    margin: 0;
+    padding: 12px 18px;
+
+    border: 2px solid rgba(46, 88, 129, 0.15);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    color: var(--azul-escuro);
+
+    font-size: 0.9rem;
+    font-weight: 650;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+/* Voltar, tentar novamente e próximo bloco. */
+
+body.quiz-em-trilha .trilha-quiz-botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    min-height: 46px;
+    padding: 10px 20px;
+
+    border: 2px solid var(--azul-escuro);
+    border-radius: 15px;
+
+    background: var(--branco);
+    color: var(--azul-escuro);
+
+    box-shadow: 0 4px 0 rgba(46, 88, 129, 0.14);
+
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    text-decoration: none;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+body.quiz-em-trilha .trilha-quiz-botao:hover {
+    background: var(--amarelo-claro);
+    transform: translateY(-2px);
+}
+
+body.quiz-em-trilha .trilha-quiz-botao:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 rgba(46, 88, 129, 0.14);
+}
+
+body.quiz-em-trilha .trilha-quiz-botao:focus-visible {
+    outline: 3px solid var(--azul-escuro);
+    outline-offset: 4px;
+}
+
+/* Garante que os botões ocultos não apareçam. */
+
+body.quiz-em-trilha [hidden] {
+    display: none !important;
+}
+
+/* Quiz ocupa a largura disponível. */
+
+body.pagina-quiz.quiz-em-trilha #quiz-area {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+
+    min-height: calc(100vh - 190px);
+    min-height: calc(100dvh - 190px);
+
+    margin: 0;
+    padding: clamp(22px, 3vw, 44px);
+
+    flex: 1 0 auto;
+
+    grid-template-columns:
+        minmax(0, 0.95fr) minmax(0, 1.25fr);
+
+    column-gap: clamp(24px, 4vw, 64px);
+}
+
+body.quiz-em-trilha #quiz-area>* {
+    min-width: 0;
+}
+
+body.quiz-em-trilha #quiz-pergunta {
+    font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+    line-height: 1.2;
+}
+
+body.quiz-em-trilha .quiz-alternativa {
+    min-height: 80px;
+}
+
+body.quiz-em-trilha .quiz-alternativa-texto {
+    overflow-wrap: anywhere;
+}
+
+/* Resultado e revisão. */
+
+body.pagina-quiz.quiz-em-trilha #quiz-resultado {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+
+    margin: 0;
+}
+
+body.quiz-em-trilha .trilha-quiz-revisao {
+    width: 100%;
+
+    margin-top: 24px;
+    padding-top: 24px;
+
+    border-top: 2px dashed var(--borda);
+
+    text-align: left;
+}
+
+body.quiz-em-trilha .trilha-quiz-revisao>section {
+    padding: 18px;
+
+    border: 2px solid var(--borda);
+    border-radius: 18px;
+
+    background: var(--fundo);
+}
+
+body.quiz-em-trilha .trilha-quiz-revisao h4 {
+    margin-bottom: 10px;
+
+    color: var(--azul-escuro);
+    line-height: 1.5;
+}
+
+body.quiz-em-trilha .trilha-quiz-revisao p {
+    margin-top: 6px;
+    line-height: 1.6;
+}
+
+body.quiz-em-trilha .trilha-quiz-continuar {
+    margin-top: 20px;
+    background: var(--amarelo);
+}
+
+/* Tablet e celular. */
+
+@media (max-width: 900px) {
+    body.pagina-quiz.quiz-em-trilha #quiz-area {
+        display: block;
+        min-height: auto;
+
+        padding: 26px 22px;
+    }
+
+    body.quiz-em-trilha #quiz-pergunta {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+}
+
+@media (max-width: 600px) {
+    body.pagina-quiz.quiz-em-trilha .quiz-main {
+        padding: 14px 12px 24px;
+        gap: 14px;
+    }
+
+    body.quiz-em-trilha .trilha-quiz-barra {
+        gap: 12px;
+    }
+
+    body.quiz-em-trilha .trilha-quiz-aviso {
+        flex-basis: 100%;
+        min-width: 0;
+
+        font-size: 0.85rem;
+    }
+
+    body.pagina-quiz.quiz-em-trilha #quiz-area {
+        padding: 22px 16px;
+        border-radius: 24px;
+    }
+
+    body.quiz-em-trilha .quiz-alternativa {
+        min-height: 68px;
+    }
+
+    body.quiz-em-trilha .trilha-quiz-continuar {
+        width: 100%;
+    }
+}
+
+/* =====================================================
+   RESULTADO — REVISÃO ORGANIZADA E BOTÃO PRÓXIMO
+===================================================== */
+
+body.pagina-quiz.quiz-em-trilha #quiz-resultado {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.8fr) minmax(0, 1.2fr);
+
+    grid-template-areas:
+        "icone     numeros"
+        "tag       numeros"
+        "titulo    mensagem"
+        "nivel     mensagem"
+        "subtitulo acoes"
+        "revisao   revisao"
+        "continuar continuar";
+
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
+
+    align-items: start;
+    align-content: start;
+
+    gap: 14px 28px;
+
+    width: 100%;
+    height: auto;
+    min-height: 0;
+
+    padding: clamp(20px, 3vw, 36px);
+}
+
+/* Posições do resumo. */
+
+body.quiz-em-trilha #quiz-resultado .quiz-resultado-emoji {
+    grid-area: icone;
+    margin: 0 auto;
+}
+
+body.quiz-em-trilha #quiz-resultado .quiz-tag {
+    grid-area: tag;
+}
+
+body.quiz-em-trilha #quiz-resultado>h1 {
+    grid-area: titulo;
+    margin: 0;
+}
+
+body.quiz-em-trilha #quiz-resultado .quiz-resultado-nivel {
+    grid-area: nivel;
+}
+
+body.quiz-em-trilha #quiz-resultado>p {
+    grid-area: subtitulo;
+    margin: 0;
+}
+
+body.quiz-em-trilha #quiz-resultado .quiz-resultado-cards {
+    grid-area: numeros;
+    margin: 0;
+}
+
+body.quiz-em-trilha #quiz-resultado .quiz-mensagem-final {
+    grid-area: mensagem;
+    margin: 0;
+}
+
+body.quiz-em-trilha #quiz-resultado .quiz-resultado-acoes {
+    grid-area: acoes;
+}
+
+/* Revisão ocupa toda a largura, com dois cartões por linha. */
+
+body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao {
+    grid-area: revisao;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    width: 100%;
+    min-width: 0;
+
+    margin: 12px 0 0;
+    padding: 24px 0 0;
+
+    border-top: 2px dashed var(--borda);
+
+    text-align: left;
+}
+
+body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao>h3 {
+    grid-column: 1 / -1;
+
+    margin: 0 0 2px;
+
+    font-size: 1.25rem;
+    color: var(--azul-escuro);
+}
+
+/* Cartão de cada pergunta. */
+
+body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao>section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    align-content: start;
+    gap: 12px;
+
+    min-width: 0;
+
+    margin: 0;
+    padding: 20px;
+
+    border: 2px solid var(--borda);
+    border-top: 5px solid var(--turquesa-escuro);
+    border-radius: 20px;
+
+    background: var(--fundo);
+
+    box-shadow: 0 4px 0 rgba(46, 88, 129, 0.06);
+}
+
+body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao h4 {
+    grid-column: 1 / -1;
+
+    margin: 0;
+
+    font-size: 1rem;
+    line-height: 1.5;
+
+    color: var(--azul-escuro);
+
+    overflow-wrap: anywhere;
+}
+
+/* Sua resposta e resposta correta ficam lado a lado. */
+
+body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao section>p {
+    min-width: 0;
+
+    margin: 0;
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background: var(--branco);
+
+    font-size: 0.9rem;
+    line-height: 1.55;
+
+    overflow-wrap: anywhere;
+}
+
+/* Destaque para a resposta correta. */
+
+body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao section>p:nth-of-type(2) {
+    background: rgba(172, 230, 133, 0.28);
+    font-weight: 700;
+}
+
+/* Explicação abaixo das duas respostas. */
+
+body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao section>p:last-child {
+    grid-column: 1 / -1;
+
+    padding: 0;
+
+    background: transparent;
+    color: var(--texto-suave);
+}
+
+/* Próximo bloco no rodapé da revisão. */
+
+body.quiz-em-trilha #quiz-resultado .trilha-quiz-continuar {
+    grid-area: continuar;
+
+    justify-self: end;
+    align-self: start;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: min(100%, 280px);
+    min-height: 54px;
+
+    margin: 6px 0 0;
+    padding: 14px 24px;
+
+    border: 2px solid var(--azul-escuro);
+    border-radius: 16px;
+
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+
+    box-shadow: 0 5px 0 rgba(46, 88, 129, 0.18);
+
+    font-size: 1rem;
+    font-weight: 850;
+
+    text-align: center;
+    text-decoration: none;
+}
+
+body.quiz-em-trilha #quiz-resultado .trilha-quiz-continuar:hover {
+    background: var(--amarelo-claro);
+}
+
+/* Respeita os controles de exibição do JavaScript. */
+
+body.quiz-em-trilha #quiz-resultado [hidden],
+body.pagina-quiz.quiz-em-trilha #quiz-resultado.escondido {
+    display: none !important;
+}
+
+/* Tablet: resumo organizado na vertical. */
+
+@media (max-width: 900px) {
+    body.pagina-quiz.quiz-em-trilha #quiz-resultado {
+        grid-template-columns: minmax(0, 1fr);
+
+        grid-template-areas:
+            "icone"
+            "tag"
+            "titulo"
+            "nivel"
+            "subtitulo"
+            "numeros"
+            "mensagem"
+            "acoes"
+            "revisao"
+            "continuar";
+
+        gap: 16px;
+    }
+}
+
+/* Celular: uma pergunta por linha. */
+
+@media (max-width: 760px) {
+    body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Telas pequenas: respostas empilhadas para manter a leitura. */
+
+@media (max-width: 480px) {
+    body.pagina-quiz.quiz-em-trilha #quiz-resultado {
+        padding: 20px 14px;
+    }
+
+    body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao>section {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 16px;
+    }
+
+    body.quiz-em-trilha #quiz-resultado .trilha-quiz-continuar {
+        width: 100%;
+    }
+}

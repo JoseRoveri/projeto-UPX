@@ -1,5 +1,17 @@
+"use strict";
+
 const banco = require("./database");
 const corrigirQuiz = require("./corrigir-quiz");
+const corrigirBloco = require("./corrigir-bloco");
+const trilhaFacil = require("./trilha-facil");
+
+const blocos = trilhaFacil.modulos.flatMap(
+    modulo => modulo.blocos
+);
+
+const idsBlocos = blocos.map(
+    bloco => bloco.atividadeId
+);
 
 async function concluirAtividade(req, res) {
     res.set("Cache-Control", "no-store");
@@ -13,121 +25,259 @@ async function concluirAtividade(req, res) {
     }
 
     const { atividadeId, respostas } = req.body || {};
-    const correcao = corrigirQuiz(atividadeId, respostas);
+
+    if (
+        typeof atividadeId !== "string" ||
+        !Array.isArray(respostas)
+    ) {
+        return res.status(400).json({
+            mensagem: "Envie atividadeId e um array de respostas."
+        });
+    }
+
+    const indice = idsBlocos.indexOf(atividadeId);
+    const ehBloco = indice !== -1;
+
+    const correcao = ehBloco
+        ? corrigirBloco(atividadeId, respostas)
+        : corrigirQuiz(atividadeId, respostas);
 
     if (!correcao.valido) {
+        console.warn("Atividade recusada:", {
+            atividadeId,
+            quantidadeRespostas: respostas.length,
+            mensagem: correcao.mensagem
+        });
+
         return res.status(400).json({
             mensagem: correcao.mensagem
         });
     }
 
-    // Identifica o usuário pela sessão de login.
+    // Nos blocos, exige pelo menos metade das respostas certas.
+    const minimoAcertos = ehBloco
+        ? Math.ceil(correcao.totalPerguntas / 2)
+        : 0;
+
+    const aprovado = correcao.acertos >= minimoAcertos;
     const usuarioId = req.usuario.id;
 
     let cliente;
+    let emTransacao = false;
     let descartarConexao = false;
 
     try {
         cliente = await banco.connect();
 
         await cliente.query("BEGIN");
+        emTransacao = true;
 
-        // Registra somente a primeira conclusão desse quiz.
-        const registro = await cliente.query(`
-            INSERT INTO public.atividades_concluidas (
-                usuario_id,
+        // Processa uma conclusão por vez para esta conta.
+        const conta = await cliente.query(`
+            SELECT
+                id, nome, email, tipo, xp, nivel, sequencia, liga,
+                ultima_atividade AS "ultimaAtividade"
+            FROM public.usuarios
+            WHERE id = $1
+            FOR UPDATE
+        `, [usuarioId]);
+
+        let usuario = conta.rows[0];
+
+        if (!usuario) {
+            throw new Error("Usuário não encontrado.");
+        }
+
+        const historico = await cliente.query(`
+            SELECT
                 atividade_id,
                 total_perguntas,
                 acertos,
                 xp_recebido
-            )
-            VALUES ($1, $2, $3, $4, $5)
-            ON CONFLICT (usuario_id, atividade_id) DO NOTHING
-            RETURNING id
+            FROM public.atividades_concluidas
+            WHERE usuario_id = $1
+              AND atividade_id = ANY($2::text[])
         `, [
             usuarioId,
-            correcao.atividadeId,
-            correcao.totalPerguntas,
-            correcao.acertos,
-            correcao.xpCalculado
+            ehBloco ? idsBlocos : [atividadeId]
         ]);
 
-        const primeiraConclusao = registro.rowCount === 1;
+        const idsAprovados = new Set(
+            historico.rows
+                .filter(item =>
+                    !ehBloco ||
+                    (
+                        Number(item.total_perguntas) > 0 &&
+                        Number(item.acertos) * 2 >=
+                            Number(item.total_perguntas)
+                    )
+                )
+                .map(item => item.atividade_id)
+        );
 
-        const xpGanho = primeiraConclusao
-            ? correcao.xpCalculado
-            : 0;
+        const anterior = historico.rows.find(
+            item => item.atividade_id === atividadeId
+        );
 
-        // Atualiza XP, liga, sequência e última atividade.
-        const resultadoUsuario = await cliente.query(`
-            UPDATE public.usuarios
-            SET
-                xp = xp + $2,
+        const jaConcluido = idsAprovados.has(atividadeId);
 
-                liga = CASE
-                    WHEN xp + $2 >= 3500 THEN 'Diamante'
-                    WHEN xp + $2 >= 2500 THEN 'Platina'
-                    WHEN xp + $2 >= 1500 THEN 'Ouro'
-                    WHEN xp + $2 >= 500 THEN 'Prata'
-                    ELSE 'Bronze'
-                END,
+        // Impede pular blocos ainda não aprovados.
+        if (ehBloco && !jaConcluido) {
+            const pendente = blocos
+                .slice(0, indice)
+                .find(item =>
+                    !idsAprovados.has(item.atividadeId)
+                );
 
-                sequencia = CASE
-                    -- Primeira atividade do usuário.
-                    WHEN ultima_atividade IS NULL THEN 1
+            if (pendente) {
+                await cliente.query("ROLLBACK");
+                emTransacao = false;
 
-                    -- Já concluiu um quiz hoje.
-                    WHEN (
-                        ultima_atividade AT TIME ZONE 'America/Sao_Paulo'
-                    )::date = (
-                        NOW() AT TIME ZONE 'America/Sao_Paulo'
-                    )::date
-                    THEN GREATEST(sequencia, 1)
-
-                    -- Última atividade foi ontem.
-                    WHEN (
-                        ultima_atividade AT TIME ZONE 'America/Sao_Paulo'
-                    )::date = (
-                        NOW() AT TIME ZONE 'America/Sao_Paulo'
-                    )::date - 1
-                    THEN sequencia + 1
-
-                    -- Houve um dia inteiro sem atividade.
-                    ELSE 1
-                END,
-
-                ultima_atividade = NOW()
-            WHERE id = $1
-            RETURNING
-                id, nome, email, tipo, xp, nivel, sequencia, liga,
-                ultima_atividade AS "ultimaAtividade"
-        `, [usuarioId, xpGanho]);
-
-        const usuario = resultadoUsuario.rows[0];
-
-        if (!usuario) {
-            throw new Error(
-                "Usuário não encontrado ao salvar a atividade."
-            );
+                return res.status(403).json({
+                    mensagem:
+                        "Acerte pelo menos 50% dos blocos anteriores para avançar.",
+                    proximaAtividadeId: pendente.atividadeId
+                });
+            }
         }
 
+        const primeiraConclusao = aprovado && !jaConcluido;
+
+        // Uma revisão ruim não apaga uma aprovação anterior.
+        const concluido = jaConcluido || aprovado;
+
+        let xpGanho = 0;
+
+        if (primeiraConclusao) {
+            // Considera eventual XP recebido antes desta regra.
+            const xpAnterior = Number(
+                anterior?.xp_recebido || 0
+            );
+
+            xpGanho = Math.max(
+                0,
+                correcao.xpCalculado - xpAnterior
+            );
+
+            await cliente.query(`
+                INSERT INTO public.atividades_concluidas (
+                    usuario_id,
+                    atividade_id,
+                    total_perguntas,
+                    acertos,
+                    xp_recebido
+                )
+                VALUES ($1, $2, $3, $4, $5)
+
+                ON CONFLICT (usuario_id, atividade_id)
+                DO UPDATE SET
+                    total_perguntas = EXCLUDED.total_perguntas,
+                    acertos = EXCLUDED.acertos,
+                    xp_recebido = EXCLUDED.xp_recebido
+            `, [
+                usuarioId,
+                atividadeId,
+                correcao.totalPerguntas,
+                correcao.acertos,
+                xpAnterior + xpGanho
+            ]);
+
+            idsAprovados.add(atividadeId);
+        }
+
+        // Uma tentativa reprovada de um bloco pendente
+        // não altera XP, liga ou ofensiva.
+        if (concluido) {
+            const atualizacao = await cliente.query(`
+                UPDATE public.usuarios
+                SET
+                    xp = xp + $2,
+
+                    liga = CASE
+                        WHEN xp + $2 >= 3500 THEN 'Diamante'
+                        WHEN xp + $2 >= 2500 THEN 'Platina'
+                        WHEN xp + $2 >= 1500 THEN 'Ouro'
+                        WHEN xp + $2 >= 500 THEN 'Prata'
+                        ELSE 'Bronze'
+                    END,
+
+                    sequencia = CASE
+                        WHEN ultima_atividade IS NULL THEN 1
+
+                        WHEN (
+                            ultima_atividade AT TIME ZONE 'America/Sao_Paulo'
+                        )::date = (
+                            NOW() AT TIME ZONE 'America/Sao_Paulo'
+                        )::date
+                        THEN GREATEST(sequencia, 1)
+
+                        WHEN (
+                            ultima_atividade AT TIME ZONE 'America/Sao_Paulo'
+                        )::date = (
+                            NOW() AT TIME ZONE 'America/Sao_Paulo'
+                        )::date - 1
+                        THEN sequencia + 1
+
+                        ELSE 1
+                    END,
+
+                    ultima_atividade = NOW()
+
+                WHERE id = $1
+
+                RETURNING
+                    id, nome, email, tipo, xp, nivel, sequencia, liga,
+                    ultima_atividade AS "ultimaAtividade"
+            `, [usuarioId, xpGanho]);
+
+            usuario = atualizacao.rows[0];
+
+            if (!usuario) {
+                throw new Error(
+                    "Não foi possível atualizar o usuário."
+                );
+            }
+        }
+
+        const proximo = ehBloco && concluido
+            ? blocos.find(item =>
+                !idsAprovados.has(item.atividadeId)
+            )
+            : null;
+
         await cliente.query("COMMIT");
+        emTransacao = false;
 
         return res.json({
-            mensagem: primeiraConclusao
-                ? "Quiz concluído! Resultado salvo."
-                : "Quiz concluído novamente. O XP já foi contabilizado.",
+            mensagem: !concluido
+                ? `Você acertou ${correcao.acertos} de ${correcao.totalPerguntas}. Precisa de ${minimoAcertos} acertos para avançar. Tente novamente!`
+                : primeiraConclusao
+                    ? "Atividade aprovada! Progresso salvo."
+                    : "Revisão concluída. Este bloco já estava aprovado e não concede novo XP.",
+
+            atividadeId,
+            aprovado,
+            concluido,
+            minimoAcertos,
             primeiraConclusao,
+
             totalPerguntas: correcao.totalPerguntas,
             acertos: correcao.acertos,
+            erros: correcao.totalPerguntas - correcao.acertos,
+
             xpGanho,
             xpTotal: usuario.xp,
+
             sequencia: usuario.sequencia,
             ultimaAtividade: usuario.ultimaAtividade,
+
+            resultados: correcao.resultados || [],
+            proximaAtividadeId: proximo?.atividadeId ?? null,
+
             usuario
         });
     } catch (erro) {
-        if (cliente) {
+        if (cliente && emTransacao) {
             try {
                 await cliente.query("ROLLBACK");
             } catch {
@@ -135,10 +285,13 @@ async function concluirAtividade(req, res) {
             }
         }
 
-        console.error("Erro ao concluir atividade:", erro.message);
+        console.error(
+            "Erro ao concluir atividade:",
+            erro.message
+        );
 
         return res.status(500).json({
-            mensagem: "Não foi possível salvar o resultado do quiz."
+            mensagem: "Não foi possível salvar o resultado."
         });
     } finally {
         if (cliente) {

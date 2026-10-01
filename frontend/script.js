@@ -669,3 +669,41 @@ if (miniRanking && miniRankingPosicao) {
 
     carregarMiniRanking();
 }
+
+// ========================================
+// 17. LOGOUT
+// ========================================
+
+const btnSair = document.getElementById("btn-sair");
+
+if (btnSair) {
+    btnSair.addEventListener("click", async function (evento) {
+        // Aguarda o logout antes de mudar de página.
+        evento.preventDefault();
+
+        try {
+            const resposta = await fetch(
+                "http://127.0.0.1:3000/api/logout",
+                {
+                    method: "POST",
+                    credentials: "include"
+                }
+            );
+
+            const dados = await resposta.json();
+
+            if (!resposta.ok) {
+                alert(dados.mensagem || "Não foi possível sair.");
+                return;
+            }
+
+            // Limpa os dados usados pela interface.
+            localStorage.removeItem("ecoUsuario");
+
+            window.location.href = "index.html";
+        } catch (erro) {
+            console.error("Erro ao fazer logout:", erro);
+            alert("Não foi possível concluir a saída. Tente novamente.");
+        }
+    });
+}
