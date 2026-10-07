@@ -381,7 +381,7 @@ if (formularioCadastro) {
 
                 const resposta =
                     await fetch(
-                        "http://127.0.0.1:3000/api/cadastro",
+                        "/api/cadastro",
                         {
                             method: "POST",
                             headers: {
@@ -421,7 +421,7 @@ if (formularioCadastro) {
 
                 const respostaLogin =
                     await fetch(
-                        "http://127.0.0.1:3000/api/login",
+                        "/api/login",
                         {
                             method: "POST",
                             credentials: "include",
@@ -494,7 +494,7 @@ async function verificarCompanheiroAposLogin() {
 
     const resposta =
         await fetch(
-            "http://127.0.0.1:3000/api/companheiro",
+            "/api/companheiro",
             {
                 credentials: "include",
                 cache: "no-store"
@@ -560,7 +560,7 @@ if (formularioLogin) {
 
                 const resposta =
                     await fetch(
-                        "http://127.0.0.1:3000/api/login",
+                        "/api/login",
                         {
                             method: "POST",
                             credentials: "include",
@@ -660,7 +660,7 @@ async function carregarUsuarioAtual() {
 
         const resposta =
             await fetch(
-                "http://127.0.0.1:3000/api/me",
+                "/api/me",
                 {
                     credentials: "include",
                     cache: "no-store"
@@ -830,7 +830,7 @@ async function carregarMinhaJornada() {
     try {
 
         const resposta = await fetch(
-            "http://127.0.0.1:3000/api/perfil",
+            "/api/perfil",
             {
                 credentials: "include",
                 cache: "no-store"
@@ -977,7 +977,7 @@ if (btnSair) {
 
                 const resposta =
                     await fetch(
-                        "http://127.0.0.1:3000/api/logout",
+                        "/api/logout",
                         {
                             method: "POST",
                             credentials: "include"

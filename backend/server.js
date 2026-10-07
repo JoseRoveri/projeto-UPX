@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("cors");
+const path = require("node:path");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 
@@ -180,28 +180,31 @@ async function sincronizarConquistasLoja(usuarioId) {
 
 const app = express();
 
-
-app.use(cors({
-
-    origin: "http://127.0.0.1:5500",
-
-    credentials: true
-
-}));
-
+app.set("trust proxy", 1);
 
 app.use(express.json());
 
-
-// Permite acessar os cookies em req.cookies.
 app.use(cookieParser());
+
+const frontendPath =
+    path.join(
+        __dirname,
+        "..",
+        "frontend"
+    );
+
+app.use(
+    express.static(
+        frontendPath
+    )
+);
 
 
 // =========================================================
 // TESTES
 // =========================================================
 
-app.get("/", (req, res) => {
+app.get("/api/status", (req, res) => {
 
     res.json({
 
@@ -2247,13 +2250,19 @@ app.post(
 // SERVIDOR
 // =========================================================
 
+const PORT =
+    Number(
+        process.env.PORT ||
+        3000
+    );
+
 app.listen(
-    3000,
-    "127.0.0.1",
+    PORT,
+    "0.0.0.0",
     () => {
 
         console.log(
-            "Servidor rodando em http://127.0.0.1:3000"
+            `Servidor EcoEnergia rodando na porta ${PORT}`
         );
 
     }

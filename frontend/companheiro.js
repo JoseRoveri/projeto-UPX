@@ -1642,7 +1642,7 @@ async function salvarCompanheiro() {
         const resposta =
             await fetch(
 
-                "http://127.0.0.1:3000/api/companheiro",
+                "/api/companheiro",
 
                 {
 
@@ -2077,7 +2077,7 @@ async function iniciarCriacaoCompanheiro() {
         const resposta =
             await fetch(
 
-                "http://127.0.0.1:3000/api/companheiro",
+                "/api/companheiro",
 
                 {
 

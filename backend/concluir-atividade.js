@@ -18,7 +18,13 @@ async function concluirAtividade(req, res) {
 
     const origem = req.get("origin");
 
-    if (origem && origem !== "http://127.0.0.1:5500") {
+    const origemEsperada =
+        `${req.protocol}://${req.get("host")}`;
+
+    if (
+        origem &&
+        origem !== origemEsperada
+    ) {
         return res.status(403).json({
             mensagem: "Origem não permitida."
         });

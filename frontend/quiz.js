@@ -18,7 +18,7 @@
     // ========================================
 
     async function iniciarBlocoDaTrilha(nivel, atividadeId) {
-        const API = "http://127.0.0.1:3000/api";
+        const API = "/api";
 
         const el = id => document.getElementById(id);
 
@@ -1465,7 +1465,7 @@
 
         try {
             const resposta = await fetch(
-                "http://127.0.0.1:3000/api/atividade/concluir",
+                "/api/atividade/concluir",
                 {
                     method: "POST",
                     credentials: "include",

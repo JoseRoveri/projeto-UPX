@@ -1,6 +1,6 @@
 "use strict";
 
-const API = "http://127.0.0.1:3000/api";
+const API = "/api";
 const elemento = id => document.getElementById(id);
 const modal = elemento("configuracoes");
 
