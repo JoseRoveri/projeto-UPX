@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ========================================
-    // 2. ELEMENTOS APARECENDO AO ROLAR
+    // 2. ELEMENTOS AO ROLAR
     // ========================================
 
     const elementos = document.querySelectorAll(
@@ -24,20 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const observador = new IntersectionObserver(
-        (entradas) => {
-
+        entradas => {
             entradas.forEach(entrada => {
-
                 if (entrada.isIntersecting) {
-
                     entrada.target.classList.add("visivel");
-
-                    // Depois que apareceu, não precisa observar novamente
                     observador.unobserve(entrada.target);
                 }
-
             });
-
         },
         {
             threshold: 0.15
@@ -50,25 +43,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ========================================
-    // 3. ANIMAÇÃO DOS CARDS EM SEQUÊNCIA
+    // 3. CARDS EM SEQUÊNCIA
     // ========================================
 
     const cards = document.querySelectorAll("article");
 
     cards.forEach((card, index) => {
-
         card.style.transitionDelay = `${index * 0.12}s`;
-
     });
 
 
     // ========================================
-    // 4. EFEITO NOS BOTÕES
+    // 4. HOVER NOS BOTÕES
     // ========================================
 
-    const botoes = document.querySelectorAll(
-        "button, a"
-    );
+    const botoes = document.querySelectorAll("button, a");
 
     botoes.forEach(botao => {
 
@@ -122,13 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             icone.style.animationDelay =
                 `${index * 0.25}s`;
+
         }
 
     });
 
 
     // ========================================
-    // 7. EFEITO PARALLAX SUAVE
+    // 7. PARALLAX
     // ========================================
 
     const elementosParallax = document.querySelectorAll(
@@ -142,10 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
         elementosParallax.forEach(elemento => {
 
             if (window.innerWidth > 768) {
-
                 elemento.style.transform =
                     `translateY(${scroll * 0.03}px)`;
-
             }
 
         });
@@ -170,21 +158,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.body.appendChild(botaoTopo);
 
-
     window.addEventListener("scroll", () => {
 
         if (window.scrollY > 500) {
-
             botaoTopo.classList.add("mostrar");
-
         } else {
-
             botaoTopo.classList.remove("mostrar");
-
         }
 
     });
-
 
     botaoTopo.addEventListener("click", () => {
 
@@ -197,72 +179,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ========================================
-    // 9. LINKS INTERNOS COM SCROLL SUAVE
+    // 9. SCROLL SUAVE
     // ========================================
 
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(link => {
 
-        link.addEventListener("click", function (evento) {
+            link.addEventListener(
+                "click",
+                function (evento) {
 
-            const destino = document.querySelector(
-                this.getAttribute("href")
+                    const seletor =
+                        this.getAttribute("href");
+
+                    if (
+                        !seletor ||
+                        seletor === "#"
+                    ) {
+                        return;
+                    }
+
+                    const destino =
+                        document.querySelector(seletor);
+
+                    if (destino) {
+
+                        evento.preventDefault();
+
+                        destino.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
+
+                }
             );
-
-            if (destino) {
-
-                evento.preventDefault();
-
-                destino.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
 
         });
 
-    });
-
 
     // ========================================
-    // 10. EFEITO DE DESTAQUE AO CHEGAR
-    // NO TESTE DE NÍVEL
+    // 10. TESTE DE NÍVEL
     // ========================================
 
     const teste = document.querySelector("#teste");
 
     if (teste) {
 
-        const observadorTeste = new IntersectionObserver(
-            (entradas) => {
+        const observadorTeste =
+            new IntersectionObserver(
+                entradas => {
 
-                entradas.forEach(entrada => {
+                    entradas.forEach(entrada => {
 
-                    if (entrada.isIntersecting) {
+                        if (entrada.isIntersecting) {
 
-                        teste.classList.add(
-                            "teste-destaque"
-                        );
-
-                        setTimeout(() => {
-
-                            teste.classList.remove(
+                            teste.classList.add(
                                 "teste-destaque"
                             );
 
-                        }, 1200);
+                            setTimeout(() => {
 
-                        observadorTeste.unobserve(teste);
+                                teste.classList.remove(
+                                    "teste-destaque"
+                                );
 
-                    }
+                            }, 1200);
 
-                });
+                            observadorTeste.unobserve(
+                                teste
+                            );
 
-            },
-            {
-                threshold: 0.4
-            }
-        );
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.4
+                }
+            );
 
         observadorTeste.observe(teste);
 
@@ -277,12 +275,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const quantidade = 35;
 
-        for (let i = 0; i < quantidade; i++) {
+        for (
+            let i = 0;
+            i < quantidade;
+            i++
+        ) {
 
             const confete =
                 document.createElement("div");
 
-            confete.className = "confete";
+            confete.className =
+                "confete";
 
             confete.style.left =
                 Math.random() * 100 + "vw";
@@ -305,161 +308,319 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ========================================
-    // 12. MENSAGEM DE BOAS-VINDAS
+    // 12. TÍTULO
     // ========================================
 
     const titulo =
         document.querySelector("#inicio h2");
 
     if (titulo) {
-
         titulo.classList.add("titulo-entrada");
-
     }
 
 });
 
+
 // ========================================
-// 13. CADASTRO REAL COM BANCO DE DADOS
+// 13. CADASTRO
 // ========================================
 
-const formularioCadastro = document.querySelector("#form-cadastro");
-const cadastroSucesso = document.querySelector("#cadastro-sucesso");
+const formularioCadastro =
+    document.querySelector("#form-cadastro");
 
-if (formularioCadastro && cadastroSucesso) {
+if (formularioCadastro) {
 
-    formularioCadastro.addEventListener("submit", async function (evento) {
+    formularioCadastro.addEventListener(
+        "submit",
+        async function (evento) {
 
-        evento.preventDefault();
+            evento.preventDefault();
 
-        const nome = document.querySelector("#nome").value.trim();
-        const email = document.querySelector("#email").value.trim();
-        const tipo = document.querySelector("#tipo").value;
-        const senha = document.querySelector("#senha").value;
-        const confirmarSenha =
-            document.querySelector("#confirmar-senha").value;
+            const nome =
+                document
+                    .querySelector("#nome")
+                    .value
+                    .trim();
 
-        // Verifica as senhas
-        if (senha !== confirmarSenha) {
-            alert("As senhas não coincidem.");
-            return;
-        }
+            const email =
+                document
+                    .querySelector("#email")
+                    .value
+                    .trim();
 
-        try {
+            const tipo =
+                document
+                    .querySelector("#tipo")
+                    .value;
 
-            const resposta = await fetch(
-                "http://localhost:3000/api/cadastro",
-                {
-                    method: "POST",
+            const senha =
+                document
+                    .querySelector("#senha")
+                    .value;
 
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+            const confirmarSenha =
+                document
+                    .querySelector("#confirmar-senha")
+                    .value;
 
-                    body: JSON.stringify({
-                        nome: nome,
-                        email: email,
-                        senha: senha,
-                        tipo: tipo
-                    })
-                }
-            );
+            if (senha !== confirmarSenha) {
 
-            const dados = await resposta.json();
-
-            // Se o servidor retornar erro
-            if (!resposta.ok) {
-                alert(dados.mensagem);
-                return;
-            }
-
-            // Cadastro confirmado pelo banco
-            formularioCadastro.style.display = "none";
-
-            const textoJaPossuiConta =
-                formularioCadastro.parentElement.querySelector(
-                    ":scope > p"
+                alert(
+                    "As senhas não coincidem."
                 );
 
-            if (textoJaPossuiConta) {
-                textoJaPossuiConta.style.display = "none";
+                return;
+
             }
 
-            cadastroSucesso.classList.remove("escondido");
+            try {
 
-            cadastroSucesso.classList.add(
-                "cadastro-sucesso-aparecer"
-            );
+                // ========================================
+                // CRIAR CONTA
+                // ========================================
 
-        } catch (erro) {
+                const resposta =
+                    await fetch(
+                        "http://127.0.0.1:3000/api/cadastro",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+                            body:
+                                JSON.stringify({
+                                    nome: nome,
+                                    email: email,
+                                    senha: senha,
+                                    tipo: tipo
+                                })
+                        }
+                    );
 
-            console.error(
-                "Erro ao conectar com o servidor:",
-                erro
-            );
+                const dados =
+                    await resposta
+                        .json()
+                        .catch(() => ({}));
 
-            alert(
-                "Não foi possível conectar ao servidor."
-            );
+                if (!resposta.ok) {
+
+                    alert(
+                        dados.mensagem ||
+                        "Não foi possível realizar o cadastro."
+                    );
+
+                    return;
+
+                }
+
+
+                // ========================================
+                // LOGIN AUTOMÁTICO
+                // ========================================
+
+                const respostaLogin =
+                    await fetch(
+                        "http://127.0.0.1:3000/api/login",
+                        {
+                            method: "POST",
+                            credentials: "include",
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+                            body:
+                                JSON.stringify({
+                                    email: email,
+                                    senha: senha
+                                })
+                        }
+                    );
+
+                const dadosLogin =
+                    await respostaLogin
+                        .json()
+                        .catch(() => ({}));
+
+                if (!respostaLogin.ok) {
+
+                    alert(
+                        dadosLogin.mensagem ||
+                        "Sua conta foi criada, mas não foi possível entrar automaticamente."
+                    );
+
+                    return;
+
+                }
+
+                if (dadosLogin.usuario) {
+
+                    localStorage.setItem(
+                        "ecoUsuario",
+                        JSON.stringify(
+                            dadosLogin.usuario
+                        )
+                    );
+
+                }
+
+                window.location.href =
+                    "companheiro.html";
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao realizar cadastro:",
+                    erro
+                );
+
+                alert(
+                    "Não foi possível concluir o cadastro."
+                );
+
+            }
+
         }
-    });
+    );
+
 }
 
+
 // ========================================
-// 14. LOGIN REAL
+// VERIFICAR COMPANHEIRO DEPOIS DO LOGIN
 // ========================================
 
-const formularioLogin = document.querySelector("#form-login");
+async function verificarCompanheiroAposLogin() {
+
+    const resposta =
+        await fetch(
+            "http://127.0.0.1:3000/api/companheiro",
+            {
+                credentials: "include",
+                cache: "no-store"
+            }
+        );
+
+    const dados =
+        await resposta
+            .json()
+            .catch(() => ({}));
+
+    if (!resposta.ok) {
+
+        throw new Error(
+            dados.mensagem ||
+            "Não foi possível verificar o companheiro."
+        );
+
+    }
+
+    if (dados.criado === true) {
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+    window.location.href =
+        "companheiro.html";
+
+}
+
+
+// ========================================
+// 14. LOGIN
+// ========================================
+
+const formularioLogin =
+    document.querySelector("#form-login");
 
 if (formularioLogin) {
-    formularioLogin.addEventListener("submit", async function (evento) {
-        // Impede o formulário de recarregar a página.
-        evento.preventDefault();
 
-        const email = document.querySelector("#usuario").value.trim();
-        const senha = document.querySelector("#senha").value;
+    formularioLogin.addEventListener(
+        "submit",
+        async function (evento) {
 
-        try {
-            // Envia os dados ao backend.
-            const resposta = await fetch(
-                "http://127.0.0.1:3000/api/login",
-                {
-                    method: "POST",
-                    credentials: "include",
+            evento.preventDefault();
 
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+            const email =
+                document
+                    .querySelector("#usuario")
+                    .value
+                    .trim();
 
-                    body: JSON.stringify({
-                        email: email,
-                        senha: senha
-                    })
+            const senha =
+                document
+                    .querySelector("#senha")
+                    .value;
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        "http://127.0.0.1:3000/api/login",
+                        {
+                            method: "POST",
+                            credentials: "include",
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+                            body:
+                                JSON.stringify({
+                                    email: email,
+                                    senha: senha
+                                })
+                        }
+                    );
+
+                const dados =
+                    await resposta
+                        .json()
+                        .catch(() => ({}));
+
+                if (!resposta.ok) {
+
+                    alert(
+                        dados.mensagem ||
+                        "Não foi possível entrar."
+                    );
+
+                    return;
+
                 }
-            );
 
-            const dados = await resposta.json();
+                if (dados.usuario) {
 
-            // Mostra a mensagem caso o backend recuse o login.
-            if (!resposta.ok) {
-                alert(dados.mensagem || "Não foi possível entrar.");
-                return;
+                    localStorage.setItem(
+                        "ecoUsuario",
+                        JSON.stringify(
+                            dados.usuario
+                        )
+                    );
+
+                }
+
+                await verificarCompanheiroAposLogin();
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao realizar login:",
+                    erro
+                );
+
+                alert(
+                    "Não foi possível concluir o login."
+                );
+
             }
 
-            // Guarda dados para exibir na interface.
-            // Isso não substitui a validação da sessão no backend.
-            localStorage.setItem(
-                "ecoUsuario",
-                JSON.stringify(dados.usuario)
-            );
-
-            // Abre a página principal.
-            window.location.href = "index.html";
-        } catch (erro) {
-            console.error("Erro ao realizar login:", erro);
-            alert("Não foi possível concluir o login.");
         }
-    });
+    );
+
 }
 
 
@@ -467,243 +628,403 @@ if (formularioLogin) {
 // 15. CONSULTAR USUÁRIO LOGADO
 // ========================================
 
-const nomeUsuario = document.querySelector("#nome-usuario");
-const sequenciaUsuario = document.querySelector("#sequencia-usuario");
+const nomeUsuario =
+    document.querySelector("#nome-usuario");
 
-const headerVisitante = document.querySelector("#header-visitante");
-const headerLogado = document.querySelector("#header-logado");
+const sequenciaUsuario =
+    document.querySelector("#sequencia-usuario");
+
+const headerVisitante =
+    document.querySelector("#header-visitante");
+
+const headerLogado =
+    document.querySelector("#header-logado");
+
 
 async function carregarUsuarioAtual() {
-    // Executa nas páginas que possuem esses elementos.
+
     if (
         !nomeUsuario &&
         !sequenciaUsuario &&
         !headerVisitante &&
         !headerLogado
     ) {
+
         return;
+
     }
 
     let usuario = null;
 
     try {
+
+        const resposta =
+            await fetch(
+                "http://127.0.0.1:3000/api/me",
+                {
+                    credentials: "include",
+                    cache: "no-store"
+                }
+            );
+
+        if (resposta.status !== 401) {
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Não foi possível consultar a sessão."
+                );
+
+            }
+
+            const dados =
+                await resposta.json();
+
+            if (
+                !dados.usuario ||
+                typeof dados.usuario.nome !==
+                "string"
+            ) {
+
+                throw new Error(
+                    "Dados do usuário inválidos."
+                );
+
+            }
+
+            usuario =
+                dados.usuario;
+
+        }
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao consultar usuário:",
+            erro
+        );
+
+        return;
+
+    }
+
+    const estaLogado =
+        usuario !== null;
+
+
+    if (headerVisitante) {
+
+        headerVisitante.hidden =
+            estaLogado;
+
+    }
+
+
+    if (headerLogado) {
+
+        headerLogado.hidden =
+            !estaLogado;
+
+    }
+
+
+    if (nomeUsuario) {
+
+        if (estaLogado) {
+
+            const primeiroNome =
+                usuario.nome
+                    .trim()
+                    .split(/\s+/)[0];
+
+            nomeUsuario.textContent =
+                `Olá, ${primeiroNome}!`;
+
+        } else {
+
+            nomeUsuario.textContent =
+                "Olá, visitante!";
+
+        }
+
+    }
+
+
+    if (sequenciaUsuario) {
+
+        const sequencia =
+            estaLogado
+                ? Number(
+                    usuario.sequencia
+                ) || 0
+                : 0;
+
+        sequenciaUsuario.textContent =
+            `🔥 ${sequencia}`;
+
+    }
+
+
+    try {
+
+        if (estaLogado) {
+
+            localStorage.setItem(
+                "ecoUsuario",
+                JSON.stringify(usuario)
+            );
+
+        } else {
+
+            localStorage.removeItem(
+                "ecoUsuario"
+            );
+
+            localStorage.removeItem(
+                "ecoNivel"
+            );
+
+        }
+
+    } catch (erro) {
+
+        console.warn(
+            "Não foi possível atualizar os dados locais:",
+            erro
+        );
+
+    }
+
+}
+
+
+carregarUsuarioAtual();
+
+// ========================================
+//  16.MINHA JORNADA NA PÁGINA INICIAL
+// ========================================
+
+const jornadaNome =
+    document.getElementById("jornada-nome");
+
+const jornadaXp =
+    document.getElementById("jornada-xp");
+
+const jornadaMoedas =
+    document.getElementById("jornada-moedas");
+
+const jornadaMensagem =
+    document.getElementById("mini-ranking-posicao");
+
+
+async function carregarMinhaJornada() {
+
+    if (
+        !jornadaNome ||
+        !jornadaXp ||
+        !jornadaMoedas
+    ) {
+        return;
+    }
+
+    try {
+
         const resposta = await fetch(
-            "http://127.0.0.1:3000/api/me",
+            "http://127.0.0.1:3000/api/perfil",
             {
                 credentials: "include",
                 cache: "no-store"
             }
         );
 
-        // Se receber 401, continua como visitante.
-        if (resposta.status !== 401) {
-            if (!resposta.ok) {
-                throw new Error("Não foi possível consultar a sessão.");
+
+        // ========================================
+        // VISITANTE
+        // ========================================
+
+        if (resposta.status === 401) {
+
+            jornadaNome.textContent =
+                "Visitante";
+
+            jornadaXp.textContent =
+                "0 XP";
+
+            jornadaMoedas.textContent =
+                "0";
+
+            if (jornadaMensagem) {
+
+                jornadaMensagem.textContent =
+                    "Faça login para acompanhar sua jornada 🌱";
+
             }
 
-            const dados = await resposta.json();
-
-            if (
-                !dados.usuario ||
-                typeof dados.usuario.nome !== "string"
-            ) {
-                throw new Error("Dados do usuário inválidos.");
-            }
-
-            usuario = dados.usuario;
-        }
-    } catch (erro) {
-        console.error("Erro ao consultar usuário:", erro);
-        return;
-    }
-
-    const estaLogado = usuario !== null;
-
-    // Esconde os botões de acesso quando há uma sessão válida.
-    if (headerVisitante) {
-        headerVisitante.hidden = estaLogado;
-    }
-
-    // Mostra nome, sequência e botão Sair.
-    if (headerLogado) {
-        headerLogado.hidden = !estaLogado;
-    }
-
-    if (nomeUsuario) {
-        if (estaLogado) {
-            const primeiroNome = usuario.nome.trim().split(/\s+/)[0];
-            nomeUsuario.textContent = `Olá, ${primeiroNome}!`;
-        } else {
-            nomeUsuario.textContent = "Olá, visitante!";
-        }
-    }
-
-    if (sequenciaUsuario) {
-        const sequencia = estaLogado
-            ? Number(usuario.sequencia) || 0
-            : 0;
-
-        sequenciaUsuario.textContent = `🔥 ${sequencia}`;
-    }
-
-    // Mantém a cópia local usada por outras partes da interface.
-    try {
-        if (estaLogado) {
-            localStorage.setItem(
-                "ecoUsuario",
-                JSON.stringify(usuario)
-            );
-        } else {
-            localStorage.removeItem("ecoUsuario");
-            localStorage.removeItem("ecoNivel");
-        }
-    } catch (erro) {
-        console.warn("Não foi possível atualizar os dados locais:", erro);
-    }
-}
-
-carregarUsuarioAtual();
-
-
-// ========================================
-// 16. MINI RANKING DA PÁGINA INICIAL
-// ========================================
-
-const miniRanking = document.querySelector("#mini-ranking");
-const miniRankingPosicao = document.querySelector("#mini-ranking-posicao");
-
-if (miniRanking && miniRankingPosicao) {
-    async function carregarMiniRanking() {
-        let jogadores = [];
-
-        miniRanking.textContent = "";
-        miniRankingPosicao.textContent = "Carregando ranking...";
-
-        try {
-            // Busca a classificação no backend.
-            const resposta = await fetch(
-                "http://127.0.0.1:3000/api/ranking"
-            );
-
-            if (!resposta.ok) {
-                throw new Error("Não foi possível carregar o ranking.");
-            }
-
-            const dados = await resposta.json();
-            jogadores = dados.jogadores;
-
-            if (jogadores.length === 0) {
-                miniRankingPosicao.textContent =
-                    "Ainda não há jogadores cadastrados.";
-                return;
-            }
-
-            // Monta os cartões dos três primeiros colocados.
-            const medalhas = ["🥇", "🥈", "🥉"];
-
-            jogadores.slice(0, 3).forEach((jogador, indice) => {
-                const card = document.createElement("div");
-                card.className = "ranking-mini-card";
-
-                const medalha = document.createElement("span");
-                medalha.textContent = medalhas[indice];
-
-                const nome = document.createElement("strong");
-                nome.textContent = jogador.nome;
-
-                const pontos = document.createElement("b");
-                pontos.textContent = `${jogador.xp} XP`;
-
-                card.append(medalha, nome, pontos);
-                miniRanking.appendChild(card);
-            });
-        } catch (erro) {
-            console.error("Erro ao carregar ranking:", erro);
-
-            miniRankingPosicao.textContent =
-                "Não foi possível carregar o ranking.";
             return;
         }
 
-        try {
-            // Confirma quem está conectado para mostrar sua posição.
-            const respostaSessao = await fetch(
-                "http://127.0.0.1:3000/api/me",
-                {
-                    credentials: "include"
-                }
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "Não foi possível carregar sua jornada."
             );
 
-            if (respostaSessao.status === 401) {
-                miniRankingPosicao.textContent =
-                    "Faça login para ver sua posição.";
-                return;
-            }
-
-            if (!respostaSessao.ok) {
-                throw new Error("Não foi possível consultar a sessão.");
-            }
-
-            const dadosSessao = await respostaSessao.json();
-            const usuario = dadosSessao.usuario;
-
-            const indiceUsuario = jogadores.findIndex(
-                jogador => jogador.id === usuario.id
-            );
-
-            if (indiceUsuario === -1) {
-                miniRankingPosicao.textContent =
-                    "Sua posição ainda não foi encontrada.";
-                return;
-            }
-
-            miniRankingPosicao.textContent =
-                `🔥 Você está em ${indiceUsuario + 1}º lugar!`;
-        } catch (erro) {
-            console.error("Erro ao consultar posição:", erro);
-
-            miniRankingPosicao.textContent =
-                "Não foi possível consultar sua posição.";
         }
+
+
+        // ========================================
+        // DADOS DO PERFIL
+        // ========================================
+
+        const dados =
+            await resposta.json();
+
+
+        if (!dados.usuario) {
+
+            throw new Error(
+                "O perfil não retornou os dados do usuário."
+            );
+
+        }
+
+
+        const usuario =
+            dados.usuario;
+
+
+        const xp =
+            Number(usuario.xp) || 0;
+
+        const moedas =
+            Number(usuario.moedas) || 0;
+
+
+        // ========================================
+        // ATUALIZA A TELA
+        // ========================================
+
+        jornadaNome.textContent =
+            usuario.nome || "Sua conta";
+
+
+        jornadaXp.textContent =
+            `${xp.toLocaleString("pt-BR")} XP`;
+
+
+        jornadaMoedas.textContent =
+            moedas.toLocaleString("pt-BR");
+
+
+        if (jornadaMensagem) {
+
+            jornadaMensagem.textContent =
+                "Continue aprendendo e evoluindo 🌱";
+
+        }
+
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao carregar Minha Jornada:",
+            erro
+        );
+
+
+        jornadaNome.textContent =
+            "Conta indisponível";
+
+        jornadaXp.textContent =
+            "—";
+
+        jornadaMoedas.textContent =
+            "—";
+
+
+        if (jornadaMensagem) {
+
+            jornadaMensagem.textContent =
+                "Não foi possível carregar seu progresso.";
+
+        }
+
     }
 
-    carregarMiniRanking();
 }
+
+
+carregarMinhaJornada();
+
 
 // ========================================
 // 17. LOGOUT
 // ========================================
 
-const btnSair = document.getElementById("btn-sair");
+const btnSair =
+    document.getElementById("btn-sair");
 
 if (btnSair) {
-    btnSair.addEventListener("click", async function (evento) {
-        // Aguarda o logout antes de mudar de página.
-        evento.preventDefault();
 
-        try {
-            const resposta = await fetch(
-                "http://127.0.0.1:3000/api/logout",
-                {
-                    method: "POST",
-                    credentials: "include"
+    btnSair.addEventListener(
+        "click",
+        async function (evento) {
+
+            evento.preventDefault();
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        "http://127.0.0.1:3000/api/logout",
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
+                    );
+
+                const dados =
+                    await resposta
+                        .json()
+                        .catch(() => ({}));
+
+                if (!resposta.ok) {
+
+                    alert(
+                        dados.mensagem ||
+                        "Não foi possível sair."
+                    );
+
+                    return;
+
                 }
-            );
 
-            const dados = await resposta.json();
+                localStorage.removeItem(
+                    "ecoUsuario"
+                );
 
-            if (!resposta.ok) {
-                alert(dados.mensagem || "Não foi possível sair.");
-                return;
+                localStorage.removeItem(
+                    "ecoNivel"
+                );
+
+                window.location.href =
+                    "index.html";
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao fazer logout:",
+                    erro
+                );
+
+                alert(
+                    "Não foi possível concluir a saída. Tente novamente."
+                );
+
             }
 
-            // Limpa os dados usados pela interface.
-            localStorage.removeItem("ecoUsuario");
-
-            window.location.href = "index.html";
-        } catch (erro) {
-            console.error("Erro ao fazer logout:", erro);
-            alert("Não foi possível concluir a saída. Tente novamente.");
         }
-    });
+    );
+
 }
