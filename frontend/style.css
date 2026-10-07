@@ -2142,7 +2142,7 @@ body:has(#inicio):has(#quiz):has(#ranking)>header>nav>a {
         var(--azul-escuro);
 
     font-size:
-        0.79rem;
+        1rem;
 
     font-weight:
         850;
@@ -2261,7 +2261,7 @@ body:has(#inicio):has(#quiz):has(#ranking) .sequencia-usuario {
         var(--azul-escuro);
 
     font-size:
-        0.78rem;
+        0.95rem;
 
     font-weight:
         900;
@@ -2289,7 +2289,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #nome-usuario {
         var(--azul-escuro);
 
     font-size:
-        0.76rem;
+        0.95rem;
 
     font-weight:
         850;
@@ -2325,7 +2325,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #btn-sair {
         var(--azul-escuro);
 
     font-size:
-        0.72rem;
+        1rem;
 
     font-weight:
         900;
@@ -2474,7 +2474,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>span:first-ch
         var(--azul-escuro);
 
     font-size:
-        0.74rem;
+        0.95rem;
 
     font-weight:
         900;
@@ -2544,8 +2544,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>p {
     color:
         var(--azul-escuro);
 
-    font-size:
-        clamp(0.92rem, 1.4vw, 1.05rem);
+    font-size: clamp(1.05rem, 1.5vw, 1.18rem);
 
     font-weight:
         650;
@@ -2596,7 +2595,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>div>a {
         var(--azul-escuro);
 
     font-size:
-        0.8rem;
+        0.95rem;
 
     font-weight:
         900;
@@ -2707,21 +2706,18 @@ body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child::before {
     top: 45px;
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border:
-        4px solid var(--azul-escuro);
+    border: 4px solid var(--azul-escuro);
 
     border-radius: 50%;
 
-    background:
-        var(--turquesa);
+    background: var(--turquesa);
 
     font-size: 5.2rem;
 
@@ -2921,7 +2917,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>p {
 
     body:has(#inicio):has(#quiz):has(#ranking)>header>nav>a {
         font-size:
-            0.7rem;
+            1rem;
     }
 
 
@@ -3041,7 +3037,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>p {
         min-width: 46px;
         min-height: 35px;
 
-        font-size: 0.7rem;
+        font-size: 0.95rem;
     }
 
 
@@ -3052,7 +3048,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>p {
             0 11px;
 
         font-size:
-            0.67rem;
+            1rem;
     }
 
 
@@ -3084,8 +3080,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>p {
 
 
     body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:first-child>p {
-        font-size:
-            0.88rem;
+        font-size: clamp(1.05rem, 1.5vw, 1.18rem);
     }
 
 
@@ -3140,7 +3135,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>p {
 
     body:has(#inicio):has(#quiz):has(#ranking) #inicio>div:last-child>p {
         font-size:
-            0.9rem;
+            0.95rem;
     }
 
 }
@@ -3267,8 +3262,7 @@ body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>p {
     text-align:
         center;
 
-    font-size:
-        0.95rem;
+    font-size: 1.1rem;
 
     font-weight:
         650;
@@ -3332,12 +3326,6 @@ body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth
 }
 
 
-body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(3) {
-    background:
-        rgba(172, 230, 133, 0.38);
-}
-
-
 /* NÚMERO */
 
 body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article>span {
@@ -3389,14 +3377,6 @@ body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth
 }
 
 
-/* TERCEIRO */
-
-body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article:nth-of-type(3)>span {
-    background:
-        var(--verde-claro);
-}
-
-
 /* TÍTULO DOS CARDS */
 
 body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article>h3 {
@@ -3428,8 +3408,7 @@ body:has(#inicio):has(#quiz):has(#ranking)>main>section:nth-child(2)>article>p {
     text-align:
         left;
 
-    font-size:
-        0.86rem;
+    font-size: 1.05rem;
 
     font-weight:
         650;
@@ -3602,7 +3581,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #quiz>span {
         var(--azul-escuro);
 
     font-size:
-        0.72rem;
+        0.95rem;
 
     font-weight:
         950;
@@ -3650,8 +3629,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #quiz>p {
     color:
         var(--azul-escuro);
 
-    font-size:
-        0.94rem;
+    font-size: 1.1rem;
 
     font-weight:
         650;
@@ -3804,8 +3782,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #quiz>div>p {
     color:
         var(--texto-suave);
 
-    font-size:
-        0.86rem;
+    font-size: 1.05rem;
 
     font-weight:
         650;
@@ -3845,7 +3822,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #btn-comecar-quiz {
         var(--azul-escuro);
 
     font-size:
-        0.82rem;
+        1rem;
 
     font-weight:
         950;
@@ -4044,8 +4021,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #btn-comecar-quiz:active {
 
 
     body:has(#inicio):has(#quiz):has(#ranking) #quiz>p {
-        font-size:
-            0.87rem;
+        font-size: 1.1rem;
     }
 
 
@@ -4231,7 +4207,7 @@ body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-tag {
     color:
         var(--azul-escuro);
 
-    font-size: 0.72rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 
@@ -4297,7 +4273,7 @@ body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-conteudo>p {
     color:
         var(--azul-escuro);
 
-    font-size: 0.92rem;
+    font-size: 1.08rem;
 
     font-weight: 650;
 
@@ -4370,7 +4346,7 @@ body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div>s
     color:
         var(--azul-escuro);
 
-    font-size: 0.77rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 }
@@ -4380,7 +4356,7 @@ body:has(#inicio):has(#quiz):has(#ranking) .ranking-principal-estatisticas>div>s
     color:
         var(--texto-suave);
 
-    font-size: 0.64rem;
+    font-size: 0.95rem;
 
     font-weight: 650;
 }
@@ -4413,7 +4389,7 @@ body:has(#inicio):has(#quiz):has(#ranking) .btn-ranking-principal {
     color:
         var(--azul-escuro);
 
-    font-size: 0.82rem;
+    font-size: 1rem;
 
     font-weight: 950;
 
@@ -4560,7 +4536,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #mini-ranking>div {
     color:
         var(--azul-escuro);
 
-    font-size: 0.75rem;
+    font-size: 0.95rem;
 
     font-weight: 750;
 
@@ -4640,7 +4616,7 @@ body:has(#inicio):has(#quiz):has(#ranking) .ranking-mini-legenda {
 
     text-align: center;
 
-    font-size: 0.7rem;
+    font-size: 0.95rem;
 
     font-weight: 750;
 }
@@ -4803,7 +4779,7 @@ body:has(#inicio):has(#quiz):has(#ranking) #sobre>p {
     color:
         var(--texto-suave);
 
-    font-size: 0.92rem;
+    font-size: 1.05rem;
 
     font-weight: 650;
 
@@ -4933,7 +4909,7 @@ body:has(#inicio):has(#quiz):has(#ranking)>footer h3 {
     color:
         var(--amarelo);
 
-    font-size: 0.82rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 
@@ -4951,7 +4927,7 @@ body:has(#inicio):has(#quiz):has(#ranking)>footer p {
     color:
         rgba(255, 255, 255, 0.72);
 
-    font-size: 0.75rem;
+    font-size: 0.95rem;
 
     font-weight: 550;
 
@@ -4978,7 +4954,7 @@ body:has(#inicio):has(#quiz):has(#ranking)>footer a {
     color:
         rgba(255, 255, 255, 0.78);
 
-    font-size: 0.73rem;
+    font-size: 0.95rem;
 
     font-weight: 650;
 
@@ -5208,7 +5184,7 @@ body:has(#inicio):has(#quiz):has(#ranking)>footer>div:last-child {
 
 
     body:has(#inicio):has(#quiz):has(#ranking) #sobre>p {
-        font-size: 0.84rem;
+        font-size: 1.05rem;
     }
 
 
@@ -5420,7 +5396,7 @@ body.pagina-quiz .quiz-nav a {
     color:
         var(--azul-escuro);
 
-    font-size: 0.72rem;
+    font-size: 1rem;
 
     font-weight: 850;
 
@@ -5472,7 +5448,7 @@ body.pagina-quiz .quiz-usuario #nome-usuario {
     color:
         var(--azul-escuro);
 
-    font-size: 0.72rem;
+    font-size: 0.95rem;
 
     font-weight: 850;
 
@@ -5506,7 +5482,7 @@ body.pagina-quiz .quiz-usuario #btn-sair {
     color:
         var(--azul-escuro);
 
-    font-size: 0.68rem;
+    font-size: 1rem;
 
     font-weight: 900;
 
@@ -5777,7 +5753,7 @@ body.pagina-quiz .quiz-introducao .quiz-tag {
     color:
         var(--azul-escuro);
 
-    font-size: 0.65rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 
@@ -5857,7 +5833,7 @@ body.pagina-quiz .quiz-introducao>p {
     color:
         var(--texto-suave);
 
-    font-size: 0.88rem;
+    font-size: 1.1rem;
 
     font-weight: 700;
 
@@ -5975,7 +5951,7 @@ body.pagina-quiz .quiz-info-card strong {
     color:
         var(--azul-escuro);
 
-    font-size: 0.78rem;
+    font-size: 1.05rem;
 
     font-weight: 950;
 
@@ -5989,7 +5965,7 @@ body.pagina-quiz .quiz-info-card small {
     color:
         var(--texto-suave);
 
-    font-size: 0.66rem;
+    font-size: 1rem;
 
     font-weight: 650;
 
@@ -6043,7 +6019,7 @@ body.pagina-quiz .quiz-aviso p {
 
     text-align: left;
 
-    font-size: 0.70rem;
+    font-size: 1.05rem;
 
     font-weight: 750;
 
@@ -6083,7 +6059,7 @@ body.pagina-quiz #btn-iniciar-quiz {
 
     font-family: inherit;
 
-    font-size: 0.82rem;
+    font-size: 1.05rem;
 
     font-weight: 950;
 
@@ -6144,7 +6120,7 @@ body.pagina-quiz>footer p {
     color:
         rgba(255, 255, 255, 0.82);
 
-    font-size: 0.73rem;
+    font-size: 0.95rem;
 
     font-weight: 650;
 }
@@ -6279,7 +6255,7 @@ body.pagina-quiz .escondido {
 
 
     body.pagina-quiz .quiz-introducao>p {
-        font-size: 0.86rem;
+        font-size: 1.1rem;
 
         margin-bottom: 22px;
     }
@@ -6300,6 +6276,7 @@ body.pagina-quiz .escondido {
 
     body.pagina-quiz #btn-iniciar-quiz {
         min-height: 54px;
+        font-size: 1.05rem;
     }
 
 }
@@ -6330,7 +6307,7 @@ body.pagina-quiz .escondido {
     body.pagina-quiz .quiz-nav a {
         white-space: nowrap;
 
-        font-size: 0.67rem;
+        font-size: 1rem;
     }
 
 
@@ -6383,7 +6360,7 @@ body.pagina-quiz .escondido {
         padding:
             8px 14px;
 
-        font-size: 0.68rem;
+        font-size: 0.95rem;
     }
 
 
@@ -6405,7 +6382,7 @@ body.pagina-quiz .escondido {
     body.pagina-quiz .quiz-introducao>p {
         margin-bottom: 22px;
 
-        font-size: 0.84rem;
+        font-size: 1.1rem;
 
         line-height: 1.6;
     }
@@ -6434,12 +6411,12 @@ body.pagina-quiz .escondido {
 
 
     body.pagina-quiz .quiz-info-card strong {
-        font-size: 0.78rem;
+        font-size: 1.05rem;
     }
 
 
     body.pagina-quiz .quiz-info-card small {
-        font-size: 0.64rem;
+        font-size: 1rem;
     }
 
 
@@ -6452,7 +6429,7 @@ body.pagina-quiz .escondido {
 
 
     body.pagina-quiz .quiz-aviso p {
-        font-size: 0.69rem;
+        font-size: 1.05rem;
     }
 
 
@@ -6463,7 +6440,7 @@ body.pagina-quiz .escondido {
 
         min-height: 54px;
 
-        font-size: 0.82rem;
+        font-size: 1.05rem;
     }
 
 }
@@ -6542,7 +6519,7 @@ body.pagina-quiz .escondido {
         padding:
             6px 13px;
 
-        font-size: 0.68rem;
+        font-size: 0.95rem;
     }
 
 
@@ -6574,7 +6551,7 @@ body.pagina-quiz .escondido {
 
         margin-bottom: 13px;
 
-        font-size: 0.88rem;
+        font-size: 1.1rem;
 
         font-weight: 700;
 
@@ -6607,14 +6584,14 @@ body.pagina-quiz .escondido {
 
 
     body.pagina-quiz .quiz-info-card strong {
-        font-size: 0.78rem;
+        font-size: 1.05rem;
 
         line-height: 1.3;
     }
 
 
     body.pagina-quiz .quiz-info-card small {
-        font-size: 0.66rem;
+        font-size: 1rem;
 
         line-height: 1.35;
     }
@@ -6638,7 +6615,7 @@ body.pagina-quiz .escondido {
 
 
     body.pagina-quiz .quiz-aviso p {
-        font-size: 0.70rem;
+        font-size: 1.05rem;
 
         line-height: 1.4;
     }
@@ -6654,7 +6631,7 @@ body.pagina-quiz .escondido {
         padding:
             0 28px;
 
-        font-size: 0.82rem;
+        font-size: 1.05rem;
     }
 
 }
@@ -6676,7 +6653,7 @@ body.pagina-quiz .escondido {
 
 /* =========================================================
    =========================================================
-   ECOENERGIA — RANKING
+   ECOENERGIA — MINHA JORNADA (ranking.html)
    BLOCO 1
    HEADER + INTRODUÇÃO + RESUMO
    CORRIGIDO — LARGURA TOTAL + CENTRALIZADO
@@ -6698,6 +6675,9 @@ body.pagina-ranking {
 
     display: flex;
     flex-direction: column;
+
+
+    justify-content: flex-start;
 
     background:
         linear-gradient(135deg,
@@ -6722,9 +6702,9 @@ body.pagina-ranking>main {
     width: 100%;
     max-width: none;
 
-    min-height: 100vh;
+    min-height: auto;
 
-    flex: 1;
+    flex: 1 0 auto;
 
     margin: 0;
     padding: 0;
@@ -6742,7 +6722,7 @@ body.pagina-ranking>main {
 }
 
 
-/* GARANTE CÁLCULO CORRETO DA LARGURA */
+/*CÁLCULO CORRETO DA LARGURA */
 
 body.pagina-ranking,
 body.pagina-ranking>main,
@@ -6854,7 +6834,7 @@ body.pagina-ranking .ranking-nav a {
     color:
         var(--azul-escuro);
 
-    font-size: 0.72rem;
+    font-size: 1rem;
 
     font-weight: 850;
 
@@ -7033,7 +7013,7 @@ body.pagina-ranking .ranking-tag {
     color:
         var(--azul-escuro);
 
-    font-size: 0.68rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 
@@ -7107,7 +7087,7 @@ body.pagina-ranking .ranking-intro p {
     color:
         var(--texto-suave);
 
-    font-size: 0.88rem;
+    font-size: 0.95rem;
 
     font-weight: 700;
 
@@ -7265,7 +7245,7 @@ body.pagina-ranking .ranking-card-resumo small {
     color:
         var(--texto-suave);
 
-    font-size: 0.67rem;
+    font-size: 0.95rem;
 
     font-weight: 750;
 }
@@ -7358,7 +7338,7 @@ body.pagina-ranking .ranking-card-resumo strong {
     body.pagina-ranking .ranking-nav a {
         flex-shrink: 0;
 
-        font-size: 0.67rem;
+        font-size: 1rem;
 
         white-space: nowrap;
     }
@@ -7407,7 +7387,7 @@ body.pagina-ranking .ranking-card-resumo strong {
 
 
     body.pagina-ranking .ranking-intro p {
-        font-size: 0.82rem;
+        font-size: 0.95rem;
 
         line-height: 1.6;
     }
@@ -7451,7 +7431,7 @@ body.pagina-ranking .ranking-card-resumo strong {
 
 /* =========================================================
    =========================================================
-   ECOENERGIA — RANKING
+   ECOENERGIA — MINHA JORNADA (ranking.html)
    BLOCO 2
    EVOLUÇÃO + CLASSIFICAÇÃO + CTA + FOOTER
    =========================================================
@@ -7561,7 +7541,7 @@ body.pagina-ranking .liga-label {
     color:
         var(--azul-escuro);
 
-    font-size: 0.62rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 
@@ -7627,7 +7607,7 @@ body.pagina-ranking .liga-contador small {
     color:
         var(--texto-suave);
 
-    font-size: 0.56rem;
+    font-size: 0.95rem;
 
     font-weight: 750;
 }
@@ -7637,7 +7617,7 @@ body.pagina-ranking .liga-contador strong {
     color:
         var(--azul-escuro);
 
-    font-size: 0.73rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 }
@@ -7679,7 +7659,7 @@ body.pagina-ranking .progresso-info span {
     color:
         var(--azul-escuro);
 
-    font-size: 0.72rem;
+    font-size: 0.95rem;
 
     font-weight: 850;
 }
@@ -7689,7 +7669,7 @@ body.pagina-ranking .progresso-info strong {
     color:
         var(--azul-escuro);
 
-    font-size: 0.8rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 }
@@ -7742,7 +7722,7 @@ body.pagina-ranking #texto-progresso {
     color:
         var(--texto-suave);
 
-    font-size: 0.65rem;
+    font-size: 0.95rem;
 
     font-weight: 700;
 }
@@ -7819,7 +7799,7 @@ body.pagina-ranking .ranking-lista-tag {
     color:
         var(--azul-escuro);
 
-    font-size: 0.61rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 }
@@ -7858,7 +7838,7 @@ body.pagina-ranking .jogadores-count {
     color:
         var(--azul-escuro);
 
-    font-size: 0.64rem;
+    font-size: 0.95rem;
 
     font-weight: 900;
 }
@@ -7989,7 +7969,7 @@ body.pagina-ranking .ranking-jogador.jogador-atual::after {
     color:
         var(--azul-escuro);
 
-    font-size: 0.52rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 }
@@ -8030,6 +8010,12 @@ body.pagina-ranking .posicao-ranking {
    15. AVATAR
 ========================================================= */
 
+/* =========================================================
+   15. AVATAR / ECO MOEDAS
+========================================================= */
+
+/* CÍRCULO USADO NA LISTA DE RECOMPENSAS */
+
 body.pagina-ranking .avatar-ranking {
     width: 45px;
     height: 45px;
@@ -8039,6 +8025,8 @@ body.pagina-ranking .avatar-ranking {
     align-items: center;
     justify-content: center;
 
+    flex-shrink: 0;
+
     border:
         2px solid var(--azul-escuro);
 
@@ -8046,8 +8034,82 @@ body.pagina-ranking .avatar-ranking {
 
     background:
         rgba(172, 230, 133, 0.55);
+}
 
-    font-size: 1.35rem;
+
+/* MOEDA DENTRO DA LISTA */
+
+body.pagina-ranking .avatar-moeda {
+    background:
+        #FFF8D9;
+}
+
+body.pagina-ranking .imagem-moeda-recompensa {
+    width: 34px;
+    height: 34px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* CARD DE ECO MOEDAS DO TOPO */
+
+body.pagina-ranking .card-moedas {
+    background:
+        linear-gradient(135deg,
+            #FFF8D9 0%,
+            #FFE889 100%);
+}
+
+body.pagina-ranking .icone-moeda {
+    background:
+        #FFF8D9;
+}
+
+body.pagina-ranking .icone-moeda img {
+    width: 38px;
+    height: 38px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* QUANTIDADE DE MOEDAS DA RECOMPENSA */
+
+body.pagina-ranking .premio-moeda {
+    min-width: 110px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+}
+
+body.pagina-ranking .premio-moeda::before {
+    content: "";
+
+    width: 25px;
+    height: 25px;
+
+    flex-shrink: 0;
+
+    background-image:
+        url("imagens/moeda.png");
+
+    background-size:
+        contain;
+
+    background-repeat:
+        no-repeat;
+
+    background-position:
+        center;
 }
 
 
@@ -8072,7 +8134,7 @@ body.pagina-ranking .nome-ranking strong {
     color:
         var(--azul-escuro);
 
-    font-size: 0.82rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 
@@ -8086,7 +8148,7 @@ body.pagina-ranking .nome-ranking small {
     color:
         var(--texto-suave);
 
-    font-size: 0.58rem;
+    font-size: 0.95rem;
 
     font-weight: 700;
 }
@@ -8116,7 +8178,7 @@ body.pagina-ranking .xp-ranking {
     color:
         var(--azul-escuro);
 
-    font-size: 0.7rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 
@@ -8183,7 +8245,7 @@ body.pagina-ranking .ranking-aviso strong {
     color:
         var(--azul-escuro);
 
-    font-size: 0.75rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 }
@@ -8195,7 +8257,7 @@ body.pagina-ranking .ranking-aviso p {
     color:
         var(--texto-suave);
 
-    font-size: 0.64rem;
+    font-size: 0.95rem;
 
     font-weight: 700;
 
@@ -8304,7 +8366,7 @@ body.pagina-ranking .ranking-acao p {
     color:
         var(--azul-escuro);
 
-    font-size: 0.75rem;
+    font-size: 0.95rem;
 
     font-weight: 750;
 }
@@ -8343,7 +8405,7 @@ body.pagina-ranking .btn-ranking {
     color:
         var(--azul-escuro);
 
-    font-size: 0.72rem;
+    font-size: 1rem;
 
     font-weight: 950;
 
@@ -8400,7 +8462,7 @@ body.pagina-ranking>footer p {
     color:
         #FFFFFF;
 
-    font-size: 0.67rem;
+    font-size: 0.95rem;
 
     font-weight: 700;
 }
@@ -8534,12 +8596,12 @@ body.pagina-ranking>footer p {
 
 
     body.pagina-ranking .nome-ranking strong {
-        font-size: 0.7rem;
+        font-size: 0.95rem;
     }
 
 
     body.pagina-ranking .nome-ranking small {
-        font-size: 0.53rem;
+        font-size: 0.95rem;
     }
 
 
@@ -8549,7 +8611,7 @@ body.pagina-ranking>footer p {
         padding:
             6px 8px;
 
-        font-size: 0.58rem;
+        font-size: 0.95rem;
     }
 
 
@@ -8621,6 +8683,48 @@ body.pagina-ranking>footer p {
         justify-self: end;
     }
 
+}
+
+/* =========================================================
+   BOTÃO RESGATAR RECOMPENSA
+========================================================= */
+
+body.pagina-ranking .btn-resgatar-recompensa {
+    min-width: 120px;
+
+    padding: 10px 16px;
+
+    border: 2px solid var(--azul-escuro);
+    border-radius: 14px;
+
+    background: #ACE685;
+
+    color: var(--azul-escuro);
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+body.pagina-ranking .btn-resgatar-recompensa:hover {
+    transform: translateY(-2px);
+
+    background: #9FE276;
+
+    box-shadow:
+        0 6px 0 rgba(15, 45, 60, 0.14);
+}
+
+body.pagina-ranking .btn-resgatar-recompensa:active {
+    transform: translateY(0);
+
+    box-shadow: none;
 }
 
 /* =========================================================
@@ -8736,7 +8840,7 @@ body.pagina-dificuldade .dificuldade-nav a {
     color:
         var(--azul-escuro);
 
-    font-size: 0.7rem;
+    font-size: 1rem;
 
     font-weight: 850;
 
@@ -8835,7 +8939,7 @@ body.pagina-dificuldade .dificuldade-tag {
     color:
         var(--azul-escuro);
 
-    font-size: 0.63rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 
@@ -8871,7 +8975,7 @@ body.pagina-dificuldade .dificuldade-intro p {
     color:
         var(--texto-suave);
 
-    font-size: 0.8rem;
+    font-size: 1.1rem;
 
     font-weight: 700;
 
@@ -8989,7 +9093,7 @@ body.pagina-dificuldade .dificuldade-nivel {
     color:
         var(--azul-escuro);
 
-    font-size: 0.58rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 
@@ -9030,7 +9134,7 @@ body.pagina-dificuldade .dificuldade-card>p {
     color:
         var(--azul-escuro);
 
-    font-size: 0.7rem;
+    font-size: 1.05rem;
 
     font-weight: 700;
 
@@ -9071,7 +9175,7 @@ body.pagina-dificuldade .dificuldade-detalhes span {
     color:
         var(--azul-escuro);
 
-    font-size: 0.57rem;
+    font-size: 1rem;
 
     font-weight: 850;
 }
@@ -9110,7 +9214,7 @@ body.pagina-dificuldade .btn-dificuldade {
 
     font-family: inherit;
 
-    font-size: 0.67rem;
+    font-size: 1.05rem;
 
     font-weight: 950;
 
@@ -9359,7 +9463,7 @@ body.pagina-dificuldade .dificuldade-aviso strong {
     color:
         var(--azul-escuro);
 
-    font-size: 0.73rem;
+    font-size: 0.95rem;
 
     font-weight: 950;
 }
@@ -9371,7 +9475,7 @@ body.pagina-dificuldade .dificuldade-aviso p {
     color:
         var(--texto-suave);
 
-    font-size: 0.63rem;
+    font-size: 1.05rem;
 
     font-weight: 700;
 
@@ -9410,7 +9514,7 @@ body.pagina-dificuldade .dificuldade-footer p {
     color:
         #FFFFFF;
 
-    font-size: 0.67rem;
+    font-size: 0.95rem;
 
     font-weight: 700;
 }
@@ -9469,7 +9573,7 @@ body.pagina-dificuldade .dificuldade-footer p {
         padding:
             6px 9px;
 
-        font-size: 0.62rem;
+        font-size: 1rem;
     }
 
 
@@ -9575,7 +9679,7 @@ body.pagina-dificuldade .dificuldade-footer p {
     /* Texto */
 
     body.pagina-dificuldade .dificuldade-card>p {
-        font-size: 0.66rem;
+        font-size: 1.05rem;
 
         line-height: 1.5;
     }
@@ -9598,6 +9702,7 @@ body.pagina-dificuldade .dificuldade-footer p {
         width: 100%;
 
         min-width: 0;
+        font-size: 1.05rem;
     }
 
 
@@ -9885,7 +9990,7 @@ body.pagina-quiz .quiz-nivel-tag {
         #2E5881;
 
     font-size:
-        0.82rem;
+        0.95rem;
 
     font-weight:
         900;
@@ -9943,7 +10048,7 @@ body.pagina-quiz .quiz-trocar-nivel {
         none;
 
     font-size:
-        0.82rem;
+        0.95rem;
 
     font-weight:
         900;
@@ -10026,7 +10131,7 @@ body.pagina-quiz #quiz-contador {
         #2E5881;
 
     font-size:
-        0.86rem;
+        0.95rem;
 
     font-weight:
         900;
@@ -10066,7 +10171,7 @@ body.pagina-quiz .quiz-xp-atual {
         #2E5881;
 
     font-size:
-        0.86rem;
+        0.95rem;
 
     box-shadow:
         3px 3px 0 #2E5881;
@@ -10178,7 +10283,7 @@ body.pagina-quiz .quiz-categoria {
         #2E5881;
 
     font-size:
-        0.78rem;
+        0.95rem;
 
     font-weight:
         900;
@@ -10297,8 +10402,7 @@ body.pagina-quiz .quiz-alternativa {
     font-family:
         inherit;
 
-    font-size:
-        0.92rem;
+    font-size: 1.05rem;
 
     font-weight:
         800;
@@ -10482,7 +10586,7 @@ body.pagina-quiz .quiz-alternativa.correta::after {
         white;
 
     font-size:
-        0.78rem;
+        0.95rem;
 
     font-weight:
         900;
@@ -10564,7 +10668,7 @@ body.pagina-quiz .quiz-alternativa.errada::after {
         white;
 
     font-size:
-        0.72rem;
+        0.95rem;
 
     font-weight:
         900;
@@ -10673,8 +10777,7 @@ body.pagina-quiz .quiz-feedback strong {
     color:
         #2E5881;
 
-    font-size:
-        0.92rem;
+    font-size: 1.05rem;
 
     font-weight:
         900;
@@ -10690,8 +10793,7 @@ body.pagina-quiz .quiz-feedback p {
     color:
         #527076;
 
-    font-size:
-        0.82rem;
+    font-size: 1rem;
 
     line-height:
         1.45;
@@ -10746,8 +10848,7 @@ body.pagina-quiz .btn-proxima-quiz {
     font-family:
         inherit;
 
-    font-size:
-        0.87rem;
+    font-size: 1.05rem;
 
     font-weight:
         900;
@@ -10848,8 +10949,7 @@ body.pagina-quiz .btn-proxima-quiz:disabled {
         padding:
             10px 12px;
 
-        font-size:
-            0.83rem;
+        font-size: 1.05rem;
 
     }
 
@@ -10894,7 +10994,7 @@ body.pagina-quiz .btn-proxima-quiz:disabled {
 
         min-height:
             42px;
-
+        font-size: 1.05rem;
     }
 
 }
@@ -11074,7 +11174,7 @@ body.pagina-quiz .btn-proxima-quiz:disabled {
     body.pagina-quiz .quiz-xp-atual {
 
         font-size:
-            0.72rem;
+            0.95rem;
 
         padding:
             7px 10px;
@@ -11106,8 +11206,7 @@ body.pagina-quiz .btn-proxima-quiz:disabled {
         min-height:
             62px;
 
-        font-size:
-            0.84rem;
+        font-size: 1.05rem;
 
         padding:
             10px;
@@ -11152,7 +11251,7 @@ body.pagina-quiz .btn-proxima-quiz:disabled {
 
         min-width:
             0;
-
+        font-size: 1.05rem;
     }
 
 }
@@ -11449,7 +11548,7 @@ body.pagina-quiz #quiz-resultado {
     background: var(--branco);
     color: var(--azul-escuro);
 
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 800;
     line-height: 1.2;
     text-decoration: none;
@@ -11498,7 +11597,7 @@ body.pagina-quiz #quiz-resultado {
     .header-usuario .botao-acesso {
         min-height: 40px;
         padding: 0 14px;
-        font-size: 0.78rem;
+        font-size: 1rem;
     }
 }
 
@@ -11567,7 +11666,7 @@ body.quiz-em-trilha .trilha-quiz-aviso {
 
     color: var(--azul-escuro);
 
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     font-weight: 650;
     line-height: 1.5;
 
@@ -11595,7 +11694,7 @@ body.quiz-em-trilha .trilha-quiz-botao {
     box-shadow: 0 4px 0 rgba(46, 88, 129, 0.14);
 
     font: inherit;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 800;
 
     text-decoration: none;
@@ -11744,7 +11843,7 @@ body.quiz-em-trilha .trilha-quiz-continuar {
         flex-basis: 100%;
         min-width: 0;
 
-        font-size: 0.85rem;
+        font-size: 1.05rem;
     }
 
     body.pagina-quiz.quiz-em-trilha #quiz-area {
@@ -11912,7 +12011,7 @@ body.quiz-em-trilha #quiz-resultado .trilha-quiz-revisao section>p {
 
     background: var(--branco);
 
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.55;
 
     overflow-wrap: anywhere;
@@ -12025,4 +12124,807 @@ body.pagina-quiz.quiz-em-trilha #quiz-resultado.escondido {
     body.quiz-em-trilha #quiz-resultado .trilha-quiz-continuar {
         width: 100%;
     }
+}
+
+/* =========================================================
+   MODAL DE RECOMPENSA
+========================================================= */
+
+body.pagina-ranking .modal-recompensa[hidden] {
+    display: none;
+}
+
+body.pagina-ranking .modal-recompensa {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+/* FUNDO ESCURECIDO */
+
+body.pagina-ranking .modal-recompensa-fundo {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(15, 45, 60, 0.55);
+
+    backdrop-filter: blur(4px);
+}
+
+
+/* CAIXA PRINCIPAL */
+
+body.pagina-ranking .modal-recompensa-caixa {
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 38px 30px 28px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(180deg,
+            #FFFFFF 0%,
+            #FFFBEA 100%);
+
+    border: 3px solid #FFD84D;
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 55px rgba(15, 45, 60, 0.25);
+
+    animation:
+        aparecerRecompensa 0.3s ease;
+}
+
+
+/* MOEDA GRANDE */
+
+body.pagina-ranking .modal-recompensa-moeda {
+    width: 105px;
+    height: 105px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #FFF4B8;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 8px 20px rgba(255, 199, 0, 0.25);
+}
+
+body.pagina-ranking .modal-recompensa-moeda img {
+    width: 82px;
+    height: 82px;
+
+    object-fit: contain;
+}
+
+
+/* TAG */
+
+body.pagina-ranking .modal-recompensa-tag {
+    margin-bottom: 8px;
+
+    font-size: 0.95rem;
+    font-weight: 800;
+
+    letter-spacing: 0.05em;
+
+    color: #59733A;
+}
+
+
+/* TÍTULO */
+
+body.pagina-ranking .modal-recompensa-caixa h2 {
+    margin: 0;
+
+    font-size: 2rem;
+
+    color: var(--azul-escuro);
+}
+
+
+/* NOME DO MARCO */
+
+body.pagina-ranking .modal-recompensa-nome {
+    margin: 8px 0 18px;
+
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    color: #59733A;
+}
+
+
+/* TEXTO */
+
+body.pagina-ranking .modal-recompensa-texto {
+    margin: 0 0 8px;
+
+    color: #667085;
+}
+
+
+/* PRÊMIO */
+
+body.pagina-ranking .modal-recompensa-premio {
+    margin-bottom: 25px;
+
+    padding: 12px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    background: #FFF3A6;
+
+    border: 2px solid #FFD84D;
+    border-radius: 18px;
+}
+
+body.pagina-ranking .modal-recompensa-premio img {
+    width: 35px;
+    height: 35px;
+
+    object-fit: contain;
+}
+
+body.pagina-ranking .modal-recompensa-premio strong {
+    font-size: 1.5rem;
+
+    color: var(--azul-escuro);
+}
+
+body.pagina-ranking .modal-recompensa-premio span {
+    font-weight: 700;
+
+    color: #59733A;
+}
+
+
+/* BOTÃO RECEBER */
+
+body.pagina-ranking .btn-receber-recompensa {
+    width: 100%;
+
+    padding: 14px 20px;
+
+    border: 2px solid var(--azul-escuro);
+    border-radius: 16px;
+
+    background: #ACE685;
+
+    color: var(--azul-escuro);
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+body.pagina-ranking .btn-receber-recompensa:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 0 rgba(15, 45, 60, 0.15);
+}
+
+
+/* BOTÃO AGORA NÃO */
+
+body.pagina-ranking .btn-fechar-recompensa {
+    margin-top: 12px;
+
+    padding: 8px 16px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #667085;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* ANIMAÇÃO */
+
+@keyframes aparecerRecompensa {
+
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+
+    body.pagina-ranking .modal-recompensa-caixa {
+        padding:
+            30px 20px 24px;
+
+        border-radius: 24px;
+    }
+
+    body.pagina-ranking .modal-recompensa-moeda {
+        width: 90px;
+        height: 90px;
+    }
+
+    body.pagina-ranking .modal-recompensa-moeda img {
+        width: 70px;
+        height: 70px;
+    }
+
+    body.pagina-ranking .modal-recompensa-caixa h2 {
+        font-size: 1.7rem;
+    }
+}
+
+
+/* =========================================================
+   COMO FUNCIONA — LUMI GUIA
+========================================================= */
+
+.como-funciona {
+    display: grid !important;
+
+    grid-template-columns:
+        minmax(0, 1.15fr) minmax(300px, 0.85fr) !important;
+
+    column-gap: clamp(45px, 7vw, 95px) !important;
+    row-gap: 22px !important;
+
+    align-items: center;
+}
+
+
+/* TÍTULO E SUBTÍTULO */
+
+.como-funciona>h2,
+.como-funciona>p {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.como-funciona .card-como-funciona {
+    grid-column: 1;
+
+    width: 100%;
+
+    min-height: 190px !important;
+
+    padding: 28px 32px !important;
+}
+
+
+/* CARD 01 */
+
+.como-funciona .card-aprender {
+    grid-row: 3;
+}
+
+
+/* CARD 02 */
+
+.como-funciona .card-evoluir {
+    grid-row: 4;
+}
+
+
+/* =========================================================
+   ÁREA DA LUMI
+========================================================= */
+
+.lumi-como-funciona {
+    grid-column: 2;
+    grid-row: 3 / 5;
+
+    position: relative;
+
+    min-height: 440px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+/* IMAGEM DA LUMI */
+
+.lumi-como-funciona>img {
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    width: auto;
+    height: 330px;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    animation:
+        lumiFlutuando 3.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   BALÃO DE FALA
+========================================================= */
+
+.balao-lumi {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(330px, 95%);
+
+    margin-bottom: -5px;
+
+    padding: 20px 22px;
+
+    align-self: flex-start;
+
+    border:
+        3px solid var(--azul-escuro);
+
+    border-radius:
+        26px 26px 8px 26px;
+
+    background:
+        var(--branco);
+
+    color:
+        var(--azul-escuro);
+
+    box-shadow:
+        7px 8px 0 rgba(46, 88, 129, 0.10);
+
+    animation:
+        balaoLumiEntrada 0.7s ease both;
+}
+
+
+/* PONTINHA DO BALÃO */
+
+.balao-lumi::after {
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    right: 35px;
+    bottom: -13px;
+
+    background:
+        var(--branco);
+
+    border-right:
+        3px solid var(--azul-escuro);
+
+    border-bottom:
+        3px solid var(--azul-escuro);
+
+    transform:
+        rotate(45deg);
+}
+
+
+/* NOME DA LUMI */
+
+.balao-lumi>strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        var(--azul-escuro);
+
+    font-size: 1.25rem;
+
+    font-weight:
+        950;
+}
+
+
+/* TEXTO */
+
+.balao-lumi>p {
+    margin: 0;
+
+    color:
+        var(--texto-suave);
+
+    font-size: 1.1rem;
+
+    font-weight:
+        650;
+
+    line-height:
+        1.55;
+}
+
+
+/* =========================================================
+   ANIMAÇÕES
+========================================================= */
+
+@keyframes lumiFlutuando {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+@keyframes balaoLumiEntrada {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   TABLET / CELULAR
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .como-funciona {
+        grid-template-columns:
+            1fr !important;
+    }
+
+
+    .como-funciona>h2,
+    .como-funciona>p,
+    .como-funciona .card-como-funciona,
+    .lumi-como-funciona {
+        grid-column:
+            1;
+    }
+
+
+    .como-funciona .card-aprender {
+        grid-row:
+            auto;
+    }
+
+
+    .como-funciona .card-evoluir {
+        grid-row:
+            auto;
+    }
+
+
+    .lumi-como-funciona {
+        grid-row:
+            auto;
+
+        min-height:
+            auto;
+
+        margin-top:
+            25px;
+    }
+
+
+    .lumi-como-funciona>img {
+        height:
+            280px;
+    }
+
+
+    .balao-lumi {
+        align-self:
+            center;
+    }
+}
+
+.icone-ecomoeda {
+    width: 28px;
+    height: 28px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+/* =========================================================
+   TRILHAS BLOQUEADAS
+========================================================= */
+
+body.pagina-dificuldade .dificuldade-card {
+    position: relative;
+}
+
+
+body.pagina-dificuldade .dificuldade-card.dificuldade-bloqueada {
+    filter: saturate(0.65);
+
+    opacity: 0.82;
+}
+
+
+body.pagina-dificuldade .dificuldade-card.dificuldade-bloqueada .btn-dificuldade {
+
+    background: #E4E7EC;
+
+    color: #667085;
+
+    border-color: #98A2B3;
+
+    cursor: pointer;
+}
+
+
+body.pagina-dificuldade .dificuldade-card.dificuldade-bloqueada .btn-dificuldade:hover {
+
+    background: #D0D5DD;
+
+    color: #475467;
+}
+
+
+/* =========================================================
+   SELO BLOQUEADO
+========================================================= */
+
+body.pagina-dificuldade .selo-trilha-bloqueada {
+
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    padding:
+        6px 10px;
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    color:
+        #667085;
+
+    border:
+        2px solid #98A2B3;
+
+    border-radius:
+        999px;
+
+    font-size:
+        0.75rem;
+
+    font-weight:
+        900;
+}
+
+
+/* =========================================================
+   MODAL TRILHA BLOQUEADA
+========================================================= */
+
+body.pagina-dificuldade .modal-trilha-bloqueada[hidden] {
+    display: none;
+}
+
+
+body.pagina-dificuldade .modal-trilha-bloqueada {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+body.pagina-dificuldade .modal-trilha-fundo {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(15, 45, 60, 0.55);
+
+    backdrop-filter:
+        blur(4px);
+}
+
+
+body.pagina-dificuldade .modal-trilha-caixa {
+
+    position: relative;
+
+    z-index: 1;
+
+    width:
+        min(420px, 100%);
+
+    padding:
+        34px 28px 28px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(180deg,
+            #FFFFFF 0%,
+            #F7FFF3 100%);
+
+    border:
+        3px solid var(--azul-escuro);
+
+    border-radius:
+        28px;
+
+    box-shadow:
+        0 20px 55px rgba(15, 45, 60, 0.25);
+}
+
+
+body.pagina-dificuldade .modal-trilha-icone {
+
+    width: 82px;
+    height: 82px;
+
+    margin:
+        0 auto 16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        #FFF3A6;
+
+    border-radius:
+        50%;
+
+    font-size:
+        2.5rem;
+}
+
+
+body.pagina-dificuldade .modal-trilha-caixa h2 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        var(--azul-escuro);
+
+    font-size:
+        1.8rem;
+}
+
+
+body.pagina-dificuldade .modal-trilha-caixa p {
+
+    margin:
+        0 0 22px;
+
+    color:
+        #667085;
+
+    font-size:
+        1.05rem;
+
+    line-height:
+        1.5;
+}
+
+
+body.pagina-dificuldade .btn-fechar-modal-trilha {
+
+    width: 100%;
+
+    padding:
+        13px 20px;
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius:
+        15px;
+
+    background:
+        #ACE685;
+
+    color:
+        var(--azul-escuro);
+
+    font-weight:
+        900;
+
+    font-size:
+        1rem;
+
+    cursor: pointer;
+}
+
+
+body.pagina-dificuldade .btn-fechar-modal-trilha:hover {
+
+    background:
+        #9FE276;
+}
+
+
+body.modal-aberto {
+    overflow: hidden;
 }
