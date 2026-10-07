@@ -1,0 +1,1392 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1000 1000"
+     role="img"
+     aria-labelledby="titulo descricao">
+
+  <title id="titulo">Faisquinha</title>
+
+  <desc id="descricao">
+    Mascote de energia editável em SVG.
+  </desc>
+
+
+  <!-- =====================================
+       DEFINIÇÕES
+  ====================================== -->
+
+  <defs>
+
+    <filter id="sombraSuave"
+            x="-30%"
+            y="-30%"
+            width="160%"
+            height="160%">
+
+      <feGaussianBlur
+        in="SourceAlpha"
+        stdDeviation="10"
+      />
+
+      <feOffset dy="10"/>
+
+      <feComponentTransfer>
+        <feFuncA
+          type="linear"
+          slope="0.22"
+        />
+      </feComponentTransfer>
+
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+
+    </filter>
+
+
+    <filter id="sombraLeve"
+            x="-30%"
+            y="-30%"
+            width="160%"
+            height="160%">
+
+      <feGaussianBlur
+        in="SourceAlpha"
+        stdDeviation="4"
+      />
+
+      <feOffset dy="4"/>
+
+      <feComponentTransfer>
+        <feFuncA
+          type="linear"
+          slope="0.18"
+        />
+      </feComponentTransfer>
+
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+
+    </filter>
+
+
+    <linearGradient id="brilhoCorpo"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="1">
+
+      <stop
+        offset="0"
+        stop-color="#ffffff"
+        stop-opacity=".52"
+      />
+
+      <stop
+        offset=".40"
+        stop-color="#ffffff"
+        stop-opacity=".10"
+      />
+
+      <stop
+        offset="1"
+        stop-color="#ff7a00"
+        stop-opacity=".30"
+      />
+
+    </linearGradient>
+
+
+    <linearGradient id="sombraInferior"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop
+        offset="0"
+        stop-color="#ff8c00"
+        stop-opacity="0"
+      />
+
+      <stop
+        offset="1"
+        stop-color="#e55b00"
+        stop-opacity=".48"
+      />
+
+    </linearGradient>
+
+
+    <radialGradient id="irisFaisquinha"
+                    cx=".45"
+                    cy=".28"
+                    r=".75">
+
+      <stop
+        offset="0"
+        stop-color="#ffe75a"
+      />
+
+      <stop
+        offset=".42"
+        stop-color="#ffb000"
+      />
+
+      <stop
+        offset=".72"
+        stop-color="#9c5200"
+      />
+
+      <stop
+        offset="1"
+        stop-color="#3e1d00"
+      />
+
+    </radialGradient>
+
+
+    <linearGradient id="bocaGrad"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop
+        offset="0"
+        stop-color="#b70b31"
+      />
+
+      <stop
+        offset="1"
+        stop-color="#65051a"
+      />
+
+    </linearGradient>
+
+
+    <linearGradient id="linguaGrad"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop
+        offset="0"
+        stop-color="#ff7a87"
+      />
+
+      <stop
+        offset="1"
+        stop-color="#ff536d"
+      />
+
+    </linearGradient>
+
+  </defs>
+
+
+  <!-- =====================================
+       SOMBRA
+  ====================================== -->
+
+  <g id="sombra">
+
+    <ellipse
+      cx="500"
+      cy="916"
+      rx="255"
+      ry="34"
+      fill="#984100"
+      opacity=".15"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       RAIOS FLUTUANTES
+  ====================================== -->
+
+  <g id="raios-flutuantes"
+     filter="url(#sombraLeve)">
+
+
+    <!-- RAIO ESQUERDO -->
+
+    <path
+      d="
+        M168 324
+        L224 357
+        L202 385
+        L254 419
+        L212 425
+        L235 470
+        L160 409
+        L185 384
+        L149 356
+        Z
+      "
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="10"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M172 335
+        L217 361
+      "
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="11"
+      stroke-linecap="round"
+      opacity=".55"
+    />
+
+
+    <!-- RAIO DIREITO -->
+
+    <path
+      d="
+        M832 337
+        L892 299
+        L873 354
+        L920 349
+        L878 397
+        L903 415
+        L837 467
+        L853 414
+        L811 420
+        L847 375
+        Z
+      "
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="10"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M873 325
+        L847 359
+      "
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="11"
+      stroke-linecap="round"
+      opacity=".55"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       RAIOS LATERAIS DO CORPO
+  ====================================== -->
+
+  <g id="raios-laterais"
+     filter="url(#sombraLeve)">
+
+
+    <path
+      d="
+        M215 472
+        L171 489
+        L192 509
+        L154 541
+        L205 532
+        L187 568
+        L241 524
+        Z
+      "
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="10"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M785 472
+        L829 489
+        L808 509
+        L846 541
+        L795 532
+        L813 568
+        L759 524
+        Z
+      "
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="10"
+      stroke-linejoin="round"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       BRAÇOS
+  ====================================== -->
+
+  <g id="bracos"
+     filter="url(#sombraLeve)">
+
+
+    <path
+      id="braco-esquerdo"
+      d="
+        M228 626
+        C167 617 108 650 83 704
+        C60 754 74 804 119 823
+        C165 842 214 811 247 749
+        C270 705 269 645 228 626Z
+      "
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="12"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M105 702
+        C131 662 166 647 201 651
+      "
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="18"
+      stroke-linecap="round"
+      opacity=".45"
+    />
+
+
+    <ellipse
+      cx="133"
+      cy="758"
+      rx="25"
+      ry="13"
+      fill="#ffffff"
+      opacity=".24"
+      transform="rotate(-45 133 758)"
+    />
+
+
+    <path
+      id="braco-direito"
+      d="
+        M772 626
+        C833 617 892 650 917 704
+        C940 754 926 804 881 823
+        C835 842 786 811 753 749
+        C730 705 731 645 772 626Z
+      "
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="12"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M895 702
+        C869 662 834 647 799 651
+      "
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="18"
+      stroke-linecap="round"
+      opacity=".45"
+    />
+
+
+    <ellipse
+      cx="867"
+      cy="758"
+      rx="25"
+      ry="13"
+      fill="#ffffff"
+      opacity=".24"
+      transform="rotate(45 867 758)"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       PÉS
+  ====================================== -->
+
+  <g id="pes"
+     filter="url(#sombraLeve)">
+
+
+    <ellipse
+      id="pe-esquerdo"
+      cx="365"
+      cy="866"
+      rx="103"
+      ry="60"
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="11"
+      transform="rotate(-4 365 866)"
+    />
+
+
+    <ellipse
+      id="pe-direito"
+      cx="635"
+      cy="866"
+      rx="103"
+      ry="60"
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="11"
+      transform="rotate(4 635 866)"
+    />
+
+
+    <ellipse
+      cx="342"
+      cy="847"
+      rx="28"
+      ry="15"
+      fill="#ffffff"
+      opacity=".56"
+    />
+
+
+    <ellipse
+      cx="658"
+      cy="847"
+      rx="28"
+      ry="15"
+      fill="#ffffff"
+      opacity=".56"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       CORPO
+  ====================================== -->
+
+  <g id="corpo"
+     filter="url(#sombraSuave)">
+
+
+    <path
+      id="corpo-base"
+      d="
+        M500 308
+
+        C364 308 248 375 208 490
+
+        C162 622 187 764 279 836
+
+        C339 884 413 904 500 904
+
+        C587 904 661 884 721 836
+
+        C813 764 838 622 792 490
+
+        C752 375 636 308 500 308Z
+      "
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="14"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M500 326
+
+        C381 326 281 383 243 486
+
+        C208 581 215 690 272 774
+
+        C322 848 403 878 500 878
+
+        C597 878 678 848 728 774
+
+        C785 690 792 581 757 486
+
+        C719 383 619 326 500 326Z
+      "
+      fill="url(#brilhoCorpo)"
+    />
+
+
+    <path
+      d="
+        M234 682
+
+        C260 784 351 862 500 876
+
+        C649 862 740 784 766 682
+
+        C744 811 646 882 500 889
+
+        C354 882 256 811 234 682Z
+      "
+      fill="url(#sombraInferior)"
+      opacity=".70"
+    />
+
+
+    <!-- BRILHO LATERAL ESQUERDO -->
+
+    <path
+      d="
+        M273 411
+        C317 362 373 341 430 336
+      "
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="18"
+      stroke-linecap="round"
+      opacity=".43"
+    />
+
+
+    <!-- BRILHO SUPERIOR DIREITO -->
+
+    <path
+      d="
+        M623 351
+        C690 368 738 407 761 460
+      "
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="15"
+      stroke-linecap="round"
+      opacity=".45"
+    />
+
+
+    <ellipse
+      cx="752"
+      cy="485"
+      rx="24"
+      ry="13"
+      fill="#ffffff"
+      opacity=".56"
+      transform="rotate(55 752 485)"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       RAIO PRINCIPAL DO TOPO
+  ====================================== -->
+
+  <g id="raio-topo"
+     filter="url(#sombraLeve)">
+
+
+    <path
+      id="raio-principal"
+      d="
+        M533 86
+
+        L744 48
+
+        L668 188
+
+        L783 174
+
+        L649 314
+
+        L706 299
+
+        L543 471
+
+        L582 329
+
+        L479 367
+
+        L523 261
+
+        L411 278
+
+        L506 153
+
+        Z
+      "
+      fill="var(--cor-principal, #ffd83d)"
+      stroke="#743300"
+      stroke-width="13"
+      stroke-linejoin="round"
+    />
+
+
+    <!-- SOMBRA INTERNA -->
+
+    <path
+      d="
+        M518 244
+        L449 263
+        L521 167
+        L693 78
+        L583 194
+        L648 183
+        L567 288
+        Z
+      "
+      fill="#ffffff"
+      opacity=".36"
+    />
+
+
+    <!-- REFLEXO MAIOR -->
+
+    <path
+      d="
+        M556 120
+        L675 75
+        L612 141
+      "
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="17"
+      stroke-linecap="round"
+      opacity=".70"
+    />
+
+
+    <!-- PARTE LARANJA -->
+
+    <path
+      d="
+        M523 260
+        L475 350
+        L570 317
+        L548 409
+        L667 291
+        L606 311
+        L692 220
+        L610 240
+        L672 146
+        L566 231
+        Z
+      "
+      fill="#ff8a00"
+      opacity=".38"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       BARRIGA
+  ====================================== -->
+
+  <g id="barriga">
+
+    <path
+      id="barriga-base"
+      d="
+        M500 677
+
+        C392 677 311 727 300 800
+
+        C290 869 371 897 500 897
+
+        C629 897 710 869 700 800
+
+        C689 727 608 677 500 677Z
+      "
+      fill="var(--cor-secundaria, #fff4d6)"
+      stroke="#edd6b7"
+      stroke-width="8"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M318 789
+
+        C361 735 421 712 500 712
+
+        C579 712 639 735 682 789
+
+        C657 717 589 690 500 690
+
+        C411 690 343 717 318 789Z
+      "
+      fill="#ffffff"
+      opacity=".34"
+    />
+
+
+    <path
+      d="
+        M314 824
+
+        C352 869 419 885 500 885
+
+        C581 885 648 869 686 824
+
+        C664 875 596 899 500 899
+
+        C404 899 336 875 314 824Z
+      "
+      fill="#f2b36e"
+      opacity=".20"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       DETALHES DAS BOCHECHAS
+  ====================================== -->
+
+  <g id="detalhes">
+
+    <path
+      d="
+        M282 588
+        L323 605
+        L304 626
+        L340 652
+        L298 642
+        L313 676
+        L263 630
+        L283 615
+        Z
+      "
+      fill="var(--cor-secundaria, #fff4d6)"
+      stroke="#e76e00"
+      stroke-width="8"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M718 588
+        L677 605
+        L696 626
+        L660 652
+        L702 642
+        L687 676
+        L737 630
+        L717 615
+        Z
+      "
+      fill="var(--cor-secundaria, #fff4d6)"
+      stroke="#e76e00"
+      stroke-width="8"
+      stroke-linejoin="round"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       OLHOS REDONDOS
+  ====================================== -->
+
+  <g id="olhos-redondos">
+
+
+    <g>
+
+      <ellipse
+        cx="381"
+        cy="533"
+        rx="88"
+        ry="112"
+        fill="#ffffff"
+        stroke="#160a08"
+        stroke-width="14"
+      />
+
+
+      <ellipse
+        cx="397"
+        cy="547"
+        rx="58"
+        ry="82"
+        fill="url(#irisFaisquinha)"
+      />
+
+
+      <ellipse
+        cx="405"
+        cy="520"
+        rx="31"
+        ry="50"
+        fill="#170d08"
+      />
+
+
+      <ellipse
+        cx="423"
+        cy="487"
+        rx="22"
+        ry="28"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="446"
+        cy="520"
+        r="9"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="380"
+        cy="580"
+        r="11"
+        fill="#fff48a"
+      />
+
+    </g>
+
+
+    <g>
+
+      <ellipse
+        cx="619"
+        cy="533"
+        rx="88"
+        ry="112"
+        fill="#ffffff"
+        stroke="#160a08"
+        stroke-width="14"
+      />
+
+
+      <ellipse
+        cx="603"
+        cy="547"
+        rx="58"
+        ry="82"
+        fill="url(#irisFaisquinha)"
+      />
+
+
+      <ellipse
+        cx="595"
+        cy="520"
+        rx="31"
+        ry="50"
+        fill="#170d08"
+      />
+
+
+      <ellipse
+        cx="577"
+        cy="487"
+        rx="22"
+        ry="28"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="554"
+        cy="520"
+        r="9"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="620"
+        cy="580"
+        r="11"
+        fill="#fff48a"
+      />
+
+    </g>
+
+  </g>
+
+
+  <!-- =====================================
+       OLHOS GRANDES
+  ====================================== -->
+
+  <g id="olhos-grandes"
+     style="display:none">
+
+
+    <g>
+
+      <ellipse
+        cx="375"
+        cy="526"
+        rx="101"
+        ry="126"
+        fill="#ffffff"
+        stroke="#160a08"
+        stroke-width="14"
+      />
+
+
+      <ellipse
+        cx="394"
+        cy="545"
+        rx="68"
+        ry="94"
+        fill="url(#irisFaisquinha)"
+      />
+
+
+      <ellipse
+        cx="405"
+        cy="514"
+        rx="37"
+        ry="59"
+        fill="#170d08"
+      />
+
+
+      <ellipse
+        cx="429"
+        cy="478"
+        rx="26"
+        ry="33"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="454"
+        cy="526"
+        r="11"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="374"
+        cy="591"
+        r="13"
+        fill="#fff48a"
+      />
+
+    </g>
+
+
+    <g>
+
+      <ellipse
+        cx="625"
+        cy="526"
+        rx="101"
+        ry="126"
+        fill="#ffffff"
+        stroke="#160a08"
+        stroke-width="14"
+      />
+
+
+      <ellipse
+        cx="606"
+        cy="545"
+        rx="68"
+        ry="94"
+        fill="url(#irisFaisquinha)"
+      />
+
+
+      <ellipse
+        cx="595"
+        cy="514"
+        rx="37"
+        ry="59"
+        fill="#170d08"
+      />
+
+
+      <ellipse
+        cx="571"
+        cy="478"
+        rx="26"
+        ry="33"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="546"
+        cy="526"
+        r="11"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="626"
+        cy="591"
+        r="13"
+        fill="#fff48a"
+      />
+
+    </g>
+
+  </g>
+
+
+  <!-- =====================================
+       OLHOS BRILHANTES
+  ====================================== -->
+
+  <g id="olhos-brilhantes"
+     style="display:none">
+
+
+    <g>
+
+      <ellipse
+        cx="381"
+        cy="533"
+        rx="88"
+        ry="112"
+        fill="#ffffff"
+        stroke="#160a08"
+        stroke-width="14"
+      />
+
+
+      <ellipse
+        cx="397"
+        cy="547"
+        rx="58"
+        ry="82"
+        fill="url(#irisFaisquinha)"
+      />
+
+
+      <ellipse
+        cx="405"
+        cy="520"
+        rx="31"
+        ry="50"
+        fill="#170d08"
+      />
+
+
+      <path
+        d="
+          M423 478
+          l8 18
+          19 8
+          -19 8
+          -8 19
+          -8 -19
+          -19 -8
+          19 -8Z
+        "
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="448"
+        cy="542"
+        r="9"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="379"
+        cy="582"
+        r="12"
+        fill="#fff9b5"
+      />
+
+    </g>
+
+
+    <g>
+
+      <ellipse
+        cx="619"
+        cy="533"
+        rx="88"
+        ry="112"
+        fill="#ffffff"
+        stroke="#160a08"
+        stroke-width="14"
+      />
+
+
+      <ellipse
+        cx="603"
+        cy="547"
+        rx="58"
+        ry="82"
+        fill="url(#irisFaisquinha)"
+      />
+
+
+      <ellipse
+        cx="595"
+        cy="520"
+        rx="31"
+        ry="50"
+        fill="#170d08"
+      />
+
+
+      <path
+        d="
+          M577 478
+          l8 18
+          19 8
+          -19 8
+          -8 19
+          -8 -19
+          -19 -8
+          19 -8Z
+        "
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="552"
+        cy="542"
+        r="9"
+        fill="#ffffff"
+      />
+
+
+      <circle
+        cx="621"
+        cy="582"
+        r="12"
+        fill="#fff9b5"
+      />
+
+    </g>
+
+  </g>
+
+
+  <!-- =====================================
+       EXPRESSÃO SORRISO
+  ====================================== -->
+
+  <g id="expressao-sorriso">
+
+
+    <!-- SOBRANCELHAS -->
+
+    <path
+      d="
+        M338 414
+        Q382 378 422 404
+      "
+      fill="none"
+      stroke="#5a2500"
+      stroke-width="15"
+      stroke-linecap="round"
+    />
+
+
+    <path
+      d="
+        M578 404
+        Q618 378 662 414
+      "
+      fill="none"
+      stroke="#5a2500"
+      stroke-width="15"
+      stroke-linecap="round"
+    />
+
+
+    <!-- BOCA -->
+
+    <path
+      d="
+        M449 567
+
+        C470 581 488 584 500 576
+
+        C512 584 530 581 551 567
+
+        C556 628 534 669 500 673
+
+        C466 669 444 628 449 567Z
+      "
+      fill="url(#bocaGrad)"
+      stroke="#160a08"
+      stroke-width="11"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M463 629
+
+        C483 613 517 613 537 629
+
+        C529 653 516 666 500 668
+
+        C484 666 471 653 463 629Z
+      "
+      fill="url(#linguaGrad)"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       EXPRESSÃO ANIMADO
+  ====================================== -->
+
+  <g id="expressao-animado"
+     style="display:none">
+
+
+    <!-- SOBRANCELHAS -->
+
+    <path
+      d="
+        M333 400
+        Q382 360 428 398
+      "
+      fill="none"
+      stroke="#5a2500"
+      stroke-width="15"
+      stroke-linecap="round"
+    />
+
+
+    <path
+      d="
+        M572 398
+        Q618 360 667 400
+      "
+      fill="none"
+      stroke="#5a2500"
+      stroke-width="15"
+      stroke-linecap="round"
+    />
+
+
+    <!-- BOCA -->
+
+    <path
+      d="
+        M440 556
+
+        C467 579 486 583 500 575
+
+        C514 583 533 579 560 556
+
+        C565 631 539 679 500 683
+
+        C461 679 435 631 440 556Z
+      "
+      fill="url(#bocaGrad)"
+      stroke="#160a08"
+      stroke-width="11"
+      stroke-linejoin="round"
+    />
+
+
+    <path
+      d="
+        M458 634
+
+        C479 615 521 615 542 634
+
+        C532 663 518 676 500 679
+
+        C482 676 468 663 458 634Z
+      "
+      fill="url(#linguaGrad)"
+    />
+
+  </g>
+
+
+  <!-- =====================================
+       EXPRESSÃO CURIOSO
+  ====================================== -->
+
+  <g id="expressao-curioso"
+     style="display:none">
+
+
+    <!-- SOBRANCELHA ESQUERDA -->
+
+    <path
+      d="
+        M332 407
+        Q379 377 425 397
+      "
+      fill="none"
+      stroke="#5a2500"
+      stroke-width="15"
+      stroke-linecap="round"
+    />
+
+
+    <!-- SOBRANCELHA DIREITA LEVANTADA -->
+
+    <path
+      d="
+        M575 388
+        Q624 348 671 390
+      "
+      fill="none"
+      stroke="#5a2500"
+      stroke-width="15"
+      stroke-linecap="round"
+    />
+
+
+    <!-- BOCA -->
+
+    <ellipse
+      cx="500"
+      cy="624"
+      rx="27"
+      ry="35"
+      fill="#8b1735"
+      stroke="#160a08"
+      stroke-width="10"
+    />
+
+
+    <ellipse
+      cx="500"
+      cy="637"
+      rx="14"
+      ry="11"
+      fill="#ff7183"
+    />
+
+  </g>
+
+</svg>
