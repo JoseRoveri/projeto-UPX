@@ -18,6 +18,7 @@ async function consultarPerfil(req, res) {
                     xp,
                     nivel,
                     liga,
+                    moedas,
 
                     CASE
                         WHEN ultima_atividade IS NULL THEN 0
@@ -31,7 +32,6 @@ async function consultarPerfil(req, res) {
 
                         ELSE COALESCE(sequencia, 0)
                     END AS sequencia,
-
                     ultima_atividade AS "ultimaAtividade"
 
                 FROM public.usuarios

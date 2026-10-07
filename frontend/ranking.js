@@ -1,672 +1,685 @@
-// ========================================
-// RANKING ECOENERGIA
-// ========================================
+"use strict";
 
 (() => {
+
+    // ========================================
+    // API
+    // ========================================
+
+    const API = "http://127.0.0.1:3000/api";
+
 
     // ========================================
     // ELEMENTOS
     // ========================================
 
-    const listaRanking =
-        document.getElementById(
-            "ranking-lista"
-        );
-
     const meuXp =
-        document.getElementById(
-            "meu-xp"
-        );
+        document.getElementById("meu-xp");
 
-    const minhaPosicao =
-        document.getElementById(
-            "minha-posicao"
-        );
+    const minhaLiga =
+        document.getElementById("minha-liga");
 
-    const jogadoresCount =
-        document.getElementById(
-            "jogadores-count"
-        );
+    const minhaSequencia =
+        document.getElementById("minha-sequencia");
 
-    const totalJogadores =
-        document.getElementById(
-            "total-jogadores"
-        );
+    const minhasMoedas =
+        document.getElementById("minhas-moedas");
 
-    const barraLiga =
-        document.getElementById(
-            "barra-liga"
-        );
+    const barraRecompensa =
+        document.getElementById("barra-recompensa");
 
-    const xpProximaLiga =
-        document.getElementById(
-            "xp-proxima-liga"
-        );
+    const xpProximaRecompensa =
+        document.getElementById("xp-proxima-recompensa");
 
     const textoProgresso =
-        document.getElementById(
-            "texto-progresso"
-        );
+        document.getElementById("texto-progresso");
 
     const ultimaAtualizacao =
-        document.getElementById(
-            "ultima-atualizacao"
-        );
+        document.getElementById("ultima-atualizacao");
+
+    const recompensasCount =
+        document.getElementById("recompensas-count");
+
+    const recompensasLista =
+        document.getElementById("recompensas-lista");
+
+    const modalRecompensa =
+        document.getElementById("modal-recompensa");
+
+    const modalRecompensaFundo =
+        document.getElementById("modal-recompensa-fundo");
+
+    const modalRecompensaNome =
+        document.getElementById("modal-recompensa-nome");
+
+    const modalRecompensaQuantidade =
+        document.getElementById("modal-recompensa-quantidade");
+
+    const btnReceberRecompensa =
+        document.getElementById("btn-receber-recompensa");
+
+    const btnFecharRecompensa =
+        document.getElementById("btn-fechar-recompensa");
 
 
     // ========================================
-    // USUÁRIO LOGADO
+    // RECOMPENSAS
+    //
+    // Por enquanto usamos os mesmos valores
+    // cadastrados no PostgreSQL.
+    // Depois podemos buscar isso pelo backend.
     // ========================================
 
-    const rankingUsuarioSalvo =
-        localStorage.getItem(
-            "ecoUsuario"
+
+    let recompensas = [];
+
+
+
+    // ========================================
+    // CONSULTA AO BACKEND
+    // ========================================
+
+    async function consultarPerfil() {
+
+        const resposta = await fetch(
+            API + "/perfil",
+            {
+                credentials: "include",
+                cache: "no-store"
+            }
         );
 
-    let usuarioLogadoRanking = null;
+        const dados =
+            await resposta.json()
+                .catch(() => ({}));
 
+        if (!resposta.ok) {
 
-    if (rankingUsuarioSalvo) {
-
-        try {
-
-            usuarioLogadoRanking =
-                JSON.parse(
-                    rankingUsuarioSalvo
+            const erro =
+                new Error(
+                    dados.mensagem ||
+                    "Não foi possível carregar sua jornada."
                 );
 
-        } catch (erro) {
+            erro.status = resposta.status;
 
-            console.error(
-                "Erro ao carregar usuário:",
-                erro
-            );
-
+            throw erro;
         }
 
+        return dados;
+    }
+
+    async function consultarRecompensas() {
+
+        const resposta = await fetch(
+            API + "/recompensas",
+            {
+                credentials: "include",
+                cache: "no-store"
+            }
+        );
+
+        const dados =
+            await resposta.json()
+                .catch(() => ({}));
+
+        if (!resposta.ok) {
+
+            const erro =
+                new Error(
+                    dados.mensagem ||
+                    "Não foi possível carregar as recompensas."
+                );
+
+            erro.status = resposta.status;
+
+            throw erro;
+        }
+
+        return dados;
     }
 
 
     // ========================================
-    // JOGADORES
+    // RESUMO
     // ========================================
 
-    let jogadoresRanking = [];
+    function atualizarResumo(usuario) {
 
+        const xp =
+            Number(usuario.xp) || 0;
+
+        const moedas =
+            Number(usuario.moedas) || 0;
+
+        const sequencia =
+            Number(usuario.sequencia) || 0;
+
+
+        if (meuXp) {
+
+            meuXp.textContent =
+                `${xp.toLocaleString("pt-BR")} XP`;
+        }
+
+
+        if (minhaLiga) {
+
+            minhaLiga.textContent =
+                usuario.liga || "Bronze";
+        }
+
+
+        if (minhaSequencia) {
+
+            minhaSequencia.textContent =
+                sequencia === 1
+                    ? "1 dia"
+                    : `${sequencia} dias`;
+        }
+
+
+        if (minhasMoedas) {
+
+            minhasMoedas.textContent =
+                moedas.toLocaleString("pt-BR");
+        }
+
+
+        atualizarProgresso(xp);
+
+        mostrarRecompensas(xp);
+
+    }
 
     // ========================================
-    // BUSCAR RANKING NO BANCO
+    // MODAL DE RECOMPENSA
     // ========================================
 
-    async function carregarRanking() {
+    function abrirModalRecompensa(recompensa) {
+
+        if (!modalRecompensa) {
+            return;
+        }
+
+        if (modalRecompensaNome) {
+            modalRecompensaNome.textContent =
+                recompensa.nome;
+        }
+
+        if (modalRecompensaQuantidade) {
+            modalRecompensaQuantidade.textContent =
+                `+${recompensa.moedas}`;
+        }
+
+        modalRecompensa.dataset.recompensaId =
+            recompensa.id;
+
+        modalRecompensa.hidden = false;
+    }
+
+
+    function fecharModalRecompensa() {
+
+        if (!modalRecompensa) {
+            return;
+        }
+
+        modalRecompensa.hidden = true;
+
+        delete modalRecompensa.dataset.recompensaId;
+    }
+
+    async function resgatarRecompensa() {
+
+        if (!modalRecompensa) {
+            return;
+        }
+
+        const recompensaId =
+            Number(modalRecompensa.dataset.recompensaId);
+
+        if (!recompensaId) {
+            return;
+        }
+
+
+        if (btnReceberRecompensa) {
+
+            btnReceberRecompensa.disabled = true;
+            btnReceberRecompensa.textContent =
+                "Recebendo...";
+        }
+
 
         try {
 
-            console.log(
-                "Buscando ranking..."
+            const resposta = await fetch(
+                `${API}/recompensas/${recompensaId}/resgatar`,
+                {
+                    method: "POST",
+                    credentials: "include"
+                }
             );
-
-
-            const resposta =
-                await fetch(
-                    "http://localhost:3000/api/ranking",
-                    {
-                        cache: "no-store"
-                    }
-                );
 
 
             const dados =
-                await resposta.json();
-
-
-            console.log(
-                "Resposta do ranking:",
-                dados
-            );
+                await resposta.json()
+                    .catch(() => ({}));
 
 
             if (!resposta.ok) {
 
-                console.error(
-                    "Erro da API:",
-                    dados.mensagem
+                throw new Error(
+                    dados.mensagem ||
+                    "Não foi possível receber a recompensa."
                 );
-
-                return;
             }
 
 
-            if (
-                !Array.isArray(
-                    dados.jogadores
-                )
-            ) {
+            // Atualiza o saldo imediatamente.
+            if (minhasMoedas) {
 
-                console.error(
-                    "A API não retornou uma lista de jogadores.",
-                    dados
-                );
-
-                return;
+                minhasMoedas.textContent =
+                    Number(
+                        dados.moedasTotal || 0
+                    ).toLocaleString("pt-BR");
             }
 
 
-            jogadoresRanking =
-                dados.jogadores;
+            fecharModalRecompensa();
 
 
-            console.log(
-                "Jogadores recebidos:",
-                jogadoresRanking
-            );
-
-
-            mostrarRanking();
-
-            atualizarUsuario();
-
-            atualizarInformacoes();
+            // Atualiza toda a jornada para mostrar
+            // a recompensa como recebida.
+            await carregarJornada();
 
 
         } catch (erro) {
 
             console.error(
-                "Erro ao carregar ranking:",
+                "Erro ao receber recompensa:",
                 erro
             );
 
-        }
-
-    }
-
-
-    // ========================================
-    // AVATAR
-    // ========================================
-
-    function escolherAvatar(
-        jogador
-    ) {
-
-        if (
-            jogador.tipo ===
-            "professor"
-        ) {
-
-            return "👩‍🏫";
-
-        }
-
-
-        if (
-            jogador.tipo ===
-            "responsavel"
-        ) {
-
-            return "👤";
-
-        }
-
-
-        return "🧑‍🎓";
-
-    }
-
-
-    // ========================================
-    // VERIFICAR USUÁRIO ATUAL
-    // ========================================
-
-    function ehUsuarioAtual(
-        jogador
-    ) {
-
-        if (
-            !usuarioLogadoRanking
-        ) {
-
-            return false;
-
-        }
-
-
-        return (
-            String(
-                jogador.id
-            ) ===
-            String(
-                usuarioLogadoRanking.id
-            )
-        );
-
-    }
-
-
-    // ========================================
-    // MOSTRAR RANKING
-    // ========================================
-
-    function mostrarRanking() {
-
-        if (!listaRanking) {
-
-            console.error(
-                "Elemento #ranking-lista não encontrado."
+            alert(
+                erro.message ||
+                "Não foi possível receber a recompensa."
             );
 
-            return;
+        } finally {
+
+            if (btnReceberRecompensa) {
+
+                btnReceberRecompensa.disabled = false;
+                btnReceberRecompensa.textContent =
+                    "Receber 🎁";
+            }
         }
+    }
 
+    if (recompensasLista) {
 
-        listaRanking.innerHTML =
-            "";
+        recompensasLista.addEventListener(
+            "click",
+            evento => {
 
-
-        if (
-            jogadoresRanking.length ===
-            0
-        ) {
-
-            listaRanking.innerHTML = `
-                <p>
-                    Nenhum jogador no ranking ainda.
-                </p>
-            `;
-
-            return;
-
-        }
-
-
-        jogadoresRanking.forEach(
-            (
-                jogador,
-                indice
-            ) => {
-
-                const posicao =
-                    indice + 1;
-
-
-                const item =
-                    document.createElement(
-                        "div"
+                const botao =
+                    evento.target.closest(
+                        ".btn-resgatar-recompensa"
                     );
 
-
-                item.classList.add(
-                    "ranking-jogador"
-                );
-
-
-                const usuarioAtual =
-                    ehUsuarioAtual(
-                        jogador
-                    );
-
-
-                if (usuarioAtual) {
-
-                    item.classList.add(
-                        "jogador-atual"
-                    );
-
+                if (!botao) {
+                    return;
                 }
 
+                const recompensaId =
+                    Number(botao.dataset.recompensaId);
 
-                // ========================================
-                // POSIÇÃO / MEDALHA
-                // ========================================
-
-                let medalha =
-                    posicao;
-
+                const recompensa =
+                    recompensas.find(
+                        item =>
+                            Number(item.id) === recompensaId
+                    );
 
                 if (
-                    posicao === 1
+                    !recompensa ||
+                    recompensa.status !== "liberada"
                 ) {
-
-                    medalha =
-                        "🥇";
-
+                    return;
                 }
 
-                else if (
-                    posicao === 2
-                ) {
-
-                    medalha =
-                        "🥈";
-
-                }
-
-                else if (
-                    posicao === 3
-                ) {
-
-                    medalha =
-                        "🥉";
-
-                }
-
-
-                const xpJogador =
-                    Number(
-                        jogador.xp
-                    ) || 0;
-
-
-                // ========================================
-                // HTML
-                // ========================================
-
-                item.innerHTML = `
-
-                    <div class="posicao-ranking">
-
-                        ${medalha}
-
-                    </div>
-
-
-                    <div class="avatar-ranking">
-
-                        ${escolherAvatar(
-                    jogador
-                )}
-
-                    </div>
-
-
-                    <div class="nome-ranking">
-
-                        <strong>
-
-                            ${jogador.nome}
-
-                            ${usuarioAtual
-                        ? " 👈"
-                        : ""
-                    }
-
-                        </strong>
-
-
-                        <small>
-
-                            ${usuarioAtual
-                        ? "Você"
-                        : "EcoEnergia"
-                    }
-
-                        </small>
-
-                    </div>
-
-
-                    <div class="xp-ranking">
-
-                        ⭐ ${xpJogador} XP
-
-                    </div>
-
-                `;
-
-
-                listaRanking.appendChild(
-                    item
+                abrirModalRecompensa(
+                    recompensa
                 );
-
             }
         );
+    }
 
+
+    if (btnFecharRecompensa) {
+
+        btnFecharRecompensa.addEventListener(
+            "click",
+            fecharModalRecompensa
+        );
+    }
+
+
+    if (modalRecompensaFundo) {
+
+        modalRecompensaFundo.addEventListener(
+            "click",
+            fecharModalRecompensa
+        );
+    }
+
+    if (btnReceberRecompensa) {
+
+        btnReceberRecompensa.addEventListener(
+            "click",
+            resgatarRecompensa
+        );
     }
 
 
     // ========================================
-    // ATUALIZAR USUÁRIO
+    // PROGRESSO ATÉ A PRÓXIMA RECOMPENSA
     // ========================================
 
-    function atualizarUsuario() {
+    function atualizarProgresso(xp) {
 
-        if (
-            !usuarioLogadoRanking
-        ) {
+        const proxima =
+            recompensas.find(
+                recompensa =>
+                    xp < recompensa.xp
+            );
 
-            if (meuXp) {
 
-                meuXp.textContent =
-                    "--";
+        // Todas as recompensas atingidas.
+        if (!proxima) {
 
+            if (barraRecompensa) {
+
+                barraRecompensa.style.width =
+                    "100%";
             }
 
 
-            if (minhaPosicao) {
+            if (xpProximaRecompensa) {
 
-                minhaPosicao.textContent =
-                    "--";
-
+                xpProximaRecompensa.textContent =
+                    "Todos os marcos alcançados!";
             }
 
 
             if (textoProgresso) {
 
                 textoProgresso.textContent =
-                    "Faça login para acompanhar sua evolução.";
-
+                    "Você alcançou todos os marcos atuais da sua jornada. 🌟";
             }
 
             return;
-
         }
 
 
-        const indiceUsuario =
-            jogadoresRanking.findIndex(
-                jogador =>
-                    ehUsuarioAtual(
-                        jogador
-                    )
+        const indiceProxima =
+            recompensas.indexOf(proxima);
+
+
+        const marcoAnterior =
+            indiceProxima > 0
+                ? recompensas[indiceProxima - 1].xp
+                : 0;
+
+
+        const tamanhoIntervalo =
+            proxima.xp - marcoAnterior;
+
+
+        const xpNoIntervalo =
+            Math.max(
+                0,
+                xp - marcoAnterior
             );
 
 
-        if (
-            indiceUsuario === -1
-        ) {
-
-            console.warn(
-                "Usuário logado não encontrado no ranking.",
-                usuarioLogadoRanking
+        const porcentagem =
+            Math.min(
+                100,
+                Math.max(
+                    0,
+                    (xpNoIntervalo / tamanhoIntervalo) * 100
+                )
             );
-
-
-            if (meuXp) {
-
-                meuXp.textContent =
-                    "0 XP";
-
-            }
-
-
-            if (minhaPosicao) {
-
-                minhaPosicao.textContent =
-                    "--";
-
-            }
-
-            return;
-
-        }
-
-
-        const usuario =
-            jogadoresRanking[
-            indiceUsuario
-            ];
-
-
-        const posicao =
-            indiceUsuario + 1;
-
-
-        const xp =
-            Number(
-                usuario.xp
-            ) || 0;
-
-
-        console.log(
-            "Usuário encontrado no ranking:",
-            usuario
-        );
-
-
-        console.log(
-            "XP real do usuário:",
-            xp
-        );
-
-
-        if (meuXp) {
-
-            meuXp.textContent =
-                `${xp} XP`;
-
-        }
-
-
-        if (minhaPosicao) {
-
-            minhaPosicao.textContent =
-                `#${posicao}`;
-
-        }
-
-
-        atualizarProgresso(
-            xp
-        );
-
-
-        // ========================================
-        // ATUALIZAR USUÁRIO LOCAL
-        // ========================================
-
-        usuarioLogadoRanking.xp =
-            xp;
-
-
-        localStorage.setItem(
-            "ecoUsuario",
-            JSON.stringify(
-                usuarioLogadoRanking
-            )
-        );
-
-    }
-
-
-    // ========================================
-    // PROGRESSO DE XP
-    // ========================================
-
-    function atualizarProgresso(
-        xp
-    ) {
-
-        const tamanhoMarco =
-            100;
-
-
-        const marcoAtual =
-            Math.floor(
-                xp /
-                tamanhoMarco
-            ) *
-            tamanhoMarco;
-
-
-        const proximoMarco =
-            marcoAtual +
-            tamanhoMarco;
-
-
-        const xpDentroDoMarco =
-            xp -
-            marcoAtual;
-
-
-        const progresso =
-            (
-                xpDentroDoMarco /
-                tamanhoMarco
-            ) *
-            100;
 
 
         const faltam =
-            proximoMarco -
-            xp;
+            Math.max(
+                0,
+                proxima.xp - xp
+            );
 
 
-        if (barraLiga) {
+        if (barraRecompensa) {
 
-            barraLiga.style.width =
-                `${progresso}%`;
-
+            barraRecompensa.style.width =
+                `${porcentagem}%`;
         }
 
 
-        if (xpProximaLiga) {
+        if (xpProximaRecompensa) {
 
-            xpProximaLiga.textContent =
-                `${proximoMarco} XP`;
-
+            xpProximaRecompensa.textContent =
+                `${proxima.xp.toLocaleString("pt-BR")} XP`;
         }
 
 
         if (textoProgresso) {
 
             textoProgresso.textContent =
-                `Faltam ${faltam} XP para alcançar ${proximoMarco} XP.`;
-
+                `Faltam ${faltam.toLocaleString("pt-BR")} XP para ganhar +${proxima.moedas} EcoMoedas.`;
         }
-
     }
 
 
     // ========================================
-    // INFORMAÇÕES GERAIS
+    // LISTA DE RECOMPENSAS
     // ========================================
 
-    function atualizarInformacoes() {
+    function mostrarRecompensas(xp) {
 
-        const quantidade =
-            jogadoresRanking.length;
-
-
-        if (jogadoresCount) {
-
-            jogadoresCount.textContent =
-                quantidade === 1
-                    ? "1 jogador"
-                    : `${quantidade} jogadores`;
-
+        if (!recompensasLista) {
+            return;
         }
 
 
-        if (totalJogadores) {
+        recompensasLista.replaceChildren();
 
-            totalJogadores.textContent =
-                quantidade;
 
+        const alcancadas =
+            recompensas.filter(recompensa =>
+                recompensa.status === "liberada" ||
+                recompensa.status === "recebida"
+            ).length;
+
+
+        if (recompensasCount) {
+
+            recompensasCount.textContent =
+                `${alcancadas} de ${recompensas.length} marcos`;
         }
 
 
-        atualizarHorario();
+        recompensas.forEach(recompensa => {
 
+            const statusRecompensa =
+                recompensa.status || "bloqueada";
+
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                `ranking-jogador recompensa-${statusRecompensa}`;
+
+
+            // ========================================
+            // STATUS
+            // ========================================
+
+            const status =
+                document.createElement("div");
+
+            status.className =
+                "posicao-ranking";
+
+
+            if (statusRecompensa === "recebida") {
+
+                status.textContent = "✅";
+
+            } else if (statusRecompensa === "liberada") {
+
+                status.textContent = "🎁";
+
+            } else {
+
+                status.textContent = "🔒";
+            }
+
+
+            // ========================================
+            // MOEDA
+            // ========================================
+
+            const presente =
+                document.createElement("div");
+
+            presente.className =
+                "avatar-ranking avatar-moeda";
+
+
+            const imagemMoeda =
+                document.createElement("img");
+
+            imagemMoeda.src =
+                "imagens/moeda.png";
+
+            imagemMoeda.alt =
+                "EcoMoeda";
+
+            imagemMoeda.className =
+                "imagem-moeda-recompensa";
+
+
+            presente.appendChild(
+                imagemMoeda
+            );
+
+
+            // ========================================
+            // INFORMAÇÕES
+            // ========================================
+
+            const informacoes =
+                document.createElement("div");
+
+            informacoes.className =
+                "nome-ranking";
+
+
+            const nome =
+                document.createElement("strong");
+
+            nome.textContent =
+                recompensa.nome;
+
+
+            const descricao =
+                document.createElement("small");
+
+
+            if (statusRecompensa === "recebida") {
+
+                descricao.textContent =
+                    `Você já recebeu ${recompensa.moedas} EcoMoedas.`;
+
+            } else if (statusRecompensa === "liberada") {
+
+                descricao.textContent =
+                    `Recompensa liberada! Você ganhou ${recompensa.moedas} EcoMoedas.`;
+
+            } else {
+
+                descricao.textContent =
+                    `Chegue a ${Number(recompensa.xp).toLocaleString("pt-BR")} XP para liberar esta recompensa.`;
+            }
+
+
+            informacoes.append(
+                nome,
+                descricao
+            );
+
+
+            // ========================================
+            // LADO DIREITO
+            // ========================================
+
+            let ladoDireito;
+
+
+            if (statusRecompensa === "liberada") {
+
+                const botao =
+                    document.createElement("button");
+
+                botao.type =
+                    "button";
+
+                botao.className =
+                    "btn-resgatar-recompensa";
+
+                botao.textContent =
+                    "Resgatar";
+
+                botao.dataset.recompensaId =
+                    recompensa.id;
+
+
+                ladoDireito =
+                    botao;
+
+            } else {
+
+                const premio =
+                    document.createElement("div");
+
+                premio.className =
+                    "xp-ranking premio-moeda";
+
+                premio.textContent =
+                    `${recompensa.moedas}`;
+
+
+                ladoDireito =
+                    premio;
+            }
+
+
+            item.append(
+                status,
+                presente,
+                informacoes,
+                ladoDireito
+            );
+
+
+            recompensasLista.appendChild(
+                item
+            );
+        });
     }
 
 
@@ -676,12 +689,8 @@
 
     function atualizarHorario() {
 
-        if (
-            !ultimaAtualizacao
-        ) {
-
+        if (!ultimaAtualizacao) {
             return;
-
         }
 
 
@@ -689,55 +698,166 @@
             new Date();
 
 
-        const horario =
+        ultimaAtualizacao.textContent =
             agora.toLocaleTimeString(
                 "pt-BR",
                 {
-                    hour:
-                        "2-digit",
-
-                    minute:
-                        "2-digit",
-
-                    second:
-                        "2-digit"
+                    hour: "2-digit",
+                    minute: "2-digit"
                 }
             );
-
-
-        ultimaAtualizacao.textContent =
-            horario;
-
     }
 
 
     // ========================================
-    // ATUALIZAÇÃO AUTOMÁTICA
+    // ERRO / SEM LOGIN
     // ========================================
 
-    setInterval(
-        carregarRanking,
-        5000
-    );
+    function mostrarErro(erro) {
 
+        if (meuXp) {
+            meuXp.textContent = "--";
+        }
+
+        if (minhaLiga) {
+            minhaLiga.textContent = "--";
+        }
+
+        if (minhaSequencia) {
+            minhaSequencia.textContent = "--";
+        }
+
+        if (minhasMoedas) {
+            minhasMoedas.textContent = "--";
+        }
+
+        if (barraRecompensa) {
+            barraRecompensa.style.width = "0%";
+        }
+
+
+        if (textoProgresso) {
+
+            textoProgresso.textContent =
+                erro.status === 401
+                    ? "Faça login para acompanhar sua jornada."
+                    : erro.message;
+        }
+
+
+        if (xpProximaRecompensa) {
+
+            xpProximaRecompensa.textContent =
+                "--";
+        }
+
+
+        if (recompensasCount) {
+
+            recompensasCount.textContent =
+                "--";
+        }
+
+
+        if (recompensasLista) {
+
+            recompensasLista.replaceChildren();
+
+
+            const aviso =
+                document.createElement("p");
+
+
+            aviso.textContent =
+                erro.status === 401
+                    ? "Entre na sua conta para visualizar suas recompensas."
+                    : "Não foi possível carregar suas recompensas.";
+
+
+            recompensasLista.appendChild(
+                aviso
+            );
+        }
+    }
 
     // ========================================
-    // ATUALIZAR AO VOLTAR PARA A ABA
+    // CARREGAR JORNADA
+    // ========================================
+
+    async function carregarJornada() {
+
+        try {
+
+            const [
+                dadosPerfil,
+                dadosRecompensas
+            ] = await Promise.all([
+                consultarPerfil(),
+                consultarRecompensas()
+            ]);
+
+
+            if (!dadosPerfil.usuario) {
+
+                throw new Error(
+                    "O perfil não retornou os dados do usuário."
+                );
+            }
+
+
+            recompensas =
+                Array.isArray(dadosRecompensas.recompensas)
+                    ? dadosRecompensas.recompensas
+                    : [];
+
+
+            atualizarResumo(
+                dadosPerfil.usuario
+            );
+
+
+            atualizarHorario();
+
+
+            try {
+
+                localStorage.setItem(
+                    "ecoUsuario",
+                    JSON.stringify(
+                        dadosPerfil.usuario
+                    )
+                );
+
+            } catch { }
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao carregar Minha Jornada:",
+                erro
+            );
+
+
+            mostrarErro(erro);
+        }
+    }
+
+    // ========================================
+    // ATUALIZA AO VOLTAR PARA A ABA
     // ========================================
 
     document.addEventListener(
         "visibilitychange",
-        function () {
+        () => {
 
             if (
                 document.visibilityState ===
                 "visible"
             ) {
 
-                carregarRanking();
-
+                carregarJornada();
             }
-
         }
     );
 
@@ -746,6 +866,7 @@
     // INICIALIZAÇÃO
     // ========================================
 
-    carregarRanking();
+    carregarJornada();
+
 
 })();

@@ -75,7 +75,15 @@ async function concluirAtividade(req, res) {
         // Processa uma conclusão por vez para esta conta.
         const conta = await cliente.query(`
             SELECT
-                id, nome, email, tipo, xp, nivel, sequencia, liga,
+                id,
+                nome,
+                email,
+                tipo,
+                xp,
+                nivel,
+                sequencia,
+                liga,
+                moedas,
                 ultima_atividade AS "ultimaAtividade"
             FROM public.usuarios
             WHERE id = $1
@@ -109,7 +117,7 @@ async function concluirAtividade(req, res) {
                     (
                         Number(item.total_perguntas) > 0 &&
                         Number(item.acertos) * 2 >=
-                            Number(item.total_perguntas)
+                        Number(item.total_perguntas)
                     )
                 )
                 .map(item => item.atividade_id)
@@ -150,13 +158,13 @@ async function concluirAtividade(req, res) {
 
         if (primeiraConclusao) {
             // Considera eventual XP recebido antes desta regra.
-            const xpAnterior = Number(
+            const xpAnteriorAtividade = Number(
                 anterior?.xp_recebido || 0
             );
 
             xpGanho = Math.max(
                 0,
-                correcao.xpCalculado - xpAnterior
+                correcao.xpCalculado - xpAnteriorAtividade
             );
 
             await cliente.query(`
@@ -179,10 +187,81 @@ async function concluirAtividade(req, res) {
                 atividadeId,
                 correcao.totalPerguntas,
                 correcao.acertos,
-                xpAnterior + xpGanho
+                xpAnteriorAtividade + xpGanho
             ]);
 
             idsAprovados.add(atividadeId);
+        }
+
+        // =====================================================
+        // RECOMPENSAS LIBERADAS
+        // =====================================================
+
+        const xpAntes = Number(usuario.xp) || 0;
+        const xpDepois = xpAntes + xpGanho;
+
+        let recompensasLiberadas = [];
+
+        /*
+            Quando o usuário ultrapassa um marco de XP,
+            a recompensa é registrada como LIBERADA.
+        
+            As EcoMoedas NÃO entram na conta aqui.
+        
+            Como resgatada_em não é preenchida,
+            ela permanece NULL até o usuário clicar
+            em "Receber" na Minha Jornada.
+        */
+
+        if (primeiraConclusao && xpGanho > 0) {
+
+            const recompensas = await cliente.query(`
+        WITH inseridas AS (
+            INSERT INTO public.recompensas_recebidas (
+                usuario_id,
+                recompensa_id
+            )
+            SELECT
+                $1,
+                recompensa.id
+            FROM public.recompensas AS recompensa
+            WHERE recompensa.xp_necessario > $2
+              AND recompensa.xp_necessario <= $3
+
+            ON CONFLICT (
+                usuario_id,
+                recompensa_id
+            )
+            DO NOTHING
+
+            RETURNING recompensa_id
+        )
+
+        SELECT
+            recompensa.id,
+            recompensa.nome,
+            recompensa.xp_necessario AS "xpNecessario",
+            recompensa.moedas
+        FROM public.recompensas AS recompensa
+        INNER JOIN inseridas
+            ON inseridas.recompensa_id = recompensa.id
+        ORDER BY recompensa.xp_necessario
+    `, [
+                usuarioId,
+                xpAntes,
+                xpDepois
+            ]);
+
+            recompensasLiberadas = recompensas.rows.map(
+                recompensa => ({
+                    id: recompensa.id,
+                    nome: recompensa.nome,
+                    xpNecessario: Number(
+                        recompensa.xpNecessario
+                    ),
+                    moedas: Number(recompensa.moedas)
+                })
+            );
         }
 
         // Uma tentativa reprovada de um bloco pendente
@@ -205,16 +284,20 @@ async function concluirAtividade(req, res) {
                         WHEN ultima_atividade IS NULL THEN 1
 
                         WHEN (
-                            ultima_atividade AT TIME ZONE 'America/Sao_Paulo'
+                            ultima_atividade
+                            AT TIME ZONE 'America/Sao_Paulo'
                         )::date = (
-                            NOW() AT TIME ZONE 'America/Sao_Paulo'
+                            NOW()
+                            AT TIME ZONE 'America/Sao_Paulo'
                         )::date
                         THEN GREATEST(sequencia, 1)
 
                         WHEN (
-                            ultima_atividade AT TIME ZONE 'America/Sao_Paulo'
+                            ultima_atividade
+                            AT TIME ZONE 'America/Sao_Paulo'
                         )::date = (
-                            NOW() AT TIME ZONE 'America/Sao_Paulo'
+                            NOW()
+                            AT TIME ZONE 'America/Sao_Paulo'
                         )::date - 1
                         THEN sequencia + 1
 
@@ -226,9 +309,20 @@ async function concluirAtividade(req, res) {
                 WHERE id = $1
 
                 RETURNING
-                    id, nome, email, tipo, xp, nivel, sequencia, liga,
+                    id,
+                    nome,
+                    email,
+                    tipo,
+                    xp,
+                    nivel,
+                    sequencia,
+                    liga,
+                    moedas,
                     ultima_atividade AS "ultimaAtividade"
-            `, [usuarioId, xpGanho]);
+            `, [
+                usuarioId,
+                xpGanho
+            ]);
 
             usuario = atualizacao.rows[0];
 
@@ -263,16 +357,24 @@ async function concluirAtividade(req, res) {
 
             totalPerguntas: correcao.totalPerguntas,
             acertos: correcao.acertos,
-            erros: correcao.totalPerguntas - correcao.acertos,
+            erros:
+                correcao.totalPerguntas -
+                correcao.acertos,
 
             xpGanho,
-            xpTotal: usuario.xp,
+            xpTotal: Number(usuario.xp),
+
+            moedasGanhas: 0,
+            moedasTotal: Number(usuario.moedas || 0),
+
+            recompensasLiberadas,
 
             sequencia: usuario.sequencia,
             ultimaAtividade: usuario.ultimaAtividade,
 
             resultados: correcao.resultados || [],
-            proximaAtividadeId: proximo?.atividadeId ?? null,
+            proximaAtividadeId:
+                proximo?.atividadeId ?? null,
 
             usuario
         });

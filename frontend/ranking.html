@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ranking | EcoEnergia</title>
+    <title>Minha Jornada | EcoEnergia</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -43,7 +43,11 @@
                 </a>
 
                 <a href="ranking.html" class="ativo">
-                    🏆 Ranking
+                    🌟 Minha Jornada
+                </a>
+
+                <a href="perfil.html">
+                    Perfil
                 </a>
 
             </nav>
@@ -53,21 +57,22 @@
 
 
         <!-- ========================================
-             TÍTULO
+             INTRODUÇÃO
         ======================================== -->
 
         <section class="ranking-intro">
 
             <span class="ranking-tag">
-                🏆 RANKING ECOENERGIA
+                🌟 MINHA JORNADA
             </span>
 
             <h1>
-                Ranking EcoEnergia
+                Minha Jornada
             </h1>
 
             <p>
-                Complete atividades, ganhe XP e acompanhe sua evolução.
+                Acompanhe seu próprio progresso, ganhe XP,
+                avance pela sua jornada e desbloqueie recompensas.
             </p>
 
         </section>
@@ -92,7 +97,7 @@
                 <div>
 
                     <small>
-                        Seu XP
+                        XP total
                     </small>
 
                     <strong id="meu-xp">
@@ -105,22 +110,22 @@
 
 
 
-            <!-- POSIÇÃO -->
+            <!-- LIGA -->
 
             <div class="ranking-card-resumo">
 
                 <span class="resumo-icone">
-                    🏆
+                    🏅
                 </span>
 
                 <div>
 
                     <small>
-                        Sua posição
+                        Sua liga
                     </small>
 
-                    <strong id="minha-posicao">
-                        --
+                    <strong id="minha-liga">
+                        Bronze
                     </strong>
 
                 </div>
@@ -129,46 +134,48 @@
 
 
 
-            <!-- JOGADORES -->
+            <!-- SEQUÊNCIA -->
 
             <div class="ranking-card-resumo">
 
                 <span class="resumo-icone">
-                    👥
+                    🔥
                 </span>
 
                 <div>
 
                     <small>
-                        Jogadores
+                        Sequência
                     </small>
 
-                    <strong id="total-jogadores">
+                    <strong id="minha-sequencia">
+                        0 dias
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MOEDAS -->
+
+            <!-- MOEDAS -->
+
+            <div class="ranking-card-resumo card-moedas">
+
+                <span class="resumo-icone icone-moeda">
+                    <img src="imagens/moeda.png" alt="Moeda">
+                </span>
+
+                <div>
+
+                    <small>
+                        EcoMoedas
+                    </small>
+
+                    <strong id="minhas-moedas">
                         0
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- STATUS -->
-
-            <div class="ranking-card-resumo">
-
-                <span class="resumo-icone">
-                    🟢
-                </span>
-
-                <div>
-
-                    <small>
-                        Ranking
-                    </small>
-
-                    <strong>
-                        Ao vivo
                     </strong>
 
                 </div>
@@ -181,7 +188,7 @@
 
 
         <!-- ========================================
-             EVOLUÇÃO
+             EVOLUÇÃO PESSOAL
         ======================================== -->
 
         <section class="liga-container">
@@ -204,7 +211,7 @@
                         </span>
 
                         <h2>
-                            Progresso de XP
+                            Progresso pessoal
                         </h2>
 
                     </div>
@@ -238,7 +245,7 @@
 
 
 
-            <!-- PROGRESSO -->
+            <!-- PROGRESSO ATÉ A PRÓXIMA RECOMPENSA -->
 
             <div class="liga-progresso">
 
@@ -246,11 +253,11 @@
                 <div class="progresso-info">
 
                     <span>
-                        🎯 Próximo marco
+                        🎁 Próxima recompensa
                     </span>
 
-                    <strong id="xp-proxima-liga">
-                        100 XP
+                    <strong id="xp-proxima-recompensa">
+                        500 XP
                     </strong>
 
                 </div>
@@ -259,16 +266,14 @@
 
                 <div class="barra-progresso">
 
-                    <div class="barra-progresso-preenchida" id="barra-liga"></div>
+                    <div class="barra-progresso-preenchida" id="barra-recompensa"></div>
 
                 </div>
 
 
 
                 <small id="texto-progresso">
-
-                    Ganhe XP completando atividades.
-
+                    Continue aprendendo para desbloquear sua próxima recompensa.
                 </small>
 
 
@@ -280,7 +285,7 @@
 
 
         <!-- ========================================
-             RANKING
+             RECOMPENSAS
         ======================================== -->
 
         <section class="ranking-lista-container">
@@ -292,19 +297,19 @@
                 <div>
 
                     <span class="ranking-lista-tag">
-                        🏆 CLASSIFICAÇÃO GERAL
+                        🎁 RECOMPENSAS DA JORNADA
                     </span>
 
                     <h2>
-                        Quem está no topo?
+                        Seus próximos marcos
                     </h2>
 
                 </div>
 
 
 
-                <span class="jogadores-count" id="jogadores-count">
-                    0 jogadores
+                <span class="jogadores-count" id="recompensas-count">
+                    Carregando...
                 </span>
 
 
@@ -312,11 +317,11 @@
 
 
 
-            <!-- LISTA -->
+            <!-- LISTA DE RECOMPENSAS -->
 
-            <div class="ranking-lista" id="ranking-lista">
+            <div class="ranking-lista" id="recompensas-lista">
 
-                <!-- JavaScript preenche -->
+                <!-- JavaScript vai preencher as recompensas -->
 
             </div>
 
@@ -327,18 +332,20 @@
             <div class="ranking-aviso">
 
                 <span>
-                    ⚡
+                    🪙
                 </span>
 
                 <div>
 
                     <strong>
-                        Ganhe XP e suba no ranking!
+                        Evolua no seu ritmo!
                     </strong>
 
                     <p>
-                        A classificação é atualizada automaticamente
-                        conforme os jogadores ganham XP.
+                        Complete atividades para ganhar XP.
+                        Ao alcançar novos marcos, você poderá
+                        receber EcoMoedas e desbloquear novas
+                        formas de personalizar sua experiência.
                     </p>
 
                 </div>
@@ -357,15 +364,16 @@
         <section class="ranking-acao">
 
             <h2>
-                Quer subir no ranking?
+                Continue sua jornada!
             </h2>
 
             <p>
-                Complete atividades e acumule XP.
+                Complete novos blocos, ganhe XP e alcance
+                suas próximas recompensas.
             </p>
 
             <a href="dificuldade.html" class="btn-ranking">
-                Fazer uma atividade →
+                Continuar aprendendo →
             </a>
 
         </section>
@@ -373,7 +381,79 @@
 
     </main>
 
+    <!-- ========================================
+     MODAL DE RECOMPENSA
+    ======================================== -->
 
+    <div class="modal-recompensa" id="modal-recompensa" hidden>
+
+        <div class="modal-recompensa-fundo" id="modal-recompensa-fundo"></div>
+
+
+        <div class="modal-recompensa-caixa" role="dialog" aria-modal="true" aria-labelledby="modal-recompensa-titulo">
+
+            <!-- MOEDA -->
+
+            <div class="modal-recompensa-moeda">
+
+                <img src="imagens/moeda.png" alt="EcoMoeda">
+
+            </div>
+
+
+            <!-- TEXTO -->
+
+            <span class="modal-recompensa-tag">
+                🎉 RECOMPENSA LIBERADA
+            </span>
+
+
+            <h2 id="modal-recompensa-titulo">
+                Parabéns!
+            </h2>
+
+
+            <p class="modal-recompensa-nome" id="modal-recompensa-nome">
+                Primeiros passos
+            </p>
+
+
+            <p class="modal-recompensa-texto">
+                Você conquistou
+            </p>
+
+
+            <!-- QUANTIDADE -->
+
+            <div class="modal-recompensa-premio">
+
+                <img src="imagens/moeda.png" alt="">
+
+                <strong id="modal-recompensa-quantidade">
+                    +5
+                </strong>
+
+                <span>
+                    EcoMoedas
+                </span>
+
+            </div>
+
+
+            <!-- BOTÕES -->
+
+            <button type="button" class="btn-receber-recompensa" id="btn-receber-recompensa">
+                Receber 🎁
+            </button>
+
+
+            <button type="button" class="btn-fechar-recompensa" id="btn-fechar-recompensa">
+                Agora não
+            </button>
+
+        </div>
+
+    </div>
 
     <!-- ========================================
          RODAPÉ
@@ -395,3 +475,4 @@
 </body>
 
 </html>
+```

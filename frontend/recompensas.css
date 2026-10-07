@@ -1,0 +1,1171 @@
+/* =========================================================
+   PÁGINA DE RECOMPENSAS
+========================================================= */
+
+body.pagina-recompensas {
+    width: 100%;
+    min-width: 100%;
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(135deg,
+            #F7FFF3 0%,
+            #E9FFD9 100%);
+
+    color: var(--azul-escuro);
+}
+
+
+body.pagina-recompensas>main {
+    width: 100%;
+
+    flex: 1;
+
+    margin: 0;
+    padding: 0;
+
+    display: block;
+
+    background: transparent;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+body.pagina-recompensas .recompensas-header {
+    width: 100%;
+
+    padding: 18px 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #47D8D5;
+
+    border-bottom:
+        3px solid var(--azul-escuro);
+}
+
+
+body.pagina-recompensas .recompensas-logo {
+    text-decoration: none;
+
+    color: var(--azul-escuro);
+
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+
+body.pagina-recompensas .recompensas-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+body.pagina-recompensas .recompensas-nav a {
+    padding: 8px 12px;
+
+    text-decoration: none;
+
+    color: var(--azul-escuro);
+
+    font-weight: 800;
+
+    border-radius: 16px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+    font-size: 1rem;
+}
+
+
+body.pagina-recompensas .recompensas-nav a:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255, 255, 255, 0.4);
+}
+
+
+body.pagina-recompensas .recompensas-nav .ativo {
+    background: #FFE83F;
+
+    border:
+        2px solid var(--azul-escuro);
+}
+
+
+/* =========================================================
+   INTRODUÇÃO
+========================================================= */
+
+body.pagina-recompensas .recompensas-intro {
+    width: min(1100px, calc(100% - 40px));
+
+    margin: 35px auto 20px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(135deg,
+            #FFF6A7 0%,
+            #FFF082 100%);
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius: 28px;
+}
+
+
+body.pagina-recompensas .recompensas-tag {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    padding: 6px 12px;
+
+    background: #ACE685;
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius: 999px;
+
+    font-size: 0.95rem;
+    font-weight: 900;
+}
+
+
+body.pagina-recompensas .recompensas-intro h1 {
+    margin: 0 0 10px;
+
+    font-size: 2.5rem;
+
+    color: var(--azul-escuro);
+}
+
+
+body.pagina-recompensas .recompensas-intro p {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #61707A;
+
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   SALDO DE ECO MOEDAS
+========================================================= */
+
+body.pagina-recompensas .recompensas-saldo {
+    width: min(420px, calc(100% - 40px));
+
+    margin: 0 auto 25px;
+
+    padding: 18px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    background:
+        linear-gradient(135deg,
+            #FFF8D9 0%,
+            #FFE889 100%);
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 8px 20px rgba(15, 45, 60, 0.08);
+}
+
+
+body.pagina-recompensas .recompensas-saldo-icone {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #FFF8D9;
+
+    border-radius: 50%;
+}
+
+
+body.pagina-recompensas .recompensas-saldo-icone img {
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+}
+
+
+body.pagina-recompensas .recompensas-saldo small {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #667085;
+
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+
+body.pagina-recompensas .recompensas-saldo strong {
+    display: block;
+
+    font-size: 1.8rem;
+
+    color: var(--azul-escuro);
+}
+
+
+/* =========================================================
+   LOJA
+========================================================= */
+
+body.pagina-recompensas .recompensas-loja {
+    width: min(1100px, calc(100% - 40px));
+
+    margin: 0 auto 40px;
+
+    padding: 28px;
+
+    background: #FFFFFF;
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius: 26px;
+}
+
+
+body.pagina-recompensas .recompensas-loja-topo {
+    margin-bottom: 22px;
+}
+
+
+body.pagina-recompensas .recompensas-loja-topo span {
+    display: inline-block;
+
+    margin-bottom: 5px;
+
+    color: #59733A;
+
+    font-size: 0.95rem;
+    font-weight: 900;
+}
+
+
+body.pagina-recompensas .recompensas-loja-topo h2 {
+    margin: 0;
+
+    color: var(--azul-escuro);
+
+    font-size: 1.8rem;
+}
+
+
+body.pagina-recompensas .recompensas-lista {
+    min-height: 160px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+body.pagina-recompensas>footer {
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 18px;
+
+    text-align: center;
+
+    background: var(--azul-escuro);
+
+    color: #FFFFFF;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 850px) {
+
+    body.pagina-recompensas .recompensas-header {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    body.pagina-recompensas .recompensas-nav {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    body.pagina-recompensas .recompensas-lista {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 560px) {
+
+    body.pagina-recompensas .recompensas-intro {
+        padding: 25px 18px;
+    }
+
+
+    body.pagina-recompensas .recompensas-intro h1 {
+        font-size: 2rem;
+    }
+
+
+    body.pagina-recompensas .recompensas-loja {
+        padding: 20px;
+    }
+
+
+    body.pagina-recompensas .recompensas-lista {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   CARDS DA LOJA DE RECOMPENSAS
+========================================================= */
+
+body.pagina-recompensas .recompensa-item {
+    padding: 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #FFFFFF;
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 8px 20px rgba(15, 45, 60, 0.08);
+}
+
+
+/* =========================================================
+   IMAGEM
+========================================================= */
+
+body.pagina-recompensas .recompensa-item-imagem {
+    width: 100%;
+    height: 160px;
+
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(135deg,
+            #F7FFF3 0%,
+            #E9FFD9 100%);
+
+    border-radius: 18px;
+}
+
+
+body.pagina-recompensas .recompensa-item-imagem img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 18px;
+}
+
+
+body.pagina-recompensas .recompensa-item-imagem img[src=""],
+body.pagina-recompensas .recompensa-item-imagem img:not([src]) {
+    display: none;
+}
+
+
+/* =========================================================
+   CATEGORIA
+========================================================= */
+
+body.pagina-recompensas .recompensa-item-categoria {
+    width: fit-content;
+
+    margin-bottom: 8px;
+
+    padding:
+        5px 9px;
+
+    border-radius: 999px;
+
+    background: #EAF8F5;
+
+    color: #39736D;
+
+    font-size: 0.78rem;
+
+    font-weight: 850;
+}
+
+
+/* =========================================================
+   NOME
+========================================================= */
+
+body.pagina-recompensas .recompensa-item h3 {
+    margin:
+        0 0 8px;
+
+    color: var(--azul-escuro);
+
+    font-size: 1.2rem;
+}
+
+
+/* =========================================================
+   DESCRIÇÃO
+========================================================= */
+
+body.pagina-recompensas .recompensa-item p {
+    margin:
+        0 0 18px;
+
+    flex: 1;
+
+    color: #667085;
+
+    font-size: 1.05rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ESTADOS DO CARD
+========================================================= */
+
+body.pagina-recompensas .recompensa-item.item-comprado {
+    background:
+        linear-gradient(180deg,
+            #FFFFFF 0%,
+            #FAFFF7 100%);
+}
+
+
+body.pagina-recompensas .recompensa-item.item-equipado {
+    border-color: #47B8B3;
+
+    box-shadow:
+        0 0 0 3px rgba(72, 228, 221, 0.16),
+        0 8px 20px rgba(15, 45, 60, 0.08);
+}
+
+
+/* =========================================================
+   RODAPÉ DO CARD
+========================================================= */
+
+body.pagina-recompensas .recompensa-item-rodape {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   PREÇO
+========================================================= */
+
+body.pagina-recompensas .recompensa-item-preco {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding:
+        7px 10px;
+
+    background: #FFF8D9;
+
+    border-radius: 14px;
+}
+
+
+body.pagina-recompensas .recompensa-item-preco img {
+    width: 28px;
+    height: 28px;
+
+    object-fit: contain;
+}
+
+
+body.pagina-recompensas .recompensa-item-preco strong {
+    color: var(--azul-escuro);
+
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   BOTÕES DOS ITENS
+========================================================= */
+
+body.pagina-recompensas .btn-comprar-item,
+body.pagina-recompensas .btn-equipar-item,
+body.pagina-recompensas .btn-desequipar-item {
+    min-width: 105px;
+
+    padding:
+        10px 16px;
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius: 14px;
+
+    color: var(--azul-escuro);
+
+    font-size: 1rem;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* =========================================================
+   COMPRAR
+========================================================= */
+
+body.pagina-recompensas .btn-comprar-item {
+    background: #ACE685;
+}
+
+body.pagina-recompensas .btn-item-bloqueado {
+    padding: 10px 14px;
+
+    border:
+        2px solid #98A2B3;
+
+    border-radius: 14px;
+
+    background:
+        #EAECF0;
+
+    color:
+        #667085;
+
+    font-weight: 800;
+    font-size: 1rem;
+
+    cursor: not-allowed;
+
+    opacity: 0.85;
+}
+
+
+body.pagina-recompensas .btn-comprar-item:hover {
+    background: #9FE276;
+}
+
+
+/* =========================================================
+   EQUIPAR
+========================================================= */
+
+body.pagina-recompensas .btn-equipar-item {
+    background: #FFF083;
+}
+
+
+body.pagina-recompensas .btn-equipar-item:hover {
+    background: #FFE83F;
+}
+
+
+/* =========================================================
+   EQUIPADO / DESEQUIPAR
+========================================================= */
+
+body.pagina-recompensas .btn-desequipar-item {
+    background: #DDF8F5;
+
+    border-color: #47B8B3;
+
+    color: #286D69;
+}
+
+
+body.pagina-recompensas .btn-desequipar-item:hover {
+    background: #C7F1ED;
+}
+
+
+/* =========================================================
+   HOVER DOS BOTÕES
+========================================================= */
+
+body.pagina-recompensas .btn-comprar-item:hover,
+body.pagina-recompensas .btn-equipar-item:hover,
+body.pagina-recompensas .btn-desequipar-item:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 6px 0 rgba(15, 45, 60, 0.14);
+}
+
+
+/* =========================================================
+   BOTÃO DURANTE REQUISIÇÃO
+========================================================= */
+
+body.pagina-recompensas .btn-comprar-item:disabled,
+body.pagina-recompensas .btn-equipar-item:disabled,
+body.pagina-recompensas .btn-desequipar-item:disabled {
+    cursor: wait;
+
+    opacity: 0.65;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   MENSAGENS DA LOJA
+========================================================= */
+
+body.pagina-recompensas .mensagem-loja {
+    width:
+        min(1100px,
+            calc(100% - 40px));
+
+    margin:
+        0 auto 18px;
+
+    padding:
+        12px 16px;
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius: 14px;
+
+    font-weight: 800;
+
+    text-align: center;
+}
+
+
+body.pagina-recompensas .mensagem-loja[hidden] {
+    display: none;
+}
+
+
+body.pagina-recompensas .mensagem-loja.sucesso {
+    background: #E8F8DC;
+
+    color: #3F6B2D;
+}
+
+
+body.pagina-recompensas .mensagem-loja.erro {
+    background: #FFF0EE;
+
+    color: #A33A35;
+
+    border-color: #D77A73;
+}
+
+
+/* =========================================================
+   LOJA VAZIA
+========================================================= */
+
+body.pagina-recompensas .loja-vazia {
+    grid-column:
+        1 / -1;
+
+    padding:
+        28px 18px;
+
+    color: #667085;
+
+    text-align: center;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MODAL DE COMPRA
+========================================================= */
+
+body.pagina-recompensas .modal-compra[hidden] {
+    display: none;
+}
+
+
+body.pagina-recompensas .modal-compra {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+/* =========================================================
+   FUNDO DO MODAL
+========================================================= */
+
+body.pagina-recompensas .modal-compra-fundo {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(15, 45, 60, 0.55);
+
+    backdrop-filter:
+        blur(4px);
+}
+
+
+/* =========================================================
+   CAIXA DO MODAL
+========================================================= */
+
+body.pagina-recompensas .modal-compra-caixa {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 430px;
+
+    padding:
+        36px 30px 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(180deg,
+            #FFFFFF 0%,
+            #F3FFF0 100%);
+
+    border:
+        3px solid var(--azul-escuro);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 55px rgba(15, 45, 60, 0.22);
+
+    animation:
+        aparecerModalCompra 0.3s ease;
+}
+
+
+/* =========================================================
+   ÍCONE DO MODAL
+========================================================= */
+
+body.pagina-recompensas .modal-compra-icone {
+    width: 90px;
+
+    height: 90px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #FFF3A6;
+
+    border-radius: 50%;
+
+    font-size: 2.8rem;
+
+    box-shadow:
+        0 8px 20px rgba(255, 199, 0, 0.20);
+}
+
+
+/* =========================================================
+   TÍTULO DO MODAL
+========================================================= */
+
+body.pagina-recompensas .modal-compra-caixa h2 {
+    margin:
+        0 0 10px;
+
+    color: var(--azul-escuro);
+
+    font-size: 1.9rem;
+}
+
+
+/* =========================================================
+   TEXTO DO MODAL
+========================================================= */
+
+body.pagina-recompensas .modal-compra-caixa p {
+    max-width: 320px;
+
+    margin:
+        0 0 20px;
+
+    color: #667085;
+
+    line-height: 1.5;
+
+    font-weight: 600;
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   PREÇO DO MODAL
+========================================================= */
+
+body.pagina-recompensas .modal-compra-preco {
+    margin-bottom: 24px;
+
+    padding:
+        10px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    background: #FFF3A6;
+
+    border:
+        2px solid #FFD84D;
+
+    border-radius: 16px;
+}
+
+
+body.pagina-recompensas .modal-compra-preco[hidden] {
+    display: none;
+}
+
+
+body.pagina-recompensas .modal-compra-preco img {
+    width: 34px;
+
+    height: 34px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+body.pagina-recompensas .modal-compra-preco strong {
+    color: var(--azul-escuro);
+
+    font-size: 1.4rem;
+}
+
+
+/* =========================================================
+   BOTÃO DO MODAL
+========================================================= */
+
+body.pagina-recompensas .btn-modal-compra {
+    width: 100%;
+
+    padding:
+        14px 20px;
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius: 16px;
+
+    background: #ACE685;
+
+    color: var(--azul-escuro);
+
+    font-size: 1rem;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+body.pagina-recompensas .btn-modal-compra:hover {
+    transform:
+        translateY(-2px);
+
+    background: #9FE276;
+
+    box-shadow:
+        0 7px 0 rgba(15, 45, 60, 0.15);
+}
+
+
+body.pagina-recompensas .btn-modal-compra:active {
+    transform:
+        translateY(0);
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   MODAL DE SUCESSO
+========================================================= */
+
+body.pagina-recompensas .modal-compra.sucesso .modal-compra-icone {
+    background: #FFF3A6;
+
+    border:
+        2px solid #FFE83F;
+}
+
+
+body.pagina-recompensas .modal-compra.sucesso .modal-compra-preco {
+    background: #FFF3A6;
+
+    border:
+        2px solid #FFE83F;
+}
+
+
+/* =========================================================
+   MODAL SEM MOEDAS
+========================================================= */
+
+body.pagina-recompensas .modal-compra.sem-moedas .modal-compra-caixa {
+    background:
+        linear-gradient(180deg,
+            #FFFFFF 0%,
+            #EFFFF4 100%);
+
+    border:
+        3px solid #47D8D5;
+}
+
+
+body.pagina-recompensas .modal-compra.sem-moedas .modal-compra-icone {
+    width: 110px;
+
+    height: 110px;
+
+    background: #FFF8D9;
+
+    border:
+        3px solid #FFE83F;
+}
+
+
+body.pagina-recompensas .modal-compra-moeda-grande {
+    width: 85px;
+
+    height: 85px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   MOEDAS FALTANDO
+========================================================= */
+
+body.pagina-recompensas .moedas-faltando {
+    flex-direction: column;
+
+    background: #FFF8D9;
+
+    border:
+        2px solid #FFE83F;
+}
+
+
+body.pagina-recompensas .moedas-faltando img {
+    display: none;
+}
+
+
+body.pagina-recompensas .moedas-faltando strong {
+    font-size: 1.2rem;
+
+    color: var(--azul-escuro);
+}
+
+
+/* =========================================================
+   ANIMAÇÃO
+========================================================= */
+
+@keyframes aparecerModalCompra {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.85);
+    }
+
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+    body.pagina-recompensas .recompensa-item-imagem {
+        height: 140px;
+    }
+
+
+    body.pagina-recompensas .recompensa-item-rodape {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    body.pagina-recompensas .btn-comprar-item,
+    body.pagina-recompensas .btn-equipar-item,
+    body.pagina-recompensas .btn-desequipar-item,
+    body.pagina-recompensas .btn-item-bloqueado {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    body.pagina-recompensas .modal-compra-caixa {
+        padding:
+            30px 20px 24px;
+
+        border-radius: 24px;
+    }
+
+
+    body.pagina-recompensas .modal-compra-caixa h2 {
+        font-size: 1.6rem;
+    }
+
+
+    body.pagina-recompensas .modal-compra-icone {
+        width: 78px;
+
+        height: 78px;
+
+        font-size: 2.3rem;
+    }
+
+}

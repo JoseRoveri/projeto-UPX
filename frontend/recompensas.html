@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recompensas | EcoEnergia</title>
+
+    <!-- CSS global -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS exclusivo da página -->
+    <link rel="stylesheet" href="recompensas.css">
+
+</head>
+
+
+<body class="pagina-recompensas">
+
+
+    <!-- ========================================
+         CONTEÚDO PRINCIPAL
+    ======================================== -->
+
+    <main>
+
+
+        <!-- ========================================
+             CABEÇALHO
+        ======================================== -->
+
+        <header class="recompensas-header">
+
+            <a href="index.html" class="recompensas-logo">
+                💧 EcoEnergia
+            </a>
+
+
+            <nav class="recompensas-nav">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="dificuldade.html">
+                    Quiz
+                </a>
+
+                <a href="ranking.html">
+                    🌟 Minha Jornada
+                </a>
+
+                <a href="recompensas.html" class="ativo">
+                    🎁 Loja
+                </a>
+
+                <a href="perfil.html">
+                    Perfil
+                </a>
+
+            </nav>
+
+        </header>
+
+
+        <!-- ========================================
+             INTRODUÇÃO
+        ======================================== -->
+
+        <section class="recompensas-intro">
+
+            <span class="recompensas-tag">
+                🎁 MINHAS RECOMPENSAS
+            </span>
+
+
+            <h1>
+                Recompensas
+            </h1>
+
+
+            <p>
+                Use suas EcoMoedas para desbloquear
+                itens especiais e personalizar sua jornada.
+            </p>
+
+        </section>
+
+
+        <!-- ========================================
+             SALDO DE ECOMOEDAS
+        ======================================== -->
+
+        <section class="recompensas-saldo">
+
+            <div class="recompensas-saldo-icone">
+
+                <img src="imagens/moeda.png" alt="EcoMoeda">
+
+            </div>
+
+
+            <div>
+
+                <small>
+                    Suas EcoMoedas
+                </small>
+
+                <strong id="saldo-ecomoedas">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             MENSAGEM DA LOJA
+        ======================================== -->
+
+        <div class="mensagem-loja" id="mensagem-loja" hidden></div>
+
+
+        <!-- ========================================
+             LOJA
+        ======================================== -->
+
+        <section class="recompensas-loja">
+
+            <div class="recompensas-loja-topo">
+
+                <div>
+
+                    <span>
+                        🛍️ LOJA
+                    </span>
+
+                    <h2>
+                        Escolha sua recompensa
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!--
+                Os itens serão carregados
+                pelo recompensas.js
+            -->
+
+            <div class="recompensas-lista" id="recompensas-loja-lista"></div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ========================================
+         MODAL DE COMPRA
+    ======================================== -->
+
+    <div class="modal-compra" id="modal-compra" hidden>
+
+        <div class="modal-compra-fundo" id="modal-compra-fundo"></div>
+
+
+        <div class="modal-compra-caixa" role="dialog" aria-modal="true" aria-labelledby="modal-compra-titulo">
+
+            <div class="modal-compra-icone" id="modal-compra-icone">
+                🎉
+            </div>
+
+
+            <h2 id="modal-compra-titulo">
+                Compra realizada!
+            </h2>
+
+
+            <p id="modal-compra-mensagem">
+                Item adicionado à sua coleção.
+            </p>
+
+
+            <div class="modal-compra-preco" id="modal-compra-preco">
+
+                <img src="imagens/moeda.png" alt="EcoMoeda">
+
+                <strong id="modal-compra-valor">
+                    -5
+                </strong>
+
+            </div>
+
+
+            <button type="button" class="btn-modal-compra" id="btn-modal-compra">
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         RODAPÉ
+    ======================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 EcoEnergia • Aprender também é cuidar do planeta 🌎
+        </p>
+
+    </footer>
+
+
+    <!-- ========================================
+         SCRIPTS
+    ======================================== -->
+
+    <script src="script.js"></script>
+
+    <script src="recompensas.js"></script>
+
+
+</body>
+
+</html>
