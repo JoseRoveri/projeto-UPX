@@ -1,0 +1,1210 @@
+/* =====================================================
+   ECOENERGIA
+   CRIAÇÃO DO COMPANHEIRO
+===================================================== */
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* =====================================================
+   PÁGINA
+===================================================== */
+
+.pagina-companheiro {
+    min-height: 100vh;
+
+    margin: 0;
+
+    padding:
+        34px 28px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #285983;
+
+    background:
+        radial-gradient(circle at 8% 10%,
+            rgba(255, 236, 94, 0.15),
+            transparent 22%),
+        radial-gradient(circle at 92% 90%,
+            rgba(61, 207, 193, 0.13),
+            transparent 25%),
+        linear-gradient(135deg,
+            #f5ffe9 0%,
+            #edfff7 52%,
+            #e8f8ff 100%);
+}
+
+
+/* =====================================================
+   PAINEL PRINCIPAL
+===================================================== */
+
+.criacao-companheiro {
+    width:
+        min(1320px,
+            100%);
+
+    min-height:
+        760px;
+
+    margin:
+        0 auto;
+
+    padding:
+        42px 48px 36px;
+
+    background:
+        rgba(255, 255, 255, 0.98);
+
+    border:
+        3px solid #315f8d;
+
+    border-radius:
+        32px;
+
+    box-shadow:
+        0 24px 55px rgba(39, 87, 122, 0.14);
+
+    overflow:
+        visible;
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+.companheiro-topo {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        auto 1fr;
+
+    grid-template-areas:
+        "etapa titulo"
+        "descricao descricao";
+
+    align-items:
+        center;
+
+    column-gap:
+        22px;
+
+    row-gap:
+        10px;
+
+    padding-bottom:
+        28px;
+
+    border-bottom:
+        2px dashed #d8e5ee;
+}
+
+
+/* Badge da etapa */
+
+.companheiro-etapa {
+    grid-area:
+        etapa;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        46px;
+
+    padding:
+        0 22px;
+
+    background:
+        #ffec67;
+
+    border:
+        2px solid #315f8d;
+
+    border-radius:
+        999px;
+
+    color:
+        #285983;
+
+    font-size:
+        16px;
+
+    font-weight:
+        900;
+
+    white-space:
+        nowrap;
+
+    box-shadow:
+        0 3px 0 rgba(49, 95, 141, 0.1);
+}
+
+
+/* Título */
+
+.companheiro-topo h1 {
+    grid-area:
+        titulo;
+
+    margin:
+        0;
+
+    color:
+        #285983;
+
+    font-size:
+        clamp(34px,
+            3.4vw,
+            48px);
+
+    line-height:
+        1.05;
+
+    font-weight:
+        900;
+}
+
+
+/* Descrição */
+
+.companheiro-topo p {
+    grid-area:
+        descricao;
+
+    margin:
+        0;
+
+    color:
+        #658198;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.5;
+
+    font-weight:
+        600;
+}
+
+
+/* =====================================================
+   CONTEÚDO PRINCIPAL
+===================================================== */
+
+.companheiro-conteudo {
+    width:
+        100%;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(360px, 0.95fr) minmax(560px, 1.55fr);
+
+    gap:
+        62px;
+
+    align-items:
+        center;
+
+    padding:
+        52px 0;
+}
+
+
+/* =====================================================
+   PREVIEW
+===================================================== */
+
+.companheiro-preview {
+    width:
+        100%;
+
+    min-height:
+        430px;
+
+    padding:
+        38px 28px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    position:
+        relative;
+
+    background:
+        linear-gradient(145deg,
+            #edfff7 0%,
+            #ecfaff 100%);
+
+    border:
+        2px solid #cee5e2;
+
+    border-radius:
+        30px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+/* iluminação atrás do personagem */
+
+.companheiro-preview::before {
+    content: "";
+
+    position:
+        absolute;
+
+    width:
+        250px;
+
+    height:
+        250px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(255, 231, 67, 0.18),
+            transparent 68%);
+
+    pointer-events:
+        none;
+}
+
+
+/* personagem */
+
+.preview-personagem {
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    width:
+        230px;
+
+    height:
+        230px;
+
+    flex-shrink:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        #ffffff;
+
+    border:
+        4px solid #315f8d;
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        0 12px 0 rgba(49, 95, 141, 0.13),
+        0 18px 35px rgba(49, 95, 141, 0.12);
+
+    font-size:
+        115px;
+
+    line-height:
+        1;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.preview-personagem:hover {
+    transform:
+        translateY(-4px) scale(1.02);
+}
+
+
+/* nome */
+
+#preview-nome {
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    width:
+        100%;
+
+    margin:
+        30px 0 0;
+
+    padding:
+        0;
+
+    color:
+        #285983;
+
+    font-size:
+        27px;
+
+    line-height:
+        1.25;
+
+    font-weight:
+        900;
+
+    text-align:
+        center;
+
+    text-transform:
+        capitalize;
+}
+
+
+/* barrinha amarela */
+
+.companheiro-preview::after {
+    content: "";
+
+    width:
+        92px;
+
+    height:
+        9px;
+
+    margin-top:
+        18px;
+
+    background:
+        #ffe500;
+
+    border-radius:
+        999px;
+}
+
+
+/* =====================================================
+   OPÇÕES
+===================================================== */
+
+.companheiro-opcoes {
+    width:
+        100%;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2,
+            minmax(0, 1fr));
+
+    gap:
+        22px;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.companheiro-opcoes button {
+    appearance:
+        none;
+
+    width:
+        100%;
+
+    min-width:
+        0;
+
+    min-height:
+        125px;
+
+    margin:
+        0;
+
+    padding:
+        22px 24px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        flex-start;
+
+    gap:
+        18px;
+
+    background:
+        #ffffff;
+
+    border:
+        2px solid #c9dddf;
+
+    border-radius:
+        22px;
+
+    box-shadow:
+        0 7px 0 #dce8e8;
+
+    color:
+        #285983;
+
+    cursor:
+        pointer;
+
+    text-align:
+        left;
+
+    transition:
+        transform 0.16s ease,
+        border-color 0.16s ease,
+        background 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+
+.companheiro-opcoes button:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        #4f86ad;
+
+    box-shadow:
+        0 10px 0 #d5e3e4;
+}
+
+
+/* selecionado */
+
+.companheiro-opcoes button.selecionada {
+    background:
+        linear-gradient(135deg,
+            #fff9ca,
+            #fff5aa);
+
+    border-color:
+        #315f8d;
+
+    box-shadow:
+        0 7px 0 #dfce37;
+}
+
+
+/* textos */
+
+.companheiro-opcoes button strong {
+    color:
+        #285983;
+
+    font-size:
+        20px;
+
+    line-height:
+        1.2;
+
+    font-weight:
+        900;
+}
+
+
+.companheiro-opcoes button small {
+    margin-left:
+        auto;
+
+    color:
+        #758c9b;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.35;
+
+    font-weight:
+        700;
+
+    text-align:
+        right;
+}
+
+
+/* =====================================================
+   ÍCONES DAS ESPÉCIES
+===================================================== */
+
+.especie-icone {
+    width:
+        64px;
+
+    height:
+        64px;
+
+    min-width:
+        64px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        linear-gradient(145deg,
+            #edfdf8,
+            #e9f8f6);
+
+    border:
+        2px solid #c9e3dd;
+
+    border-radius:
+        18px;
+
+    font-size:
+        36px;
+}
+
+
+/* =====================================================
+   CAMPO NOME
+===================================================== */
+
+.campo-nome-companheiro {
+    grid-column:
+        1 / -1;
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        12px;
+}
+
+
+.campo-nome-companheiro input {
+    appearance:
+        none;
+
+    width:
+        100%;
+
+    height:
+        78px;
+
+    padding:
+        0 25px;
+
+    background:
+        #ffffff;
+
+    border:
+        2px solid #c9dddf;
+
+    border-radius:
+        20px;
+
+    box-shadow:
+        0 7px 0 #dce8e8;
+
+    color:
+        #285983;
+
+    font-size:
+        23px;
+
+    font-weight:
+        700;
+
+    outline:
+        none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.campo-nome-companheiro input:focus {
+    border-color:
+        #315f8d;
+
+    box-shadow:
+        0 7px 0 #b9d3dd;
+}
+
+
+.campo-nome-companheiro small {
+    color:
+        #788e9c;
+
+    text-align:
+        center;
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+}
+
+
+/* =====================================================
+   REVISÃO FINAL
+===================================================== */
+
+.resumo-companheiro {
+    grid-column:
+        1 / -1;
+
+    width:
+        100%;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2,
+            minmax(0, 1fr));
+
+    gap:
+        14px;
+
+    padding:
+        26px;
+
+    background:
+        #f7fcfb;
+
+    border:
+        2px solid #d3e4e3;
+
+    border-radius:
+        24px;
+}
+
+
+.resumo-companheiro p {
+    margin:
+        0;
+
+    padding:
+        15px 17px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e2eceb;
+
+    border-radius:
+        14px;
+
+    color:
+        #557389;
+
+    font-size:
+        16px;
+}
+
+
+.resumo-companheiro p strong {
+    color:
+        #285983;
+}
+
+
+/* botão mudar */
+
+#btn-alterar-companheiro {
+    grid-column:
+        1 / -1;
+
+    width:
+        100%;
+
+    min-height:
+        54px;
+
+    margin-top:
+        8px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        #ffffff;
+
+    border:
+        2px solid #315f8d;
+
+    border-radius:
+        15px;
+
+    box-shadow:
+        none;
+
+    color:
+        #285983;
+
+    cursor:
+        pointer;
+
+    font-size:
+        15px;
+
+    font-weight:
+        900;
+}
+
+
+#btn-alterar-companheiro:hover {
+    background:
+        #eef8ff;
+}
+
+
+/* =====================================================
+   CONCLUSÃO
+===================================================== */
+
+.companheiro-concluido {
+    grid-column:
+        1 / -1;
+
+    width:
+        100%;
+
+    padding:
+        38px;
+
+    background:
+        linear-gradient(135deg,
+            #effff5,
+            #f7ffeb);
+
+    border:
+        2px solid #cae6d4;
+
+    border-radius:
+        26px;
+
+    text-align:
+        center;
+}
+
+
+.companheiro-concluido h2 {
+    margin:
+        0 0 12px;
+
+    color:
+        #28735a;
+
+    font-size:
+        32px;
+}
+
+
+.companheiro-concluido p {
+    margin:
+        0;
+
+    color:
+        #668378;
+
+    font-size:
+        17px;
+}
+
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
+
+.companheiro-acoes {
+    width:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        flex-end;
+
+    padding-top:
+        30px;
+
+    border-top:
+        1px solid #dfeaea;
+}
+
+
+/* =====================================================
+   BOTÃO PRINCIPAL
+===================================================== */
+
+#btn-selecionar-especie {
+    appearance:
+        none;
+
+    min-width:
+        270px;
+
+    min-height:
+        62px;
+
+    padding:
+        0 34px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        #ffe500;
+
+    border:
+        2px solid #315f8d;
+
+    border-radius:
+        18px;
+
+    box-shadow:
+        0 6px 0 #cabb2b;
+
+    color:
+        #285983;
+
+    cursor:
+        pointer;
+
+    font-size:
+        18px;
+
+    font-weight:
+        900;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+#btn-selecionar-especie:hover:not(:disabled) {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 9px 0 #cabb2b;
+}
+
+
+#btn-selecionar-especie:active:not(:disabled) {
+    transform:
+        translateY(2px);
+
+    box-shadow:
+        0 3px 0 #cabb2b;
+}
+
+
+#btn-selecionar-especie:disabled {
+    background:
+        #e7eeee;
+
+    border-color:
+        #bccdce;
+
+    color:
+        #899d9e;
+
+    box-shadow:
+        0 6px 0 #becbcb;
+
+    cursor:
+        not-allowed;
+}
+
+
+/* =====================================================
+   TELAS MÉDIAS
+===================================================== */
+
+@media (max-width: 1050px) {
+
+    .criacao-companheiro {
+        padding:
+            34px;
+    }
+
+
+    .companheiro-conteudo {
+        grid-template-columns:
+            minmax(290px, 0.9fr) minmax(420px, 1.3fr);
+
+        gap:
+            36px;
+    }
+
+
+    .companheiro-opcoes button {
+        padding:
+            18px;
+    }
+
+
+    .companheiro-opcoes button small {
+        display:
+            none;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .pagina-companheiro {
+        padding:
+            20px 14px;
+    }
+
+
+    .criacao-companheiro {
+        min-height:
+            auto;
+
+        padding:
+            28px;
+    }
+
+
+    .companheiro-conteudo {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            30px;
+
+        padding:
+            35px 0;
+    }
+
+
+    .companheiro-preview {
+        min-height:
+            360px;
+    }
+
+
+    .companheiro-acoes {
+        justify-content:
+            center;
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 580px) {
+
+    .pagina-companheiro {
+        padding:
+            10px;
+    }
+
+
+    .criacao-companheiro {
+        padding:
+            22px;
+
+        border-radius:
+            22px;
+    }
+
+
+    .companheiro-topo {
+        grid-template-columns:
+            1fr;
+
+        grid-template-areas:
+            "etapa"
+            "titulo"
+            "descricao";
+    }
+
+
+    .companheiro-etapa {
+        justify-self:
+            start;
+    }
+
+
+    .companheiro-opcoes {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .companheiro-opcoes button {
+        min-height:
+            100px;
+    }
+
+
+    .preview-personagem {
+        width:
+            190px;
+
+        height:
+            190px;
+
+        font-size:
+            95px;
+    }
+
+
+    .resumo-companheiro {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    #btn-alterar-companheiro {
+        grid-column:
+            1;
+    }
+
+
+    #btn-selecionar-especie {
+        width:
+            100%;
+
+        min-width:
+            0;
+    }
+
+}
+
+.especie-imagem {
+    width: 72px;
+    height: 72px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+.preview-personagem-imagem {
+    width: 92%;
+    height: 92%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+#preview-companheiro svg {
+    width: 92%;
+    height: 92%;
+
+    display: block;
+}
+
+.preview-personagem-imagem {
+    width: 92%;
+    height: 92%;
+
+    object-fit: contain;
+
+    display: block;
+}
