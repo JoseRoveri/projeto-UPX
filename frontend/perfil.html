@@ -1,346 +1,1046 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Meu perfil | EcoEnergia</title>
+
+    <title>
+        Meu perfil | EcoEnergia
+    </title>
+
 
     <link rel="stylesheet" href="perfil.css">
+
     <script src="perfil.js" defer></script>
+
 </head>
 
+
 <body>
-    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+
+    <a class="pular" href="#conteudo">
+        Pular para o conteúdo
+    </a>
+
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
 
     <header class="cabecalho">
-        <a class="marca" href="index.html">🌱 EcoEnergia</a>
+
+
+        <a class="marca" href="index.html">
+            🌱 EcoEnergia
+        </a>
+
 
         <nav aria-label="Navegação principal">
+
+
             <a href="index.html">
-                <span aria-hidden="true">⌂</span> Início
+
+                <span aria-hidden="true">
+                    ⌂
+                </span>
+
+                Início
+
             </a>
+
 
             <a href="trilha.html?nivel=facil">
-                <span aria-hidden="true">🌿</span> Trilha
+
+                <span aria-hidden="true">
+                    🌿
+                </span>
+
+                Trilha
+
             </a>
+
 
             <a href="ranking.html">
-                <span aria-hidden="true">🏆</span> Ranking
+
+                <span aria-hidden="true">
+                    🏆
+                </span>
+
+                Ranking
+
             </a>
+
 
             <a href="perfil.html" aria-current="page">
-                <span aria-hidden="true">👤</span> Perfil
+
+                <span aria-hidden="true">
+                    👤
+                </span>
+
+                Perfil
+
             </a>
+
+
         </nav>
+
+
     </header>
 
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
     <main id="conteudo" tabindex="-1">
+
+
+        <!-- =====================================
+             ESTADO DE CARREGAMENTO
+        ====================================== -->
+
         <div id="estado" class="aviso" role="status">
-            <p id="mensagem">Carregando seu perfil...</p>
+
+
+            <p id="mensagem">
+
+                Carregando seu perfil...
+
+            </p>
+
 
             <button id="tentar" class="botao secundario" type="button" hidden>
+
                 Tentar novamente
+
             </button>
 
+
             <a id="entrar" class="botao" href="login.html" hidden>
+
                 Entrar na conta
+
             </a>
+
+
         </div>
 
+
+        <!-- =====================================
+             PERFIL
+        ====================================== -->
+
         <div id="perfil" hidden>
+
+
+            <!-- =================================
+                 IDENTIDADE
+            ================================== -->
+
             <section class="cartao identidade" aria-labelledby="nome-perfil">
+
+
+                <!-- CAPA -->
+
                 <div class="capa">
+
+
                     <span class="etiqueta">
+
                         MINHA ENERGIA, MINHA JORNADA
+
                     </span>
 
+
                     <button id="configurar" class="engrenagem" type="button" aria-label="Abrir configurações da conta">
+
+
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                             aria-hidden="true">
+
                             <path
                                 d="M10 2h4l.6 3 2 .9 2.8-.9 2 3.5-2.2 2v3l2.2 2-2 3.5-2.8-.9-2 .9-.6 3h-4l-.6-3-2-.9-2.8.9-2-3.5 2.2-2v-3l-2.2-2 2-3.5 2.8.9 2-.9Z" />
+
                             <circle cx="12" cy="12" r="3" />
+
                         </svg>
+
+
                     </button>
+
+
                 </div>
 
-                <div class="identidade-corpo">
-                    <div id="avatar" class="avatar" aria-hidden="true">
-                        E
+
+                <!-- =================================
+                     CORPO DA IDENTIDADE
+
+                     ESQUERDA = dados
+                     DIREITA  = companheiro
+                ================================== -->
+
+                <div class="
+                        identidade-corpo
+                        perfil-com-companheiro
+                    ">
+
+
+                    <!-- =============================
+                         INFORMAÇÕES
+                    ============================== -->
+
+                    <div class="perfil-informacoes">
+
+                        <span class="rotulo">
+                            MEU PERFIL
+                        </span>
+
+                        <div class="perfil-dados-centro">
+
+                            <h1 id="nome-perfil"></h1>
+
+                            <p id="tipo-perfil" class="suave"></p>
+
+                            <p class="lema">
+                                Cada descoberta é um passo para um futuro
+                                mais sustentável.
+                            </p>
+
+                        </div>
+
                     </div>
 
-                    <span class="rotulo">MEU PERFIL</span>
 
-                    <h1 id="nome-perfil"></h1>
-                    <p id="tipo-perfil" class="suave"></p>
+                    <!-- =============================
+                         COMPANHEIRO
+                    ============================== -->
 
-                    <p class="lema">
-                        Cada descoberta é um passo para um futuro
-                        mais sustentável.
-                    </p>
+                    <div class="perfil-companheiro-area">
+
+                        <div class="perfil-companheiro-conteudo">
+
+                            <div id="avatar" class="avatar avatar-companheiro" aria-hidden="true">
+                                E
+                            </div>
+
+
+                            <div class="perfil-companheiro-info">
+
+                                <span class="companheiro-rotulo">
+                                    MEU COMPANHEIRO
+                                </span>
+
+
+                                <strong id="companheiro-nome">
+                                    Companheiro
+                                </strong>
+
+
+                                <span id="companheiro-especie">
+                                    —
+                                </span>
+
+
+                                <span id="companheiro-detalhe" class="companheiro-detalhe">
+                                    🌱 Parceiro da sua jornada
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
                 </div>
+
+
             </section>
+
+
+            <!-- =================================
+                 VISÃO GERAL
+            ================================== -->
 
             <section class="secao" aria-labelledby="visao-titulo">
-                <h2 id="visao-titulo">Visão geral</h2>
+
+
+                <h2 id="visao-titulo">
+
+                    Visão geral
+
+                </h2>
+
 
                 <dl class="estatisticas">
-                    <div class="cartao estatistica">
-                        <dt>⚡ XP total</dt>
-                        <dd id="xp">—</dd>
-                    </div>
+
 
                     <div class="cartao estatistica">
-                        <dt>🔥 Dias de ofensiva</dt>
-                        <dd id="ofensiva">—</dd>
+
+                        <dt>
+
+                            ⚡ XP total
+
+                        </dt>
+
+
+                        <dd id="xp">
+
+                            —
+
+                        </dd>
+
                     </div>
 
-                    <div class="cartao estatistica">
-                        <dt>🏆 Liga atual</dt>
-                        <dd id="liga">—</dd>
-                    </div>
 
                     <div class="cartao estatistica">
-                        <dt>✅ Blocos concluídos</dt>
-                        <dd id="blocos">—</dd>
+
+                        <dt>
+
+                            🔥 Dias de ofensiva
+
+                        </dt>
+
+
+                        <dd id="ofensiva">
+
+                            —
+
+                        </dd>
+
                     </div>
+
+
+                    <div class="cartao estatistica">
+
+                        <dt>
+
+                            🏆 Liga atual
+
+                        </dt>
+
+
+                        <dd id="liga">
+
+                            —
+
+                        </dd>
+
+                    </div>
+
+
+                    <div class="cartao estatistica">
+
+                        <dt>
+
+                            ✅ Blocos concluídos
+
+                        </dt>
+
+
+                        <dd id="blocos">
+
+                            —
+
+                        </dd>
+
+                    </div>
+
+
                 </dl>
+
+
             </section>
 
-            <section class="cartao jornada secao" aria-labelledby="jornada-titulo">
+
+            <!-- =================================
+                 JORNADA
+            ================================== -->
+
+            <section class="
+                    cartao
+                    jornada
+                    secao
+                " aria-labelledby="jornada-titulo">
+
+
                 <div>
-                    <span class="rotulo">CONTINUE EVOLUINDO</span>
+
+
+                    <span class="rotulo">
+
+                        CONTINUE EVOLUINDO
+
+                    </span>
+
 
                     <h2 id="jornada-titulo">
+
                         Sua trilha de aprendizagem
+
                     </h2>
+
 
                     <p id="progresso-texto" class="suave"></p>
 
+
                     <progress id="progresso" max="100" value="0" aria-label="Progresso na trilha"></progress>
+
+
                 </div>
+
 
                 <a id="continuar" class="botao" href="trilha.html?nivel=facil">
+
                     Continuar trilha →
+
                 </a>
+
+
             </section>
+
+
+            <!-- =================================
+                 CONQUISTAS
+            ================================== -->
 
             <section class="secao" aria-labelledby="conquistas-titulo">
-                <h2 id="conquistas-titulo">Suas conquistas</h2>
 
-                <p class="suave introducao">
+
+                <h2 id="conquistas-titulo">
+
+                    Suas conquistas
+
+                </h2>
+
+
+                <p class="
+                        suave
+                        introducao
+                    ">
+
                     Complete os desafios da trilha para liberar
+
                     suas medalhas.
+
                 </p>
+
 
                 <ul id="conquistas" class="conquistas"></ul>
+
+
             </section>
+
+
         </div>
+
+
     </main>
 
+
+    <!-- =========================================
+         CONFIGURAÇÕES
+    ========================================== -->
+
     <dialog id="configuracoes" class="cfg-painel" aria-labelledby="configuracoes-titulo">
+
+
         <header class="cfg-topo">
+
+
             <button id="cfg-voltar" class="cfg-texto" type="button" hidden>
+
                 ‹ Voltar
+
             </button>
+
 
             <h2 id="configuracoes-titulo" tabindex="-1">
+
                 Configurações
+
             </h2>
 
+
             <button id="fechar" class="cfg-texto" type="button" autofocus>
+
                 Pronto
+
             </button>
+
+
         </header>
 
+
         <div class="cfg-conteudo">
-            <!-- Menu principal -->
+
+
+            <!-- =================================
+                 MENU PRINCIPAL
+            ================================== -->
+
             <section data-cfg-tela="inicio" aria-label="Menu de configurações">
-                <h3 class="cfg-secao">Conta</h3>
+
+
+                <h3 class="cfg-secao">
+
+                    Conta
+
+                </h3>
+
 
                 <div class="cfg-lista">
+
+
                     <button class="cfg-item" type="button" data-cfg-abrir="preferencias">
+
+
                         <span>
+
                             Preferências
-                            <small>Aparência do seu perfil</small>
+
+                            <small>
+
+                                Aparência do seu perfil
+
+                            </small>
+
                         </span>
 
+
                         <span class="cfg-seta" aria-hidden="true"></span>
+
+
                     </button>
+
+
+                    <button class="cfg-item" type="button" data-cfg-abrir="personalizacao">
+
+
+                        <span>
+
+                            Personalização
+
+                            <small>
+
+                                Molduras, fundos e itens comprados
+
+                            </small>
+
+                        </span>
+
+
+                        <span class="cfg-seta" aria-hidden="true"></span>
+
+
+                    </button>
+
 
                     <button class="cfg-item" type="button" data-cfg-abrir="perfil">
+
+
                         <span>
+
                             Perfil
-                            <small>Nome e informações da conta</small>
+
+                            <small>
+
+                                Nome e informações da conta
+
+                            </small>
+
                         </span>
 
+
                         <span class="cfg-seta" aria-hidden="true"></span>
+
+
                     </button>
+
 
                     <a class="cfg-item" href="trilha.html?nivel=facil">
+
+
                         <span>
+
                             Minha trilha
-                            <small>Módulos, blocos e aprendizado</small>
+
+                            <small>
+
+                                Módulos, blocos e aprendizado
+
+                            </small>
+
                         </span>
 
+
                         <span class="cfg-seta" aria-hidden="true"></span>
+
+
                     </a>
+
 
                     <button class="cfg-item" type="button" data-cfg-abrir="dados">
+
+
                         <span>
+
                             Dados da conta
-                            <small>Entenda como seu perfil funciona</small>
+
+                            <small>
+
+                                Entenda como seu perfil funciona
+
+                            </small>
+
                         </span>
 
+
                         <span class="cfg-seta" aria-hidden="true"></span>
+
+
                     </button>
+
+
                 </div>
 
-                <h3 class="cfg-secao">Suporte</h3>
+
+                <h3 class="cfg-secao">
+
+                    Suporte
+
+                </h3>
+
 
                 <div class="cfg-lista">
+
+
                     <button class="cfg-item" type="button" data-cfg-abrir="ajuda">
-                        <span>Central de ajuda</span>
+
+
+                        <span>
+
+                            Central de ajuda
+
+                        </span>
+
+
                         <span class="cfg-seta" aria-hidden="true"></span>
+
+
                     </button>
+
 
                     <a class="cfg-item" href="index.html#sobre">
-                        <span>Sobre o EcoEnergia</span>
-                        <span class="cfg-seta" aria-hidden="true"></span>
-                    </a>
-                </div>
 
-                <button id="sair" class="cfg-sair" type="button">
-                    Sair da conta
-                </button>
 
-                <p class="cfg-rodape">
-                    EcoEnergia · Aprender para transformar
-                </p>
-            </section>
-
-            <!-- Preferências -->
-            <section data-cfg-tela="preferencias" aria-label="Preferências" hidden>
-                <p class="cfg-descricao">
-                    Personalize a aparência do perfil e das configurações.
-                </p>
-
-                <div class="cfg-lista">
-                    <label class="cfg-opcao" for="cfg-escuro">
                         <span>
-                            Modo escuro
-                            <small>Use um fundo escuro nesta página</small>
+
+                            Sobre o EcoEnergia
+
                         </span>
 
-                        <input id="cfg-escuro" type="checkbox" role="switch">
-                    </label>
+
+                        <span class="cfg-seta" aria-hidden="true"></span>
+
+
+                    </a>
+
+
                 </div>
 
-                <p class="cfg-nota">
-                    Esta preferência é salva para sua conta neste navegador.
+
+                <button id="sair" class="cfg-sair" type="button">
+
+                    Sair da conta
+
+                </button>
+
+
+                <p class="cfg-rodape">
+
+                    EcoEnergia · Aprender para transformar
+
                 </p>
+
+
             </section>
 
-            <!-- Edição do perfil -->
-            <section data-cfg-tela="perfil" aria-label="Editar perfil" hidden>
+
+            <!-- =================================
+                 PREFERÊNCIAS
+            ================================== -->
+
+            <section data-cfg-tela="preferencias" aria-label="Preferências" hidden>
+
+
                 <p class="cfg-descricao">
-                    Escolha como seu nome aparece no EcoEnergia.
+
+                    Personalize a aparência do perfil e das configurações.
+
                 </p>
 
+
+                <div class="cfg-lista">
+
+
+                    <label class="cfg-opcao" for="cfg-escuro">
+
+
+                        <span>
+
+                            Modo escuro
+
+                            <small>
+
+                                Use um fundo escuro nesta página
+
+                            </small>
+
+                        </span>
+
+
+                        <input id="cfg-escuro" type="checkbox" role="switch">
+
+
+                    </label>
+
+
+                </div>
+
+
+                <p class="cfg-nota">
+
+                    Esta preferência é salva para sua conta neste navegador.
+
+                </p>
+
+
+            </section>
+
+
+            <!-- =================================
+                 PERSONALIZAÇÃO
+            ================================== -->
+
+            <section data-cfg-tela="personalizacao" aria-label="Personalização do perfil" hidden>
+
+
+                <p class="cfg-descricao">
+
+                    Escolha entre os itens que você já comprou na loja.
+
+                </p>
+
+
+                <div class="cfg-personalizacao">
+
+
+                    <div class="cfg-personalizacao-grupo">
+
+
+                        <h3>
+
+                            Molduras
+
+                        </h3>
+
+
+                        <div id="personalizacao-molduras" class="cfg-personalizacao-lista">
+
+                            <p class="suave">
+
+                                Carregando suas molduras...
+
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="cfg-personalizacao-grupo">
+
+
+                        <h3>
+
+                            Fundos
+
+                        </h3>
+
+
+                        <div id="personalizacao-fundos" class="cfg-personalizacao-lista">
+
+                            <p class="suave">
+
+                                Carregando seus fundos...
+
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================
+                 EDITAR PERFIL
+            ================================== -->
+
+            <section data-cfg-tela="perfil" aria-label="Editar perfil" hidden>
+
+
+                <p class="cfg-descricao">
+
+                    Escolha como seu nome aparece no EcoEnergia.
+
+                </p>
+
+
                 <form id="formulario" class="cfg-formulario">
-                    <label for="nome">Nome de exibição</label>
+
+
+                    <label for="nome">
+
+                        Nome de exibição
+
+                    </label>
+
 
                     <input id="nome" name="nome" autocomplete="name" maxlength="80" required>
 
-                    <label for="email">E-mail da conta</label>
+
+                    <label for="email">
+
+                        E-mail da conta
+
+                    </label>
+
 
                     <input id="email" type="email" readonly aria-describedby="email-ajuda">
 
+
                     <small id="email-ajuda" class="suave">
+
                         O e-mail é somente leitura nesta tela.
+
                     </small>
 
+
                     <div class="acoes">
+
+
                         <button id="cancelar" class="botao secundario" type="button">
+
                             Fechar
+
                         </button>
+
 
                         <button id="salvar" class="botao" type="submit">
+
                             Salvar alterações
+
                         </button>
+
+
                     </div>
+
+
                 </form>
+
+
             </section>
 
-            <!-- Informações da conta -->
+
+            <!-- =================================
+                 DADOS DA CONTA
+            ================================== -->
+
             <section data-cfg-tela="dados" class="cfg-informacoes" aria-label="Dados da conta" hidden>
-                <h3>Sua conta</h3>
+
+
+                <h3>
+
+                    Sua conta
+
+                </h3>
+
 
                 <p>
+
                     Esta tela mostra os dados da conta conectada.
+
                     Alterar seu nome não modifica o e-mail ou a senha
+
                     usados para entrar.
+
                 </p>
 
-                <h3>Seu aprendizado</h3>
+
+                <h3>
+
+                    Seu aprendizado
+
+                </h3>
+
 
                 <p>
+
                     XP e blocos aprovados ficam associados à sua conta.
+
                     Entre com a mesma conta para continuar seu progresso.
+
                 </p>
 
-                <h3>Ao sair</h3>
+
+                <h3>
+
+                    Ao sair
+
+                </h3>
+
 
                 <p>
+
                     O botão “Sair da conta” encerra a sessão neste
+
                     navegador. Seu progresso continua salvo.
+
                 </p>
+
+
             </section>
 
-            <!-- Central de ajuda -->
+
+            <!-- =================================
+                 CENTRAL DE AJUDA
+            ================================== -->
+
             <section data-cfg-tela="ajuda" class="cfg-informacoes" aria-label="Central de ajuda" hidden>
+
+
                 <details class="cfg-pergunta">
-                    <summary>Como liberar o próximo bloco?</summary>
+
+
+                    <summary>
+
+                        Como liberar o próximo bloco?
+
+                    </summary>
+
 
                     <p>
+
                         Acerte pelo menos 50% das perguntas do bloco
+
                         atual. Se não atingir essa pontuação, você
+
                         pode tentar novamente.
+
                     </p>
+
+
                 </details>
 
+
                 <details class="cfg-pergunta">
-                    <summary>Por que uma revisão não deu XP?</summary>
+
+
+                    <summary>
+
+                        Por que uma revisão não deu XP?
+
+                    </summary>
+
 
                     <p>
+
                         O XP é concedido na primeira aprovação do bloco.
+
                         Revisar um bloco já aprovado não gera XP adicional.
+
                     </p>
+
+
                 </details>
 
+
                 <details class="cfg-pergunta">
-                    <summary>Como manter minha ofensiva?</summary>
+
+
+                    <summary>
+
+                        Como manter minha ofensiva?
+
+                    </summary>
+
 
                     <p>
+
                         Conclua uma atividade todos os dias.
+
                         A contagem de dias usa o horário de São Paulo.
+
                     </p>
+
+
                 </details>
+
 
                 <details class="cfg-pergunta">
-                    <summary>Como alterar meu nome?</summary>
+
+
+                    <summary>
+
+                        Como alterar meu nome?
+
+                    </summary>
+
 
                     <p>
+
                         Abra Configurações → Perfil, digite o nome
+
                         e clique em “Salvar alterações”.
+
                     </p>
+
+
                 </details>
+
+
             </section>
 
-            <p id="retorno" class="retorno cfg-retorno" role="status" aria-live="polite"></p>
+
+            <!-- =================================
+                 RETORNO DAS CONFIGURAÇÕES
+            ================================== -->
+
+            <p id="retorno" class="
+                    retorno
+                    cfg-retorno
+                " role="status" aria-live="polite"></p>
+
+
         </div>
+
+
     </dialog>
+
+
 </body>
 
 </html>
