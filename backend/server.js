@@ -9,6 +9,7 @@ const autenticar = require("./autenticar");
 const fazerLogout = require("./logout");
 const listarRanking = require("./ranking");
 const concluirAtividade = require("./concluir-atividade");
+const corrigirBloco = require("./corrigir-bloco");
 
 const {
     consultarPerfil,
@@ -946,6 +947,63 @@ app.get(
 // =========================================================
 
 app.post(
+    "/api/atividade/corrigir-visitante",
+    (req, res) => {
+
+        res.set(
+            "Cache-Control",
+            "no-store"
+        );
+
+        const {
+            atividadeId,
+            respostas
+        } = req.body || {};
+
+        const correcao =
+            corrigirBloco(
+                atividadeId,
+                respostas
+            );
+
+        if (!correcao.valido) {
+            return res.status(400).json({
+                mensagem: correcao.mensagem
+            });
+        }
+
+        const aprovado =
+            correcao.acertos * 2 >=
+            correcao.totalPerguntas;
+
+        return res.json({
+            visitante: true,
+
+            aprovado,
+
+            concluido: aprovado,
+
+            totalPerguntas:
+                correcao.totalPerguntas,
+
+            acertos:
+                correcao.acertos,
+
+            xpGanho: 0,
+
+            resultados:
+                correcao.resultados,
+
+            proximaAtividadeId: null,
+
+            mensagem: aprovado
+                ? "Bloco concluído! Como visitante, seu progresso e XP não são salvos."
+                : "Você precisa acertar pelo menos metade das perguntas. Tente novamente."
+        });
+    }
+);
+
+app.post(
     "/api/atividade/concluir",
     autenticar,
     concluirAtividade
@@ -1302,33 +1360,89 @@ app.post(
 // LOJA
 // =========================================================
 
-app.get(
-    "/api/loja",
-    autenticar,
-    async (req, res) => {
+app.get("/api/loja-publica", async (req, res) => {
 
-        res.set(
-            "Cache-Control",
-            "no-store"
+    res.set(
+        "Cache-Control",
+        "no-store"
+    );
+
+    try {
+
+        const resultado =
+            await banco.query(`
+                SELECT
+                    id,
+                    nome,
+                    descricao,
+                    preco,
+                    categoria,
+                    imagem,
+                    tipo_aquisicao AS "tipoAquisicao",
+                    requisito,
+
+                    false AS comprado,
+                    false AS equipado,
+
+                    CASE
+                        WHEN tipo_aquisicao = 'loja'
+                            THEN true
+                        ELSE false
+                    END AS liberado
+
+                FROM public.itens_loja
+
+                WHERE ativo = true
+
+                ORDER BY
+                    preco ASC,
+                    id ASC
+            `);
+
+        res.json({
+            itens: resultado.rows
+        });
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao consultar loja pública:",
+            erro.message
+        );
+
+        res.status(500).json({
+            mensagem:
+                "Não foi possível carregar os itens da loja."
+        });
+
+    }
+
+});
+
+app.get("/api/loja", autenticar, async (req, res) => {
+
+    res.set(
+        "Cache-Control",
+        "no-store"
+    );
+
+
+    try {
+
+        // Confere o progresso antes
+        // de montar a loja.
+        //
+        // Se o usuário já concluiu um módulo,
+        // a recompensa é adicionada automaticamente
+        // à coleção.
+
+        await sincronizarConquistasLoja(
+            req.usuario.id
         );
 
 
-        try {
-
-            // Confere o progresso antes
-            // de montar a loja.
-            //
-            // Se o usuário já concluiu um módulo,
-            // a recompensa é adicionada automaticamente
-            // à coleção.
-
-            await sincronizarConquistasLoja(
-                req.usuario.id
-            );
-
-
-            const resultado =
-                await banco.query(`
+        const resultado =
+            await banco.query(`
                     SELECT
 
                         item.id,
@@ -1430,39 +1544,39 @@ app.get(
 
                         item.id ASC
                 `, [
-                    req.usuario.id
-                ]);
+                req.usuario.id
+            ]);
 
 
-            res.json({
+        res.json({
 
-                itens:
-                    resultado.rows
+            itens:
+                resultado.rows
 
-            });
-
-
-        } catch (erro) {
-
-            console.error(
-
-                "Erro ao consultar loja:",
-
-                erro.message
-
-            );
+        });
 
 
-            res.status(500).json({
+    } catch (erro) {
 
-                mensagem:
-                    "Não foi possível carregar os itens da loja."
+        console.error(
 
-            });
+            "Erro ao consultar loja:",
 
-        }
+            erro.message
+
+        );
+
+
+        res.status(500).json({
+
+            mensagem:
+                "Não foi possível carregar os itens da loja."
+
+        });
 
     }
+
+}
 );
 
 

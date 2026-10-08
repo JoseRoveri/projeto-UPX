@@ -1,0 +1,575 @@
+/* =========================================================
+   GUIA PARA PAIS — ECOENERGIA
+========================================================= */
+
+
+/* =========================================================
+   RESET DAS REGRAS ANTIGAS DE LOGIN
+========================================================= */
+
+body.pagina-guia-pais {
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    display: block;
+
+    overflow-x: hidden;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color:
+        var(--azul-escuro);
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--fundo) 0%,
+            #ffffff 100%
+        );
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+body.pagina-guia-pais > header {
+    width: 100%;
+
+    padding:
+        18px clamp(22px, 6vw, 80px);
+
+    display: flex;
+    align-items: center;
+
+    border-bottom:
+        3px solid var(--azul-escuro);
+
+    background:
+        var(--branco);
+
+    box-shadow:
+        0 5px 0 rgba(46, 88, 129, 0.08);
+}
+
+
+body.pagina-guia-pais > header a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color:
+        var(--azul-escuro);
+
+    font-size:
+        1.3rem;
+
+    font-weight:
+        900;
+
+    text-decoration:
+        none;
+}
+
+
+body.pagina-guia-pais > header a::before {
+    content: "🌱";
+
+    font-size:
+        1.45rem;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+body.pagina-guia-pais > main {
+    position: relative;
+
+    width:
+        min(1050px, calc(100% - 40px));
+
+    min-height: 0;
+
+    margin:
+        0 auto;
+
+    padding:
+        55px 0 85px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    grid-template-rows:
+        none;
+
+    gap:
+        32px;
+
+    overflow:
+        visible;
+
+    border:
+        0;
+
+    border-radius:
+        0;
+
+    background:
+        transparent;
+
+    box-shadow:
+        none;
+}
+
+
+/* =========================================================
+   RESET DAS SEÇÕES
+========================================================= */
+
+body.pagina-guia-pais > main > section {
+    position: relative;
+
+    grid-column:
+        auto;
+
+    grid-row:
+        auto;
+
+    width:
+        100%;
+
+    min-width:
+        0;
+
+    display:
+        block;
+
+    margin:
+        0;
+}
+
+
+body.pagina-guia-pais > main > section > h2::after {
+    display:
+        none;
+
+    content:
+        none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+body.pagina-guia-pais > main > section:first-child {
+    overflow:
+        hidden;
+
+    padding:
+        50px clamp(28px, 6vw, 65px);
+
+    border:
+        3px solid var(--azul-escuro);
+
+    border-radius:
+        32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-claro),
+            var(--verde-suave)
+        );
+
+    box-shadow:
+        9px 10px 0 rgba(46, 88, 129, 0.10);
+
+    text-align:
+        center;
+}
+
+
+body.pagina-guia-pais > main > section:first-child::before {
+    content:
+        "🌎";
+
+    position:
+        absolute;
+
+    top:
+        20px;
+
+    left:
+        25px;
+
+    font-size:
+        2.4rem;
+
+    transform:
+        rotate(-8deg);
+}
+
+
+body.pagina-guia-pais > main > section:first-child::after {
+    content:
+        "⚡";
+
+    position:
+        absolute;
+
+    right:
+        24px;
+
+    bottom:
+        18px;
+
+    width:
+        58px;
+
+    height:
+        58px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        3px solid var(--azul-escuro);
+
+    border-radius:
+        18px;
+
+    background:
+        var(--amarelo);
+
+    font-size:
+        1.8rem;
+
+    box-shadow:
+        4px 5px 0 rgba(46, 88, 129, 0.10);
+
+    transform:
+        rotate(5deg);
+}
+
+
+body.pagina-guia-pais > main > section:first-child h1 {
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin:
+        0 0 16px;
+
+    color:
+        var(--azul-escuro);
+
+    font-size:
+        clamp(2.2rem, 5vw, 3.2rem);
+
+    font-weight:
+        900;
+
+    line-height:
+        1.1;
+}
+
+
+body.pagina-guia-pais > main > section:first-child p {
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        720px;
+
+    margin:
+        0 auto;
+
+    color:
+        var(--azul-escuro);
+
+    font-size:
+        1.05rem;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+body.pagina-guia-pais > main > section:not(:first-child) {
+    padding:
+        30px 34px;
+
+    border:
+        3px solid var(--azul-escuro);
+
+    border-radius:
+        25px;
+
+    background:
+        var(--branco);
+
+    box-shadow:
+        7px 8px 0 rgba(46, 88, 129, 0.09);
+}
+
+
+body.pagina-guia-pais > main > section:not(:first-child)::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        27px;
+
+    left:
+        -7px;
+
+    width:
+        12px;
+
+    height:
+        52px;
+
+    border:
+        2px solid var(--azul-escuro);
+
+    border-radius:
+        999px;
+
+    background:
+        var(--amarelo);
+}
+
+
+body.pagina-guia-pais > main > section:nth-child(3)::before,
+body.pagina-guia-pais > main > section:nth-child(5)::before,
+body.pagina-guia-pais > main > section:nth-child(7)::before {
+    background:
+        var(--turquesa);
+}
+
+
+body.pagina-guia-pais > main > section:nth-child(4)::before,
+body.pagina-guia-pais > main > section:nth-child(6)::before {
+    background:
+        var(--verde-claro);
+}
+
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
+
+body.pagina-guia-pais > main > section:not(:first-child) h2 {
+    margin:
+        0 0 16px;
+
+    padding:
+        0 0 12px;
+
+    color:
+        var(--azul-escuro);
+
+    font-size:
+        clamp(1.35rem, 3vw, 1.6rem);
+
+    font-weight:
+        900;
+
+    line-height:
+        1.2;
+
+    border-bottom:
+        3px solid var(--verde-claro);
+}
+
+
+/* =========================================================
+   PARÁGRAFOS
+========================================================= */
+
+body.pagina-guia-pais > main > section:not(:first-child) p {
+    max-width:
+        none;
+
+    margin:
+        0 0 13px;
+
+    color:
+        var(--texto-suave);
+
+    font-size:
+        1rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.7;
+}
+
+
+body.pagina-guia-pais > main > section:not(:first-child) p:last-child {
+    margin-bottom:
+        0;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 700px) {
+
+    body.pagina-guia-pais {
+        padding:
+            0;
+    }
+
+
+    body.pagina-guia-pais > header {
+        padding:
+            15px 18px;
+    }
+
+
+    body.pagina-guia-pais > main {
+        width:
+            calc(100% - 28px);
+
+        min-height:
+            0;
+
+        padding:
+            34px 0 55px;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            24px;
+
+        border:
+            0;
+
+        border-radius:
+            0;
+
+        box-shadow:
+            none;
+    }
+
+
+    body.pagina-guia-pais > main > section {
+        grid-column:
+            auto;
+
+        grid-row:
+            auto;
+    }
+
+
+    body.pagina-guia-pais > main > section:first-child {
+        padding:
+            40px 22px;
+
+        border-radius:
+            24px;
+
+        box-shadow:
+            6px 7px 0 rgba(46, 88, 129, 0.10);
+    }
+
+
+    body.pagina-guia-pais > main > section:first-child::before {
+        top:
+            12px;
+
+        left:
+            15px;
+
+        font-size:
+            1.7rem;
+    }
+
+
+    body.pagina-guia-pais > main > section:first-child::after {
+        width:
+            44px;
+
+        height:
+            44px;
+
+        right:
+            13px;
+
+        bottom:
+            12px;
+
+        border-radius:
+            13px;
+
+        font-size:
+            1.3rem;
+    }
+
+
+    body.pagina-guia-pais > main > section:first-child h1 {
+        font-size:
+            2rem;
+    }
+
+
+    body.pagina-guia-pais > main > section:not(:first-child) {
+        padding:
+            24px 21px;
+
+        border-radius:
+            20px;
+
+        box-shadow:
+            5px 6px 0 rgba(46, 88, 129, 0.08);
+    }
+
+
+    body.pagina-guia-pais > main > section:not(:first-child)::before {
+        width:
+            9px;
+
+        height:
+            40px;
+
+        left:
+            -6px;
+    }
+
+}

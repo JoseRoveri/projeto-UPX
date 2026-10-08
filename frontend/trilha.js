@@ -41,9 +41,9 @@
                     "li",
                     "",
                     progresso.blocosConcluidos +
-                        " concluídos · " +
-                        progresso.porcentagem +
-                        "%"
+                    " concluídos · " +
+                    progresso.porcentagem +
+                    "%"
                 )
             );
         }
@@ -90,10 +90,10 @@
                     "small",
                     "",
                     "Módulo " +
-                        modulo.ordem +
-                        " · " +
-                        modulo.blocos.length +
-                        " blocos"
+                    modulo.ordem +
+                    " · " +
+                    modulo.blocos.length +
+                    " blocos"
                 ),
                 criarElemento("strong", "", modulo.nome)
             );
@@ -130,11 +130,16 @@
                 bolha.style.fontFamily = "inherit";
 
                 if (!progresso) {
-                    bolha.href = "login.html";
+                    bolha.href =
+                        "quiz.html?" +
+                        new URLSearchParams({
+                            nivel,
+                            atividadeId: bloco.atividadeId
+                        });
 
                     bolha.setAttribute(
                         "aria-label",
-                        "Faça login para abrir " + bloco.nome
+                        "Abrir: " + bloco.nome
                     );
                 } else if (liberado) {
                     bolha.href =
@@ -175,10 +180,10 @@
                         "span",
                         "quantidade",
                         "Bloco " +
-                            bloco.ordem +
-                            " · " +
-                            bloco.totalPerguntas +
-                            " perguntas"
+                        bloco.ordem +
+                        " · " +
+                        bloco.totalPerguntas +
+                        " perguntas"
                     ),
                     criarElemento(
                         "span",

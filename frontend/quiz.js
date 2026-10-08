@@ -31,6 +31,7 @@
         let indice = 0;
         let respostas = [];
         let enviando = false;
+        let visitante = false;
 
         const retorno =
             "trilha.html?" + new URLSearchParams({ nivel });
@@ -262,16 +263,30 @@
                 const base =
                     "/trilhas/" + encodeURIComponent(nivel);
 
-                const progresso = await consultar(base + "/progresso");
+                let progresso = null;
 
-                const status = progresso.blocos.find(
-                    item => item.atividadeId === atividadeId
-                );
-
-                if (!status?.liberado) {
-                    throw new Error(
-                        "Conclua os blocos anteriores para abrir este bloco."
+                try {
+                    progresso = await consultar(
+                        base + "/progresso"
                     );
+                } catch (erro) {
+                    if (erro.status === 401) {
+                        visitante = true;
+                    } else {
+                        throw erro;
+                    }
+                }
+
+                if (progresso) {
+                    const status = progresso.blocos.find(
+                        item => item.atividadeId === atividadeId
+                    );
+
+                    if (!status?.liberado) {
+                        throw new Error(
+                            "Conclua os blocos anteriores para abrir este bloco."
+                        );
+                    }
                 }
 
                 bloco = await consultar(
@@ -352,7 +367,9 @@
 
             try {
                 const dados = await consultar(
-                    "/atividade/concluir",
+                    visitante
+                        ? "/atividade/corrigir-visitante"
+                        : "/atividade/concluir",
                     {
                         method: "POST",
                         headers: {
@@ -433,13 +450,17 @@
                     ? "Revisar bloco"
                     : "Tentar novamente";
 
-                revisao.replaceChildren(
-                    elemento(
-                        "h3",
-                        "",
-                        "Confira suas respostas"
-                    )
-                );
+                if (dados.aprovado) {
+                    revisao.replaceChildren(
+                        elemento(
+                            "h3",
+                            "",
+                            "Confira as respostas que você acertou"
+                        )
+                    );
+                } else {
+                    revisao.replaceChildren();
+                }
 
                 const porId = new Map(
                     bloco.perguntas.map(pergunta => [
@@ -449,6 +470,11 @@
                 );
 
                 (dados.resultados || []).forEach((correcao, posicao) => {
+
+                    if (!dados.aprovado || !correcao.acertou) {
+                        return;
+                    }
+
                     const pergunta = porId.get(
                         correcao.perguntaId
                     );
