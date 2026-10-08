@@ -129,35 +129,6 @@
         );
     }
 
-    async function consultarPerfilOpcional() {
-
-        const resposta = await fetch(
-            API + "/perfil",
-            {
-                credentials: "include",
-                cache: "no-store"
-            }
-        );
-
-        const dados =
-            await resposta
-                .json()
-                .catch(() => ({}));
-
-        if (resposta.status === 401) {
-            return null;
-        }
-
-        if (!resposta.ok) {
-            throw new Error(
-                dados.mensagem ||
-                "Não foi possível consultar o perfil."
-            );
-        }
-
-        return dados;
-    }
-
 
     // =========================================================
     // LOJA
@@ -167,12 +138,6 @@
 
         return consultar(
             "/loja"
-        );
-    }
-
-    async function consultarLojaPublica() {
-        return consultar(
-            "/loja-publica"
         );
     }
 
@@ -1185,16 +1150,13 @@
 
         try {
 
-            const perfil =
-                await consultarPerfilOpcional();
-
-            const loja =
-                perfil
-                    ? await consultarLoja()
-                    : await consultarLojaPublica();
+            const [perfil, loja] = await Promise.all([
+                consultarPerfil(),
+                consultarLoja()
+            ]);
 
             mostrarSaldo(
-                perfil?.usuario
+                perfil.usuario
             );
 
 

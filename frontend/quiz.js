@@ -31,7 +31,6 @@
         let indice = 0;
         let respostas = [];
         let enviando = false;
-        let visitante = false;
 
         const retorno =
             "trilha.html?" + new URLSearchParams({ nivel });
@@ -263,30 +262,18 @@
                 const base =
                     "/trilhas/" + encodeURIComponent(nivel);
 
-                let progresso = null;
+                const progresso = await consultar(
+                    base + "/progresso"
+                );
 
-                try {
-                    progresso = await consultar(
-                        base + "/progresso"
+                const status = progresso.blocos.find(
+                    item => item.atividadeId === atividadeId
+                );
+
+                if (!status?.liberado) {
+                    throw new Error(
+                        "Conclua os blocos anteriores para abrir este bloco."
                     );
-                } catch (erro) {
-                    if (erro.status === 401) {
-                        visitante = true;
-                    } else {
-                        throw erro;
-                    }
-                }
-
-                if (progresso) {
-                    const status = progresso.blocos.find(
-                        item => item.atividadeId === atividadeId
-                    );
-
-                    if (!status?.liberado) {
-                        throw new Error(
-                            "Conclua os blocos anteriores para abrir este bloco."
-                        );
-                    }
                 }
 
                 bloco = await consultar(
@@ -367,9 +354,7 @@
 
             try {
                 const dados = await consultar(
-                    visitante
-                        ? "/atividade/corrigir-visitante"
-                        : "/atividade/concluir",
+                    "/atividade/concluir",
                     {
                         method: "POST",
                         headers: {

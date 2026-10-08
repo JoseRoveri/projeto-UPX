@@ -130,195 +130,190 @@
                 bolha.style.fontFamily = "inherit";
 
                 if (!progresso) {
-                    bolha.href =
-                        "quiz.html?" +
-                        new URLSearchParams({
-                            nivel,
-                            atividadeId: bloco.atividadeId
-                        });
+                    bolha.href = "login.html";
 
                     bolha.setAttribute(
                         "aria-label",
-                        "Abrir: " + bloco.nome
+                        "Faça login para acessar esta atividade"
                     );
-                } else if (liberado) {
-                    bolha.href =
-                        "quiz.html?" +
-                        new URLSearchParams({
-                            nivel,
-                            atividadeId: bloco.atividadeId
-                        });
+            } else if (liberado) {
+                bolha.href =
+                    "quiz.html?" +
+                    new URLSearchParams({
+                        nivel,
+                        atividadeId: bloco.atividadeId
+                    });
 
-                    bolha.setAttribute(
-                        "aria-label",
-                        (concluido ? "Revisar: " : "Abrir: ") + bloco.nome
-                    );
-                } else {
-                    bolha.type = "button";
-                    bolha.disabled = true;
-                    bolha.style.opacity = "0.5";
-
-                    bolha.setAttribute(
-                        "aria-label",
-                        bloco.nome + ": bloqueado"
-                    );
-                }
-
-                bolha.style.cursor = bolha.disabled
-                    ? "not-allowed"
-                    : "pointer";
-
-                const textos = criarElemento("div", "");
-
-                textos.append(
-                    criarElemento(
-                        "strong",
-                        "nome-bloco",
-                        bloco.nome
-                    ),
-                    criarElemento(
-                        "span",
-                        "quantidade",
-                        "Bloco " +
-                        bloco.ordem +
-                        " · " +
-                        bloco.totalPerguntas +
-                        " perguntas"
-                    ),
-                    criarElemento(
-                        "span",
-                        "quantidade",
-                        !progresso
-                            ? "Entre para jogar"
-                            : concluido
-                                ? "Concluído · Revisar"
-                                : liberado
-                                    ? "Começar →"
-                                    : "Conclua os anteriores"
-                    )
+                bolha.setAttribute(
+                    "aria-label",
+                    (concluido ? "Revisar: " : "Abrir: ") + bloco.nome
                 );
+            } else {
+                bolha.type = "button";
+                bolha.disabled = true;
+                bolha.style.opacity = "0.5";
 
-                item.append(bolha, textos);
-                lista.append(item);
-            });
+                bolha.setAttribute(
+                    "aria-label",
+                    bloco.nome + ": bloqueado"
+                );
+            }
 
-            cartao.append(
-                cabecalho,
+            bolha.style.cursor = bolha.disabled
+                ? "not-allowed"
+                : "pointer";
+
+            const textos = criarElemento("div", "");
+
+            textos.append(
                 criarElemento(
-                    "p",
-                    "descricao-modulo",
-                    modulo.introducao
+                    "strong",
+                    "nome-bloco",
+                    bloco.nome
                 ),
-                lista
+                criarElemento(
+                    "span",
+                    "quantidade",
+                    "Bloco " +
+                    bloco.ordem +
+                    " · " +
+                    bloco.totalPerguntas +
+                    " perguntas"
+                ),
+                criarElemento(
+                    "span",
+                    "quantidade",
+                    !progresso
+                        ? "Entre para jogar"
+                        : concluido
+                            ? "Concluído · Revisar"
+                            : liberado
+                                ? "Começar →"
+                                : "Conclua os anteriores"
+                )
             );
 
-            fragmento.append(cartao);
+            item.append(bolha, textos);
+            lista.append(item);
         });
 
-        listaModulos.replaceChildren(fragmento);
-        resumo.hidden = false;
-    }
-
-    async function carregarTrilha() {
-        if (carregando) return;
-
-        carregando = true;
-
-        estado.textContent = "Carregando os módulos e seu progresso...";
-
-        tentar.hidden = true;
-        tentar.disabled = true;
-        resumo.hidden = true;
-
-        listaModulos.replaceChildren();
-        listaModulos.setAttribute("aria-busy", "true");
-
-        const controle = new AbortController();
-
-        const limite = setTimeout(
-            () => controle.abort(),
-            15000
+        cartao.append(
+            cabecalho,
+            criarElemento(
+                "p",
+                "descricao-modulo",
+                modulo.introducao
+            ),
+            lista
         );
 
-        try {
-            const base =
-                API + "/trilhas/" + encodeURIComponent(nivel);
-
-            const opcoes = {
-                cache: "no-store",
-                credentials: "include",
-                signal: controle.signal
-            };
-
-            const resposta = await fetch(base, opcoes);
-
-            if (!resposta.ok) {
-                throw new Error(
-                    resposta.status === 404
-                        ? "Esta trilha ainda não está disponível. Escolha outra dificuldade."
-                        : "Não foi possível carregar a trilha."
-                );
-            }
-
-            const dados = await resposta.json();
-
-            if (
-                !Array.isArray(dados.modulos) ||
-                !dados.modulos.length
-            ) {
-                throw new Error("A trilha não possui módulos.");
-            }
-
-            const consulta = await fetch(
-                base + "/progresso",
-                opcoes
-            );
-
-            let progresso = null;
-
-            if (consulta.ok) {
-                progresso = await consulta.json();
-
-                if (!Array.isArray(progresso.blocos)) {
-                    throw new Error("O progresso recebido é inválido.");
-                }
-            } else if (consulta.status !== 401) {
-                throw new Error(
-                    "Não foi possível consultar seu progresso. Tente novamente."
-                );
-            }
-
-            mostrarTrilha(dados, progresso);
-
-            estado.textContent = progresso
-                ? "Clique em um círculo liberado para abrir as perguntas."
-                : "Faça login para responder aos blocos e salvar seu progresso. Os círculos levam ao login.";
-        } catch (erro) {
-            console.error("Erro ao carregar a trilha:", erro);
-
-            estado.textContent =
-                erro.name === "AbortError"
-                    ? "O servidor demorou para responder. Tente novamente."
-                    : erro.message;
-
-            tentar.hidden = false;
-        } finally {
-            clearTimeout(limite);
-
-            carregando = false;
-            tentar.disabled = false;
-
-            listaModulos.setAttribute("aria-busy", "false");
-        }
-    }
-
-    tentar.addEventListener("click", carregarTrilha);
-
-    window.addEventListener("pageshow", evento => {
-        if (evento.persisted) {
-            carregarTrilha();
-        }
+        fragmento.append(cartao);
     });
 
-    carregarTrilha();
-})();
+    listaModulos.replaceChildren(fragmento);
+    resumo.hidden = false;
+}
+
+    async function carregarTrilha() {
+    if (carregando) return;
+
+    carregando = true;
+
+    estado.textContent = "Carregando os módulos e seu progresso...";
+
+    tentar.hidden = true;
+    tentar.disabled = true;
+    resumo.hidden = true;
+
+    listaModulos.replaceChildren();
+    listaModulos.setAttribute("aria-busy", "true");
+
+    const controle = new AbortController();
+
+    const limite = setTimeout(
+        () => controle.abort(),
+        15000
+    );
+
+    try {
+        const base =
+            API + "/trilhas/" + encodeURIComponent(nivel);
+
+        const opcoes = {
+            cache: "no-store",
+            credentials: "include",
+            signal: controle.signal
+        };
+
+        const resposta = await fetch(base, opcoes);
+
+        if (!resposta.ok) {
+            throw new Error(
+                resposta.status === 404
+                    ? "Esta trilha ainda não está disponível. Escolha outra dificuldade."
+                    : "Não foi possível carregar a trilha."
+            );
+        }
+
+        const dados = await resposta.json();
+
+        if (
+            !Array.isArray(dados.modulos) ||
+            !dados.modulos.length
+        ) {
+            throw new Error("A trilha não possui módulos.");
+        }
+
+        const consulta = await fetch(
+            base + "/progresso",
+            opcoes
+        );
+
+        let progresso = null;
+
+        if (consulta.ok) {
+            progresso = await consulta.json();
+
+            if (!Array.isArray(progresso.blocos)) {
+                throw new Error("O progresso recebido é inválido.");
+            }
+        } else if (consulta.status !== 401) {
+            throw new Error(
+                "Não foi possível consultar seu progresso. Tente novamente."
+            );
+        }
+
+        mostrarTrilha(dados, progresso);
+
+        estado.textContent = progresso
+            ? "Clique em um círculo liberado para abrir as perguntas."
+            : "Faça login para responder aos blocos e salvar seu progresso. Os círculos levam ao login.";
+    } catch (erro) {
+        console.error("Erro ao carregar a trilha:", erro);
+
+        estado.textContent =
+            erro.name === "AbortError"
+                ? "O servidor demorou para responder. Tente novamente."
+                : erro.message;
+
+        tentar.hidden = false;
+    } finally {
+        clearTimeout(limite);
+
+        carregando = false;
+        tentar.disabled = false;
+
+        listaModulos.setAttribute("aria-busy", "false");
+    }
+}
+
+tentar.addEventListener("click", carregarTrilha);
+
+window.addEventListener("pageshow", evento => {
+    if (evento.persisted) {
+        carregarTrilha();
+    }
+});
+
+carregarTrilha();
+}) ();

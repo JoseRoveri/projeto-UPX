@@ -1360,64 +1360,6 @@ app.post(
 // LOJA
 // =========================================================
 
-app.get("/api/loja-publica", async (req, res) => {
-
-    res.set(
-        "Cache-Control",
-        "no-store"
-    );
-
-    try {
-
-        const resultado =
-            await banco.query(`
-                SELECT
-                    id,
-                    nome,
-                    descricao,
-                    preco,
-                    categoria,
-                    imagem,
-                    tipo_aquisicao AS "tipoAquisicao",
-                    requisito,
-
-                    false AS comprado,
-                    false AS equipado,
-
-                    CASE
-                        WHEN tipo_aquisicao = 'loja'
-                            THEN true
-                        ELSE false
-                    END AS liberado
-
-                FROM public.itens_loja
-
-                WHERE ativo = true
-
-                ORDER BY
-                    preco ASC,
-                    id ASC
-            `);
-
-        res.json({
-            itens: resultado.rows
-        });
-
-    } catch (erro) {
-
-        console.error(
-            "Erro ao consultar loja pública:",
-            erro.message
-        );
-
-        res.status(500).json({
-            mensagem:
-                "Não foi possível carregar os itens da loja."
-        });
-
-    }
-
-});
 
 app.get("/api/loja", autenticar, async (req, res) => {
 
