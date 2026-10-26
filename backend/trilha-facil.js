@@ -40,15 +40,19 @@ function criarPergunta(
     };
 }
 
-// Monta cada atividade de oito perguntas.
+// Monta cada bloco usando as 5 primeiras perguntas.
 function criarBloco(modulo, numero, nome, perguntas) {
     return {
         atividadeId:
-            "trilha_facil_m" + String(modulo).padStart(2, "0") +
-            "_b" + String(numero).padStart(2, "0") + "_v1",
+            "trilha_facil_m" +
+            String(modulo).padStart(2, "0") +
+            "_b" +
+            String(numero).padStart(2, "0") +
+            "_v1",
+
         nome,
         ordem: numero,
-        perguntas
+        perguntas: perguntas.slice(0, 5)
     };
 }
 
@@ -71,14 +75,14 @@ trilhaFacil.modulos.push({
         criarBloco(1, 1, "Primeiras descobertas", [
             criarPergunta(1, "sustentabilidade",
                 "O que quer dizer ser sustentável?",
-                ["Gastar toda a água e toda a energia o mais rápido possível", 
-                "Cuidar da água, da energia e da natureza para que não acabem", 
-                "Deixar as luzes acesas o dia inteiro", "Jogar lixo em qualquer lugar"],
+                ["Gastar toda a água e toda a energia o mais rápido possível",
+                    "Cuidar da água, da energia e da natureza para que não acabem",
+                    "Deixar as luzes acesas o dia inteiro", "Jogar lixo em qualquer lugar"],
                 1, "Cuidar da água, da energia e da natureza para que não acabem."),
             criarPergunta(2, "sustentabilidade",
                 "Por que devemos cuidar da água e da energia em casa?",
                 ["Porque elas nunca vão acabar", "Porque só os adultos precisam delas",
-                 "Porque vêm da natureza e precisam ser bem usadas", "Porque elas aparecem sozinhas na torneira sem limite"],
+                    "Porque vêm da natureza e precisam ser bem usadas", "Porque elas aparecem sozinhas na torneira sem limite"],
                 2, "Porque vêm da natureza e precisam ser bem usadas."),
             criarPergunta(3, "sustentabilidade",
                 "Se todas as pessoas desperdiçarem água e energia, o que pode acontecer?",
@@ -86,13 +90,13 @@ trilhaFacil.modulos.push({
                 3, "Pode faltar água e luz para as pessoas e para os animais."),
             criarPergunta(4, "sustentabilidade",
                 "O que significa reaproveitar?",
-                ["Usar de novo algo que já foi usado antes", "Comprar coisas novas o tempo todo", 
-                "Jogar fora tudo o que já usamos", " Guardar água parada por vários dias"],
+                ["Usar de novo algo que já foi usado antes", "Comprar coisas novas o tempo todo",
+                    "Jogar fora tudo o que já usamos", " Guardar água parada por vários dias"],
                 2, "Usar de novo algo que já foi usado antes."),
             criarPergunta(5, "sustentabilidade",
                 "Qual dessas atitudes deixa a nossa casa e a escola mais sustentáveis?",
-                ["Deixar a torneira aberta enquanto brincamos", "Usar mais luzes do que o necessário", 
-                "Economizar água e luz e reaproveitar materiais", "Jogar o lixo no chão para depois alguém recolher"],
+                ["Deixar a torneira aberta enquanto brincamos", "Usar mais luzes do que o necessário",
+                    "Economizar água e luz e reaproveitar materiais", "Jogar o lixo no chão para depois alguém recolher"],
                 2, "Economizar água e luz e reaproveitar materiais. "),
         ]),
 
@@ -249,12 +253,12 @@ trilhaFacil.modulos.push({
             criarPergunta(41, "baterias",
                 "Para economizar água ao lavar as mãos, o que devemos fazer?",
                 ["Deixar a torneira correndo o tempo todo", "Fechar a torneira enquanto ensaboa as mãos",
-                "Abrir a torneira bem forte", "Lavar as mãos várias vezes seguidas"],
+                    "Abrir a torneira bem forte", "Lavar as mãos várias vezes seguidas"],
                 1, "Fechar a torneira enquanto ensaboa as mãos."),
             criarPergunta(42, "calor",
                 "Ao lavar a louça, qual hábito ajuda a economizar água?",
-                ["Esfregar cada prato com a torneira correndo forte", " Lavar o mesmo prato várias vezes", 
-                "Esfregar com a torneira fechada e enxaguar depois", "Deixar a torneira aberta só para depois"],
+                ["Esfregar cada prato com a torneira correndo forte", " Lavar o mesmo prato várias vezes",
+                    "Esfregar com a torneira fechada e enxaguar depois", "Deixar a torneira aberta só para depois"],
                 2, "Esfregar com a torneira fechada e enxaguar depois."),
             criarPergunta(43, "solar",
                 "Uma sombra cobre a placa solar. O que chega menos à placa?",
