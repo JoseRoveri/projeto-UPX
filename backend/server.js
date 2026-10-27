@@ -1566,7 +1566,7 @@ app.post(
 
         let cliente;
 
-        
+
         try {
 
             cliente =
@@ -2300,6 +2300,42 @@ app.post(
     autenticar,
     companheiro.criarCompanheiro
 );
+
+// =========================================================
+// PÁGINA NÃO ENCONTRADA — 404
+// =========================================================
+
+app.use((req, res, next) => {
+    res.set("Cache-Control", "no-store");
+
+    // Endereços inexistentes da API recebem uma resposta JSON.
+    if (req.path === "/api" || req.path.startsWith("/api/")) {
+        return res.status(404).json({
+            mensagem: "Rota não encontrada."
+        });
+    }
+
+    const podeExibirPagina =
+        (req.method === "GET" || req.method === "HEAD") &&
+        req.accepts("html");
+
+    if (!podeExibirPagina) {
+        return res
+            .status(404)
+            .type("text")
+            .send("Recurso não encontrado.");
+    }
+
+    // Mostra a página personalizada mantendo o status 404.
+    return res.status(404).sendFile(
+        path.join(frontendPath, "404.html"),
+        (erro) => {
+            if (erro) {
+                next(erro);
+            }
+        }
+    );
+});
 
 
 // =========================================================
