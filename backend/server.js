@@ -7,7 +7,6 @@ const banco = require("./database");
 const fazerLogin = require("./login");
 const autenticar = require("./autenticar");
 const fazerLogout = require("./logout");
-const listarRanking = require("./ranking");
 const concluirAtividade = require("./concluir-atividade");
 const corrigirBloco = require("./corrigir-bloco");
 
@@ -467,12 +466,6 @@ app.get(
         });
 
     }
-);
-
-
-app.get(
-    "/api/ranking",
-    listarRanking
 );
 
 
