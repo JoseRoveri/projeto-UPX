@@ -435,71 +435,104 @@
                     ? "Revisar bloco"
                     : "Tentar novamente";
 
-                if (dados.aprovado) {
+                if (dados.acertos > 0) {
                     revisao.replaceChildren(
-                        elemento(
-                            "h3",
-                            "",
-                            "Confira as respostas que você acertou"
-                        )
+                        elemento("h3", "", "Resumo das suas respostas")
                     );
-                } else {
-                    revisao.replaceChildren();
+
+                    const correcoesPorId = new Map(
+                        (Array.isArray(dados.resultados) ? dados.resultados : [])
+                            .filter(correcao =>
+                                correcao &&
+                                typeof correcao.perguntaId === "string"
+                            )
+                            .map(correcao => [
+                                correcao.perguntaId,
+                                correcao
+                            ])
+                    );
+
+                    // Percorre todas as perguntas, sem esconder as erradas.
+                    bloco.perguntas.forEach((pergunta, posicao) => {
+                        const correcao = correcoesPorId.get(pergunta.id);
+
+                        const temCorrecao =
+                            typeof correcao?.acertou === "boolean";
+
+                        const respostaEscolhida =
+                            Number.isInteger(correcao?.respostaEscolhida)
+                                ? correcao.respostaEscolhida
+                                : respostas[posicao];
+
+                        const alternativaMarcada =
+                            pergunta.alternativas[respostaEscolhida];
+
+                        const suaResposta =
+                            alternativaMarcada === undefined
+                                ? "Não informada."
+                                : String.fromCharCode(65 + respostaEscolhida) +
+                                ") " + alternativaMarcada;
+
+                        const status = !temCorrecao
+                            ? "⚠️ Correção indisponível"
+                            : correcao.acertou
+                                ? "✅ Acertou"
+                                : "❌ Errou";
+
+                        const item = elemento("section", "");
+
+                        // Todas as perguntas mostram o resultado e a opção marcada.
+                        item.append(
+                            elemento(
+                                "h4",
+                                "",
+                                `${status} — ${posicao + 1}. ${pergunta.pergunta}`
+                            ),
+                            elemento(
+                                "p",
+                                "",
+                                "Sua resposta: " + suaResposta
+                            )
+                        );
+
+                        if (!temCorrecao) {
+                            item.append(
+                                elemento(
+                                    "p",
+                                    "",
+                                    "Não foi possível exibir a correção desta pergunta."
+                                )
+                            );
+                        } else if (correcao.acertou) {
+                            // Só revela o gabarito e a explicação quando acertou.
+                            item.append(
+                                elemento(
+                                    "p",
+                                    "",
+                                    "Resposta correta: " + suaResposta
+                                ),
+                                elemento(
+                                    "p",
+                                    "",
+                                    correcao.explicacao || ""
+                                )
+                            );
+                        } else {
+                            // Mostra o erro sem entregar a resposta correta.
+                            item.append(
+                                elemento(
+                                    "p",
+                                    "",
+                                    "Essa alternativa não está correta. Você pode tentar novamente!"
+                                )
+                            );
+                        }
+
+                        revisao.append(item);
+                    });
                 }
 
-                const porId = new Map(
-                    bloco.perguntas.map(pergunta => [
-                        pergunta.id,
-                        pergunta
-                    ])
-                );
-
-                (dados.resultados || []).forEach((correcao, posicao) => {
-
-                    if (!dados.aprovado || !correcao.acertou) {
-                        return;
-                    }
-
-                    const pergunta = porId.get(
-                        correcao.perguntaId
-                    );
-
-                    if (!pergunta) return;
-
-                    const item = elemento("section", "");
-
-                    item.append(
-                        elemento(
-                            "h4",
-                            "",
-                            `${correcao.acertou ? "✅ Acertou" : "❌ Errou"} — ${posicao + 1}. ${pergunta.pergunta}`
-                        ),
-                        elemento(
-                            "p",
-                            "",
-                            "Sua resposta: " +
-                            pergunta.alternativas[
-                            correcao.respostaEscolhida
-                            ]
-                        ),
-                        elemento(
-                            "p",
-                            "",
-                            "Resposta correta: " +
-                            pergunta.alternativas[
-                            correcao.respostaCorreta
-                            ]
-                        ),
-                        elemento(
-                            "p",
-                            "",
-                            correcao.explicacao || ""
-                        )
-                    );
-
-                    revisao.append(item);
-                });
-
+                
                 if (
                     dados.concluido &&
                     dados.proximaAtividadeId
