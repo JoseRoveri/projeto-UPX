@@ -2320,8 +2320,7 @@ app.use((req, res, next) => {
     }
 
     // Mostra a página personalizada mantendo o status 404.
-    return res.status(404).sendFile(
-        path.join(frontendPath, "404.html"),
+    return res.status(404).sendFile(path.join(frontendPath, "404.html"),
         (erro) => {
             if (erro) {
                 next(erro);
@@ -2337,9 +2336,7 @@ app.use((req, res, next) => {
 
 const PORT =
     Number(
-        process.env.PORT ||
-        3000
-    );
+        process.env.PORT || 3000 );
 
 app.listen(
     PORT,

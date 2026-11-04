@@ -1,5 +1,3 @@
-"use strict";
-
 // correta: 0 = A, 1 = B, 2 = C, 3 = D.
 // Os identificadores antigos foram preservados, inclusive os intervalos na numeração.
 
