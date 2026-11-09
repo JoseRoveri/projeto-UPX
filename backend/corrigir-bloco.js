@@ -3,7 +3,7 @@
 const trilhaFacil = require("./trilha-facil");
 
 function corrigirBloco(atividadeId, respostas) {
-    // Localiza o bloco entre os módulos da dificuldade Fácil.
+    // Localiza o bloco solicitado.
     const bloco = trilhaFacil.modulos
         .flatMap(modulo => modulo.blocos)
         .find(item => item.atividadeId === atividadeId);
@@ -15,7 +15,7 @@ function corrigirBloco(atividadeId, respostas) {
         };
     }
 
-    // Cada pergunta precisa ter uma resposta.
+    // Exige uma resposta para cada pergunta.
     if (
         !Array.isArray(respostas) ||
         respostas.length !== bloco.perguntas.length
@@ -26,7 +26,7 @@ function corrigirBloco(atividadeId, respostas) {
         };
     }
 
-    // Aceita apenas posições de alternativas existentes: 0, 1, 2 ou 3.
+    // Aceita somente índices inteiros de alternativas existentes.
     const respostasValidas = bloco.perguntas.every((pergunta, indice) => {
         const resposta = respostas[indice];
 
@@ -42,16 +42,46 @@ function corrigirBloco(atividadeId, respostas) {
         };
     }
 
-    // Compara as respostas recebidas com o gabarito do servidor.
-    const resultados = bloco.perguntas.map((pergunta, indice) => ({
-        perguntaId: pergunta.id,
-        respostaEscolhida: respostas[indice],
-        respostaCorreta: pergunta.correta,
-        acertou: respostas[indice] === pergunta.correta,
-        explicacao: pergunta.explicacao
-    }));
+    const resultados = bloco.perguntas.map((pergunta, indice) => {
+        const respostaEscolhida = respostas[indice];
+        const acertou = respostaEscolhida === pergunta.correta;
 
-    const acertos = resultados.filter(resultado => resultado.acertou).length;
+        // Busca a explicação da alternativa que a criança marcou.
+        const explicacaoDaAlternativa =
+            Array.isArray(pergunta.explicacoesAlternativas)
+                ? pergunta.explicacoesAlternativas[respostaEscolhida]
+                : null;
+
+        let explicacao = acertou
+            ? "Você acertou!"
+            : "Essa alternativa não está correta. Tente novamente.";
+
+        if (
+            typeof explicacaoDaAlternativa === "string" &&
+            explicacaoDaAlternativa.trim()
+        ) {
+            explicacao = explicacaoDaAlternativa.trim();
+        } else if (
+            acertou &&
+            typeof pergunta.explicacao === "string" &&
+            pergunta.explicacao.trim()
+        ) {
+            // Compatibilidade com perguntas que só têm explicação geral.
+            explicacao = pergunta.explicacao.trim();
+        }
+
+        return {
+            perguntaId: pergunta.id,
+            respostaEscolhida,
+            respostaCorreta: pergunta.correta,
+            acertou,
+            explicacao
+        };
+    });
+
+    const acertos = resultados.filter(
+        resultado => resultado.acertou
+    ).length;
 
     return {
         valido: true,

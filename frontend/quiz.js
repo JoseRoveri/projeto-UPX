@@ -435,104 +435,109 @@
                     ? "Revisar bloco"
                     : "Tentar novamente";
 
-                if (dados.acertos > 0) {
-                    revisao.replaceChildren(
-                        elemento("h3", "", "Resumo das suas respostas")
+                // Exibe o resumo mesmo quando todas as respostas estão erradas.
+                revisao.replaceChildren(
+                    elemento("h3", "", "Resumo das suas respostas")
+                );
+
+                const correcoesPorId = new Map(
+                    (Array.isArray(dados.resultados) ? dados.resultados : [])
+                        .filter(correcao =>
+                            correcao &&
+                            typeof correcao.perguntaId === "string"
+                        )
+                        .map(correcao => [
+                            correcao.perguntaId,
+                            correcao
+                        ])
+                );
+
+                bloco.perguntas.forEach((pergunta, posicao) => {
+                    const correcao = correcoesPorId.get(pergunta.id);
+
+                    const temCorrecao =
+                        typeof correcao?.acertou === "boolean";
+
+                    const escolhaServidor = correcao?.respostaEscolhida;
+
+                    const respostaEscolhida =
+                        Number.isInteger(escolhaServidor) &&
+                            escolhaServidor >= 0 &&
+                            escolhaServidor < pergunta.alternativas.length
+                            ? escolhaServidor
+                            : respostas[posicao];
+
+                    const alternativaMarcada =
+                        pergunta.alternativas[respostaEscolhida];
+
+                    const suaResposta =
+                        alternativaMarcada === undefined
+                            ? "Não informada."
+                            : String.fromCharCode(65 + respostaEscolhida) +
+                            ") " + alternativaMarcada;
+
+                    const status = !temCorrecao
+                        ? "⚠️ Correção indisponível"
+                        : correcao.acertou
+                            ? "✅ Acertou"
+                            : "❌ Errou";
+
+                    const item = elemento("section", "");
+
+                    item.append(
+                        elemento(
+                            "h4",
+                            "",
+                            `${status} — ${posicao + 1}. ${pergunta.pergunta}`
+                        ),
+                        elemento(
+                            "p",
+                            "",
+                            "Sua resposta: " + suaResposta
+                        )
                     );
 
-                    const correcoesPorId = new Map(
-                        (Array.isArray(dados.resultados) ? dados.resultados : [])
-                            .filter(correcao =>
-                                correcao &&
-                                typeof correcao.perguntaId === "string"
-                            )
-                            .map(correcao => [
-                                correcao.perguntaId,
-                                correcao
-                            ])
-                    );
-
-                    // Percorre todas as perguntas, sem esconder as erradas.
-                    bloco.perguntas.forEach((pergunta, posicao) => {
-                        const correcao = correcoesPorId.get(pergunta.id);
-
-                        const temCorrecao =
-                            typeof correcao?.acertou === "boolean";
-
-                        const respostaEscolhida =
-                            Number.isInteger(correcao?.respostaEscolhida)
-                                ? correcao.respostaEscolhida
-                                : respostas[posicao];
-
-                        const alternativaMarcada =
-                            pergunta.alternativas[respostaEscolhida];
-
-                        const suaResposta =
-                            alternativaMarcada === undefined
-                                ? "Não informada."
-                                : String.fromCharCode(65 + respostaEscolhida) +
-                                ") " + alternativaMarcada;
-
-                        const status = !temCorrecao
-                            ? "⚠️ Correção indisponível"
-                            : correcao.acertou
-                                ? "✅ Acertou"
-                                : "❌ Errou";
-
-                        const item = elemento("section", "");
-
-                        // Todas as perguntas mostram o resultado e a opção marcada.
+                    if (!temCorrecao) {
+                        // Uma correção ausente não é tratada como resposta errada.
                         item.append(
-                            elemento(
-                                "h4",
-                                "",
-                                `${status} — ${posicao + 1}. ${pergunta.pergunta}`
-                            ),
                             elemento(
                                 "p",
                                 "",
-                                "Sua resposta: " + suaResposta
+                                "Não foi possível exibir a correção desta pergunta."
                             )
                         );
-
-                        if (!temCorrecao) {
-                            item.append(
-                                elemento(
-                                    "p",
-                                    "",
-                                    "Não foi possível exibir a correção desta pergunta."
-                                )
-                            );
-                        } else if (correcao.acertou) {
-                            // Só revela o gabarito e a explicação quando acertou.
+                    } else {
+                        // Mantém a identificação da resposta correta nos acertos.
+                        if (correcao.acertou) {
                             item.append(
                                 elemento(
                                     "p",
                                     "",
                                     "Resposta correta: " + suaResposta
-                                ),
-                                elemento(
-                                    "p",
-                                    "",
-                                    correcao.explicacao || ""
-                                )
-                            );
-                        } else {
-                            // Mostra o erro sem entregar a resposta correta.
-                            item.append(
-                                elemento(
-                                    "p",
-                                    "",
-                                    "Essa alternativa não está correta. Você pode tentar novamente!"
                                 )
                             );
                         }
 
-                        revisao.append(item);
-                    });
-                }
+                        // O backend envia a explicação da alternativa escolhida,
+                        // tanto nos acertos quanto nos erros.
+                        const explicacao =
+                            typeof correcao.explicacao === "string"
+                                ? correcao.explicacao.trim()
+                                : "";
 
-                
+                        item.append(
+                            elemento(
+                                "p",
+                                "",
+                                explicacao ||
+                                "A explicação desta resposta não está disponível no momento."
+                            )
+                        );
+                    }
+
+                    revisao.append(item);
+                });
+
                 if (
                     dados.concluido &&
                     dados.proximaAtividadeId

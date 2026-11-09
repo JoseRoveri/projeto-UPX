@@ -12,8 +12,7 @@ async function fazerLogin(req, res) {
             `${req.protocol}://${req.get("host")}`;
 
         if (
-            origem &&
-            origem !== origemEsperada
+            origem && origem !== origemEsperada
         ) {
             return res.status(403).json({
                 mensagem: "Acesso não permitido."
