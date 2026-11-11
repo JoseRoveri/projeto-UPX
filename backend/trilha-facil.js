@@ -82,11 +82,11 @@ trilhaFacil.modulos.push({
         ]),
 
         criarBloco(1, 2, "Energia em ação", [
-            criarPergunta(9, "energia", "Para que a televisão usa energia elétrica?",
-                ["Mostrar imagens e sons.", "Guardar a comida gelada.", "Lavar as roupas.", "Esquentar a água do banho."], 0,
-                ["A energia ajuda a televisão a mostrar imagens e sons.", "Quem mantém os alimentos frios é a geladeira.", "Essa é uma tarefa da máquina de lavar.", "Essa pode ser a tarefa de um chuveiro elétrico."]),
+            criarPergunta(9, "energia", "A professora explicou que todos podemos ajudar a cuidar do planeta. Qual atitude podemos ter para isso?",
+                [" Usar água e energia sem se preocupar com o amanhã.", "Cuidar da água e energia, evitando desperdícios.", "Comprar coisas novas", "Jogar fora objetos que ainda podem ser usados."], 1,
+                ["Usar água e energia sem se preocupar com o amanhã pode prejudicar o planeta", "Cuidar do uso da água e energia ajuda o planeta.", "Comprar novas coisas não ajuda a cuidar do planeta.", "Jogar fora objetos que ainda podem ser usados pode prejudicar o planeta."]),
 
-            criarPergunta(10, "energia", "Está escuro. Quando a luz da mesa ajuda?",
+            criarPergunta(10, "energia", "Sofia tem um caderno com várias páginas em branco do ano passado. Qual atitude poderia ajudar o planeta?",
                 ["Quando ninguém está no quarto.", "Depois que todos saem.", "Quando alguém precisa ler.", "Quando a mesa não está em uso."], 2,
                 ["Sem ninguém no quarto, essa luz pode ficar acesa à toa.", "Depois que todos saem, é preciso conferir se a luz é necessária.", "A luz ajuda a enxergar as palavras do livro.", "Uma luz sem uso pode gastar energia sem necessidade."]),
 
